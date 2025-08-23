@@ -527,6 +527,21 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "GESTION",
+                columns: new[] { "ID", "NOMBRE" },
+                values: new object[,]
+                {
+                    { 1, "1/2025" },
+                    { 2, "2/2025" },
+                    { 3, "3/2025" },
+                    { 4, "4/2025" },
+                    { 5, "1/2024" },
+                    { 6, "2/2024" },
+                    { 7, "3/2024" },
+                    { 8, "4/2024" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "GRUPO",
                 columns: new[] { "ID", "NOMBRE" },
                 values: new object[,]

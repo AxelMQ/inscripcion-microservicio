@@ -540,6 +540,48 @@ namespace Infrastructure.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("GESTION");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            NOMBRE = "1/2025"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            NOMBRE = "2/2025"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            NOMBRE = "3/2025"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            NOMBRE = "4/2025"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            NOMBRE = "1/2024"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            NOMBRE = "2/2024"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            NOMBRE = "3/2024"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            NOMBRE = "4/2024"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Grupo", b =>
