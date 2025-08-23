@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250823174353_Initial")]
+    [Migration("20250823180650_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -173,6 +173,358 @@ namespace Infrastructure.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("DOCENTE");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            CI = 15157488,
+                            NOMBRE = "FLORES GUZMAN VALENTIN VICTOR",
+                            TELEFONO = 78481515L
+                        },
+                        new
+                        {
+                            ID = 2,
+                            CI = 15157489,
+                            NOMBRE = "LOBO LIMPIAS VICTOR HUGO",
+                            TELEFONO = 78481516L
+                        },
+                        new
+                        {
+                            ID = 3,
+                            CI = 15157490,
+                            NOMBRE = "ARANIBAR QUIROZ MARTHA MONICA",
+                            TELEFONO = 78481517L
+                        },
+                        new
+                        {
+                            ID = 4,
+                            CI = 15157491,
+                            NOMBRE = "SANCHEZ VELASCO ENRIQUE",
+                            TELEFONO = 78481518L
+                        },
+                        new
+                        {
+                            ID = 5,
+                            CI = 15157492,
+                            NOMBRE = "CALDERON FLORES MODESTO FRANKLIN",
+                            TELEFONO = 78481519L
+                        },
+                        new
+                        {
+                            ID = 6,
+                            CI = 15157493,
+                            NOMBRE = "LAZO ARTEAGA CARLOS ROBERTO",
+                            TELEFONO = 78481520L
+                        },
+                        new
+                        {
+                            ID = 7,
+                            CI = 15157494,
+                            NOMBRE = "ZUNA VILLAGOMEZ RICARDO",
+                            TELEFONO = 78481521L
+                        },
+                        new
+                        {
+                            ID = 8,
+                            CI = 15157495,
+                            NOMBRE = "MOLLO MAMANI ALBERTO",
+                            TELEFONO = 78481522L
+                        },
+                        new
+                        {
+                            ID = 9,
+                            CI = 15157496,
+                            NOMBRE = "ALIAGA HOWARD SHARON KENNY",
+                            TELEFONO = 78481523L
+                        },
+                        new
+                        {
+                            ID = 10,
+                            CI = 15157497,
+                            NOMBRE = "CONTRERAS VILLEGAS JUAN CARLOS",
+                            TELEFONO = 78481524L
+                        },
+                        new
+                        {
+                            ID = 11,
+                            CI = 15157498,
+                            NOMBRE = "MARTINEZ CARDONA SARAH MIRNA",
+                            TELEFONO = 78481525L
+                        },
+                        new
+                        {
+                            ID = 12,
+                            CI = 15157499,
+                            NOMBRE = "CACERES CHACON BRAULIO",
+                            TELEFONO = 78481526L
+                        },
+                        new
+                        {
+                            ID = 13,
+                            CI = 15157500,
+                            NOMBRE = "GUTIERREZ BRUNO KATIME ESTHER",
+                            TELEFONO = 78481527L
+                        },
+                        new
+                        {
+                            ID = 14,
+                            CI = 15157501,
+                            NOMBRE = "APAZA LEON ROSNAY",
+                            TELEFONO = 78481528L
+                        },
+                        new
+                        {
+                            ID = 15,
+                            CI = 15157502,
+                            NOMBRE = "ZUNIGA RUIZ WILMA",
+                            TELEFONO = 78481529L
+                        },
+                        new
+                        {
+                            ID = 16,
+                            CI = 15157503,
+                            NOMBRE = "CLAURE MEDRANO DE OROPEZA ELIZ",
+                            TELEFONO = 78481530L
+                        },
+                        new
+                        {
+                            ID = 17,
+                            CI = 15157504,
+                            NOMBRE = "AVENDANO GONZALES EUDAL",
+                            TELEFONO = 78481531L
+                        },
+                        new
+                        {
+                            ID = 18,
+                            CI = 15157505,
+                            NOMBRE = "OROPEZA CLAURE GUSTAVO ADOLFO",
+                            TELEFONO = 78481532L
+                        },
+                        new
+                        {
+                            ID = 19,
+                            CI = 15157506,
+                            NOMBRE = "VALDELOMAR ORELLANA TOMAS",
+                            TELEFONO = 78481533L
+                        },
+                        new
+                        {
+                            ID = 20,
+                            CI = 15157507,
+                            NOMBRE = "ACOSTA CABEZAS BARTOLO JAVIER",
+                            TELEFONO = 78481534L
+                        },
+                        new
+                        {
+                            ID = 21,
+                            CI = 15157508,
+                            NOMBRE = "CALDERON FLORES PIODESTO FRANKL",
+                            TELEFONO = 78481535L
+                        },
+                        new
+                        {
+                            ID = 22,
+                            CI = 15157509,
+                            NOMBRE = "ZEBALLOS PAREDES DANIEL LUIS",
+                            TELEFONO = 78481536L
+                        },
+                        new
+                        {
+                            ID = 23,
+                            CI = 15157510,
+                            NOMBRE = "MOLLO NAL4ANI ALBERTO",
+                            TELEFONO = 78481537L
+                        },
+                        new
+                        {
+                            ID = 24,
+                            CI = 15157511,
+                            NOMBRE = "GRIMALDO BRAVO PAUL",
+                            TELEFONO = 78481538L
+                        },
+                        new
+                        {
+                            ID = 25,
+                            CI = 15157512,
+                            NOMBRE = "LAZO ARTEAGA CARLOS ROBERTO",
+                            TELEFONO = 78481539L
+                        },
+                        new
+                        {
+                            ID = 26,
+                            CI = 15157513,
+                            NOMBRE = "GONZALES APARICIO MELISSA",
+                            TELEFONO = 78481540L
+                        },
+                        new
+                        {
+                            ID = 27,
+                            CI = 15157514,
+                            NOMBRE = "ORTEGA PAREDES FRANCISCO",
+                            TELEFONO = 78481541L
+                        },
+                        new
+                        {
+                            ID = 28,
+                            CI = 15157515,
+                            NOMBRE = "VILLARROEL RIVERA NATALIA",
+                            TELEFONO = 78481542L
+                        },
+                        new
+                        {
+                            ID = 29,
+                            CI = 15157516,
+                            NOMBRE = "CARRASCO CORDOVA LUIS",
+                            TELEFONO = 78481543L
+                        },
+                        new
+                        {
+                            ID = 30,
+                            CI = 15157517,
+                            NOMBRE = "MEDINA LOPEZ GLORIA",
+                            TELEFONO = 78481544L
+                        },
+                        new
+                        {
+                            ID = 31,
+                            CI = 15157518,
+                            NOMBRE = "MENDOZA CASTRO MARCO",
+                            TELEFONO = 78481545L
+                        },
+                        new
+                        {
+                            ID = 32,
+                            CI = 15157519,
+                            NOMBRE = "ALVAREZ ROMERO SANDRA",
+                            TELEFONO = 78481546L
+                        },
+                        new
+                        {
+                            ID = 33,
+                            CI = 15157520,
+                            NOMBRE = "RAMIREZ HUERTA CARLOS",
+                            TELEFONO = 78481547L
+                        },
+                        new
+                        {
+                            ID = 34,
+                            CI = 15157521,
+                            NOMBRE = "ESCOBAR FLORES VERONICA",
+                            TELEFONO = 78481548L
+                        },
+                        new
+                        {
+                            ID = 35,
+                            CI = 15157522,
+                            NOMBRE = "CASTILLO GOMEZ JUAN",
+                            TELEFONO = 78481549L
+                        },
+                        new
+                        {
+                            ID = 36,
+                            CI = 15157523,
+                            NOMBRE = "PEREZ SALAZAR LILIANA",
+                            TELEFONO = 78481550L
+                        },
+                        new
+                        {
+                            ID = 37,
+                            CI = 15157524,
+                            NOMBRE = "TORRES QUISPE RICARDO",
+                            TELEFONO = 78481551L
+                        },
+                        new
+                        {
+                            ID = 38,
+                            CI = 15157525,
+                            NOMBRE = "HUAMAN FLORES MIRIAM",
+                            TELEFONO = 78481552L
+                        },
+                        new
+                        {
+                            ID = 39,
+                            CI = 15157526,
+                            NOMBRE = "CHAVEZ LOPEZ EDWIN",
+                            TELEFONO = 78481553L
+                        },
+                        new
+                        {
+                            ID = 40,
+                            CI = 15157527,
+                            NOMBRE = "GARCIA VILLENA KARINA",
+                            TELEFONO = 78481554L
+                        },
+                        new
+                        {
+                            ID = 41,
+                            CI = 15157528,
+                            NOMBRE = "RODRIGUEZ SALAZAR LUIS",
+                            TELEFONO = 78481555L
+                        },
+                        new
+                        {
+                            ID = 42,
+                            CI = 15157529,
+                            NOMBRE = "FERNANDEZ CASTRO MARIA",
+                            TELEFONO = 78481556L
+                        },
+                        new
+                        {
+                            ID = 43,
+                            CI = 15157530,
+                            NOMBRE = "MARTINEZ HUAMAN PABLO",
+                            TELEFONO = 78481557L
+                        },
+                        new
+                        {
+                            ID = 44,
+                            CI = 15157531,
+                            NOMBRE = "QUISPE RAMOS GLADYS",
+                            TELEFONO = 78481558L
+                        },
+                        new
+                        {
+                            ID = 45,
+                            CI = 15157532,
+                            NOMBRE = "SALAZAR MORENO JULIO",
+                            TELEFONO = 78481559L
+                        },
+                        new
+                        {
+                            ID = 46,
+                            CI = 15157533,
+                            NOMBRE = "LOPEZ RIVERA ANGELA",
+                            TELEFONO = 78481560L
+                        },
+                        new
+                        {
+                            ID = 47,
+                            CI = 15157534,
+                            NOMBRE = "VILLANUEVA PEREZ CARLOS",
+                            TELEFONO = 78481561L
+                        },
+                        new
+                        {
+                            ID = 48,
+                            CI = 15157535,
+                            NOMBRE = "ORTEGA SALAZAR FABIOLA",
+                            TELEFONO = 78481562L
+                        },
+                        new
+                        {
+                            ID = 49,
+                            CI = 15157536,
+                            NOMBRE = "GOMEZ HUAMAN MARIO",
+                            TELEFONO = 78481563L
+                        },
+                        new
+                        {
+                            ID = 50,
+                            CI = 15157537,
+                            NOMBRE = "CARRASCO LOPEZ ELISA",
+                            TELEFONO = 78481564L
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Gestion", b =>
