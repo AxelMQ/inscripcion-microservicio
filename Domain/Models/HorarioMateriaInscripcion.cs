@@ -15,6 +15,9 @@ namespace Domain.Models
 
         public required int INSCRIPCION_ID { get; set; }
         public Inscripcion Inscripcion { get; set; } = null!; // Se usa 'null!'
+
+        
+        public ICollection<Nota> Notas { get; set; } = new List<Nota>();
     }
 
 }

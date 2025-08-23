@@ -32,6 +32,7 @@ namespace Infrastructure.Data
         public DbSet<Inscripcion> Inscripcion { get; set; }
         public DbSet<HorarioMateria> HorarioMateria { get; set; }
         public DbSet<HorarioMateriaInscripcion> HorarioMateriaInscripcion { get; set; }
+        public DbSet<Nota> Nota { get; set; }
 
         // Este método se usa para configurar el modelo de datos,
         // especialmente para relaciones y claves compuestas.
@@ -145,6 +146,17 @@ namespace Infrastructure.Data
                 .HasOne(hmi => hmi.Inscripcion)
                 .WithMany(i => i.HorarioMateriaInscripciones)
                 .HasForeignKey(hmi => hmi.INSCRIPCION_ID);
+
+            // Configuración de relaciones para Nota
+            modelBuilder.Entity<Nota>()
+                .HasOne(n => n.Alumno)
+                .WithMany(a => a.Notas)
+                .HasForeignKey(n => n.ALUMNO_ID);
+
+            modelBuilder.Entity<Nota>()
+                .HasOne(n => n.HorarioMateriaInscripcion)
+                .WithMany(hmi => hmi.Notas)
+                .HasForeignKey(n => n.HORARIO_MATERIA_INSCRIPCION_ID);
 
             base.OnModelCreating(modelBuilder);
         }

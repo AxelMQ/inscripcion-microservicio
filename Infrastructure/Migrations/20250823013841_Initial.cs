@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class NombreDeLaMigracion : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -376,6 +376,31 @@ namespace Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "NOTA",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CALIFICACION = table.Column<decimal>(type: "numeric", nullable: false),
+                    ALUMNO_ID = table.Column<int>(type: "integer", nullable: true),
+                    HORARIO_MATERIA_INSCRIPCION_ID = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NOTA", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_NOTA_ALUMNO_ALUMNO_ID",
+                        column: x => x.ALUMNO_ID,
+                        principalTable: "ALUMNO",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "FK_NOTA_HORARIO_MATERIA_INSCRIPCION_HORARIO_MATERIA_INSCRIPCIO~",
+                        column: x => x.HORARIO_MATERIA_INSCRIPCION_ID,
+                        principalTable: "HORARIO_MATERIA_INSCRIPCION",
+                        principalColumn: "ID");
+                });
+
             migrationBuilder.InsertData(
                 table: "CARRERA",
                 columns: new[] { "ID", "CODIGO", "MODALIDAD", "NOMBRE" },
@@ -729,6 +754,16 @@ namespace Infrastructure.Migrations
                 column: "PLAN_ESTUDIO_ID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_NOTA_ALUMNO_ID",
+                table: "NOTA",
+                column: "ALUMNO_ID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_NOTA_HORARIO_MATERIA_INSCRIPCION_ID",
+                table: "NOTA",
+                column: "HORARIO_MATERIA_INSCRIPCION_ID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PLAN_ESTUDIO_CARRERA_ID",
                 table: "PLAN_ESTUDIO",
                 column: "CARRERA_ID");
@@ -746,7 +781,7 @@ namespace Infrastructure.Migrations
                 name: "HORA_DIA_HORARIO");
 
             migrationBuilder.DropTable(
-                name: "HORARIO_MATERIA_INSCRIPCION");
+                name: "NOTA");
 
             migrationBuilder.DropTable(
                 name: "PREREQUISITO");
@@ -755,16 +790,19 @@ namespace Infrastructure.Migrations
                 name: "HORA_DIA");
 
             migrationBuilder.DropTable(
-                name: "HORARIO_MATERIA");
-
-            migrationBuilder.DropTable(
-                name: "INSCRIPCION");
+                name: "HORARIO_MATERIA_INSCRIPCION");
 
             migrationBuilder.DropTable(
                 name: "DIA");
 
             migrationBuilder.DropTable(
                 name: "HORA");
+
+            migrationBuilder.DropTable(
+                name: "HORARIO_MATERIA");
+
+            migrationBuilder.DropTable(
+                name: "INSCRIPCION");
 
             migrationBuilder.DropTable(
                 name: "DOCENTE");

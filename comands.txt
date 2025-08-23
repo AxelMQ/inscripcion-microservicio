@@ -1,11 +1,9 @@
 //COMANDO PARA LEVANTAR EL PROYECTO
 dotnet run --project Api
 
-//PARA ELIMINAR LA BASE DE DATOS
-dotnet ef database drop --project ..\Infrastructure\Infrastructure.csproj
 
 //PARA CREAR UNA NUEVA MIGRACION
-dotnet ef migrations add NombreDeLaMigracion --project Infrastructure --startup-project Api
+dotnet ef migrations add Initial --project Infrastructure --startup-project Api
 
 //APLICAR LA MIGRACION CREAR LA BASE DE DATOS
 dotnet ef database update --project Infrastructure --startup-project Api

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250822031838_NombreDeLaMigracion")]
-    partial class NombreDeLaMigracion
+    [Migration("20250823013841_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -2149,6 +2149,32 @@ namespace Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Domain.Models.Nota", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+
+                    b.Property<int?>("ALUMNO_ID")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("CALIFICACION")
+                        .HasColumnType("numeric");
+
+                    b.Property<int?>("HORARIO_MATERIA_INSCRIPCION_ID")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ALUMNO_ID");
+
+                    b.HasIndex("HORARIO_MATERIA_INSCRIPCION_ID");
+
+                    b.ToTable("NOTA");
+                });
+
             modelBuilder.Entity("Domain.Models.PlanEstudio", b =>
                 {
                     b.Property<int>("ID")
@@ -2343,6 +2369,21 @@ namespace Infrastructure.Migrations
                     b.Navigation("PlanEstudio");
                 });
 
+            modelBuilder.Entity("Domain.Models.Nota", b =>
+                {
+                    b.HasOne("Domain.Models.Alumno", "Alumno")
+                        .WithMany("Notas")
+                        .HasForeignKey("ALUMNO_ID");
+
+                    b.HasOne("Domain.Models.HorarioMateriaInscripcion", "HorarioMateriaInscripcion")
+                        .WithMany("Notas")
+                        .HasForeignKey("HORARIO_MATERIA_INSCRIPCION_ID");
+
+                    b.Navigation("Alumno");
+
+                    b.Navigation("HorarioMateriaInscripcion");
+                });
+
             modelBuilder.Entity("Domain.Models.PlanEstudio", b =>
                 {
                     b.HasOne("Domain.Models.Carrera", "Carrera")
@@ -2376,6 +2417,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Models.Alumno", b =>
                 {
                     b.Navigation("Inscripciones");
+
+                    b.Navigation("Notas");
                 });
 
             modelBuilder.Entity("Domain.Models.Carrera", b =>
@@ -2418,6 +2461,11 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Models.HorarioMateria", b =>
                 {
                     b.Navigation("HorarioMateriaInscripciones");
+                });
+
+            modelBuilder.Entity("Domain.Models.HorarioMateriaInscripcion", b =>
+                {
+                    b.Navigation("Notas");
                 });
 
             modelBuilder.Entity("Domain.Models.Inscripcion", b =>
