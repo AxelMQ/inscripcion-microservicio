@@ -485,7 +485,17 @@ namespace Infrastructure.Migrations
                 values: new object[,]
                 {
                     { 1, new TimeOnly(8, 30, 0), new TimeOnly(7, 0, 0) },
-                    { 2, new TimeOnly(10, 30, 0), new TimeOnly(8, 30, 0) }
+                    { 2, new TimeOnly(10, 0, 0), new TimeOnly(8, 30, 0) },
+                    { 3, new TimeOnly(11, 30, 0), new TimeOnly(10, 0, 0) },
+                    { 4, new TimeOnly(13, 0, 0), new TimeOnly(11, 30, 0) },
+                    { 5, new TimeOnly(14, 30, 0), new TimeOnly(13, 0, 0) },
+                    { 6, new TimeOnly(16, 0, 0), new TimeOnly(14, 30, 0) },
+                    { 7, new TimeOnly(9, 15, 0), new TimeOnly(7, 0, 0) },
+                    { 8, new TimeOnly(11, 30, 0), new TimeOnly(9, 15, 0) },
+                    { 9, new TimeOnly(13, 0, 0), new TimeOnly(11, 30, 0) },
+                    { 10, new TimeOnly(18, 15, 0), new TimeOnly(16, 0, 0) },
+                    { 11, new TimeOnly(20, 30, 0), new TimeOnly(18, 15, 0) },
+                    { 12, new TimeOnly(22, 45, 0), new TimeOnly(20, 30, 0) }
                 });
 
             migrationBuilder.InsertData(
@@ -612,6 +622,40 @@ namespace Infrastructure.Migrations
                     { 3, 2, 7 },
                     { 4, 2, 8 },
                     { 5, 3, 9 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "HORA_DIA",
+                columns: new[] { "ID", "DIA_ID", "HORA_ID" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 1, 2 },
+                    { 3, 1, 3 },
+                    { 4, 1, 4 },
+                    { 5, 1, 5 },
+                    { 6, 3, 1 },
+                    { 7, 3, 2 },
+                    { 8, 3, 3 },
+                    { 9, 3, 4 },
+                    { 10, 3, 5 },
+                    { 11, 5, 1 },
+                    { 12, 5, 2 },
+                    { 13, 5, 3 },
+                    { 14, 5, 4 },
+                    { 15, 5, 5 },
+                    { 16, 2, 7 },
+                    { 17, 2, 8 },
+                    { 18, 2, 9 },
+                    { 19, 2, 10 },
+                    { 20, 2, 11 },
+                    { 21, 2, 12 },
+                    { 22, 4, 7 },
+                    { 23, 4, 8 },
+                    { 24, 4, 9 },
+                    { 25, 4, 10 },
+                    { 26, 4, 11 },
+                    { 27, 4, 12 }
                 });
 
             migrationBuilder.InsertData(

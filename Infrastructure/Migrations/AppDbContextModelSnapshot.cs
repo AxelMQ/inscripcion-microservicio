@@ -308,8 +308,68 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 2,
-                            HR_FIN = new TimeOnly(10, 30, 0),
+                            HR_FIN = new TimeOnly(10, 0, 0),
                             HR_INICIO = new TimeOnly(8, 30, 0)
+                        },
+                        new
+                        {
+                            ID = 3,
+                            HR_FIN = new TimeOnly(11, 30, 0),
+                            HR_INICIO = new TimeOnly(10, 0, 0)
+                        },
+                        new
+                        {
+                            ID = 4,
+                            HR_FIN = new TimeOnly(13, 0, 0),
+                            HR_INICIO = new TimeOnly(11, 30, 0)
+                        },
+                        new
+                        {
+                            ID = 5,
+                            HR_FIN = new TimeOnly(14, 30, 0),
+                            HR_INICIO = new TimeOnly(13, 0, 0)
+                        },
+                        new
+                        {
+                            ID = 6,
+                            HR_FIN = new TimeOnly(16, 0, 0),
+                            HR_INICIO = new TimeOnly(14, 30, 0)
+                        },
+                        new
+                        {
+                            ID = 7,
+                            HR_FIN = new TimeOnly(9, 15, 0),
+                            HR_INICIO = new TimeOnly(7, 0, 0)
+                        },
+                        new
+                        {
+                            ID = 8,
+                            HR_FIN = new TimeOnly(11, 30, 0),
+                            HR_INICIO = new TimeOnly(9, 15, 0)
+                        },
+                        new
+                        {
+                            ID = 9,
+                            HR_FIN = new TimeOnly(13, 0, 0),
+                            HR_INICIO = new TimeOnly(11, 30, 0)
+                        },
+                        new
+                        {
+                            ID = 10,
+                            HR_FIN = new TimeOnly(18, 15, 0),
+                            HR_INICIO = new TimeOnly(16, 0, 0)
+                        },
+                        new
+                        {
+                            ID = 11,
+                            HR_FIN = new TimeOnly(20, 30, 0),
+                            HR_INICIO = new TimeOnly(18, 15, 0)
+                        },
+                        new
+                        {
+                            ID = 12,
+                            HR_FIN = new TimeOnly(22, 45, 0),
+                            HR_INICIO = new TimeOnly(20, 30, 0)
                         });
                 });
 
@@ -334,6 +394,170 @@ namespace Infrastructure.Migrations
                     b.HasIndex("HORA_ID");
 
                     b.ToTable("HORA_DIA");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            DIA_ID = 1,
+                            HORA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            DIA_ID = 1,
+                            HORA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 3,
+                            DIA_ID = 1,
+                            HORA_ID = 3
+                        },
+                        new
+                        {
+                            ID = 4,
+                            DIA_ID = 1,
+                            HORA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 5,
+                            DIA_ID = 1,
+                            HORA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 6,
+                            DIA_ID = 3,
+                            HORA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 7,
+                            DIA_ID = 3,
+                            HORA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 8,
+                            DIA_ID = 3,
+                            HORA_ID = 3
+                        },
+                        new
+                        {
+                            ID = 9,
+                            DIA_ID = 3,
+                            HORA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 10,
+                            DIA_ID = 3,
+                            HORA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 11,
+                            DIA_ID = 5,
+                            HORA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 12,
+                            DIA_ID = 5,
+                            HORA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 13,
+                            DIA_ID = 5,
+                            HORA_ID = 3
+                        },
+                        new
+                        {
+                            ID = 14,
+                            DIA_ID = 5,
+                            HORA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 15,
+                            DIA_ID = 5,
+                            HORA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 16,
+                            DIA_ID = 2,
+                            HORA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 17,
+                            DIA_ID = 2,
+                            HORA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 18,
+                            DIA_ID = 2,
+                            HORA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 19,
+                            DIA_ID = 2,
+                            HORA_ID = 10
+                        },
+                        new
+                        {
+                            ID = 20,
+                            DIA_ID = 2,
+                            HORA_ID = 11
+                        },
+                        new
+                        {
+                            ID = 21,
+                            DIA_ID = 2,
+                            HORA_ID = 12
+                        },
+                        new
+                        {
+                            ID = 22,
+                            DIA_ID = 4,
+                            HORA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 23,
+                            DIA_ID = 4,
+                            HORA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 24,
+                            DIA_ID = 4,
+                            HORA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 25,
+                            DIA_ID = 4,
+                            HORA_ID = 10
+                        },
+                        new
+                        {
+                            ID = 26,
+                            DIA_ID = 4,
+                            HORA_ID = 11
+                        },
+                        new
+                        {
+                            ID = 27,
+                            DIA_ID = 4,
+                            HORA_ID = 12
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.HoraDiaHorario", b =>
