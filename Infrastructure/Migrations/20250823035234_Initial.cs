@@ -470,6 +470,16 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "GRUPO",
+                columns: new[] { "ID", "NOMBRE" },
+                values: new object[,]
+                {
+                    { 1, "SA" },
+                    { 2, "SB" },
+                    { 3, "SC" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "HORA",
                 columns: new[] { "ID", "HR_FIN", "HR_INICIO" },
                 values: new object[,]

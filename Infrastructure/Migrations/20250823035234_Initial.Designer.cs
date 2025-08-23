@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250823032446_Initial")]
+    [Migration("20250823035234_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -209,6 +209,23 @@ namespace Infrastructure.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("GRUPO");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            NOMBRE = "SA"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            NOMBRE = "SB"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            NOMBRE = "SC"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.GrupoMateria", b =>

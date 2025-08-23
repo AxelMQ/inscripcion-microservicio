@@ -206,6 +206,23 @@ namespace Infrastructure.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("GRUPO");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            NOMBRE = "SA"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            NOMBRE = "SB"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            NOMBRE = "SC"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.GrupoMateria", b =>
