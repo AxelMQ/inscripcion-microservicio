@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250823181740_Initial")]
+    [Migration("20250823201209_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -98,6 +98,13 @@ namespace Infrastructure.Migrations
                             CODIGO = "184",
                             MODALIDAD = (short)0,
                             NOMBRE = "INGENIERIA EN SISTEMAS"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            CODIGO = "323",
+                            MODALIDAD = (short)0,
+                            NOMBRE = "INGENIERIA ROBOTICA"
                         });
                 });
 
@@ -1121,15 +1128,15 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 1,
-                            CREDITO = (short)10,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "INTRODUCCION A LA INFORMATICA",
-                            SIGLA = "INF110"
+                            NOMBRE = "CÁLCULO I",
+                            SIGLA = "MAT101"
                         },
                         new
                         {
                             ID = 2,
-                            CREDITO = (short)10,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "ESTRUCTURAS DISCRETAS",
                             SIGLA = "INF119"
@@ -1137,706 +1144,938 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 3,
-                            CREDITO = (short)10,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "FISICA I",
-                            SIGLA = "FIS100"
+                            NOMBRE = "INTRODUCCIÓN A LA INFORMÁTICA",
+                            SIGLA = "INF110"
                         },
                         new
                         {
                             ID = 4,
-                            CREDITO = (short)10,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "INGLES TECNICO I",
-                            SIGLA = "LIN100"
+                            NOMBRE = "FÍSICA I",
+                            SIGLA = "FIS100"
                         },
                         new
                         {
                             ID = 5,
-                            CREDITO = (short)10,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "CALCULO I",
-                            SIGLA = "MAT101"
+                            NOMBRE = "INGLÉS TÉCNICO I",
+                            SIGLA = "LIN100"
                         },
                         new
                         {
                             ID = 6,
-                            CREDITO = (short)10,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "ALGEBRA LINEAL",
-                            SIGLA = "MAT103"
-                        },
-                        new
-                        {
-                            ID = 7,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROGRAMACION I",
-                            SIGLA = "INF120"
-                        },
-                        new
-                        {
-                            ID = 8,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "CALCULO I",
+                            NOMBRE = "CÁLCULO II",
                             SIGLA = "MAT102"
                         },
                         new
                         {
-                            ID = 9,
-                            CREDITO = (short)10,
+                            ID = 7,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "FISICA II",
+                            NOMBRE = "ÁLGEBRA LINEAL",
+                            SIGLA = "MAT103"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "PROGRAMACIÓN I",
+                            SIGLA = "INF120"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "FÍSICA II",
                             SIGLA = "FIS102"
                         },
                         new
                         {
                             ID = 10,
-                            CREDITO = (short)10,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "INGLES TECNICO II",
+                            NOMBRE = "INGLÉS TÉCNICO II",
                             SIGLA = "LIN101"
                         },
                         new
                         {
                             ID = 11,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ARQUITECTURA DE COMPUTADORAS",
-                            SIGLA = "INF211"
-                        },
-                        new
-                        {
-                            ID = 12,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROGRAMACION II",
-                            SIGLA = "INF210"
-                        },
-                        new
-                        {
-                            ID = 13,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ADMINISTRACION",
-                            SIGLA = "ADM100"
-                        },
-                        new
-                        {
-                            ID = 14,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "FISICA III",
-                            SIGLA = "FIS200"
-                        },
-                        new
-                        {
-                            ID = 15,
-                            CREDITO = (short)10,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "ECUACIONES DIFERENCIALES",
                             SIGLA = "MAT207"
                         },
                         new
                         {
+                            ID = 12,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "PROGRAMACIÓN II",
+                            SIGLA = "INF210"
+                        },
+                        new
+                        {
+                            ID = 13,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ARQUITECTURA DE COMPUTADORAS",
+                            SIGLA = "INF211"
+                        },
+                        new
+                        {
+                            ID = 14,
+                            CREDITO = (short)6,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "FÍSICA III",
+                            SIGLA = "FIS200"
+                        },
+                        new
+                        {
+                            ID = 15,
+                            CREDITO = (short)4,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ADMINISTRACIÓN",
+                            SIGLA = "ADM100"
+                        },
+                        new
+                        {
                             ID = 16,
-                            CREDITO = (short)10,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "ANALISIS DE CIRCUITOS",
-                            SIGLA = "RDS210"
-                        },
-                        new
-                        {
-                            ID = 17,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "TEORIA DE CAMPOS",
-                            SIGLA = "ELT241"
-                        },
-                        new
-                        {
-                            ID = 18,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROBABILIDAD Y ESTADISTICA I",
+                            NOMBRE = "PROBABILIDAD Y ESTADÍSTICA I",
                             SIGLA = "MAT202"
                         },
                         new
                         {
-                            ID = 19,
-                            CREDITO = (short)10,
+                            ID = 17,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "CONTABILIDAD",
-                            SIGLA = "ADM200"
+                            NOMBRE = "MÉTODOS NUMÉRICOS",
+                            SIGLA = "MAT205"
                         },
                         new
                         {
-                            ID = 20,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROGRAMACION ENSAMBLADOR",
-                            SIGLA = "INF221"
-                        },
-                        new
-                        {
-                            ID = 21,
-                            CREDITO = (short)10,
+                            ID = 18,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "ESTRUCTURA DE DATOS I",
                             SIGLA = "INF220"
                         },
                         new
                         {
+                            ID = 19,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "PROGRAMACIÓN ENSAMBLADOR",
+                            SIGLA = "INF221"
+                        },
+                        new
+                        {
+                            ID = 20,
+                            CREDITO = (short)4,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "CONTABILIDAD",
+                            SIGLA = "ADM200"
+                        },
+                        new
+                        {
+                            ID = 21,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "PROBABILIDAD Y ESTADÍSTICA II",
+                            SIGLA = "MAT302"
+                        },
+                        new
+                        {
                             ID = 22,
-                            CREDITO = (short)10,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "METODOS NUMERICOS",
-                            SIGLA = "MAT205"
-                        },
-                        new
-                        {
-                            ID = 23,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ANALISIS DE CIRCUITOS ELECTRONICOS",
-                            SIGLA = "RDS220"
-                        },
-                        new
-                        {
-                            ID = 24,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "LENGUAJES FORMALES",
-                            SIGLA = "INF319"
-                        },
-                        new
-                        {
-                            ID = 25,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROGRAMACION LOGICA Y FUNCIONAL",
+                            NOMBRE = "PROGRAMACIÓN LÓGICA Y FUNCIONAL I",
                             SIGLA = "INF318"
                         },
                         new
                         {
-                            ID = 26,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "BASE DE DATROS I",
-                            SIGLA = "INF312"
-                        },
-                        new
-                        {
-                            ID = 27,
-                            CREDITO = (short)10,
+                            ID = 23,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "ESTRUCTURA DE DATOS II",
                             SIGLA = "INF310"
                         },
                         new
                         {
-                            ID = 28,
-                            CREDITO = (short)10,
+                            ID = 24,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "PROBABILIDAD Y ESTADISTICA II",
-                            SIGLA = "MAT302"
+                            NOMBRE = "BASE DE DATOS I",
+                            SIGLA = "INF312"
                         },
                         new
                         {
-                            ID = 29,
-                            CREDITO = (short)10,
+                            ID = 25,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "ORGANIZACION Y METODOS",
+                            NOMBRE = "LENGUAJES FORMALES",
+                            SIGLA = "INF319"
+                        },
+                        new
+                        {
+                            ID = 53,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ORGANIZACIÓN Y MÉTODOS",
                             SIGLA = "ADM330"
                         },
                         new
                         {
-                            ID = 30,
-                            CREDITO = (short)10,
+                            ID = 54,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "ECONOMIA PARA LA GESTION",
+                            NOMBRE = "ECONOMÍA PARA LA GESTIÓN",
                             SIGLA = "ECO300"
                         },
                         new
                         {
-                            ID = 31,
-                            CREDITO = (short)10,
+                            ID = 26,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS LOGICOS Y DIGITALES I",
-                            SIGLA = "ELT352"
-                        },
-                        new
-                        {
-                            ID = 32,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ELECTRONICA APLICADA A REDES",
-                            SIGLA = "RDS310"
-                        },
-                        new
-                        {
-                            ID = 33,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SEÑALES Y SISTEMAS",
-                            SIGLA = "ELT354"
-                        },
-                        new
-                        {
-                            ID = 34,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "BASE DE DATOS II",
-                            SIGLA = "INF322"
-                        },
-                        new
-                        {
-                            ID = 35,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INVESTIGACION OPERATIVA I",
+                            NOMBRE = "INVESTIGACIÓN OPERATIVA I",
                             SIGLA = "MAT329"
                         },
                         new
                         {
-                            ID = 36,
-                            CREDITO = (short)10,
+                            ID = 27,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "COMPILADORES",
-                            SIGLA = "INF329"
+                            NOMBRE = "SISTEMAS DE INFORMACIÓN I",
+                            SIGLA = "INF342"
                         },
                         new
                         {
-                            ID = 37,
-                            CREDITO = (short)10,
+                            ID = 28,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "SISTEMAS OPERATIVOS I",
                             SIGLA = "INF323"
                         },
                         new
                         {
-                            ID = 38,
-                            CREDITO = (short)10,
+                            ID = 29,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE INFORMACION I",
-                            SIGLA = "INF342"
+                            NOMBRE = "BASE DE DATOS II",
+                            SIGLA = "INF322"
                         },
                         new
                         {
-                            ID = 39,
-                            CREDITO = (short)10,
+                            ID = 30,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "COMPILADORES",
+                            SIGLA = "INF329"
+                        },
+                        new
+                        {
+                            ID = 55,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "FINANZAS PARA LA EMPRESA",
-                            SIGLA = "ECO320"
+                            SIGLA = "ADM320"
                         },
                         new
                         {
-                            ID = 40,
-                            CREDITO = (short)10,
+                            ID = 31,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS LOGICOS Y DIGITALES II",
-                            SIGLA = "ELT362"
+                            NOMBRE = "INVESTIGACIÓN OPERATIVA II",
+                            SIGLA = "MAT419"
                         },
                         new
                         {
-                            ID = 41,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INTERPRETACION DE SISTEMAS Y SEÑALES",
-                            SIGLA = "RDS320"
-                        },
-                        new
-                        {
-                            ID = 42,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "REDES I",
-                            SIGLA = "INF433"
-                        },
-                        new
-                        {
-                            ID = 43,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS OPERATIVOS II",
-                            SIGLA = "INF413"
-                        },
-                        new
-                        {
-                            ID = 44,
-                            CREDITO = (short)10,
+                            ID = 32,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "INTELIGENCIA ARTIFICIAL",
                             SIGLA = "INF418"
                         },
                         new
                         {
-                            ID = 45,
-                            CREDITO = (short)10,
+                            ID = 33,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE INFORMACION II",
+                            NOMBRE = "SISTEMAS OPERATIVOS II",
+                            SIGLA = "INF413"
+                        },
+                        new
+                        {
+                            ID = 34,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "REDES I",
+                            SIGLA = "INF433"
+                        },
+                        new
+                        {
+                            ID = 35,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "INGENIERÍA DE SOFTWARE I",
                             SIGLA = "INF412"
                         },
                         new
                         {
-                            ID = 46,
-                            CREDITO = (short)10,
+                            ID = 56,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "INVESTIGACION OPERATIVA II",
-                            SIGLA = "MAT419"
+                            NOMBRE = "SISTEMAS PARA EL SOPORTE A LA TOMA DE DECISIONES",
+                            SIGLA = "INF343"
                         },
                         new
                         {
-                            ID = 47,
-                            CREDITO = (short)10,
+                            ID = 36,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS PARA EL SOPORTE A LA TOMA DE DESICIONES",
-                            SIGLA = "INF432"
+                            NOMBRE = "PREPARACIÓN Y EVALUACIÓN DE PROYECTOS",
+                            SIGLA = "EC0449"
                         },
                         new
                         {
-                            ID = 48,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE COMUNICACION I",
-                            SIGLA = "ELT374"
-                        },
-                        new
-                        {
-                            ID = 49,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "APPS CON MICROPROCESADORES",
-                            SIGLA = "RDS410"
-                        },
-                        new
-                        {
-                            ID = 50,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INGENIERIA DE SOFTWARE I",
-                            SIGLA = "INF422"
-                        },
-                        new
-                        {
-                            ID = 51,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "REDES II",
-                            SIGLA = "INF423"
-                        },
-                        new
-                        {
-                            ID = 52,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE INFORMACION GEOGRAFICA",
-                            SIGLA = "INF442"
-                        },
-                        new
-                        {
-                            ID = 53,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PREPARACION Y EVALUACION DE PROYECTO",
-                            SIGLA = "ECO449"
-                        },
-                        new
-                        {
-                            ID = 54,
-                            CREDITO = (short)10,
+                            ID = 37,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "SISTEMAS EXPERTOS",
                             SIGLA = "INF428"
                         },
                         new
                         {
-                            ID = 55,
-                            CREDITO = (short)10,
+                            ID = 38,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "AUDITORIA INFORMATICA",
-                            SIGLA = "INF462"
+                            NOMBRE = "SISTEMAS DE INFORMACIÓN II",
+                            SIGLA = "INF442"
                         },
                         new
                         {
-                            ID = 56,
-                            CREDITO = (short)10,
+                            ID = 39,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "TALLER DE ANALISIS Y DESEÑO DE REDES",
-                            SIGLA = "RDS421"
+                            NOMBRE = "REDES II",
+                            SIGLA = "INF423"
                         },
                         new
                         {
-                            ID = 57,
-                            CREDITO = (short)10,
+                            ID = 40,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE COMUNICACION II",
-                            SIGLA = "ELT384"
-                        },
-                        new
-                        {
-                            ID = 58,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "LEGISLACION EN REDES Y COMUNICACIONES",
-                            SIGLA = "RDS429"
-                        },
-                        new
-                        {
-                            ID = 59,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INGENIERIA DE SOFTWARE II",
+                            NOMBRE = "INGENIERÍA DE SOFTWARE II",
                             SIGLA = "INF512"
                         },
                         new
                         {
-                            ID = 60,
-                            CREDITO = (short)10,
+                            ID = 57,
+                            CREDITO = (short)4,
                             ES_ELECTIVA = false,
-                            NOMBRE = "ARQUITECTURA DE SOFTWARE",
-                            SIGLA = "INF552"
+                            NOMBRE = "AUDITORÍA INFORMÁTICA",
+                            SIGLA = "INF462"
                         },
                         new
                         {
-                            ID = 61,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "TECNOLOGIA WEB",
-                            SIGLA = "INF513"
-                        },
-                        new
-                        {
-                            ID = 62,
-                            CREDITO = (short)10,
+                            ID = 41,
+                            CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "TALLER DE GRADO I",
                             SIGLA = "INF511"
                         },
                         new
                         {
+                            ID = 42,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "TECNOLOGÍA WEB",
+                            SIGLA = "INF513"
+                        },
+                        new
+                        {
+                            ID = 43,
+                            CREDITO = (short)4,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ARQUITECTURA DE SOFTWARE",
+                            SIGLA = "INF552"
+                        },
+                        new
+                        {
+                            ID = 44,
+                            CREDITO = (short)4,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "SISTEMAS DE INFORMACIÓN GEOGRÁFICA",
+                            SIGLA = "INF442"
+                        },
+                        new
+                        {
+                            ID = 58,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "MODALIDAD DE GRADUACIÓN",
+                            SIGLA = "GRLO01"
+                        },
+                        new
+                        {
+                            ID = 59,
+                            CREDITO = (short)10,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "MODELACIÓN Y SIMULACIÓN DE SISTEMAS",
+                            SIGLA = "ELCI01"
+                        },
+                        new
+                        {
+                            ID = 60,
+                            CREDITO = (short)10,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "PROGRAMACIÓN GRÁFICA",
+                            SIGLA = "ELCI02"
+                        },
+                        new
+                        {
+                            ID = 61,
+                            CREDITO = (short)10,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "TÓPICOS AVANZADOS DE PROGRAMACIÓN",
+                            SIGLA = "ELCI03"
+                        },
+                        new
+                        {
+                            ID = 62,
+                            CREDITO = (short)10,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "PROGRAMACIÓN DE APLICACIONES DE TIEMPO REAL",
+                            SIGLA = "ELCI04"
+                        },
+                        new
+                        {
                             ID = 63,
                             CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "GESTION Y ADMINISTRACION DE REDES",
-                            SIGLA = "RDS511"
+                            ES_ELECTIVA = true,
+                            NOMBRE = "SISTEMAS DISTRIBUIDOS",
+                            SIGLA = "ELCI05"
                         },
                         new
                         {
                             ID = 64,
                             CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "REDES INALAMBRICAS Y COMUNICACIONES MOVILES",
-                            SIGLA = "RDS512"
+                            ES_ELECTIVA = true,
+                            NOMBRE = "INTERACCIÓN HOMBRE COMPUTADOR",
+                            SIGLA = "ELCI06"
                         },
                         new
                         {
                             ID = 65,
                             CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SEGURIDAD EN REDES Y TRANSMISION DE DATOS",
-                            SIGLA = "RDS519"
+                            ES_ELECTIVA = true,
+                            NOMBRE = "CRIPTOGRAFÍA Y SEGURIDAD",
+                            SIGLA = "ELCI07"
                         },
                         new
                         {
                             ID = 66,
                             CREDITO = (short)10,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "MODALIDAD DE GRADUACION ",
-                            SIGLA = "GRL001"
+                            ES_ELECTIVA = true,
+                            NOMBRE = "CONTROL AND AUTOMATIZACIÓN",
+                            SIGLA = "ELCI08"
                         },
                         new
                         {
                             ID = 67,
-                            CREDITO = (short)10,
+                            CREDITO = (short)3,
                             ES_ELECTIVA = true,
-                            NOMBRE = "MODELACION Y SIMULACION DE SISTEMAS",
-                            SIGLA = "ELC101"
-                        },
-                        new
-                        {
-                            ID = 68,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "PROGRAMACION GRAFICA",
-                            SIGLA = "ELC102"
-                        },
-                        new
-                        {
-                            ID = 69,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "TOPICOS AVANZADOS DE PROGRAMACION",
-                            SIGLA = "ELC103"
-                        },
-                        new
-                        {
-                            ID = 70,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "PROGRAMACION DE APLICACIONES DE TIEMPO REAL",
-                            SIGLA = "ELC104"
-                        },
-                        new
-                        {
-                            ID = 71,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "SISTEMAS DISTRIBUIDOS",
-                            SIGLA = "ELC105"
-                        },
-                        new
-                        {
-                            ID = 72,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "INTERACCION HOMBRE COMPUTADOR",
-                            SIGLA = "ELC106"
-                        },
-                        new
-                        {
-                            ID = 73,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "CRIPTOGRAFICA Y SEGURIDAD",
-                            SIGLA = "ELC107"
-                        },
-                        new
-                        {
-                            ID = 74,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "CONTROL Y AUTOMATIZACION",
-                            SIGLA = "ELC108"
-                        },
-                        new
-                        {
-                            ID = 75,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "DISEÑO DE CIRCUITOS INTEGRADOS",
-                            SIGLA = "ELC201"
-                        },
-                        new
-                        {
-                            ID = 76,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "INSTRUMENTACION",
-                            SIGLA = "ELC202"
-                        },
-                        new
-                        {
-                            ID = 77,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "SISTEMAS DE COMUNICACION SCADA",
-                            SIGLA = "ELC203"
-                        },
-                        new
-                        {
-                            ID = 78,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "TELEVISION DIGITAL",
-                            SIGLA = "ELC204"
-                        },
-                        new
-                        {
-                            ID = 79,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "DOMOTICA",
-                            SIGLA = "ELC205"
-                        },
-                        new
-                        {
-                            ID = 80,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "LINEAS Y TRANSMISION DE ANTES",
-                            SIGLA = "ELC206"
-                        },
-                        new
-                        {
-                            ID = 81,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "TECNICAS PARA PRESENTACION PARA INGENIERIA",
-                            SIGLA = "ELC207"
-                        },
-                        new
-                        {
-                            ID = 82,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "REDES ADHOC",
-                            SIGLA = "ELC208"
-                        },
-                        new
-                        {
-                            ID = 83,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "ADMINISTRACION DE RECURSOS HUMANOS",
+                            NOMBRE = "ADMINISTRACIÓN DE RECURSOS HUMANOS",
                             SIGLA = "ELC001"
                         },
                         new
                         {
-                            ID = 84,
-                            CREDITO = (short)10,
+                            ID = 68,
+                            CREDITO = (short)3,
                             ES_ELECTIVA = true,
                             NOMBRE = "COSTOS Y PRESUPUESTOS",
                             SIGLA = "ELC002"
                         },
                         new
                         {
-                            ID = 85,
-                            CREDITO = (short)10,
+                            ID = 69,
+                            CREDITO = (short)3,
                             ES_ELECTIVA = true,
-                            NOMBRE = "PRODUCCION Y MARKETING",
+                            NOMBRE = "PRODUCCIÓN Y MARKETING",
                             SIGLA = "ELC003"
                         },
                         new
                         {
-                            ID = 86,
-                            CREDITO = (short)10,
+                            ID = 70,
+                            CREDITO = (short)3,
                             ES_ELECTIVA = true,
-                            NOMBRE = "REINGENIERIA",
+                            NOMBRE = "REINGENIERÍA",
                             SIGLA = "ELC004"
                         },
                         new
                         {
-                            ID = 87,
-                            CREDITO = (short)10,
+                            ID = 71,
+                            CREDITO = (short)3,
                             ES_ELECTIVA = true,
-                            NOMBRE = "INGENIERIA DE CALIDAD",
+                            NOMBRE = "INGENIERÍA DE LA CALIDAD",
                             SIGLA = "ELC005"
                         },
                         new
                         {
-                            ID = 88,
-                            CREDITO = (short)10,
+                            ID = 72,
+                            CREDITO = (short)3,
                             ES_ELECTIVA = true,
                             NOMBRE = "BENCHMARKING",
                             SIGLA = "ELC006"
                         },
                         new
                         {
-                            ID = 89,
-                            CREDITO = (short)10,
+                            ID = 73,
+                            CREDITO = (short)3,
                             ES_ELECTIVA = true,
-                            NOMBRE = "INTRODUCCION A LA MACROECONOMIA",
+                            NOMBRE = "INTRODUCCIÓN A LA MACROECONOMÍA",
                             SIGLA = "ELC007"
                         },
                         new
                         {
-                            ID = 90,
-                            CREDITO = (short)10,
+                            ID = 74,
+                            CREDITO = (short)3,
                             ES_ELECTIVA = true,
-                            NOMBRE = "LEGISLACION EN CIENCIAS DE LA COMPUTACION",
+                            NOMBRE = "LEGISLACIÓN EN CIENCIAS DE LA COMPUTACIÓN",
                             SIGLA = "ELC008"
+                        },
+                        new
+                        {
+                            ID = 75,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ANÁLISIS DE CIRCUITOS",
+                            SIGLA = "RD5210"
+                        },
+                        new
+                        {
+                            ID = 76,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "TEORÍA DE CAMPOS",
+                            SIGLA = "ELT341"
+                        },
+                        new
+                        {
+                            ID = 77,
+                            CREDITO = (short)4,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ANÁLISIS DE CIRCUITOS ELECTRÓNICOS",
+                            SIGLA = "RD5220"
+                        },
+                        new
+                        {
+                            ID = 78,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ELECTRÓNICA APLICADA A REDES",
+                            SIGLA = "RD5310"
+                        },
+                        new
+                        {
+                            ID = 79,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "SISTEMAS LÓGICOS Y DIGITALES I",
+                            SIGLA = "ELT352"
+                        },
+                        new
+                        {
+                            ID = 80,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "SEÑALES Y SISTEMAS",
+                            SIGLA = "ELT354"
+                        },
+                        new
+                        {
+                            ID = 81,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "DISEÑO DE CIRCUITOS INTEGRADOS",
+                            SIGLA = "ELC201"
+                        },
+                        new
+                        {
+                            ID = 82,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "INSTRUMENTACIÓN",
+                            SIGLA = "ELC202"
+                        },
+                        new
+                        {
+                            ID = 83,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "SISTEMAS LÓGICOS Y DIGITALES II",
+                            SIGLA = "ELT382"
+                        },
+                        new
+                        {
+                            ID = 84,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "INTERPRETACIÓN DE SISTEMAS Y SEÑALES",
+                            SIGLA = "RD5320"
+                        },
+                        new
+                        {
+                            ID = 85,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "SISTEMAS DE COMUNICACIÓN SCADA",
+                            SIGLA = "ELC203"
+                        },
+                        new
+                        {
+                            ID = 86,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "TELEVISIÓN DIGITAL",
+                            SIGLA = "ELC204"
+                        },
+                        new
+                        {
+                            ID = 87,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "APLICACIONES CON MICROPROCESADORES",
+                            SIGLA = "RD5410"
+                        },
+                        new
+                        {
+                            ID = 88,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "SISTEMAS DE COMUNICACIÓN I",
+                            SIGLA = "ELT374"
+                        },
+                        new
+                        {
+                            ID = 89,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "DOMÓTICA",
+                            SIGLA = "ELC206"
+                        },
+                        new
+                        {
+                            ID = 90,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "LÍNEAS DE TRANSMISIÓN Y ANTENAS",
+                            SIGLA = "ELT384"
+                        },
+                        new
+                        {
+                            ID = 91,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "TALLER DE ANÁLISIS Y DISEÑO DE REDES",
+                            SIGLA = "RD5421"
+                        },
+                        new
+                        {
+                            ID = 92,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "LEGISLACIÓN EN REDES Y COMUNICACIONES",
+                            SIGLA = "RD5422"
+                        },
+                        new
+                        {
+                            ID = 93,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "SISTEMAS DE COMUNICACIÓN II",
+                            SIGLA = "ELT384"
+                        },
+                        new
+                        {
+                            ID = 94,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "TÉCNICAS DE PRESENTACIÓN PARA INGENIERÍA",
+                            SIGLA = "ELC207"
+                        },
+                        new
+                        {
+                            ID = 95,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = true,
+                            NOMBRE = "REDES ADHOC",
+                            SIGLA = "ELC208"
+                        },
+                        new
+                        {
+                            ID = 96,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "GESTIÓN Y ADMINISTRACIÓN DE REDES",
+                            SIGLA = "RD5511"
+                        },
+                        new
+                        {
+                            ID = 97,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "REDES INALÁMBRICAS Y COMUNICACIONES MÓVILES",
+                            SIGLA = "RD5512"
+                        },
+                        new
+                        {
+                            ID = 98,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "SEGURIDAD EN REDES Y TRANSMISIÓN DE DATOS",
+                            SIGLA = "RD5519"
+                        },
+                        new
+                        {
+                            ID = 99,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "MODALIDAD DE TITULACIÓN A NIVEL TÉCNICO SUPERIOR",
+                            SIGLA = "GRT001"
+                        },
+                        new
+                        {
+                            ID = 100,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "MODALIDAD DE TITULACIÓN LICENCIATURA",
+                            SIGLA = "GRLO01"
+                        },
+                        new
+                        {
+                            ID = 101,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "TALLER DE GRADO I",
+                            SIGLA = "INFST1"
+                        },
+                        new
+                        {
+                            ID = 102,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ROBÓTICA AVANZADA",
+                            SIGLA = "ROBM05"
+                        },
+                        new
+                        {
+                            ID = 103,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ROBOT OPERATING SYSTEM",
+                            SIGLA = "ROBM04"
+                        },
+                        new
+                        {
+                            ID = 104,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "SISTEMAS DE CONTROL II",
+                            SIGLA = "ROBM03"
+                        },
+                        new
+                        {
+                            ID = 105,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "AUTOMATIZACIÓN Y CONTROL",
+                            SIGLA = "ROBM02"
+                        },
+                        new
+                        {
+                            ID = 106,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "VISIÓN COMPUTACIONAL",
+                            SIGLA = "ROBM07"
+                        },
+                        new
+                        {
+                            ID = 107,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ROBÓTICA INDUSTRIAL",
+                            SIGLA = "ROBM04"
+                        },
+                        new
+                        {
+                            ID = 108,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "INTERNET DE LAS COSAS",
+                            SIGLA = "ROBM06"
+                        },
+                        new
+                        {
+                            ID = 109,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "TALLER DE CONTROL",
+                            SIGLA = "ROBM05"
+                        },
+                        new
+                        {
+                            ID = 110,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "INSTRUMENTACIÓN INDUSTRIAL",
+                            SIGLA = "ELC202"
+                        },
+                        new
+                        {
+                            ID = 111,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "LIDERAZGO, EMPRENDIMIENTO Y STARTUPS",
+                            SIGLA = "MET200"
+                        },
+                        new
+                        {
+                            ID = 112,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "SISTEMAS EMBEBIDOS",
+                            SIGLA = "ROBR203"
+                        },
+                        new
+                        {
+                            ID = 113,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "SISTEMAS DE CONTROL I",
+                            SIGLA = "ROBR01"
+                        },
+                        new
+                        {
+                            ID = 114,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ACTUADORES Y SENSORES",
+                            SIGLA = "ROBR02"
+                        },
+                        new
+                        {
+                            ID = 115,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "PROCESAMIENTO DIGITAL DE SEÑALES",
+                            SIGLA = "ROBS20"
+                        },
+                        new
+                        {
+                            ID = 116,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "CIRCUITOS DIGITALES",
+                            SIGLA = "ROBR04"
+                        },
+                        new
+                        {
+                            ID = 117,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ELECTRÓNICO Y MAGNETISMO",
+                            SIGLA = "ROBR201"
+                        },
+                        new
+                        {
+                            ID = 118,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ANÁLISIS DE CIRCUITOS",
+                            SIGLA = "ROBS210"
+                        },
+                        new
+                        {
+                            ID = 119,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "DINÁMICA",
+                            SIGLA = "ROBR203"
+                        },
+                        new
+                        {
+                            ID = 120,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "TECNOLOGÍAS DE LA MANUFACTURA",
+                            SIGLA = "ROBR02"
+                        },
+                        new
+                        {
+                            ID = 121,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "ESTÁTICA",
+                            SIGLA = "ROBR03"
+                        },
+                        new
+                        {
+                            ID = 122,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "PENSAMIENTO CRÍTICO Y CREATIVO",
+                            SIGLA = "ROBR04"
+                        },
+                        new
+                        {
+                            ID = 123,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "INTRODUCCIÓN A LA ROBÓTICA",
+                            SIGLA = "ROBR01"
+                        },
+                        new
+                        {
+                            ID = 124,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "DIBUJO MECÁNICO EN CAD",
+                            SIGLA = "ROBR02"
+                        },
+                        new
+                        {
+                            ID = 125,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "METODOLOGÍA DE LA INVESTIGACIÓN",
+                            SIGLA = "MET100"
+                        },
+                        new
+                        {
+                            ID = 126,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "CIRCUITOS ELECTRÓNICOS I",
+                            SIGLA = "ELT352"
+                        },
+                        new
+                        {
+                            ID = 127,
+                            CREDITO = (short)5,
+                            ES_ELECTIVA = false,
+                            NOMBRE = "CIRCUITOS ELECTRÓNICOS II",
+                            SIGLA = "ELT352"
                         });
                 });
 
@@ -1976,210 +2215,210 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 16,
-                            MATERIA_ID = 18,
+                            MATERIA_ID = 16,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 17,
-                            MATERIA_ID = 19,
+                            MATERIA_ID = 17,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 18,
-                            MATERIA_ID = 20,
+                            MATERIA_ID = 18,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 19,
-                            MATERIA_ID = 21,
+                            MATERIA_ID = 19,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 20,
-                            MATERIA_ID = 22,
+                            MATERIA_ID = 20,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 21,
-                            MATERIA_ID = 24,
+                            MATERIA_ID = 21,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 22,
-                            MATERIA_ID = 25,
+                            MATERIA_ID = 22,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 23,
-                            MATERIA_ID = 26,
+                            MATERIA_ID = 23,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 24,
-                            MATERIA_ID = 27,
+                            MATERIA_ID = 24,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 25,
-                            MATERIA_ID = 28,
+                            MATERIA_ID = 25,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 26,
-                            MATERIA_ID = 34,
+                            MATERIA_ID = 26,
                             NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 27,
-                            MATERIA_ID = 35,
+                            MATERIA_ID = 27,
                             NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 28,
-                            MATERIA_ID = 36,
+                            MATERIA_ID = 28,
                             NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 29,
-                            MATERIA_ID = 37,
+                            MATERIA_ID = 29,
                             NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 30,
-                            MATERIA_ID = 38,
+                            MATERIA_ID = 30,
                             NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 31,
-                            MATERIA_ID = 42,
+                            MATERIA_ID = 31,
                             NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 32,
-                            MATERIA_ID = 43,
+                            MATERIA_ID = 32,
                             NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 33,
-                            MATERIA_ID = 44,
+                            MATERIA_ID = 33,
                             NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 34,
-                            MATERIA_ID = 45,
+                            MATERIA_ID = 34,
                             NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 35,
-                            MATERIA_ID = 46,
+                            MATERIA_ID = 35,
                             NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 36,
-                            MATERIA_ID = 50,
+                            MATERIA_ID = 36,
                             NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 37,
-                            MATERIA_ID = 51,
+                            MATERIA_ID = 37,
                             NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 38,
-                            MATERIA_ID = 52,
+                            MATERIA_ID = 38,
                             NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 39,
-                            MATERIA_ID = 53,
+                            MATERIA_ID = 39,
                             NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 40,
-                            MATERIA_ID = 54,
+                            MATERIA_ID = 40,
                             NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 41,
-                            MATERIA_ID = 59,
+                            MATERIA_ID = 41,
                             NIVEL_ID = 9,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 42,
-                            MATERIA_ID = 60,
+                            MATERIA_ID = 42,
                             NIVEL_ID = 9,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 43,
-                            MATERIA_ID = 61,
+                            MATERIA_ID = 43,
                             NIVEL_ID = 9,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 44,
-                            MATERIA_ID = 62,
+                            MATERIA_ID = 44,
                             NIVEL_ID = 9,
                             PLAN_ESTUDIO_ID = 1
                         },
                         new
                         {
                             ID = 45,
-                            MATERIA_ID = 45,
+                            MATERIA_ID = 58,
                             NIVEL_ID = 10,
                             PLAN_ESTUDIO_ID = 1
                         },
@@ -2291,534 +2530,597 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 61,
-                            MATERIA_ID = 18,
+                            MATERIA_ID = 16,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 62,
-                            MATERIA_ID = 19,
+                            MATERIA_ID = 17,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 63,
-                            MATERIA_ID = 20,
+                            MATERIA_ID = 18,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 64,
-                            MATERIA_ID = 21,
+                            MATERIA_ID = 19,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 65,
-                            MATERIA_ID = 22,
+                            MATERIA_ID = 20,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 66,
-                            MATERIA_ID = 26,
+                            MATERIA_ID = 21,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 67,
-                            MATERIA_ID = 27,
+                            MATERIA_ID = 22,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 68,
-                            MATERIA_ID = 28,
+                            MATERIA_ID = 23,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 69,
-                            MATERIA_ID = 29,
+                            MATERIA_ID = 24,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 70,
-                            MATERIA_ID = 30,
+                            MATERIA_ID = 25,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 71,
-                            MATERIA_ID = 34,
-                            NIVEL_ID = 6,
+                            MATERIA_ID = 53,
+                            NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 72,
-                            MATERIA_ID = 35,
-                            NIVEL_ID = 6,
+                            MATERIA_ID = 54,
+                            NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 73,
-                            MATERIA_ID = 37,
+                            MATERIA_ID = 26,
                             NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 74,
-                            MATERIA_ID = 38,
+                            MATERIA_ID = 27,
                             NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 75,
-                            MATERIA_ID = 39,
+                            MATERIA_ID = 28,
                             NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 76,
-                            MATERIA_ID = 42,
-                            NIVEL_ID = 7,
+                            MATERIA_ID = 29,
+                            NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 77,
-                            MATERIA_ID = 43,
-                            NIVEL_ID = 7,
+                            MATERIA_ID = 30,
+                            NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 78,
-                            MATERIA_ID = 45,
-                            NIVEL_ID = 7,
+                            MATERIA_ID = 55,
+                            NIVEL_ID = 6,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 79,
-                            MATERIA_ID = 46,
+                            MATERIA_ID = 31,
                             NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 80,
-                            MATERIA_ID = 47,
+                            MATERIA_ID = 32,
                             NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 81,
-                            MATERIA_ID = 50,
-                            NIVEL_ID = 8,
+                            MATERIA_ID = 33,
+                            NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 82,
-                            MATERIA_ID = 51,
-                            NIVEL_ID = 8,
+                            MATERIA_ID = 34,
+                            NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 83,
-                            MATERIA_ID = 52,
-                            NIVEL_ID = 8,
+                            MATERIA_ID = 35,
+                            NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 84,
-                            MATERIA_ID = 53,
-                            NIVEL_ID = 8,
+                            MATERIA_ID = 56,
+                            NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 85,
-                            MATERIA_ID = 55,
+                            MATERIA_ID = 36,
                             NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 86,
-                            MATERIA_ID = 59,
-                            NIVEL_ID = 9,
+                            MATERIA_ID = 37,
+                            NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 87,
-                            MATERIA_ID = 60,
-                            NIVEL_ID = 9,
+                            MATERIA_ID = 38,
+                            NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 88,
-                            MATERIA_ID = 61,
-                            NIVEL_ID = 9,
+                            MATERIA_ID = 39,
+                            NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 89,
-                            MATERIA_ID = 62,
-                            NIVEL_ID = 9,
+                            MATERIA_ID = 40,
+                            NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 90,
-                            MATERIA_ID = 45,
-                            NIVEL_ID = 10,
+                            MATERIA_ID = 57,
+                            NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 91,
+                            MATERIA_ID = 41,
+                            NIVEL_ID = 9,
+                            PLAN_ESTUDIO_ID = 2
+                        },
+                        new
+                        {
+                            ID = 92,
+                            MATERIA_ID = 42,
+                            NIVEL_ID = 9,
+                            PLAN_ESTUDIO_ID = 2
+                        },
+                        new
+                        {
+                            ID = 93,
+                            MATERIA_ID = 43,
+                            NIVEL_ID = 9,
+                            PLAN_ESTUDIO_ID = 2
+                        },
+                        new
+                        {
+                            ID = 94,
+                            MATERIA_ID = 44,
+                            NIVEL_ID = 9,
+                            PLAN_ESTUDIO_ID = 2
+                        },
+                        new
+                        {
+                            ID = 95,
+                            MATERIA_ID = 58,
+                            NIVEL_ID = 10,
+                            PLAN_ESTUDIO_ID = 2
+                        },
+                        new
+                        {
+                            ID = 96,
                             MATERIA_ID = 1,
                             NIVEL_ID = 1,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 92,
+                            ID = 97,
                             MATERIA_ID = 2,
                             NIVEL_ID = 1,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 93,
+                            ID = 98,
                             MATERIA_ID = 3,
                             NIVEL_ID = 1,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 94,
+                            ID = 99,
                             MATERIA_ID = 4,
                             NIVEL_ID = 1,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 95,
+                            ID = 100,
                             MATERIA_ID = 5,
                             NIVEL_ID = 1,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 96,
+                            ID = 101,
                             MATERIA_ID = 6,
                             NIVEL_ID = 2,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 97,
+                            ID = 102,
                             MATERIA_ID = 7,
                             NIVEL_ID = 2,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 98,
+                            ID = 103,
                             MATERIA_ID = 8,
                             NIVEL_ID = 2,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 99,
+                            ID = 104,
                             MATERIA_ID = 9,
                             NIVEL_ID = 2,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 100,
+                            ID = 105,
                             MATERIA_ID = 10,
                             NIVEL_ID = 2,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 101,
+                            ID = 106,
                             MATERIA_ID = 11,
                             NIVEL_ID = 3,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 102,
+                            ID = 107,
                             MATERIA_ID = 12,
                             NIVEL_ID = 3,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 103,
+                            ID = 108,
+                            MATERIA_ID = 13,
+                            NIVEL_ID = 3,
+                            PLAN_ESTUDIO_ID = 3
+                        },
+                        new
+                        {
+                            ID = 109,
+                            MATERIA_ID = 14,
+                            NIVEL_ID = 3,
+                            PLAN_ESTUDIO_ID = 3
+                        },
+                        new
+                        {
+                            ID = 110,
                             MATERIA_ID = 15,
                             NIVEL_ID = 3,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 104,
+                            ID = 111,
                             MATERIA_ID = 16,
-                            NIVEL_ID = 3,
+                            NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 105,
+                            ID = 112,
                             MATERIA_ID = 17,
-                            NIVEL_ID = 3,
+                            NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 106,
+                            ID = 113,
                             MATERIA_ID = 18,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
-                            ID = 107,
-                            MATERIA_ID = 20,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 3
-                        },
-                        new
-                        {
-                            ID = 108,
-                            MATERIA_ID = 21,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 3
-                        },
-                        new
-                        {
-                            ID = 109,
-                            MATERIA_ID = 22,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 3
-                        },
-                        new
-                        {
-                            ID = 110,
-                            MATERIA_ID = 23,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 3
-                        },
-                        new
-                        {
-                            ID = 111,
-                            MATERIA_ID = 26,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 3
-                        },
-                        new
-                        {
-                            ID = 112,
-                            MATERIA_ID = 28,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 3
-                        },
-                        new
-                        {
-                            ID = 113,
-                            MATERIA_ID = 31,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 3
-                        },
-                        new
-                        {
                             ID = 114,
-                            MATERIA_ID = 32,
-                            NIVEL_ID = 5,
+                            MATERIA_ID = 19,
+                            NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 115,
-                            MATERIA_ID = 33,
-                            NIVEL_ID = 5,
+                            MATERIA_ID = 75,
+                            NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 116,
-                            MATERIA_ID = 34,
-                            NIVEL_ID = 6,
+                            MATERIA_ID = 76,
+                            NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 117,
-                            MATERIA_ID = 35,
-                            NIVEL_ID = 6,
+                            MATERIA_ID = 77,
+                            NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 118,
-                            MATERIA_ID = 37,
-                            NIVEL_ID = 6,
+                            MATERIA_ID = 78,
+                            NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 119,
-                            MATERIA_ID = 40,
-                            NIVEL_ID = 6,
+                            MATERIA_ID = 79,
+                            NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 120,
-                            MATERIA_ID = 41,
-                            NIVEL_ID = 6,
+                            MATERIA_ID = 80,
+                            NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 121,
-                            MATERIA_ID = 42,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 1,
+                            NIVEL_ID = 1,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 122,
-                            MATERIA_ID = 43,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 2,
+                            NIVEL_ID = 1,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 123,
-                            MATERIA_ID = 46,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 3,
+                            NIVEL_ID = 1,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 124,
-                            MATERIA_ID = 48,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 4,
+                            NIVEL_ID = 1,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 125,
-                            MATERIA_ID = 49,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 5,
+                            NIVEL_ID = 1,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 126,
-                            MATERIA_ID = 51,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 6,
+                            NIVEL_ID = 2,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 127,
-                            MATERIA_ID = 53,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 7,
+                            NIVEL_ID = 2,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 128,
-                            MATERIA_ID = 56,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 8,
+                            NIVEL_ID = 2,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 129,
-                            MATERIA_ID = 57,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 9,
+                            NIVEL_ID = 2,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 130,
-                            MATERIA_ID = 58,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 10,
+                            NIVEL_ID = 2,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 131,
-                            MATERIA_ID = 61,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 11,
+                            NIVEL_ID = 3,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 132,
-                            MATERIA_ID = 62,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 12,
+                            NIVEL_ID = 3,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 133,
-                            MATERIA_ID = 63,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 13,
+                            NIVEL_ID = 3,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 134,
-                            MATERIA_ID = 64,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 14,
+                            NIVEL_ID = 3,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 135,
-                            MATERIA_ID = 65,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 15,
+                            NIVEL_ID = 3,
+                            PLAN_ESTUDIO_ID = 4
                         },
                         new
                         {
                             ID = 136,
-                            MATERIA_ID = 45,
-                            NIVEL_ID = 10,
-                            PLAN_ESTUDIO_ID = 3
+                            MATERIA_ID = 16,
+                            NIVEL_ID = 4,
+                            PLAN_ESTUDIO_ID = 4
+                        },
+                        new
+                        {
+                            ID = 137,
+                            MATERIA_ID = 17,
+                            NIVEL_ID = 4,
+                            PLAN_ESTUDIO_ID = 4
+                        },
+                        new
+                        {
+                            ID = 138,
+                            MATERIA_ID = 18,
+                            NIVEL_ID = 4,
+                            PLAN_ESTUDIO_ID = 4
+                        },
+                        new
+                        {
+                            ID = 139,
+                            MATERIA_ID = 19,
+                            NIVEL_ID = 4,
+                            PLAN_ESTUDIO_ID = 4
+                        },
+                        new
+                        {
+                            ID = 140,
+                            MATERIA_ID = 101,
+                            NIVEL_ID = 4,
+                            PLAN_ESTUDIO_ID = 4
+                        },
+                        new
+                        {
+                            ID = 141,
+                            MATERIA_ID = 102,
+                            NIVEL_ID = 5,
+                            PLAN_ESTUDIO_ID = 4
+                        },
+                        new
+                        {
+                            ID = 142,
+                            MATERIA_ID = 103,
+                            NIVEL_ID = 5,
+                            PLAN_ESTUDIO_ID = 4
+                        },
+                        new
+                        {
+                            ID = 143,
+                            MATERIA_ID = 104,
+                            NIVEL_ID = 5,
+                            PLAN_ESTUDIO_ID = 4
+                        },
+                        new
+                        {
+                            ID = 144,
+                            MATERIA_ID = 105,
+                            NIVEL_ID = 5,
+                            PLAN_ESTUDIO_ID = 4
+                        },
+                        new
+                        {
+                            ID = 145,
+                            MATERIA_ID = 106,
+                            NIVEL_ID = 5,
+                            PLAN_ESTUDIO_ID = 4
                         });
                 });
 
@@ -3006,6 +3308,12 @@ namespace Infrastructure.Migrations
                             ID = 3,
                             CARRERA_ID = 1,
                             CODIGO = "ING-RED"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            CARRERA_ID = 4,
+                            CODIGO = "ING-ROB"
                         });
                 });
 

@@ -11,7 +11,8 @@ public class CarreraSeeder : IEntityTypeConfiguration<Carrera>
         builder.HasData(
             new Carrera { ID = 1, CODIGO = "185", MODALIDAD = 0, NOMBRE = "INGENIERIA EN REDES Y TELECOMUNICACIONES" },
             new Carrera { ID = 2, CODIGO = "183", MODALIDAD = 0, NOMBRE = "INGENIERIA INFORMATICA" },
-            new Carrera { ID = 3, CODIGO = "184", MODALIDAD = 0, NOMBRE = "INGENIERIA EN SISTEMAS" }
+            new Carrera { ID = 3, CODIGO = "184", MODALIDAD = 0, NOMBRE = "INGENIERIA EN SISTEMAS" },
+            new Carrera { ID = 4, CODIGO = "323", MODALIDAD = 0, NOMBRE = "INGENIERIA ROBOTICA" }
         );
     }
 }
