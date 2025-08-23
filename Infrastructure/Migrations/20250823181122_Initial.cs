@@ -653,6 +653,19 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "MODULO",
+                columns: new[] { "ID", "NRO_MODULO" },
+                values: new object[,]
+                {
+                    { 1, (short)236 },
+                    { 2, (short)225 },
+                    { 3, (short)260 },
+                    { 4, (short)224 },
+                    { 5, (short)256 },
+                    { 6, (short)222 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "NIVEL",
                 columns: new[] { "ID", "NOMBRE" },
                 values: new object[,]
