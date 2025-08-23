@@ -19,8 +19,8 @@ namespace Domain.Models
     public required int GESTION_ID { get; set; }
     public Gestion Gestion { get; set; } = null!; // Se usa 'null!'
 
-    public required int MATERIA_PLAN_ESTUDIO_ID { get; set; }
-    public MateriaPlanEstudio MateriaPlanEstudio { get; set; } = null!; // Se usa 'null!'
+    public required int GRUPO_MATERIA_ID { get; set; }
+    public GrupoMateria GrupoMateria { get; set; } = null!; // Se usa 'null!'
 
     public required int MODULO_ID { get; set; }
     public Modulo Modulo { get; set; } = null!; // Se usa 'null!'

@@ -13,7 +13,6 @@ namespace Domain.Models
     public int? ALUMNO_ID { get; set; }
     public Alumno Alumno { get; set; } = null!;
     public int? HORARIO_MATERIA_INSCRIPCION_ID { get; set; }
-
     public HorarioMateriaInscripcion HorarioMateriaInscripcion { get; set; } = null!;
   }
 }

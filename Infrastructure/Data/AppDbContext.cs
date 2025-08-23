@@ -33,7 +33,8 @@ namespace Infrastructure.Data
         public DbSet<HorarioMateria> HorarioMateria { get; set; }
         public DbSet<HorarioMateriaInscripcion> HorarioMateriaInscripcion { get; set; }
         public DbSet<Nota> Nota { get; set; }
-
+        public DbSet<Grupo> Grupo { get; set; }
+        public DbSet<GrupoMateria> GrupoMateria { get; set; }
         // Este método se usa para configurar el modelo de datos,
         // especialmente para relaciones y claves compuestas.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -71,6 +72,17 @@ namespace Infrastructure.Data
                 .WithMany(h => h.HorasDiaHorario)
                 .HasForeignKey(hdh => hdh.HORARIO_ID);
 
+            // Configuración de relaciones para GrupoMateria
+            modelBuilder.Entity<GrupoMateria>()
+                .HasOne(g => g.Grupo)
+                .WithMany(gm => gm.GrupoMaterias)
+                .HasForeignKey(hdh => hdh.GRUPO_ID);
+
+            modelBuilder.Entity<GrupoMateria>()
+                .HasOne(m => m.Materia)
+                .WithMany(h => h.GrupoMaterias)
+                .HasForeignKey(hdh => hdh.MATERIA_ID);
+
             // Configuración de relaciones para HorarioMateria
             modelBuilder.Entity<HorarioMateria>()
                 .HasOne(hm => hm.Gestion)
@@ -78,9 +90,9 @@ namespace Infrastructure.Data
                 .HasForeignKey(hm => hm.GESTION_ID);
 
             modelBuilder.Entity<HorarioMateria>()
-                .HasOne(hm => hm.MateriaPlanEstudio)
+                .HasOne(hm => hm.GrupoMateria)
                 .WithMany(mpe => mpe.HorariosMateria)
-                .HasForeignKey(hm => hm.MATERIA_PLAN_ESTUDIO_ID);
+                .HasForeignKey(hm => hm.GRUPO_MATERIA_ID);
 
             modelBuilder.Entity<HorarioMateria>()
                 .HasOne(hm => hm.Modulo)

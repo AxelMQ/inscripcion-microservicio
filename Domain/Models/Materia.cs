@@ -22,6 +22,7 @@ namespace Domain.Models
 
         // Propiedad de navegación - Se inicializa
         public ICollection<MateriaPlanEstudio> MateriaPlanEstudios { get; set; } = new List<MateriaPlanEstudio>();
+        public ICollection<GrupoMateria> GrupoMaterias { get; set; } = new List<GrupoMateria>();
     }
 
 }
