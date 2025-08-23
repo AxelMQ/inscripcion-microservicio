@@ -10,9 +10,9 @@ namespace Domain.Models
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int ID { get; set; }
 
-    public required TimeSpan HR_INICIO { get; set; }
+    public required TimeOnly HR_INICIO { get; set; }
 
-    public required TimeSpan HR_FIN { get; set; }
+    public required TimeOnly HR_FIN { get; set; }
 
     // Propiedad de navegación - Se inicializa
     public ICollection<HoraDia> HorasDia { get; set; } = new List<HoraDia>();

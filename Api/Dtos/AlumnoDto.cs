@@ -14,9 +14,7 @@ namespace Api.Dtos
 
         [Required(ErrorMessage = "El campo 'PPA' es obligatorio.")]
         public decimal PPA { get; set; }
-
-        // El tipo de dato es int? para coincidir con el modelo.
-        // Se ha eliminado el atributo [StringLength].
+        
         public int? TELEFONO { get; set; }
 
         [Required(ErrorMessage = "El campo 'REGISTRO' es obligatorio.")]
