@@ -603,6 +603,18 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "GRUPO_MATERIA",
+                columns: new[] { "ID", "GRUPO_ID", "MATERIA_ID" },
+                values: new object[,]
+                {
+                    { 1, 1, 5 },
+                    { 2, 1, 6 },
+                    { 3, 2, 7 },
+                    { 4, 2, 8 },
+                    { 5, 3, 9 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "PLAN_ESTUDIO",
                 columns: new[] { "ID", "CARRERA_ID", "CODIGO" },
                 values: new object[,]
