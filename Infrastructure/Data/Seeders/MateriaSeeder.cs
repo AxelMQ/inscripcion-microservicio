@@ -155,7 +155,7 @@ public class MateriaSeeder : IEntityTypeConfiguration<Materia>
 
             // SEMESTRE 5 - INFORMÁTICA/SISTEMAS
             new Materia { ID = 21, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "PROBABILIDAD Y ESTADÍSTICA II", SIGLA = "MAT302" },
-            new Materia { ID = 22, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "PROGRAMACIÓN LÓGICA Y FUNCIONAL I", SIGLA = "INF318" },
+            new Materia { ID = 22, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "PROGRAMACIÓN LÓGICA Y FUNCIONAL", SIGLA = "INF318" },
             new Materia { ID = 23, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ESTRUCTURA DE DATOS II", SIGLA = "INF310" },
             new Materia { ID = 24, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "BASE DE DATOS I", SIGLA = "INF312" },
             new Materia { ID = 25, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "LENGUAJES FORMALES", SIGLA = "INF319" },
@@ -179,15 +179,15 @@ public class MateriaSeeder : IEntityTypeConfiguration<Materia>
             new Materia { ID = 32, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INTELIGENCIA ARTIFICIAL", SIGLA = "INF418" },
             new Materia { ID = 33, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS OPERATIVOS II", SIGLA = "INF413" },
             new Materia { ID = 34, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "REDES I", SIGLA = "INF433" },
-            new Materia { ID = 35, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INGENIERÍA DE SOFTWARE I", SIGLA = "INF412" },
+            new Materia { ID = 35, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INGENIERÍA DE SOFTWARE I", SIGLA = "INF422" },
 
             // SEMESTRE 7 - SISTEMAS (ESPECÍFICA)
-            new Materia { ID = 56, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS PARA EL SOPORTE A LA TOMA DE DECISIONES", SIGLA = "INF343" },
+            new Materia { ID = 56, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS PARA EL SOPORTE A LA TOMA DE DECISIONES", SIGLA = "INF432" },
 
             // SEMESTRE 8 - INFORMÁTICA/SISTEMAS
-            new Materia { ID = 36, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "PREPARACIÓN Y EVALUACIÓN DE PROYECTOS", SIGLA = "EC0449" },
+            new Materia { ID = 36, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "PREPARACIÓN Y EVALUACIÓN DE PROYECTOS", SIGLA = "ECO449" },
             new Materia { ID = 37, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS EXPERTOS", SIGLA = "INF428" },
-            new Materia { ID = 38, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS DE INFORMACIÓN II", SIGLA = "INF442" },
+            new Materia { ID = 38, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS DE INFORMACIÓN II", SIGLA = "INF412" },
             new Materia { ID = 39, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "REDES II", SIGLA = "INF423" },
             new Materia { ID = 40, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INGENIERÍA DE SOFTWARE II", SIGLA = "INF512" },
 
@@ -224,63 +224,71 @@ public class MateriaSeeder : IEntityTypeConfiguration<Materia>
             new Materia { ID = 74, CREDITO = 3, ES_ELECTIVA = true, NOMBRE = "LEGISLACIÓN EN CIENCIAS DE LA COMPUTACIÓN", SIGLA = "ELC008" },
 
             // MATERIAS DE REDES (CORREGIDAS)
-            new Materia { ID = 75, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ANÁLISIS DE CIRCUITOS", SIGLA = "RD5210" },
-            new Materia { ID = 76, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "TEORÍA DE CAMPOS", SIGLA = "ELT341" },
-            new Materia { ID = 77, CREDITO = 4, ES_ELECTIVA = false, NOMBRE = "ANÁLISIS DE CIRCUITOS ELECTRÓNICOS", SIGLA = "RD5220" },
-            new Materia { ID = 78, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ELECTRÓNICA APLICADA A REDES", SIGLA = "RD5310" },
+            new Materia { ID = 75, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ANÁLISIS DE CIRCUITOS", SIGLA = "RDS210" },
+            new Materia { ID = 76, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "TEORÍA DE CAMPOS", SIGLA = "ELT241" },
+            new Materia { ID = 77, CREDITO = 4, ES_ELECTIVA = false, NOMBRE = "ANÁLISIS DE CIRCUITOS ELECTRÓNICOS", SIGLA = "RDS220" },
+            new Materia { ID = 78, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ELECTRÓNICA APLICADA A REDES", SIGLA = "RDS310" },
             new Materia { ID = 79, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS LÓGICOS Y DIGITALES I", SIGLA = "ELT352" },
             new Materia { ID = 80, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SEÑALES Y SISTEMAS", SIGLA = "ELT354" },
             new Materia { ID = 81, CREDITO = 5, ES_ELECTIVA = true, NOMBRE = "DISEÑO DE CIRCUITOS INTEGRADOS", SIGLA = "ELC201" },
             new Materia { ID = 82, CREDITO = 5, ES_ELECTIVA = true, NOMBRE = "INSTRUMENTACIÓN", SIGLA = "ELC202" },
-            new Materia { ID = 83, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS LÓGICOS Y DIGITALES II", SIGLA = "ELT382" },
-            new Materia { ID = 84, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INTERPRETACIÓN DE SISTEMAS Y SEÑALES", SIGLA = "RD5320" },
+
+            //SEMESTRE 6
+            new Materia { ID = 83, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS LÓGICOS Y DIGITALES II", SIGLA = "ELT362" },
+            new Materia { ID = 84, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INTERPRETACIÓN DE SISTEMAS Y SEÑALES", SIGLA = "RDS320" },
             new Materia { ID = 85, CREDITO = 5, ES_ELECTIVA = true, NOMBRE = "SISTEMAS DE COMUNICACIÓN SCADA", SIGLA = "ELC203" },
             new Materia { ID = 86, CREDITO = 5, ES_ELECTIVA = true, NOMBRE = "TELEVISIÓN DIGITAL", SIGLA = "ELC204" },
-            new Materia { ID = 87, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "APLICACIONES CON MICROPROCESADORES", SIGLA = "RD5410" },
+
+            //SEMESTRE 7
+            new Materia { ID = 87, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "APLICACIONES CON MICROPROCESADORES", SIGLA = "RDS410" },
             new Materia { ID = 88, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS DE COMUNICACIÓN I", SIGLA = "ELT374" },
-            new Materia { ID = 89, CREDITO = 5, ES_ELECTIVA = true, NOMBRE = "DOMÓTICA", SIGLA = "ELC206" },
-            new Materia { ID = 90, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "LÍNEAS DE TRANSMISIÓN Y ANTENAS", SIGLA = "ELT384" },
-            new Materia { ID = 91, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "TALLER DE ANÁLISIS Y DISEÑO DE REDES", SIGLA = "RD5421" },
-            new Materia { ID = 92, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "LEGISLACIÓN EN REDES Y COMUNICACIONES", SIGLA = "RD5422" },
-            new Materia { ID = 93, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS DE COMUNICACIÓN II", SIGLA = "ELT384" },
+            new Materia { ID = 89, CREDITO = 5, ES_ELECTIVA = true, NOMBRE = "DOMÓTICA", SIGLA = "ELC205" },
+            new Materia { ID = 90, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "LÍNEAS DE TRANSMISIÓN Y ANTENAS", SIGLA = "ELC206" },
+
+            //SEMESTRE 8
+            new Materia { ID = 91, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "TALLER DE ANÁLISIS Y DISEÑO DE REDES", SIGLA = "RDS421" },
+            new Materia { ID = 92, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "LEGISLACIÓN EN REDES Y COMUNICACIONES", SIGLA = "RS429" },
+            new Materia { ID = 93, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS DE COMUNICACIÓN II", SIGLA = "ELC384" },
             new Materia { ID = 94, CREDITO = 5, ES_ELECTIVA = true, NOMBRE = "TÉCNICAS DE PRESENTACIÓN PARA INGENIERÍA", SIGLA = "ELC207" },
             new Materia { ID = 95, CREDITO = 5, ES_ELECTIVA = true, NOMBRE = "REDES ADHOC", SIGLA = "ELC208" },
-            new Materia { ID = 96, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "GESTIÓN Y ADMINISTRACIÓN DE REDES", SIGLA = "RD5511" },
-            new Materia { ID = 97, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "REDES INALÁMBRICAS Y COMUNICACIONES MÓVILES", SIGLA = "RD5512" },
-            new Materia { ID = 98, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SEGURIDAD EN REDES Y TRANSMISIÓN DE DATOS", SIGLA = "RD5519" },
+
+            //SEMESTRE 9
+            new Materia { ID = 96, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "GESTIÓN Y ADMINISTRACIÓN DE REDES", SIGLA = "RDS511" },
+            new Materia { ID = 97, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "REDES INALÁMBRICAS Y COMUNICACIONES MÓVILES", SIGLA = "RDS512" },
+            new Materia { ID = 98, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SEGURIDAD EN REDES Y TRANSMISIÓN DE DATOS", SIGLA = "RDS519" },
 
             // MATERIAS DE TITULACIÓN
             new Materia { ID = 99, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "MODALIDAD DE TITULACIÓN A NIVEL TÉCNICO SUPERIOR", SIGLA = "GRT001" },
-            new Materia { ID = 100, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "MODALIDAD DE TITULACIÓN LICENCIATURA", SIGLA = "GRLO01" },
+            new Materia { ID = 100, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "MODALIDAD DE TITULACIÓN LICENCIATURA", SIGLA = "GRL001" }
 
             // MATERIAS DE ROBÓTICA (CORREGIDAS)
-            new Materia { ID = 101, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "TALLER DE GRADO I", SIGLA = "INFST1" },
-            new Materia { ID = 102, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ROBÓTICA AVANZADA", SIGLA = "ROBM05" },
-            new Materia { ID = 103, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ROBOT OPERATING SYSTEM", SIGLA = "ROBM04" },
-            new Materia { ID = 104, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS DE CONTROL II", SIGLA = "ROBM03" },
-            new Materia { ID = 105, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "AUTOMATIZACIÓN Y CONTROL", SIGLA = "ROBM02" },
-            new Materia { ID = 106, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "VISIÓN COMPUTACIONAL", SIGLA = "ROBM07" },
-            new Materia { ID = 107, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ROBÓTICA INDUSTRIAL", SIGLA = "ROBM04" },
-            new Materia { ID = 108, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INTERNET DE LAS COSAS", SIGLA = "ROBM06" },
-            new Materia { ID = 109, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "TALLER DE CONTROL", SIGLA = "ROBM05" },
-            new Materia { ID = 110, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INSTRUMENTACIÓN INDUSTRIAL", SIGLA = "ELC202" },
-            new Materia { ID = 111, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "LIDERAZGO, EMPRENDIMIENTO Y STARTUPS", SIGLA = "MET200" },
-            new Materia { ID = 112, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS EMBEBIDOS", SIGLA = "ROBR203" },
-            new Materia { ID = 113, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS DE CONTROL I", SIGLA = "ROBR01" },
-            new Materia { ID = 114, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ACTUADORES Y SENSORES", SIGLA = "ROBR02" },
-            new Materia { ID = 115, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "PROCESAMIENTO DIGITAL DE SEÑALES", SIGLA = "ROBS20" },
-            new Materia { ID = 116, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "CIRCUITOS DIGITALES", SIGLA = "ROBR04" },
-            new Materia { ID = 117, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ELECTRÓNICO Y MAGNETISMO", SIGLA = "ROBR201" },
-            new Materia { ID = 118, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ANÁLISIS DE CIRCUITOS", SIGLA = "ROBS210" },
-            new Materia { ID = 119, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "DINÁMICA", SIGLA = "ROBR203" },
-            new Materia { ID = 120, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "TECNOLOGÍAS DE LA MANUFACTURA", SIGLA = "ROBR02" },
-            new Materia { ID = 121, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ESTÁTICA", SIGLA = "ROBR03" },
-            new Materia { ID = 122, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "PENSAMIENTO CRÍTICO Y CREATIVO", SIGLA = "ROBR04" },
-            new Materia { ID = 123, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INTRODUCCIÓN A LA ROBÓTICA", SIGLA = "ROBR01" },
-            new Materia { ID = 124, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "DIBUJO MECÁNICO EN CAD", SIGLA = "ROBR02" },
-            new Materia { ID = 125, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "METODOLOGÍA DE LA INVESTIGACIÓN", SIGLA = "MET100" },
-            new Materia { ID = 126, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "CIRCUITOS ELECTRÓNICOS I", SIGLA = "ELT352" },
-            new Materia { ID = 127, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "CIRCUITOS ELECTRÓNICOS II", SIGLA = "ELT352" }
+            // new Materia { ID = 101, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "TALLER DE GRADO I", SIGLA = "INFST1" },
+            // new Materia { ID = 102, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ROBÓTICA AVANZADA", SIGLA = "ROBM05" },
+            // new Materia { ID = 103, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ROBOT OPERATING SYSTEM", SIGLA = "ROBM04" },
+            // new Materia { ID = 104, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS DE CONTROL II", SIGLA = "ROBM03" },
+            // new Materia { ID = 105, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "AUTOMATIZACIÓN Y CONTROL", SIGLA = "ROBM02" },
+            // new Materia { ID = 106, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "VISIÓN COMPUTACIONAL", SIGLA = "ROBM07" },
+            // new Materia { ID = 107, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ROBÓTICA INDUSTRIAL", SIGLA = "ROBM04" },
+            // new Materia { ID = 108, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INTERNET DE LAS COSAS", SIGLA = "ROBM06" },
+            // new Materia { ID = 109, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "TALLER DE CONTROL", SIGLA = "ROBM05" },
+            // new Materia { ID = 110, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INSTRUMENTACIÓN INDUSTRIAL", SIGLA = "ELC202" },
+            // new Materia { ID = 111, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "LIDERAZGO, EMPRENDIMIENTO Y STARTUPS", SIGLA = "MET200" },
+            // new Materia { ID = 112, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS EMBEBIDOS", SIGLA = "ROBR203" },
+            // new Materia { ID = 113, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "SISTEMAS DE CONTROL I", SIGLA = "ROBR01" },
+            // new Materia { ID = 114, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ACTUADORES Y SENSORES", SIGLA = "ROBR02" },
+            // new Materia { ID = 115, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "PROCESAMIENTO DIGITAL DE SEÑALES", SIGLA = "ROBS20" },
+            // new Materia { ID = 116, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "CIRCUITOS DIGITALES", SIGLA = "ROBR04" },
+            // new Materia { ID = 117, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ELECTRÓNICO Y MAGNETISMO", SIGLA = "ROBR201" },
+            // new Materia { ID = 118, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ANÁLISIS DE CIRCUITOS", SIGLA = "ROBS210" },
+            // new Materia { ID = 119, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "DINÁMICA", SIGLA = "ROBR203" },
+            // new Materia { ID = 120, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "TECNOLOGÍAS DE LA MANUFACTURA", SIGLA = "ROBR02" },
+            // new Materia { ID = 121, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "ESTÁTICA", SIGLA = "ROBR03" },
+            // new Materia { ID = 122, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "PENSAMIENTO CRÍTICO Y CREATIVO", SIGLA = "ROBR04" },
+            // new Materia { ID = 123, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "INTRODUCCIÓN A LA ROBÓTICA", SIGLA = "ROBR01" },
+            // new Materia { ID = 124, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "DIBUJO MECÁNICO EN CAD", SIGLA = "ROBR02" },
+            // new Materia { ID = 125, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "METODOLOGÍA DE LA INVESTIGACIÓN", SIGLA = "MET100" },
+            // new Materia { ID = 126, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "CIRCUITOS ELECTRÓNICOS I", SIGLA = "ELT352" },
+            // new Materia { ID = 127, CREDITO = 5, ES_ELECTIVA = false, NOMBRE = "CIRCUITOS ELECTRÓNICOS II", SIGLA = "ELT352" }
             );
     }
 }

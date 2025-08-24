@@ -57,23 +57,23 @@ public class MateriaPlanEstudioSeeder : IEntityTypeConfiguration<MateriaPlanEstu
             new MateriaPlanEstudio { ID = 32, MATERIA_ID = 32, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 1 },
             new MateriaPlanEstudio { ID = 33, MATERIA_ID = 33, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 1 },
             new MateriaPlanEstudio { ID = 34, MATERIA_ID = 34, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 1 },
-            new MateriaPlanEstudio { ID = 35, MATERIA_ID = 35, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 1 },
+            new MateriaPlanEstudio { ID = 35, MATERIA_ID = 38, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 1 },
 
             // SEMESTRE 8
             new MateriaPlanEstudio { ID = 36, MATERIA_ID = 36, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 1 },
             new MateriaPlanEstudio { ID = 37, MATERIA_ID = 37, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 1 },
-            new MateriaPlanEstudio { ID = 38, MATERIA_ID = 38, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 1 },
+            new MateriaPlanEstudio { ID = 38, MATERIA_ID = 44, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 1 },
             new MateriaPlanEstudio { ID = 39, MATERIA_ID = 39, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 1 },
-            new MateriaPlanEstudio { ID = 40, MATERIA_ID = 40, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 1 },
+            new MateriaPlanEstudio { ID = 40, MATERIA_ID = 35, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 1 },
 
             // SEMESTRE 9
             new MateriaPlanEstudio { ID = 41, MATERIA_ID = 41, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 1 },
-            new MateriaPlanEstudio { ID = 42, MATERIA_ID = 42, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 1 },
+            new MateriaPlanEstudio { ID = 44, MATERIA_ID = 40, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 1 },
+            new MateriaPlanEstudio { ID = 42, MATERIA_ID = 42, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 1 }, 
             new MateriaPlanEstudio { ID = 43, MATERIA_ID = 43, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 1 },
-            new MateriaPlanEstudio { ID = 44, MATERIA_ID = 44, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 1 },
 
             // GRADUACIÓN
-            new MateriaPlanEstudio { ID = 45, MATERIA_ID = 58, NIVEL_ID = 10, PLAN_ESTUDIO_ID = 1 },
+            new MateriaPlanEstudio { ID = 45, MATERIA_ID = 100, NIVEL_ID = 10, PLAN_ESTUDIO_ID = 1 },
 
             // ===== INGENIERÍA EN SISTEMAS (PLAN 2) =====
             // SEMESTRES 1-4 (MISMAS MATERIAS QUE INFORMÁTICA)
@@ -103,10 +103,10 @@ public class MateriaPlanEstudioSeeder : IEntityTypeConfiguration<MateriaPlanEstu
 
             // SEMESTRE 5 (SISTEMAS - MATERIAS ESPECÍFICAS)
             new MateriaPlanEstudio { ID = 66, MATERIA_ID = 21, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 2 },
-            new MateriaPlanEstudio { ID = 67, MATERIA_ID = 22, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 2 },
+            // new MateriaPlanEstudio { ID = 67, MATERIA_ID = 22, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 68, MATERIA_ID = 23, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 69, MATERIA_ID = 24, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 2 },
-            new MateriaPlanEstudio { ID = 70, MATERIA_ID = 25, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 2 },
+            // new MateriaPlanEstudio { ID = 70, MATERIA_ID = 25, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 71, MATERIA_ID = 53, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 72, MATERIA_ID = 54, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 2 },
 
@@ -115,33 +115,33 @@ public class MateriaPlanEstudioSeeder : IEntityTypeConfiguration<MateriaPlanEstu
             new MateriaPlanEstudio { ID = 74, MATERIA_ID = 27, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 75, MATERIA_ID = 28, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 76, MATERIA_ID = 29, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 2 },
-            new MateriaPlanEstudio { ID = 77, MATERIA_ID = 30, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 2 },
+            // new MateriaPlanEstudio { ID = 77, MATERIA_ID = 30, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 78, MATERIA_ID = 55, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 2 },
 
             // SEMESTRE 7 (SISTEMAS)
             new MateriaPlanEstudio { ID = 79, MATERIA_ID = 31, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 2 },
-            new MateriaPlanEstudio { ID = 80, MATERIA_ID = 32, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 2 },
+            // new MateriaPlanEstudio { ID = 80, MATERIA_ID = 32, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 81, MATERIA_ID = 33, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 82, MATERIA_ID = 34, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 2 },
-            new MateriaPlanEstudio { ID = 83, MATERIA_ID = 35, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 2 },
+            new MateriaPlanEstudio { ID = 83, MATERIA_ID = 38, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 84, MATERIA_ID = 56, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 2 },
 
             // SEMESTRE 8 (SISTEMAS)
             new MateriaPlanEstudio { ID = 85, MATERIA_ID = 36, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 2 },
-            new MateriaPlanEstudio { ID = 86, MATERIA_ID = 37, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 2 },
-            new MateriaPlanEstudio { ID = 87, MATERIA_ID = 38, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 2 },
+            // new MateriaPlanEstudio { ID = 86, MATERIA_ID = 37, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 2 },
+            new MateriaPlanEstudio { ID = 87, MATERIA_ID = 35, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 88, MATERIA_ID = 39, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 2 },
-            new MateriaPlanEstudio { ID = 89, MATERIA_ID = 40, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 2 },
+            new MateriaPlanEstudio { ID = 89, MATERIA_ID = 44, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 90, MATERIA_ID = 57, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 2 },
 
             // SEMESTRE 9 (SISTEMAS)
             new MateriaPlanEstudio { ID = 91, MATERIA_ID = 41, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 92, MATERIA_ID = 42, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 2 },
             new MateriaPlanEstudio { ID = 93, MATERIA_ID = 43, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 2 },
-            new MateriaPlanEstudio { ID = 94, MATERIA_ID = 44, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 2 },
+            new MateriaPlanEstudio { ID = 94, MATERIA_ID = 40, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 2 },
 
             // GRADUACIÓN SISTEMAS
-            new MateriaPlanEstudio { ID = 95, MATERIA_ID = 58, NIVEL_ID = 10, PLAN_ESTUDIO_ID = 2 },
+            new MateriaPlanEstudio { ID = 95, MATERIA_ID = 100, NIVEL_ID = 10, PLAN_ESTUDIO_ID = 2 },
 
             // ===== INGENIERÍA EN REDES (PLAN 3) =====
             // SEMESTRES 1-3 (MISMAS MATERIAS)
@@ -160,58 +160,64 @@ public class MateriaPlanEstudioSeeder : IEntityTypeConfiguration<MateriaPlanEstu
             new MateriaPlanEstudio { ID = 106, MATERIA_ID = 11, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 3 },
             new MateriaPlanEstudio { ID = 107, MATERIA_ID = 12, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 3 },
             new MateriaPlanEstudio { ID = 108, MATERIA_ID = 13, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 3 },
-            new MateriaPlanEstudio { ID = 109, MATERIA_ID = 14, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 3 },
-            new MateriaPlanEstudio { ID = 110, MATERIA_ID = 15, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 3 },
+            new MateriaPlanEstudio { ID = 109, MATERIA_ID = 75, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 3 },
+            new MateriaPlanEstudio { ID = 110, MATERIA_ID = 76, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 3 },
 
-            // SEMESTRE 4 (REDES - MATERIAS ESPECÍFICAS)
+            // SEMESTRE 4 
             new MateriaPlanEstudio { ID = 111, MATERIA_ID = 16, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 3 },
             new MateriaPlanEstudio { ID = 112, MATERIA_ID = 17, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 3 },
             new MateriaPlanEstudio { ID = 113, MATERIA_ID = 18, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 3 },
             new MateriaPlanEstudio { ID = 114, MATERIA_ID = 19, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 3 },
-            new MateriaPlanEstudio { ID = 115, MATERIA_ID = 75, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 3 }, // ANÁLISIS DE CIRCUITOS
+            new MateriaPlanEstudio { ID = 115, MATERIA_ID = 77, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 3 }, 
 
-            // CONTINUAR CON EL RESTO DE MATERIAS DE REDES...
             // SEMESTRE 5 (REDES)
-            new MateriaPlanEstudio { ID = 116, MATERIA_ID = 76, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // TEORÍA DE CAMPOS
-            new MateriaPlanEstudio { ID = 117, MATERIA_ID = 77, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // ANÁLISIS CIRCUITOS ELECTRÓNICOS
-            new MateriaPlanEstudio { ID = 118, MATERIA_ID = 78, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // ELECTRÓNICA APLICADA A REDES
-            new MateriaPlanEstudio { ID = 119, MATERIA_ID = 79, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // SISTEMAS LÓGICOS Y DIGITALES I
+            new MateriaPlanEstudio { ID = 116, MATERIA_ID = 21, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // PROBABILIDAD Y ESTADÍSTICA II
+            new MateriaPlanEstudio { ID = 117, MATERIA_ID = 24, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // BASE DE DATOS I
+            new MateriaPlanEstudio { ID = 118, MATERIA_ID = 78, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // ELECTRONICA APLICADA A REDES
+            new MateriaPlanEstudio { ID = 119, MATERIA_ID = 79, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // SISTEMAS LOGICOS Y DIGITALES I
             new MateriaPlanEstudio { ID = 120, MATERIA_ID = 80, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // SEÑALES Y SISTEMAS
+            new MateriaPlanEstudio { ID = 121, MATERIA_ID = 81, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // DISEÑO DE CIRCUITOS INTEGRADOS
+            new MateriaPlanEstudio { ID = 122, MATERIA_ID = 82, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 3 }, // INSTRUMENTACION
 
-            // ===== INGENIERÍA ROBÓTICA (PLAN 4) =====
-            // SEMESTRES 1-3 (MISMAS MATERIAS)
-            new MateriaPlanEstudio { ID = 121, MATERIA_ID = 1, NIVEL_ID = 1, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 122, MATERIA_ID = 2, NIVEL_ID = 1, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 123, MATERIA_ID = 3, NIVEL_ID = 1, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 124, MATERIA_ID = 4, NIVEL_ID = 1, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 125, MATERIA_ID = 5, NIVEL_ID = 1, PLAN_ESTUDIO_ID = 4 },
+            // SEMESTRE 6
+            new MateriaPlanEstudio { ID = 123, MATERIA_ID = 28, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 3 }, // SISTEMA OPERATIVO I
+            new MateriaPlanEstudio { ID = 124, MATERIA_ID = 29, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 3 }, // BASE DE DATOS II
+            new MateriaPlanEstudio { ID = 125, MATERIA_ID = 26, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 3 }, // INVESTIGACION OPERATIVA I
+            new MateriaPlanEstudio { ID = 126, MATERIA_ID = 83, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 3 }, // SISTEMAS LOGICOS Y DIGITALES II
+            new MateriaPlanEstudio { ID = 127, MATERIA_ID = 84, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 3 }, // INTERPRETACION DE SISTEMAS Y SEÑALES
+            new MateriaPlanEstudio { ID = 128, MATERIA_ID = 85, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 3 }, // SISTEMAS DE COMUNICACION SCADA
+            new MateriaPlanEstudio { ID = 129, MATERIA_ID = 86, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 3 }, // TELEVISION DIGITAL
 
-            new MateriaPlanEstudio { ID = 126, MATERIA_ID = 6, NIVEL_ID = 2, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 127, MATERIA_ID = 7, NIVEL_ID = 2, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 128, MATERIA_ID = 8, NIVEL_ID = 2, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 129, MATERIA_ID = 9, NIVEL_ID = 2, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 130, MATERIA_ID = 10, NIVEL_ID = 2, PLAN_ESTUDIO_ID = 4 },
+            new MateriaPlanEstudio { ID = 130, MATERIA_ID = 99, NIVEL_ID = 6, PLAN_ESTUDIO_ID = 3 }, // MODALIDAD TITULACION A NIVEL TECNICO
 
-            new MateriaPlanEstudio { ID = 131, MATERIA_ID = 11, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 132, MATERIA_ID = 12, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 133, MATERIA_ID = 13, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 134, MATERIA_ID = 14, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 135, MATERIA_ID = 15, NIVEL_ID = 3, PLAN_ESTUDIO_ID = 4 },
+            // SEMESTRE 7
+            new MateriaPlanEstudio { ID = 131, MATERIA_ID = 34, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 3 }, // REDES I
+            new MateriaPlanEstudio { ID = 132, MATERIA_ID = 33, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 3 }, // SISTEMAS OPERATIVOS II
+            new MateriaPlanEstudio { ID = 133, MATERIA_ID = 31, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 3 }, // INVESTIGACION OPERATIVA II
+            new MateriaPlanEstudio { ID = 134, MATERIA_ID = 87, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 3 }, // APLICACIONES CON MICROPROCESADORES
+            new MateriaPlanEstudio { ID = 135, MATERIA_ID = 88, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 3 }, // SISTEMAS DE COMUNICACION I
+            new MateriaPlanEstudio { ID = 136, MATERIA_ID = 89, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 3 }, // DOMOTICA
+            new MateriaPlanEstudio { ID = 137, MATERIA_ID = 90, NIVEL_ID = 7, PLAN_ESTUDIO_ID = 3 }, // LINEAS DE TRANSMISION Y ANTENAS
 
-            // SEMESTRE 4 (ROBÓTICA - MATERIAS ESPECÍFICAS)
-            new MateriaPlanEstudio { ID = 136, MATERIA_ID = 16, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 137, MATERIA_ID = 17, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 138, MATERIA_ID = 18, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 139, MATERIA_ID = 19, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 4 },
-            new MateriaPlanEstudio { ID = 140, MATERIA_ID = 101, NIVEL_ID = 4, PLAN_ESTUDIO_ID = 4 }, // TALLER DE GRADO I ROBÓTICA
+            // SEMESTRE 8
+            new MateriaPlanEstudio { ID = 138, MATERIA_ID = 39, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 3 }, // REDES II
+            new MateriaPlanEstudio { ID = 139, MATERIA_ID = 36, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 3 }, // PREPARACION Y EVALUACION DE PROYECTO
+            new MateriaPlanEstudio { ID = 140, MATERIA_ID = 91, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 3 }, // TALLER DE ANALISIS DE DISEÑO DE REDES
+            new MateriaPlanEstudio { ID = 141, MATERIA_ID = 92, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 3 }, // LEGISLACION EN REDES Y COMUNICACIONES
+            new MateriaPlanEstudio { ID = 142, MATERIA_ID = 93, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 3 }, // SISTEMAS DE COMUNICACION II
+            new MateriaPlanEstudio { ID = 143, MATERIA_ID = 94, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 3 }, // TECNICAS DE PRESENTACION PARA INGENIERIA
+            new MateriaPlanEstudio { ID = 144, MATERIA_ID = 95, NIVEL_ID = 8, PLAN_ESTUDIO_ID = 3 }, // REDES ADHOC
 
-            // CONTINUAR CON EL RESTO DE MATERIAS DE ROBÓTICA...
-            // SEMESTRE 5 (ROBÓTICA)
-            new MateriaPlanEstudio { ID = 141, MATERIA_ID = 102, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 4 }, // ROBÓTICA AVANZADA
-            new MateriaPlanEstudio { ID = 142, MATERIA_ID = 103, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 4 }, // ROBOT OPERATING SYSTEM
-            new MateriaPlanEstudio { ID = 143, MATERIA_ID = 104, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 4 }, // SISTEMAS DE CONTROL II
-            new MateriaPlanEstudio { ID = 144, MATERIA_ID = 105, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 4 }, // AUTOMATIZACIÓN Y CONTROL
-            new MateriaPlanEstudio { ID = 145, MATERIA_ID = 106, NIVEL_ID = 5, PLAN_ESTUDIO_ID = 4 }  // VISIÓN COMPUTACIONAL
+            // SEMESTRE 9
+            new MateriaPlanEstudio { ID = 145, MATERIA_ID = 41, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 3 }, // TALLER DE GRADO I
+            new MateriaPlanEstudio { ID = 146, MATERIA_ID = 42, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 3 }, // TECNOLOGIA WEB
+            new MateriaPlanEstudio { ID = 147, MATERIA_ID = 96, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 3 }, // GESTION Y ADMINISTRACION EN REDES
+            new MateriaPlanEstudio { ID = 148, MATERIA_ID = 97, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 3 }, // REDES INALAMBRICAS Y COMUNICACIONES MOVILES
+            new MateriaPlanEstudio { ID = 149, MATERIA_ID = 98, NIVEL_ID = 9, PLAN_ESTUDIO_ID = 3 }, // SEGURIDAD EN REDES Y TRANSMISION DE DATOS
+
+            // SEMESTRE 10
+            new MateriaPlanEstudio { ID = 150, MATERIA_ID = 100, NIVEL_ID = 10, PLAN_ESTUDIO_ID = 3 } // MODALIDAD DE TITULACION
+
         );
 
 

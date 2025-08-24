@@ -1295,7 +1295,7 @@ namespace Infrastructure.Migrations
                             ID = 22,
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
-                            NOMBRE = "PROGRAMACIÓN LÓGICA Y FUNCIONAL I",
+                            NOMBRE = "PROGRAMACIÓN LÓGICA Y FUNCIONAL",
                             SIGLA = "INF318"
                         },
                         new
@@ -1424,7 +1424,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "INGENIERÍA DE SOFTWARE I",
-                            SIGLA = "INF412"
+                            SIGLA = "INF422"
                         },
                         new
                         {
@@ -1432,7 +1432,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "SISTEMAS PARA EL SOPORTE A LA TOMA DE DECISIONES",
-                            SIGLA = "INF343"
+                            SIGLA = "INF432"
                         },
                         new
                         {
@@ -1440,7 +1440,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "PREPARACIÓN Y EVALUACIÓN DE PROYECTOS",
-                            SIGLA = "EC0449"
+                            SIGLA = "ECO449"
                         },
                         new
                         {
@@ -1456,7 +1456,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "SISTEMAS DE INFORMACIÓN II",
-                            SIGLA = "INF442"
+                            SIGLA = "INF412"
                         },
                         new
                         {
@@ -1656,7 +1656,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "ANÁLISIS DE CIRCUITOS",
-                            SIGLA = "RD5210"
+                            SIGLA = "RDS210"
                         },
                         new
                         {
@@ -1664,7 +1664,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "TEORÍA DE CAMPOS",
-                            SIGLA = "ELT341"
+                            SIGLA = "ELT241"
                         },
                         new
                         {
@@ -1672,7 +1672,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)4,
                             ES_ELECTIVA = false,
                             NOMBRE = "ANÁLISIS DE CIRCUITOS ELECTRÓNICOS",
-                            SIGLA = "RD5220"
+                            SIGLA = "RDS220"
                         },
                         new
                         {
@@ -1680,7 +1680,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "ELECTRÓNICA APLICADA A REDES",
-                            SIGLA = "RD5310"
+                            SIGLA = "RDS310"
                         },
                         new
                         {
@@ -1720,7 +1720,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "SISTEMAS LÓGICOS Y DIGITALES II",
-                            SIGLA = "ELT382"
+                            SIGLA = "ELT362"
                         },
                         new
                         {
@@ -1728,7 +1728,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "INTERPRETACIÓN DE SISTEMAS Y SEÑALES",
-                            SIGLA = "RD5320"
+                            SIGLA = "RDS320"
                         },
                         new
                         {
@@ -1752,7 +1752,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "APLICACIONES CON MICROPROCESADORES",
-                            SIGLA = "RD5410"
+                            SIGLA = "RDS410"
                         },
                         new
                         {
@@ -1768,7 +1768,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = true,
                             NOMBRE = "DOMÓTICA",
-                            SIGLA = "ELC206"
+                            SIGLA = "ELC205"
                         },
                         new
                         {
@@ -1776,7 +1776,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "LÍNEAS DE TRANSMISIÓN Y ANTENAS",
-                            SIGLA = "ELT384"
+                            SIGLA = "ELC206"
                         },
                         new
                         {
@@ -1784,7 +1784,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "TALLER DE ANÁLISIS Y DISEÑO DE REDES",
-                            SIGLA = "RD5421"
+                            SIGLA = "RDS421"
                         },
                         new
                         {
@@ -1792,7 +1792,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "LEGISLACIÓN EN REDES Y COMUNICACIONES",
-                            SIGLA = "RD5422"
+                            SIGLA = "RS429"
                         },
                         new
                         {
@@ -1800,7 +1800,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "SISTEMAS DE COMUNICACIÓN II",
-                            SIGLA = "ELT384"
+                            SIGLA = "ELC384"
                         },
                         new
                         {
@@ -1824,7 +1824,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "GESTIÓN Y ADMINISTRACIÓN DE REDES",
-                            SIGLA = "RD5511"
+                            SIGLA = "RDS511"
                         },
                         new
                         {
@@ -1832,7 +1832,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "REDES INALÁMBRICAS Y COMUNICACIONES MÓVILES",
-                            SIGLA = "RD5512"
+                            SIGLA = "RDS512"
                         },
                         new
                         {
@@ -1840,7 +1840,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "SEGURIDAD EN REDES Y TRANSMISIÓN DE DATOS",
-                            SIGLA = "RD5519"
+                            SIGLA = "RDS519"
                         },
                         new
                         {
@@ -1856,223 +1856,7 @@ namespace Infrastructure.Migrations
                             CREDITO = (short)5,
                             ES_ELECTIVA = false,
                             NOMBRE = "MODALIDAD DE TITULACIÓN LICENCIATURA",
-                            SIGLA = "GRLO01"
-                        },
-                        new
-                        {
-                            ID = 101,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "TALLER DE GRADO I",
-                            SIGLA = "INFST1"
-                        },
-                        new
-                        {
-                            ID = 102,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ROBÓTICA AVANZADA",
-                            SIGLA = "ROBM05"
-                        },
-                        new
-                        {
-                            ID = 103,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ROBOT OPERATING SYSTEM",
-                            SIGLA = "ROBM04"
-                        },
-                        new
-                        {
-                            ID = 104,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE CONTROL II",
-                            SIGLA = "ROBM03"
-                        },
-                        new
-                        {
-                            ID = 105,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "AUTOMATIZACIÓN Y CONTROL",
-                            SIGLA = "ROBM02"
-                        },
-                        new
-                        {
-                            ID = 106,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "VISIÓN COMPUTACIONAL",
-                            SIGLA = "ROBM07"
-                        },
-                        new
-                        {
-                            ID = 107,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ROBÓTICA INDUSTRIAL",
-                            SIGLA = "ROBM04"
-                        },
-                        new
-                        {
-                            ID = 108,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INTERNET DE LAS COSAS",
-                            SIGLA = "ROBM06"
-                        },
-                        new
-                        {
-                            ID = 109,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "TALLER DE CONTROL",
-                            SIGLA = "ROBM05"
-                        },
-                        new
-                        {
-                            ID = 110,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INSTRUMENTACIÓN INDUSTRIAL",
-                            SIGLA = "ELC202"
-                        },
-                        new
-                        {
-                            ID = 111,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "LIDERAZGO, EMPRENDIMIENTO Y STARTUPS",
-                            SIGLA = "MET200"
-                        },
-                        new
-                        {
-                            ID = 112,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS EMBEBIDOS",
-                            SIGLA = "ROBR203"
-                        },
-                        new
-                        {
-                            ID = 113,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE CONTROL I",
-                            SIGLA = "ROBR01"
-                        },
-                        new
-                        {
-                            ID = 114,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ACTUADORES Y SENSORES",
-                            SIGLA = "ROBR02"
-                        },
-                        new
-                        {
-                            ID = 115,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROCESAMIENTO DIGITAL DE SEÑALES",
-                            SIGLA = "ROBS20"
-                        },
-                        new
-                        {
-                            ID = 116,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "CIRCUITOS DIGITALES",
-                            SIGLA = "ROBR04"
-                        },
-                        new
-                        {
-                            ID = 117,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ELECTRÓNICO Y MAGNETISMO",
-                            SIGLA = "ROBR201"
-                        },
-                        new
-                        {
-                            ID = 118,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ANÁLISIS DE CIRCUITOS",
-                            SIGLA = "ROBS210"
-                        },
-                        new
-                        {
-                            ID = 119,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "DINÁMICA",
-                            SIGLA = "ROBR203"
-                        },
-                        new
-                        {
-                            ID = 120,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "TECNOLOGÍAS DE LA MANUFACTURA",
-                            SIGLA = "ROBR02"
-                        },
-                        new
-                        {
-                            ID = 121,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ESTÁTICA",
-                            SIGLA = "ROBR03"
-                        },
-                        new
-                        {
-                            ID = 122,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PENSAMIENTO CRÍTICO Y CREATIVO",
-                            SIGLA = "ROBR04"
-                        },
-                        new
-                        {
-                            ID = 123,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INTRODUCCIÓN A LA ROBÓTICA",
-                            SIGLA = "ROBR01"
-                        },
-                        new
-                        {
-                            ID = 124,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "DIBUJO MECÁNICO EN CAD",
-                            SIGLA = "ROBR02"
-                        },
-                        new
-                        {
-                            ID = 125,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "METODOLOGÍA DE LA INVESTIGACIÓN",
-                            SIGLA = "MET100"
-                        },
-                        new
-                        {
-                            ID = 126,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "CIRCUITOS ELECTRÓNICOS I",
-                            SIGLA = "ELT352"
-                        },
-                        new
-                        {
-                            ID = 127,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "CIRCUITOS ELECTRÓNICOS II",
-                            SIGLA = "ELT352"
+                            SIGLA = "GRL001"
                         });
                 });
 
@@ -2345,7 +2129,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 35,
-                            MATERIA_ID = 35,
+                            MATERIA_ID = 38,
                             NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 1
                         },
@@ -2366,7 +2150,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 38,
-                            MATERIA_ID = 38,
+                            MATERIA_ID = 44,
                             NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 1
                         },
@@ -2380,7 +2164,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 40,
-                            MATERIA_ID = 40,
+                            MATERIA_ID = 35,
                             NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 1
                         },
@@ -2388,6 +2172,13 @@ namespace Infrastructure.Migrations
                         {
                             ID = 41,
                             MATERIA_ID = 41,
+                            NIVEL_ID = 9,
+                            PLAN_ESTUDIO_ID = 1
+                        },
+                        new
+                        {
+                            ID = 44,
+                            MATERIA_ID = 40,
                             NIVEL_ID = 9,
                             PLAN_ESTUDIO_ID = 1
                         },
@@ -2407,15 +2198,8 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            ID = 44,
-                            MATERIA_ID = 44,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 1
-                        },
-                        new
-                        {
                             ID = 45,
-                            MATERIA_ID = 58,
+                            MATERIA_ID = 100,
                             NIVEL_ID = 10,
                             PLAN_ESTUDIO_ID = 1
                         },
@@ -2568,13 +2352,6 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            ID = 67,
-                            MATERIA_ID = 22,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 2
-                        },
-                        new
-                        {
                             ID = 68,
                             MATERIA_ID = 23,
                             NIVEL_ID = 5,
@@ -2584,13 +2361,6 @@ namespace Infrastructure.Migrations
                         {
                             ID = 69,
                             MATERIA_ID = 24,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 2
-                        },
-                        new
-                        {
-                            ID = 70,
-                            MATERIA_ID = 25,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 2
                         },
@@ -2638,13 +2408,6 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            ID = 77,
-                            MATERIA_ID = 30,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 2
-                        },
-                        new
-                        {
                             ID = 78,
                             MATERIA_ID = 55,
                             NIVEL_ID = 6,
@@ -2654,13 +2417,6 @@ namespace Infrastructure.Migrations
                         {
                             ID = 79,
                             MATERIA_ID = 31,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 2
-                        },
-                        new
-                        {
-                            ID = 80,
-                            MATERIA_ID = 32,
                             NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 2
                         },
@@ -2681,7 +2437,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 83,
-                            MATERIA_ID = 35,
+                            MATERIA_ID = 38,
                             NIVEL_ID = 7,
                             PLAN_ESTUDIO_ID = 2
                         },
@@ -2701,15 +2457,8 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            ID = 86,
-                            MATERIA_ID = 37,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 2
-                        },
-                        new
-                        {
                             ID = 87,
-                            MATERIA_ID = 38,
+                            MATERIA_ID = 35,
                             NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 2
                         },
@@ -2723,7 +2472,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 89,
-                            MATERIA_ID = 40,
+                            MATERIA_ID = 44,
                             NIVEL_ID = 8,
                             PLAN_ESTUDIO_ID = 2
                         },
@@ -2758,14 +2507,14 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 94,
-                            MATERIA_ID = 44,
+                            MATERIA_ID = 40,
                             NIVEL_ID = 9,
                             PLAN_ESTUDIO_ID = 2
                         },
                         new
                         {
                             ID = 95,
-                            MATERIA_ID = 58,
+                            MATERIA_ID = 100,
                             NIVEL_ID = 10,
                             PLAN_ESTUDIO_ID = 2
                         },
@@ -2863,14 +2612,14 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 109,
-                            MATERIA_ID = 14,
+                            MATERIA_ID = 75,
                             NIVEL_ID = 3,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 110,
-                            MATERIA_ID = 15,
+                            MATERIA_ID = 76,
                             NIVEL_ID = 3,
                             PLAN_ESTUDIO_ID = 3
                         },
@@ -2905,21 +2654,21 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 115,
-                            MATERIA_ID = 75,
+                            MATERIA_ID = 77,
                             NIVEL_ID = 4,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 116,
-                            MATERIA_ID = 76,
+                            MATERIA_ID = 21,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 117,
-                            MATERIA_ID = 77,
+                            MATERIA_ID = 24,
                             NIVEL_ID = 5,
                             PLAN_ESTUDIO_ID = 3
                         },
@@ -2947,177 +2696,212 @@ namespace Infrastructure.Migrations
                         new
                         {
                             ID = 121,
-                            MATERIA_ID = 1,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 81,
+                            NIVEL_ID = 5,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 122,
-                            MATERIA_ID = 2,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 82,
+                            NIVEL_ID = 5,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 123,
-                            MATERIA_ID = 3,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 28,
+                            NIVEL_ID = 6,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 124,
-                            MATERIA_ID = 4,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 29,
+                            NIVEL_ID = 6,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 125,
-                            MATERIA_ID = 5,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 26,
+                            NIVEL_ID = 6,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 126,
-                            MATERIA_ID = 6,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 83,
+                            NIVEL_ID = 6,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 127,
-                            MATERIA_ID = 7,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 84,
+                            NIVEL_ID = 6,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 128,
-                            MATERIA_ID = 8,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 85,
+                            NIVEL_ID = 6,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 129,
-                            MATERIA_ID = 9,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 86,
+                            NIVEL_ID = 6,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 130,
-                            MATERIA_ID = 10,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 99,
+                            NIVEL_ID = 6,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 131,
-                            MATERIA_ID = 11,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 34,
+                            NIVEL_ID = 7,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 132,
-                            MATERIA_ID = 12,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 33,
+                            NIVEL_ID = 7,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 133,
-                            MATERIA_ID = 13,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 31,
+                            NIVEL_ID = 7,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 134,
-                            MATERIA_ID = 14,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 87,
+                            NIVEL_ID = 7,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 135,
-                            MATERIA_ID = 15,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 88,
+                            NIVEL_ID = 7,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 136,
-                            MATERIA_ID = 16,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 89,
+                            NIVEL_ID = 7,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 137,
-                            MATERIA_ID = 17,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 90,
+                            NIVEL_ID = 7,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 138,
-                            MATERIA_ID = 18,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 39,
+                            NIVEL_ID = 8,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 139,
-                            MATERIA_ID = 19,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 36,
+                            NIVEL_ID = 8,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 140,
-                            MATERIA_ID = 101,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 91,
+                            NIVEL_ID = 8,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 141,
-                            MATERIA_ID = 102,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 92,
+                            NIVEL_ID = 8,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 142,
-                            MATERIA_ID = 103,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 93,
+                            NIVEL_ID = 8,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 143,
-                            MATERIA_ID = 104,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 94,
+                            NIVEL_ID = 8,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 144,
-                            MATERIA_ID = 105,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 95,
+                            NIVEL_ID = 8,
+                            PLAN_ESTUDIO_ID = 3
                         },
                         new
                         {
                             ID = 145,
-                            MATERIA_ID = 106,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 4
+                            MATERIA_ID = 41,
+                            NIVEL_ID = 9,
+                            PLAN_ESTUDIO_ID = 3
+                        },
+                        new
+                        {
+                            ID = 146,
+                            MATERIA_ID = 42,
+                            NIVEL_ID = 9,
+                            PLAN_ESTUDIO_ID = 3
+                        },
+                        new
+                        {
+                            ID = 147,
+                            MATERIA_ID = 96,
+                            NIVEL_ID = 9,
+                            PLAN_ESTUDIO_ID = 3
+                        },
+                        new
+                        {
+                            ID = 148,
+                            MATERIA_ID = 97,
+                            NIVEL_ID = 9,
+                            PLAN_ESTUDIO_ID = 3
+                        },
+                        new
+                        {
+                            ID = 149,
+                            MATERIA_ID = 98,
+                            NIVEL_ID = 9,
+                            PLAN_ESTUDIO_ID = 3
+                        },
+                        new
+                        {
+                            ID = 150,
+                            MATERIA_ID = 100,
+                            NIVEL_ID = 10,
+                            PLAN_ESTUDIO_ID = 3
                         });
                 });
 
@@ -3327,6 +3111,938 @@ namespace Infrastructure.Migrations
                     b.HasIndex("REQUISITO_ID");
 
                     b.ToTable("PREREQUISITO");
+
+                    b.HasData(
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 6,
+                            REQUISITO_ID = 1
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 7,
+                            REQUISITO_ID = 2
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 8,
+                            REQUISITO_ID = 3
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 9,
+                            REQUISITO_ID = 4
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 10,
+                            REQUISITO_ID = 5
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 11,
+                            REQUISITO_ID = 6
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 12,
+                            REQUISITO_ID = 7
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 12,
+                            REQUISITO_ID = 8
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 13,
+                            REQUISITO_ID = 8
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 13,
+                            REQUISITO_ID = 9
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 14,
+                            REQUISITO_ID = 9
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 16,
+                            REQUISITO_ID = 6
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 17,
+                            REQUISITO_ID = 11
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 18,
+                            REQUISITO_ID = 12
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 19,
+                            REQUISITO_ID = 13
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 20,
+                            REQUISITO_ID = 15
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 21,
+                            REQUISITO_ID = 16
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 22,
+                            REQUISITO_ID = 18
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 23,
+                            REQUISITO_ID = 18
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 24,
+                            REQUISITO_ID = 18
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 25,
+                            REQUISITO_ID = 18
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 26,
+                            REQUISITO_ID = 21
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 27,
+                            REQUISITO_ID = 24
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 28,
+                            REQUISITO_ID = 23
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 29,
+                            REQUISITO_ID = 24
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 30,
+                            REQUISITO_ID = 25
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 30,
+                            REQUISITO_ID = 23
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 31,
+                            REQUISITO_ID = 26
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 32,
+                            REQUISITO_ID = 30
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 32,
+                            REQUISITO_ID = 23
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 33,
+                            REQUISITO_ID = 28
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 34,
+                            REQUISITO_ID = 28
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 35,
+                            REQUISITO_ID = 27
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 35,
+                            REQUISITO_ID = 29
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 36,
+                            REQUISITO_ID = 31
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 37,
+                            REQUISITO_ID = 32
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 37,
+                            REQUISITO_ID = 35
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 38,
+                            REQUISITO_ID = 35
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 39,
+                            REQUISITO_ID = 34
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 40,
+                            REQUISITO_ID = 35
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 41,
+                            REQUISITO_ID = 36
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 41,
+                            REQUISITO_ID = 37
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 41,
+                            REQUISITO_ID = 38
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 41,
+                            REQUISITO_ID = 39
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 41,
+                            REQUISITO_ID = 40
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 44,
+                            REQUISITO_ID = 36
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 44,
+                            REQUISITO_ID = 37
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 44,
+                            REQUISITO_ID = 38
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 44,
+                            REQUISITO_ID = 39
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 44,
+                            REQUISITO_ID = 40
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 42,
+                            REQUISITO_ID = 36
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 42,
+                            REQUISITO_ID = 37
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 42,
+                            REQUISITO_ID = 38
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 42,
+                            REQUISITO_ID = 39
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 42,
+                            REQUISITO_ID = 40
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 43,
+                            REQUISITO_ID = 36
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 43,
+                            REQUISITO_ID = 37
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 43,
+                            REQUISITO_ID = 38
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 43,
+                            REQUISITO_ID = 39
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 43,
+                            REQUISITO_ID = 40
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 45,
+                            REQUISITO_ID = 41
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 45,
+                            REQUISITO_ID = 44
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 45,
+                            REQUISITO_ID = 42
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 45,
+                            REQUISITO_ID = 43
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 54,
+                            REQUISITO_ID = 49
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 53,
+                            REQUISITO_ID = 48
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 55,
+                            REQUISITO_ID = 50
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 51,
+                            REQUISITO_ID = 46
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 52,
+                            REQUISITO_ID = 47
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 57,
+                            REQUISITO_ID = 53
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 57,
+                            REQUISITO_ID = 52
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 58,
+                            REQUISITO_ID = 53
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 58,
+                            REQUISITO_ID = 54
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 56,
+                            REQUISITO_ID = 51
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 59,
+                            REQUISITO_ID = 54
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 65,
+                            REQUISITO_ID = 60
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 63,
+                            REQUISITO_ID = 57
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 64,
+                            REQUISITO_ID = 58
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 61,
+                            REQUISITO_ID = 51
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 62,
+                            REQUISITO_ID = 56
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 71,
+                            REQUISITO_ID = 65
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 72,
+                            REQUISITO_ID = 65
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 68,
+                            REQUISITO_ID = 63
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 69,
+                            REQUISITO_ID = 63
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 66,
+                            REQUISITO_ID = 61
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 78,
+                            REQUISITO_ID = 71
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 76,
+                            REQUISITO_ID = 69
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 75,
+                            REQUISITO_ID = 68
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 74,
+                            REQUISITO_ID = 69
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 73,
+                            REQUISITO_ID = 66
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 81,
+                            REQUISITO_ID = 75
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 84,
+                            REQUISITO_ID = 74
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 84,
+                            REQUISITO_ID = 76
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 79,
+                            REQUISITO_ID = 73
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 82,
+                            REQUISITO_ID = 75
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 83,
+                            REQUISITO_ID = 74
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 83,
+                            REQUISITO_ID = 76
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 85,
+                            REQUISITO_ID = 79
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 87,
+                            REQUISITO_ID = 83
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 88,
+                            REQUISITO_ID = 82
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 89,
+                            REQUISITO_ID = 83
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 90,
+                            REQUISITO_ID = 78
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 90,
+                            REQUISITO_ID = 83
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 94,
+                            REQUISITO_ID = 89
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 94,
+                            REQUISITO_ID = 88
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 94,
+                            REQUISITO_ID = 87
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 92,
+                            REQUISITO_ID = 90
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 92,
+                            REQUISITO_ID = 85
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 95,
+                            REQUISITO_ID = 91
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 95,
+                            REQUISITO_ID = 94
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 95,
+                            REQUISITO_ID = 92
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 95,
+                            REQUISITO_ID = 93
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 101,
+                            REQUISITO_ID = 96
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 102,
+                            REQUISITO_ID = 97
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 103,
+                            REQUISITO_ID = 98
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 104,
+                            REQUISITO_ID = 99
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 105,
+                            REQUISITO_ID = 100
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 106,
+                            REQUISITO_ID = 101
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 107,
+                            REQUISITO_ID = 102
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 107,
+                            REQUISITO_ID = 103
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 108,
+                            REQUISITO_ID = 103
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 108,
+                            REQUISITO_ID = 104
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 109,
+                            REQUISITO_ID = 104
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 110,
+                            REQUISITO_ID = 104
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 112,
+                            REQUISITO_ID = 106
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 111,
+                            REQUISITO_ID = 101
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 113,
+                            REQUISITO_ID = 107
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 113,
+                            REQUISITO_ID = 96
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 114,
+                            REQUISITO_ID = 108
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 115,
+                            REQUISITO_ID = 109
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 116,
+                            REQUISITO_ID = 111
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 117,
+                            REQUISITO_ID = 113
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 118,
+                            REQUISITO_ID = 115
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 119,
+                            REQUISITO_ID = 115
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 120,
+                            REQUISITO_ID = 110
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 120,
+                            REQUISITO_ID = 106
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 123,
+                            REQUISITO_ID = 116
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 124,
+                            REQUISITO_ID = 117
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 125,
+                            REQUISITO_ID = 121
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 126,
+                            REQUISITO_ID = 119
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 127,
+                            REQUISITO_ID = 120
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 127,
+                            REQUISITO_ID = 112
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 133,
+                            REQUISITO_ID = 125
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 132,
+                            REQUISITO_ID = 123
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 131,
+                            REQUISITO_ID = 123
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 131,
+                            REQUISITO_ID = 120
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 134,
+                            REQUISITO_ID = 126
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 134,
+                            REQUISITO_ID = 114
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 135,
+                            REQUISITO_ID = 127
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 135,
+                            REQUISITO_ID = 120
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 139,
+                            REQUISITO_ID = 133
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 140,
+                            REQUISITO_ID = 131
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 138,
+                            REQUISITO_ID = 131
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 141,
+                            REQUISITO_ID = 131
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 141,
+                            REQUISITO_ID = 135
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 142,
+                            REQUISITO_ID = 135
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 145,
+                            REQUISITO_ID = 139
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 145,
+                            REQUISITO_ID = 140
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 145,
+                            REQUISITO_ID = 138
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 145,
+                            REQUISITO_ID = 141
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 145,
+                            REQUISITO_ID = 142
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 146,
+                            REQUISITO_ID = 139
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 146,
+                            REQUISITO_ID = 140
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 146,
+                            REQUISITO_ID = 138
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 146,
+                            REQUISITO_ID = 141
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 146,
+                            REQUISITO_ID = 142
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 147,
+                            REQUISITO_ID = 139
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 147,
+                            REQUISITO_ID = 140
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 147,
+                            REQUISITO_ID = 138
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 147,
+                            REQUISITO_ID = 141
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 147,
+                            REQUISITO_ID = 142
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 148,
+                            REQUISITO_ID = 139
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 148,
+                            REQUISITO_ID = 140
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 148,
+                            REQUISITO_ID = 138
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 148,
+                            REQUISITO_ID = 141
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 148,
+                            REQUISITO_ID = 142
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 149,
+                            REQUISITO_ID = 139
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 149,
+                            REQUISITO_ID = 140
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 149,
+                            REQUISITO_ID = 138
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 149,
+                            REQUISITO_ID = 141
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 149,
+                            REQUISITO_ID = 142
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 150,
+                            REQUISITO_ID = 145
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 150,
+                            REQUISITO_ID = 147
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 150,
+                            REQUISITO_ID = 146
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 150,
+                            REQUISITO_ID = 148
+                        },
+                        new
+                        {
+                            MATERIA_PLAN_ESTUDIO_ID = 150,
+                            REQUISITO_ID = 149
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.GrupoMateria", b =>
