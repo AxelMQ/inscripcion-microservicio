@@ -771,6 +771,162 @@ namespace Infrastructure.Migrations
                             ID = 12,
                             HR_FIN = new TimeOnly(22, 45, 0),
                             HR_INICIO = new TimeOnly(20, 30, 0)
+                        },
+                        new
+                        {
+                            ID = 13,
+                            HR_FIN = new TimeOnly(12, 15, 0),
+                            HR_INICIO = new TimeOnly(10, 0, 0)
+                        },
+                        new
+                        {
+                            ID = 14,
+                            HR_FIN = new TimeOnly(13, 45, 0),
+                            HR_INICIO = new TimeOnly(11, 30, 0)
+                        },
+                        new
+                        {
+                            ID = 15,
+                            HR_FIN = new TimeOnly(16, 0, 0),
+                            HR_INICIO = new TimeOnly(13, 45, 0)
+                        },
+                        new
+                        {
+                            ID = 16,
+                            HR_FIN = new TimeOnly(16, 45, 0),
+                            HR_INICIO = new TimeOnly(15, 15, 0)
+                        },
+                        new
+                        {
+                            ID = 17,
+                            HR_FIN = new TimeOnly(17, 30, 0),
+                            HR_INICIO = new TimeOnly(15, 15, 0)
+                        },
+                        new
+                        {
+                            ID = 18,
+                            HR_FIN = new TimeOnly(19, 0, 0),
+                            HR_INICIO = new TimeOnly(17, 30, 0)
+                        },
+                        new
+                        {
+                            ID = 19,
+                            HR_FIN = new TimeOnly(21, 15, 0),
+                            HR_INICIO = new TimeOnly(19, 0, 0)
+                        },
+                        new
+                        {
+                            ID = 20,
+                            HR_FIN = new TimeOnly(20, 30, 0),
+                            HR_INICIO = new TimeOnly(19, 0, 0)
+                        },
+                        new
+                        {
+                            ID = 21,
+                            HR_FIN = new TimeOnly(22, 0, 0),
+                            HR_INICIO = new TimeOnly(19, 45, 0)
+                        },
+                        new
+                        {
+                            ID = 22,
+                            HR_FIN = new TimeOnly(13, 0, 0),
+                            HR_INICIO = new TimeOnly(10, 45, 0)
+                        },
+                        new
+                        {
+                            ID = 23,
+                            HR_FIN = new TimeOnly(15, 15, 0),
+                            HR_INICIO = new TimeOnly(13, 45, 0)
+                        },
+                        new
+                        {
+                            ID = 24,
+                            HR_FIN = new TimeOnly(15, 15, 0),
+                            HR_INICIO = new TimeOnly(13, 0, 0)
+                        },
+                        new
+                        {
+                            ID = 25,
+                            HR_FIN = new TimeOnly(16, 45, 0),
+                            HR_INICIO = new TimeOnly(15, 15, 0)
+                        },
+                        new
+                        {
+                            ID = 26,
+                            HR_FIN = new TimeOnly(17, 30, 0),
+                            HR_INICIO = new TimeOnly(16, 0, 0)
+                        },
+                        new
+                        {
+                            ID = 27,
+                            HR_FIN = new TimeOnly(18, 15, 0),
+                            HR_INICIO = new TimeOnly(16, 45, 0)
+                        },
+                        new
+                        {
+                            ID = 28,
+                            HR_FIN = new TimeOnly(19, 45, 0),
+                            HR_INICIO = new TimeOnly(18, 15, 0)
+                        },
+                        new
+                        {
+                            ID = 29,
+                            HR_FIN = new TimeOnly(21, 15, 0),
+                            HR_INICIO = new TimeOnly(19, 45, 0)
+                        },
+                        new
+                        {
+                            ID = 30,
+                            HR_FIN = new TimeOnly(22, 45, 0),
+                            HR_INICIO = new TimeOnly(21, 15, 0)
+                        },
+                        new
+                        {
+                            ID = 31,
+                            HR_FIN = new TimeOnly(22, 0, 0),
+                            HR_INICIO = new TimeOnly(20, 30, 0)
+                        },
+                        new
+                        {
+                            ID = 32,
+                            HR_FIN = new TimeOnly(13, 45, 0),
+                            HR_INICIO = new TimeOnly(12, 15, 0)
+                        },
+                        new
+                        {
+                            ID = 33,
+                            HR_FIN = new TimeOnly(19, 45, 0),
+                            HR_INICIO = new TimeOnly(18, 26, 0)
+                        },
+                        new
+                        {
+                            ID = 34,
+                            HR_FIN = new TimeOnly(10, 45, 0),
+                            HR_INICIO = new TimeOnly(9, 15, 0)
+                        },
+                        new
+                        {
+                            ID = 35,
+                            HR_FIN = new TimeOnly(11, 30, 0),
+                            HR_INICIO = new TimeOnly(8, 30, 0)
+                        },
+                        new
+                        {
+                            ID = 36,
+                            HR_FIN = new TimeOnly(16, 0, 0),
+                            HR_INICIO = new TimeOnly(13, 0, 0)
+                        },
+                        new
+                        {
+                            ID = 37,
+                            HR_FIN = new TimeOnly(12, 15, 0),
+                            HR_INICIO = new TimeOnly(9, 15, 0)
+                        },
+                        new
+                        {
+                            ID = 38,
+                            HR_FIN = new TimeOnly(21, 15, 0),
+                            HR_INICIO = new TimeOnly(18, 15, 0)
                         });
                 });
 
@@ -807,157 +963,691 @@ namespace Infrastructure.Migrations
                         {
                             ID = 2,
                             DIA_ID = 1,
-                            HORA_ID = 2
+                            HORA_ID = 7
                         },
                         new
                         {
                             ID = 3,
                             DIA_ID = 1,
-                            HORA_ID = 3
+                            HORA_ID = 2
                         },
                         new
                         {
                             ID = 4,
                             DIA_ID = 1,
-                            HORA_ID = 4
+                            HORA_ID = 8
                         },
                         new
                         {
                             ID = 5,
                             DIA_ID = 1,
-                            HORA_ID = 5
+                            HORA_ID = 3
                         },
                         new
                         {
                             ID = 6,
-                            DIA_ID = 3,
-                            HORA_ID = 1
+                            DIA_ID = 1,
+                            HORA_ID = 4
                         },
                         new
                         {
                             ID = 7,
-                            DIA_ID = 3,
-                            HORA_ID = 2
+                            DIA_ID = 1,
+                            HORA_ID = 32
                         },
                         new
                         {
                             ID = 8,
-                            DIA_ID = 3,
-                            HORA_ID = 3
+                            DIA_ID = 1,
+                            HORA_ID = 5
                         },
                         new
                         {
                             ID = 9,
-                            DIA_ID = 3,
-                            HORA_ID = 4
+                            DIA_ID = 1,
+                            HORA_ID = 23
                         },
                         new
                         {
                             ID = 10,
-                            DIA_ID = 3,
-                            HORA_ID = 5
+                            DIA_ID = 1,
+                            HORA_ID = 15
                         },
                         new
                         {
                             ID = 11,
-                            DIA_ID = 5,
-                            HORA_ID = 1
+                            DIA_ID = 1,
+                            HORA_ID = 25
                         },
                         new
                         {
                             ID = 12,
-                            DIA_ID = 5,
-                            HORA_ID = 2
-                        },
-                        new
-                        {
-                            ID = 13,
-                            DIA_ID = 5,
-                            HORA_ID = 3
-                        },
-                        new
-                        {
-                            ID = 14,
-                            DIA_ID = 5,
-                            HORA_ID = 4
-                        },
-                        new
-                        {
-                            ID = 15,
-                            DIA_ID = 5,
-                            HORA_ID = 5
-                        },
-                        new
-                        {
-                            ID = 16,
-                            DIA_ID = 2,
-                            HORA_ID = 7
-                        },
-                        new
-                        {
-                            ID = 17,
-                            DIA_ID = 2,
-                            HORA_ID = 8
-                        },
-                        new
-                        {
-                            ID = 18,
-                            DIA_ID = 2,
-                            HORA_ID = 9
-                        },
-                        new
-                        {
-                            ID = 19,
-                            DIA_ID = 2,
+                            DIA_ID = 1,
                             HORA_ID = 10
                         },
                         new
                         {
+                            ID = 13,
+                            DIA_ID = 1,
+                            HORA_ID = 26
+                        },
+                        new
+                        {
+                            ID = 14,
+                            DIA_ID = 1,
+                            HORA_ID = 27
+                        },
+                        new
+                        {
+                            ID = 15,
+                            DIA_ID = 1,
+                            HORA_ID = 28
+                        },
+                        new
+                        {
+                            ID = 16,
+                            DIA_ID = 1,
+                            HORA_ID = 20
+                        },
+                        new
+                        {
+                            ID = 17,
+                            DIA_ID = 1,
+                            HORA_ID = 21
+                        },
+                        new
+                        {
+                            ID = 18,
+                            DIA_ID = 1,
+                            HORA_ID = 29
+                        },
+                        new
+                        {
+                            ID = 19,
+                            DIA_ID = 1,
+                            HORA_ID = 31
+                        },
+                        new
+                        {
                             ID = 20,
-                            DIA_ID = 2,
-                            HORA_ID = 11
+                            DIA_ID = 1,
+                            HORA_ID = 30
                         },
                         new
                         {
                             ID = 21,
                             DIA_ID = 2,
-                            HORA_ID = 12
+                            HORA_ID = 1
                         },
                         new
                         {
                             ID = 22,
-                            DIA_ID = 4,
+                            DIA_ID = 2,
                             HORA_ID = 7
                         },
                         new
                         {
                             ID = 23,
-                            DIA_ID = 4,
+                            DIA_ID = 2,
                             HORA_ID = 8
                         },
                         new
                         {
                             ID = 24,
-                            DIA_ID = 4,
-                            HORA_ID = 9
+                            DIA_ID = 2,
+                            HORA_ID = 37
                         },
                         new
                         {
                             ID = 25,
+                            DIA_ID = 2,
+                            HORA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 26,
+                            DIA_ID = 2,
+                            HORA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 27,
+                            DIA_ID = 2,
+                            HORA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 28,
+                            DIA_ID = 2,
+                            HORA_ID = 32
+                        },
+                        new
+                        {
+                            ID = 29,
+                            DIA_ID = 2,
+                            HORA_ID = 36
+                        },
+                        new
+                        {
+                            ID = 30,
+                            DIA_ID = 2,
+                            HORA_ID = 24
+                        },
+                        new
+                        {
+                            ID = 31,
+                            DIA_ID = 2,
+                            HORA_ID = 23
+                        },
+                        new
+                        {
+                            ID = 32,
+                            DIA_ID = 2,
+                            HORA_ID = 15
+                        },
+                        new
+                        {
+                            ID = 33,
+                            DIA_ID = 2,
+                            HORA_ID = 25
+                        },
+                        new
+                        {
+                            ID = 34,
+                            DIA_ID = 2,
+                            HORA_ID = 17
+                        },
+                        new
+                        {
+                            ID = 35,
+                            DIA_ID = 2,
+                            HORA_ID = 26
+                        },
+                        new
+                        {
+                            ID = 36,
+                            DIA_ID = 2,
+                            HORA_ID = 10
+                        },
+                        new
+                        {
+                            ID = 37,
+                            DIA_ID = 2,
+                            HORA_ID = 27
+                        },
+                        new
+                        {
+                            ID = 38,
+                            DIA_ID = 2,
+                            HORA_ID = 18
+                        },
+                        new
+                        {
+                            ID = 39,
+                            DIA_ID = 2,
+                            HORA_ID = 28
+                        },
+                        new
+                        {
+                            ID = 40,
+                            DIA_ID = 2,
+                            HORA_ID = 11
+                        },
+                        new
+                        {
+                            ID = 41,
+                            DIA_ID = 2,
+                            HORA_ID = 20
+                        },
+                        new
+                        {
+                            ID = 42,
+                            DIA_ID = 2,
+                            HORA_ID = 19
+                        },
+                        new
+                        {
+                            ID = 43,
+                            DIA_ID = 2,
+                            HORA_ID = 31
+                        },
+                        new
+                        {
+                            ID = 44,
+                            DIA_ID = 2,
+                            HORA_ID = 12
+                        },
+                        new
+                        {
+                            ID = 45,
+                            DIA_ID = 2,
+                            HORA_ID = 30
+                        },
+                        new
+                        {
+                            ID = 46,
+                            DIA_ID = 3,
+                            HORA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 47,
+                            DIA_ID = 3,
+                            HORA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 48,
+                            DIA_ID = 3,
+                            HORA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 49,
+                            DIA_ID = 3,
+                            HORA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 50,
+                            DIA_ID = 3,
+                            HORA_ID = 3
+                        },
+                        new
+                        {
+                            ID = 51,
+                            DIA_ID = 3,
+                            HORA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 52,
+                            DIA_ID = 3,
+                            HORA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 53,
+                            DIA_ID = 3,
+                            HORA_ID = 32
+                        },
+                        new
+                        {
+                            ID = 54,
+                            DIA_ID = 3,
+                            HORA_ID = 23
+                        },
+                        new
+                        {
+                            ID = 55,
+                            DIA_ID = 3,
+                            HORA_ID = 15
+                        },
+                        new
+                        {
+                            ID = 56,
+                            DIA_ID = 3,
+                            HORA_ID = 6
+                        },
+                        new
+                        {
+                            ID = 57,
+                            DIA_ID = 3,
+                            HORA_ID = 25
+                        },
+                        new
+                        {
+                            ID = 58,
+                            DIA_ID = 3,
+                            HORA_ID = 10
+                        },
+                        new
+                        {
+                            ID = 59,
+                            DIA_ID = 3,
+                            HORA_ID = 27
+                        },
+                        new
+                        {
+                            ID = 60,
+                            DIA_ID = 3,
+                            HORA_ID = 26
+                        },
+                        new
+                        {
+                            ID = 61,
+                            DIA_ID = 3,
+                            HORA_ID = 28
+                        },
+                        new
+                        {
+                            ID = 62,
+                            DIA_ID = 3,
+                            HORA_ID = 20
+                        },
+                        new
+                        {
+                            ID = 63,
+                            DIA_ID = 3,
+                            HORA_ID = 29
+                        },
+                        new
+                        {
+                            ID = 64,
+                            DIA_ID = 3,
+                            HORA_ID = 31
+                        },
+                        new
+                        {
+                            ID = 65,
+                            DIA_ID = 3,
+                            HORA_ID = 30
+                        },
+                        new
+                        {
+                            ID = 66,
+                            DIA_ID = 4,
+                            HORA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 67,
+                            DIA_ID = 4,
+                            HORA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 68,
+                            DIA_ID = 4,
+                            HORA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 69,
+                            DIA_ID = 4,
+                            HORA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 70,
+                            DIA_ID = 4,
+                            HORA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 71,
+                            DIA_ID = 4,
+                            HORA_ID = 24
+                        },
+                        new
+                        {
+                            ID = 72,
+                            DIA_ID = 4,
+                            HORA_ID = 15
+                        },
+                        new
+                        {
+                            ID = 73,
+                            DIA_ID = 4,
+                            HORA_ID = 17
+                        },
+                        new
+                        {
+                            ID = 74,
+                            DIA_ID = 4,
+                            HORA_ID = 25
+                        },
+                        new
+                        {
+                            ID = 75,
+                            DIA_ID = 4,
+                            HORA_ID = 26
+                        },
+                        new
+                        {
+                            ID = 76,
                             DIA_ID = 4,
                             HORA_ID = 10
                         },
                         new
                         {
-                            ID = 26,
+                            ID = 77,
+                            DIA_ID = 4,
+                            HORA_ID = 18
+                        },
+                        new
+                        {
+                            ID = 78,
+                            DIA_ID = 4,
+                            HORA_ID = 28
+                        },
+                        new
+                        {
+                            ID = 79,
                             DIA_ID = 4,
                             HORA_ID = 11
                         },
                         new
                         {
-                            ID = 27,
+                            ID = 80,
+                            DIA_ID = 4,
+                            HORA_ID = 20
+                        },
+                        new
+                        {
+                            ID = 81,
+                            DIA_ID = 4,
+                            HORA_ID = 19
+                        },
+                        new
+                        {
+                            ID = 82,
+                            DIA_ID = 4,
+                            HORA_ID = 31
+                        },
+                        new
+                        {
+                            ID = 83,
                             DIA_ID = 4,
                             HORA_ID = 12
+                        },
+                        new
+                        {
+                            ID = 84,
+                            DIA_ID = 4,
+                            HORA_ID = 30
+                        },
+                        new
+                        {
+                            ID = 85,
+                            DIA_ID = 5,
+                            HORA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 86,
+                            DIA_ID = 5,
+                            HORA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 87,
+                            DIA_ID = 5,
+                            HORA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 88,
+                            DIA_ID = 5,
+                            HORA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 89,
+                            DIA_ID = 5,
+                            HORA_ID = 3
+                        },
+                        new
+                        {
+                            ID = 90,
+                            DIA_ID = 5,
+                            HORA_ID = 13
+                        },
+                        new
+                        {
+                            ID = 91,
+                            DIA_ID = 3,
+                            HORA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 92,
+                            DIA_ID = 5,
+                            HORA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 93,
+                            DIA_ID = 5,
+                            HORA_ID = 32
+                        },
+                        new
+                        {
+                            ID = 94,
+                            DIA_ID = 5,
+                            HORA_ID = 15
+                        },
+                        new
+                        {
+                            ID = 95,
+                            DIA_ID = 5,
+                            HORA_ID = 23
+                        },
+                        new
+                        {
+                            ID = 96,
+                            DIA_ID = 5,
+                            HORA_ID = 25
+                        },
+                        new
+                        {
+                            ID = 97,
+                            DIA_ID = 5,
+                            HORA_ID = 26
+                        },
+                        new
+                        {
+                            ID = 98,
+                            DIA_ID = 5,
+                            HORA_ID = 27
+                        },
+                        new
+                        {
+                            ID = 99,
+                            DIA_ID = 5,
+                            HORA_ID = 38
+                        },
+                        new
+                        {
+                            ID = 100,
+                            DIA_ID = 5,
+                            HORA_ID = 28
+                        },
+                        new
+                        {
+                            ID = 101,
+                            DIA_ID = 5,
+                            HORA_ID = 20
+                        },
+                        new
+                        {
+                            ID = 102,
+                            DIA_ID = 5,
+                            HORA_ID = 21
+                        },
+                        new
+                        {
+                            ID = 103,
+                            DIA_ID = 5,
+                            HORA_ID = 29
+                        },
+                        new
+                        {
+                            ID = 104,
+                            DIA_ID = 5,
+                            HORA_ID = 31
+                        },
+                        new
+                        {
+                            ID = 105,
+                            DIA_ID = 5,
+                            HORA_ID = 30
+                        },
+                        new
+                        {
+                            ID = 106,
+                            DIA_ID = 6,
+                            HORA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 107,
+                            DIA_ID = 6,
+                            HORA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 108,
+                            DIA_ID = 6,
+                            HORA_ID = 35
+                        },
+                        new
+                        {
+                            ID = 109,
+                            DIA_ID = 6,
+                            HORA_ID = 34
+                        },
+                        new
+                        {
+                            ID = 110,
+                            DIA_ID = 6,
+                            HORA_ID = 13
+                        },
+                        new
+                        {
+                            ID = 111,
+                            DIA_ID = 6,
+                            HORA_ID = 25
+                        },
+                        new
+                        {
+                            ID = 112,
+                            DIA_ID = 6,
+                            HORA_ID = 28
+                        },
+                        new
+                        {
+                            ID = 113,
+                            DIA_ID = 6,
+                            HORA_ID = 33
+                        },
+                        new
+                        {
+                            ID = 114,
+                            DIA_ID = 3,
+                            HORA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 115,
+                            DIA_ID = 5,
+                            HORA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 116,
+                            DIA_ID = 3,
+                            HORA_ID = 21
                         });
                 });
 
@@ -982,6 +1672,1208 @@ namespace Infrastructure.Migrations
                     b.HasIndex("HORA_DIA_ID");
 
                     b.ToTable("HORA_DIA_HORARIO");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            HORARIO_ID = 1,
+                            HORA_DIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            HORARIO_ID = 1,
+                            HORA_DIA_ID = 47
+                        },
+                        new
+                        {
+                            ID = 3,
+                            HORARIO_ID = 1,
+                            HORA_DIA_ID = 85
+                        },
+                        new
+                        {
+                            ID = 4,
+                            HORARIO_ID = 2,
+                            HORA_DIA_ID = 3
+                        },
+                        new
+                        {
+                            ID = 5,
+                            HORARIO_ID = 2,
+                            HORA_DIA_ID = 48
+                        },
+                        new
+                        {
+                            ID = 6,
+                            HORARIO_ID = 2,
+                            HORA_DIA_ID = 87
+                        },
+                        new
+                        {
+                            ID = 7,
+                            HORARIO_ID = 3,
+                            HORA_DIA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 8,
+                            HORARIO_ID = 3,
+                            HORA_DIA_ID = 50
+                        },
+                        new
+                        {
+                            ID = 9,
+                            HORARIO_ID = 3,
+                            HORA_DIA_ID = 89
+                        },
+                        new
+                        {
+                            ID = 10,
+                            HORARIO_ID = 4,
+                            HORA_DIA_ID = 6
+                        },
+                        new
+                        {
+                            ID = 11,
+                            HORARIO_ID = 4,
+                            HORA_DIA_ID = 51
+                        },
+                        new
+                        {
+                            ID = 12,
+                            HORARIO_ID = 4,
+                            HORA_DIA_ID = 91
+                        },
+                        new
+                        {
+                            ID = 13,
+                            HORARIO_ID = 5,
+                            HORA_DIA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 14,
+                            HORARIO_ID = 5,
+                            HORA_DIA_ID = 53
+                        },
+                        new
+                        {
+                            ID = 15,
+                            HORARIO_ID = 5,
+                            HORA_DIA_ID = 93
+                        },
+                        new
+                        {
+                            ID = 16,
+                            HORARIO_ID = 6,
+                            HORA_DIA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 17,
+                            HORARIO_ID = 6,
+                            HORA_DIA_ID = 54
+                        },
+                        new
+                        {
+                            ID = 18,
+                            HORARIO_ID = 6,
+                            HORA_DIA_ID = 95
+                        },
+                        new
+                        {
+                            ID = 19,
+                            HORARIO_ID = 7,
+                            HORA_DIA_ID = 11
+                        },
+                        new
+                        {
+                            ID = 20,
+                            HORARIO_ID = 7,
+                            HORA_DIA_ID = 57
+                        },
+                        new
+                        {
+                            ID = 21,
+                            HORARIO_ID = 7,
+                            HORA_DIA_ID = 96
+                        },
+                        new
+                        {
+                            ID = 22,
+                            HORARIO_ID = 8,
+                            HORA_DIA_ID = 13
+                        },
+                        new
+                        {
+                            ID = 23,
+                            HORARIO_ID = 8,
+                            HORA_DIA_ID = 60
+                        },
+                        new
+                        {
+                            ID = 24,
+                            HORARIO_ID = 8,
+                            HORA_DIA_ID = 97
+                        },
+                        new
+                        {
+                            ID = 25,
+                            HORARIO_ID = 9,
+                            HORA_DIA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 26,
+                            HORARIO_ID = 9,
+                            HORA_DIA_ID = 59
+                        },
+                        new
+                        {
+                            ID = 27,
+                            HORARIO_ID = 9,
+                            HORA_DIA_ID = 98
+                        },
+                        new
+                        {
+                            ID = 28,
+                            HORARIO_ID = 10,
+                            HORA_DIA_ID = 15
+                        },
+                        new
+                        {
+                            ID = 29,
+                            HORARIO_ID = 10,
+                            HORA_DIA_ID = 61
+                        },
+                        new
+                        {
+                            ID = 30,
+                            HORARIO_ID = 10,
+                            HORA_DIA_ID = 100
+                        },
+                        new
+                        {
+                            ID = 31,
+                            HORARIO_ID = 11,
+                            HORA_DIA_ID = 16
+                        },
+                        new
+                        {
+                            ID = 32,
+                            HORARIO_ID = 11,
+                            HORA_DIA_ID = 62
+                        },
+                        new
+                        {
+                            ID = 33,
+                            HORARIO_ID = 11,
+                            HORA_DIA_ID = 101
+                        },
+                        new
+                        {
+                            ID = 34,
+                            HORARIO_ID = 12,
+                            HORA_DIA_ID = 18
+                        },
+                        new
+                        {
+                            ID = 35,
+                            HORARIO_ID = 12,
+                            HORA_DIA_ID = 63
+                        },
+                        new
+                        {
+                            ID = 36,
+                            HORARIO_ID = 12,
+                            HORA_DIA_ID = 103
+                        },
+                        new
+                        {
+                            ID = 37,
+                            HORARIO_ID = 13,
+                            HORA_DIA_ID = 20
+                        },
+                        new
+                        {
+                            ID = 38,
+                            HORARIO_ID = 13,
+                            HORA_DIA_ID = 65
+                        },
+                        new
+                        {
+                            ID = 39,
+                            HORARIO_ID = 13,
+                            HORA_DIA_ID = 105
+                        },
+                        new
+                        {
+                            ID = 40,
+                            HORARIO_ID = 14,
+                            HORA_DIA_ID = 19
+                        },
+                        new
+                        {
+                            ID = 41,
+                            HORARIO_ID = 14,
+                            HORA_DIA_ID = 64
+                        },
+                        new
+                        {
+                            ID = 42,
+                            HORARIO_ID = 14,
+                            HORA_DIA_ID = 104
+                        },
+                        new
+                        {
+                            ID = 43,
+                            HORARIO_ID = 15,
+                            HORA_DIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 44,
+                            HORARIO_ID = 15,
+                            HORA_DIA_ID = 47
+                        },
+                        new
+                        {
+                            ID = 45,
+                            HORARIO_ID = 15,
+                            HORA_DIA_ID = 85
+                        },
+                        new
+                        {
+                            ID = 46,
+                            HORARIO_ID = 15,
+                            HORA_DIA_ID = 106
+                        },
+                        new
+                        {
+                            ID = 47,
+                            HORARIO_ID = 16,
+                            HORA_DIA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 48,
+                            HORARIO_ID = 16,
+                            HORA_DIA_ID = 50
+                        },
+                        new
+                        {
+                            ID = 49,
+                            HORARIO_ID = 16,
+                            HORA_DIA_ID = 89
+                        },
+                        new
+                        {
+                            ID = 50,
+                            HORARIO_ID = 16,
+                            HORA_DIA_ID = 112
+                        },
+                        new
+                        {
+                            ID = 51,
+                            HORARIO_ID = 17,
+                            HORA_DIA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 52,
+                            HORARIO_ID = 17,
+                            HORA_DIA_ID = 50
+                        },
+                        new
+                        {
+                            ID = 53,
+                            HORARIO_ID = 17,
+                            HORA_DIA_ID = 89
+                        },
+                        new
+                        {
+                            ID = 54,
+                            HORARIO_ID = 17,
+                            HORA_DIA_ID = 113
+                        },
+                        new
+                        {
+                            ID = 55,
+                            HORARIO_ID = 18,
+                            HORA_DIA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 56,
+                            HORARIO_ID = 18,
+                            HORA_DIA_ID = 59
+                        },
+                        new
+                        {
+                            ID = 57,
+                            HORARIO_ID = 18,
+                            HORA_DIA_ID = 98
+                        },
+                        new
+                        {
+                            ID = 58,
+                            HORARIO_ID = 18,
+                            HORA_DIA_ID = 107
+                        },
+                        new
+                        {
+                            ID = 59,
+                            HORARIO_ID = 19,
+                            HORA_DIA_ID = 18
+                        },
+                        new
+                        {
+                            ID = 60,
+                            HORARIO_ID = 19,
+                            HORA_DIA_ID = 63
+                        },
+                        new
+                        {
+                            ID = 61,
+                            HORARIO_ID = 19,
+                            HORA_DIA_ID = 103
+                        },
+                        new
+                        {
+                            ID = 62,
+                            HORARIO_ID = 19,
+                            HORA_DIA_ID = 109
+                        },
+                        new
+                        {
+                            ID = 63,
+                            HORARIO_ID = 20,
+                            HORA_DIA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 64,
+                            HORARIO_ID = 20,
+                            HORA_DIA_ID = 54
+                        },
+                        new
+                        {
+                            ID = 65,
+                            HORARIO_ID = 20,
+                            HORA_DIA_ID = 95
+                        },
+                        new
+                        {
+                            ID = 66,
+                            HORARIO_ID = 20,
+                            HORA_DIA_ID = 98
+                        },
+                        new
+                        {
+                            ID = 67,
+                            HORARIO_ID = 21,
+                            HORA_DIA_ID = 11
+                        },
+                        new
+                        {
+                            ID = 68,
+                            HORARIO_ID = 21,
+                            HORA_DIA_ID = 57
+                        },
+                        new
+                        {
+                            ID = 69,
+                            HORARIO_ID = 21,
+                            HORA_DIA_ID = 96
+                        },
+                        new
+                        {
+                            ID = 70,
+                            HORARIO_ID = 21,
+                            HORA_DIA_ID = 105
+                        },
+                        new
+                        {
+                            ID = 71,
+                            HORARIO_ID = 22,
+                            HORA_DIA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 72,
+                            HORARIO_ID = 22,
+                            HORA_DIA_ID = 59
+                        },
+                        new
+                        {
+                            ID = 73,
+                            HORARIO_ID = 22,
+                            HORA_DIA_ID = 98
+                        },
+                        new
+                        {
+                            ID = 74,
+                            HORARIO_ID = 22,
+                            HORA_DIA_ID = 100
+                        },
+                        new
+                        {
+                            ID = 75,
+                            HORARIO_ID = 23,
+                            HORA_DIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 76,
+                            HORARIO_ID = 23,
+                            HORA_DIA_ID = 46
+                        },
+                        new
+                        {
+                            ID = 77,
+                            HORARIO_ID = 24,
+                            HORA_DIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 78,
+                            HORARIO_ID = 24,
+                            HORA_DIA_ID = 49
+                        },
+                        new
+                        {
+                            ID = 79,
+                            HORARIO_ID = 25,
+                            HORA_DIA_ID = 10
+                        },
+                        new
+                        {
+                            ID = 80,
+                            HORARIO_ID = 25,
+                            HORA_DIA_ID = 55
+                        },
+                        new
+                        {
+                            ID = 81,
+                            HORARIO_ID = 26,
+                            HORA_DIA_ID = 12
+                        },
+                        new
+                        {
+                            ID = 82,
+                            HORARIO_ID = 26,
+                            HORA_DIA_ID = 58
+                        },
+                        new
+                        {
+                            ID = 83,
+                            HORARIO_ID = 27,
+                            HORA_DIA_ID = 16
+                        },
+                        new
+                        {
+                            ID = 84,
+                            HORARIO_ID = 27,
+                            HORA_DIA_ID = 62
+                        },
+                        new
+                        {
+                            ID = 85,
+                            HORARIO_ID = 28,
+                            HORA_DIA_ID = 17
+                        },
+                        new
+                        {
+                            ID = 86,
+                            HORARIO_ID = 28,
+                            HORA_DIA_ID = 116
+                        },
+                        new
+                        {
+                            ID = 87,
+                            HORARIO_ID = 29,
+                            HORA_DIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 88,
+                            HORARIO_ID = 29,
+                            HORA_DIA_ID = 46
+                        },
+                        new
+                        {
+                            ID = 89,
+                            HORARIO_ID = 29,
+                            HORA_DIA_ID = 56
+                        },
+                        new
+                        {
+                            ID = 90,
+                            HORARIO_ID = 30,
+                            HORA_DIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 91,
+                            HORARIO_ID = 30,
+                            HORA_DIA_ID = 67
+                        },
+                        new
+                        {
+                            ID = 92,
+                            HORARIO_ID = 31,
+                            HORA_DIA_ID = 10
+                        },
+                        new
+                        {
+                            ID = 93,
+                            HORARIO_ID = 31,
+                            HORA_DIA_ID = 72
+                        },
+                        new
+                        {
+                            ID = 94,
+                            HORARIO_ID = 31,
+                            HORA_DIA_ID = 96
+                        },
+                        new
+                        {
+                            ID = 95,
+                            HORARIO_ID = 32,
+                            HORA_DIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 96,
+                            HORARIO_ID = 32,
+                            HORA_DIA_ID = 86
+                        },
+                        new
+                        {
+                            ID = 97,
+                            HORARIO_ID = 32,
+                            HORA_DIA_ID = 21
+                        },
+                        new
+                        {
+                            ID = 98,
+                            HORARIO_ID = 33,
+                            HORA_DIA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 99,
+                            HORARIO_ID = 33,
+                            HORA_DIA_ID = 36
+                        },
+                        new
+                        {
+                            ID = 100,
+                            HORARIO_ID = 33,
+                            HORA_DIA_ID = 76
+                        },
+                        new
+                        {
+                            ID = 101,
+                            HORARIO_ID = 34,
+                            HORA_DIA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 102,
+                            HORARIO_ID = 34,
+                            HORA_DIA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 103,
+                            HORARIO_ID = 34,
+                            HORA_DIA_ID = 67
+                        },
+                        new
+                        {
+                            ID = 104,
+                            HORARIO_ID = 35,
+                            HORA_DIA_ID = 12
+                        },
+                        new
+                        {
+                            ID = 105,
+                            HORARIO_ID = 35,
+                            HORA_DIA_ID = 21
+                        },
+                        new
+                        {
+                            ID = 106,
+                            HORARIO_ID = 35,
+                            HORA_DIA_ID = 94
+                        },
+                        new
+                        {
+                            ID = 107,
+                            HORARIO_ID = 36,
+                            HORA_DIA_ID = 24
+                        },
+                        new
+                        {
+                            ID = 108,
+                            HORARIO_ID = 37,
+                            HORA_DIA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 109,
+                            HORARIO_ID = 37,
+                            HORA_DIA_ID = 67
+                        },
+                        new
+                        {
+                            ID = 110,
+                            HORARIO_ID = 37,
+                            HORA_DIA_ID = 28
+                        },
+                        new
+                        {
+                            ID = 111,
+                            HORARIO_ID = 38,
+                            HORA_DIA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 112,
+                            HORARIO_ID = 38,
+                            HORA_DIA_ID = 67
+                        },
+                        new
+                        {
+                            ID = 113,
+                            HORARIO_ID = 38,
+                            HORA_DIA_ID = 26
+                        },
+                        new
+                        {
+                            ID = 114,
+                            HORARIO_ID = 39,
+                            HORA_DIA_ID = 40
+                        },
+                        new
+                        {
+                            ID = 115,
+                            HORARIO_ID = 39,
+                            HORA_DIA_ID = 79
+                        },
+                        new
+                        {
+                            ID = 116,
+                            HORARIO_ID = 39,
+                            HORA_DIA_ID = 37
+                        },
+                        new
+                        {
+                            ID = 117,
+                            HORARIO_ID = 40,
+                            HORA_DIA_ID = 40
+                        },
+                        new
+                        {
+                            ID = 118,
+                            HORARIO_ID = 40,
+                            HORA_DIA_ID = 79
+                        },
+                        new
+                        {
+                            ID = 119,
+                            HORARIO_ID = 40,
+                            HORA_DIA_ID = 64
+                        },
+                        new
+                        {
+                            ID = 120,
+                            HORARIO_ID = 41,
+                            HORA_DIA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 121,
+                            HORARIO_ID = 41,
+                            HORA_DIA_ID = 67
+                        },
+                        new
+                        {
+                            ID = 122,
+                            HORARIO_ID = 41,
+                            HORA_DIA_ID = 89
+                        },
+                        new
+                        {
+                            ID = 123,
+                            HORARIO_ID = 42,
+                            HORA_DIA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 124,
+                            HORARIO_ID = 42,
+                            HORA_DIA_ID = 67
+                        },
+                        new
+                        {
+                            ID = 125,
+                            HORARIO_ID = 42,
+                            HORA_DIA_ID = 100
+                        },
+                        new
+                        {
+                            ID = 126,
+                            HORARIO_ID = 43,
+                            HORA_DIA_ID = 32
+                        },
+                        new
+                        {
+                            ID = 127,
+                            HORARIO_ID = 43,
+                            HORA_DIA_ID = 72
+                        },
+                        new
+                        {
+                            ID = 128,
+                            HORARIO_ID = 43,
+                            HORA_DIA_ID = 96
+                        },
+                        new
+                        {
+                            ID = 129,
+                            HORARIO_ID = 44,
+                            HORA_DIA_ID = 36
+                        },
+                        new
+                        {
+                            ID = 130,
+                            HORARIO_ID = 44,
+                            HORA_DIA_ID = 76
+                        },
+                        new
+                        {
+                            ID = 131,
+                            HORARIO_ID = 44,
+                            HORA_DIA_ID = 97
+                        },
+                        new
+                        {
+                            ID = 132,
+                            HORARIO_ID = 45,
+                            HORA_DIA_ID = 31
+                        },
+                        new
+                        {
+                            ID = 133,
+                            HORARIO_ID = 45,
+                            HORA_DIA_ID = 58
+                        },
+                        new
+                        {
+                            ID = 134,
+                            HORARIO_ID = 45,
+                            HORA_DIA_ID = 94
+                        },
+                        new
+                        {
+                            ID = 135,
+                            HORARIO_ID = 46,
+                            HORA_DIA_ID = 11
+                        },
+                        new
+                        {
+                            ID = 136,
+                            HORARIO_ID = 46,
+                            HORA_DIA_ID = 33
+                        },
+                        new
+                        {
+                            ID = 137,
+                            HORARIO_ID = 46,
+                            HORA_DIA_ID = 57
+                        },
+                        new
+                        {
+                            ID = 138,
+                            HORARIO_ID = 46,
+                            HORA_DIA_ID = 37
+                        },
+                        new
+                        {
+                            ID = 139,
+                            HORARIO_ID = 47,
+                            HORA_DIA_ID = 49
+                        },
+                        new
+                        {
+                            ID = 140,
+                            HORARIO_ID = 47,
+                            HORA_DIA_ID = 86
+                        },
+                        new
+                        {
+                            ID = 141,
+                            HORARIO_ID = 48,
+                            HORA_DIA_ID = 52
+                        },
+                        new
+                        {
+                            ID = 142,
+                            HORARIO_ID = 48,
+                            HORA_DIA_ID = 90
+                        },
+                        new
+                        {
+                            ID = 143,
+                            HORARIO_ID = 49,
+                            HORA_DIA_ID = 50
+                        },
+                        new
+                        {
+                            ID = 144,
+                            HORARIO_ID = 49,
+                            HORA_DIA_ID = 96
+                        },
+                        new
+                        {
+                            ID = 145,
+                            HORARIO_ID = 49,
+                            HORA_DIA_ID = 111
+                        },
+                        new
+                        {
+                            ID = 146,
+                            HORARIO_ID = 50,
+                            HORA_DIA_ID = 114
+                        },
+                        new
+                        {
+                            ID = 147,
+                            HORARIO_ID = 50,
+                            HORA_DIA_ID = 115
+                        },
+                        new
+                        {
+                            ID = 148,
+                            HORARIO_ID = 51,
+                            HORA_DIA_ID = 64
+                        },
+                        new
+                        {
+                            ID = 149,
+                            HORARIO_ID = 51,
+                            HORA_DIA_ID = 99
+                        },
+                        new
+                        {
+                            ID = 150,
+                            HORARIO_ID = 52,
+                            HORA_DIA_ID = 55
+                        },
+                        new
+                        {
+                            ID = 151,
+                            HORARIO_ID = 52,
+                            HORA_DIA_ID = 110
+                        },
+                        new
+                        {
+                            ID = 152,
+                            HORARIO_ID = 53,
+                            HORA_DIA_ID = 48
+                        },
+                        new
+                        {
+                            ID = 153,
+                            HORARIO_ID = 53,
+                            HORA_DIA_ID = 67
+                        },
+                        new
+                        {
+                            ID = 154,
+                            HORARIO_ID = 53,
+                            HORA_DIA_ID = 88
+                        },
+                        new
+                        {
+                            ID = 155,
+                            HORARIO_ID = 54,
+                            HORA_DIA_ID = 70
+                        },
+                        new
+                        {
+                            ID = 156,
+                            HORARIO_ID = 54,
+                            HORA_DIA_ID = 92
+                        },
+                        new
+                        {
+                            ID = 157,
+                            HORARIO_ID = 55,
+                            HORA_DIA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 158,
+                            HORARIO_ID = 55,
+                            HORA_DIA_ID = 86
+                        },
+                        new
+                        {
+                            ID = 159,
+                            HORARIO_ID = 56,
+                            HORA_DIA_ID = 29
+                        },
+                        new
+                        {
+                            ID = 160,
+                            HORARIO_ID = 56,
+                            HORA_DIA_ID = 95
+                        },
+                        new
+                        {
+                            ID = 161,
+                            HORARIO_ID = 57,
+                            HORA_DIA_ID = 21
+                        },
+                        new
+                        {
+                            ID = 162,
+                            HORARIO_ID = 57,
+                            HORA_DIA_ID = 66
+                        },
+                        new
+                        {
+                            ID = 163,
+                            HORARIO_ID = 57,
+                            HORA_DIA_ID = 106
+                        },
+                        new
+                        {
+                            ID = 164,
+                            HORARIO_ID = 58,
+                            HORA_DIA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 165,
+                            HORARIO_ID = 58,
+                            HORA_DIA_ID = 86
+                        },
+                        new
+                        {
+                            ID = 166,
+                            HORARIO_ID = 59,
+                            HORA_DIA_ID = 21
+                        },
+                        new
+                        {
+                            ID = 167,
+                            HORARIO_ID = 59,
+                            HORA_DIA_ID = 66
+                        },
+                        new
+                        {
+                            ID = 168,
+                            HORARIO_ID = 60,
+                            HORA_DIA_ID = 23
+                        },
+                        new
+                        {
+                            ID = 169,
+                            HORARIO_ID = 60,
+                            HORA_DIA_ID = 68
+                        },
+                        new
+                        {
+                            ID = 170,
+                            HORARIO_ID = 61,
+                            HORA_DIA_ID = 27
+                        },
+                        new
+                        {
+                            ID = 171,
+                            HORARIO_ID = 61,
+                            HORA_DIA_ID = 70
+                        },
+                        new
+                        {
+                            ID = 172,
+                            HORARIO_ID = 72,
+                            HORA_DIA_ID = 31
+                        },
+                        new
+                        {
+                            ID = 173,
+                            HORARIO_ID = 72,
+                            HORA_DIA_ID = 71
+                        },
+                        new
+                        {
+                            ID = 174,
+                            HORARIO_ID = 73,
+                            HORA_DIA_ID = 32
+                        },
+                        new
+                        {
+                            ID = 175,
+                            HORARIO_ID = 73,
+                            HORA_DIA_ID = 72
+                        },
+                        new
+                        {
+                            ID = 176,
+                            HORARIO_ID = 74,
+                            HORA_DIA_ID = 33
+                        },
+                        new
+                        {
+                            ID = 177,
+                            HORARIO_ID = 74,
+                            HORA_DIA_ID = 74
+                        },
+                        new
+                        {
+                            ID = 178,
+                            HORARIO_ID = 75,
+                            HORA_DIA_ID = 34
+                        },
+                        new
+                        {
+                            ID = 179,
+                            HORARIO_ID = 75,
+                            HORA_DIA_ID = 73
+                        },
+                        new
+                        {
+                            ID = 180,
+                            HORARIO_ID = 76,
+                            HORA_DIA_ID = 36
+                        },
+                        new
+                        {
+                            ID = 181,
+                            HORARIO_ID = 76,
+                            HORA_DIA_ID = 76
+                        },
+                        new
+                        {
+                            ID = 182,
+                            HORARIO_ID = 77,
+                            HORA_DIA_ID = 35
+                        },
+                        new
+                        {
+                            ID = 183,
+                            HORARIO_ID = 77,
+                            HORA_DIA_ID = 75
+                        },
+                        new
+                        {
+                            ID = 184,
+                            HORARIO_ID = 78,
+                            HORA_DIA_ID = 38
+                        },
+                        new
+                        {
+                            ID = 185,
+                            HORARIO_ID = 78,
+                            HORA_DIA_ID = 77
+                        },
+                        new
+                        {
+                            ID = 186,
+                            HORARIO_ID = 79,
+                            HORA_DIA_ID = 40
+                        },
+                        new
+                        {
+                            ID = 187,
+                            HORARIO_ID = 79,
+                            HORA_DIA_ID = 79
+                        },
+                        new
+                        {
+                            ID = 188,
+                            HORARIO_ID = 80,
+                            HORA_DIA_ID = 39
+                        },
+                        new
+                        {
+                            ID = 189,
+                            HORARIO_ID = 80,
+                            HORA_DIA_ID = 78
+                        },
+                        new
+                        {
+                            ID = 190,
+                            HORARIO_ID = 81,
+                            HORA_DIA_ID = 41
+                        },
+                        new
+                        {
+                            ID = 191,
+                            HORARIO_ID = 81,
+                            HORA_DIA_ID = 80
+                        },
+                        new
+                        {
+                            ID = 192,
+                            HORARIO_ID = 82,
+                            HORA_DIA_ID = 42
+                        },
+                        new
+                        {
+                            ID = 193,
+                            HORARIO_ID = 82,
+                            HORA_DIA_ID = 81
+                        },
+                        new
+                        {
+                            ID = 194,
+                            HORARIO_ID = 83,
+                            HORA_DIA_ID = 43
+                        },
+                        new
+                        {
+                            ID = 195,
+                            HORARIO_ID = 83,
+                            HORA_DIA_ID = 82
+                        },
+                        new
+                        {
+                            ID = 196,
+                            HORARIO_ID = 84,
+                            HORA_DIA_ID = 44
+                        },
+                        new
+                        {
+                            ID = 197,
+                            HORARIO_ID = 84,
+                            HORA_DIA_ID = 83
+                        },
+                        new
+                        {
+                            ID = 198,
+                            HORARIO_ID = 85,
+                            HORA_DIA_ID = 45
+                        },
+                        new
+                        {
+                            ID = 199,
+                            HORARIO_ID = 85,
+                            HORA_DIA_ID = 84
+                        },
+                        new
+                        {
+                            ID = 200,
+                            HORARIO_ID = 86,
+                            HORA_DIA_ID = 108
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Horario", b =>
@@ -995,6 +2887,356 @@ namespace Infrastructure.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("HORARIO");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1
+                        },
+                        new
+                        {
+                            ID = 2
+                        },
+                        new
+                        {
+                            ID = 3
+                        },
+                        new
+                        {
+                            ID = 4
+                        },
+                        new
+                        {
+                            ID = 5
+                        },
+                        new
+                        {
+                            ID = 6
+                        },
+                        new
+                        {
+                            ID = 7
+                        },
+                        new
+                        {
+                            ID = 8
+                        },
+                        new
+                        {
+                            ID = 9
+                        },
+                        new
+                        {
+                            ID = 10
+                        },
+                        new
+                        {
+                            ID = 11
+                        },
+                        new
+                        {
+                            ID = 12
+                        },
+                        new
+                        {
+                            ID = 13
+                        },
+                        new
+                        {
+                            ID = 14
+                        },
+                        new
+                        {
+                            ID = 15
+                        },
+                        new
+                        {
+                            ID = 16
+                        },
+                        new
+                        {
+                            ID = 17
+                        },
+                        new
+                        {
+                            ID = 18
+                        },
+                        new
+                        {
+                            ID = 19
+                        },
+                        new
+                        {
+                            ID = 20
+                        },
+                        new
+                        {
+                            ID = 21
+                        },
+                        new
+                        {
+                            ID = 22
+                        },
+                        new
+                        {
+                            ID = 23
+                        },
+                        new
+                        {
+                            ID = 24
+                        },
+                        new
+                        {
+                            ID = 25
+                        },
+                        new
+                        {
+                            ID = 26
+                        },
+                        new
+                        {
+                            ID = 27
+                        },
+                        new
+                        {
+                            ID = 28
+                        },
+                        new
+                        {
+                            ID = 29
+                        },
+                        new
+                        {
+                            ID = 30
+                        },
+                        new
+                        {
+                            ID = 31
+                        },
+                        new
+                        {
+                            ID = 32
+                        },
+                        new
+                        {
+                            ID = 33
+                        },
+                        new
+                        {
+                            ID = 34
+                        },
+                        new
+                        {
+                            ID = 35
+                        },
+                        new
+                        {
+                            ID = 36
+                        },
+                        new
+                        {
+                            ID = 37
+                        },
+                        new
+                        {
+                            ID = 38
+                        },
+                        new
+                        {
+                            ID = 39
+                        },
+                        new
+                        {
+                            ID = 40
+                        },
+                        new
+                        {
+                            ID = 41
+                        },
+                        new
+                        {
+                            ID = 42
+                        },
+                        new
+                        {
+                            ID = 43
+                        },
+                        new
+                        {
+                            ID = 44
+                        },
+                        new
+                        {
+                            ID = 45
+                        },
+                        new
+                        {
+                            ID = 46
+                        },
+                        new
+                        {
+                            ID = 47
+                        },
+                        new
+                        {
+                            ID = 48
+                        },
+                        new
+                        {
+                            ID = 49
+                        },
+                        new
+                        {
+                            ID = 50
+                        },
+                        new
+                        {
+                            ID = 51
+                        },
+                        new
+                        {
+                            ID = 52
+                        },
+                        new
+                        {
+                            ID = 53
+                        },
+                        new
+                        {
+                            ID = 54
+                        },
+                        new
+                        {
+                            ID = 55
+                        },
+                        new
+                        {
+                            ID = 56
+                        },
+                        new
+                        {
+                            ID = 57
+                        },
+                        new
+                        {
+                            ID = 58
+                        },
+                        new
+                        {
+                            ID = 59
+                        },
+                        new
+                        {
+                            ID = 60
+                        },
+                        new
+                        {
+                            ID = 61
+                        },
+                        new
+                        {
+                            ID = 62
+                        },
+                        new
+                        {
+                            ID = 63
+                        },
+                        new
+                        {
+                            ID = 64
+                        },
+                        new
+                        {
+                            ID = 65
+                        },
+                        new
+                        {
+                            ID = 66
+                        },
+                        new
+                        {
+                            ID = 67
+                        },
+                        new
+                        {
+                            ID = 68
+                        },
+                        new
+                        {
+                            ID = 69
+                        },
+                        new
+                        {
+                            ID = 70
+                        },
+                        new
+                        {
+                            ID = 71
+                        },
+                        new
+                        {
+                            ID = 72
+                        },
+                        new
+                        {
+                            ID = 73
+                        },
+                        new
+                        {
+                            ID = 74
+                        },
+                        new
+                        {
+                            ID = 75
+                        },
+                        new
+                        {
+                            ID = 76
+                        },
+                        new
+                        {
+                            ID = 77
+                        },
+                        new
+                        {
+                            ID = 78
+                        },
+                        new
+                        {
+                            ID = 79
+                        },
+                        new
+                        {
+                            ID = 80
+                        },
+                        new
+                        {
+                            ID = 81
+                        },
+                        new
+                        {
+                            ID = 82
+                        },
+                        new
+                        {
+                            ID = 83
+                        },
+                        new
+                        {
+                            ID = 84
+                        },
+                        new
+                        {
+                            ID = 85
+                        },
+                        new
+                        {
+                            ID = 86
+                        },
+                        new
+                        {
+                            ID = 87
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.HorarioMateria", b =>
