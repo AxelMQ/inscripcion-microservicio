@@ -4490,6 +4490,1148 @@ namespace Infrastructure.Migrations
                     b.HasIndex("MateriaPlanEstudioID");
 
                     b.ToTable("HORARIO_MATERIA");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 1,
+                            HORARIO_ID = 10,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 2,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 2,
+                            HORARIO_ID = 1,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 3,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 3,
+                            HORARIO_ID = 1,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 4,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 4,
+                            HORARIO_ID = 2,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 5,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 5,
+                            HORARIO_ID = 3,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 6,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 6,
+                            HORARIO_ID = 1,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 7,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 7,
+                            HORARIO_ID = 4,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 8,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 8,
+                            HORARIO_ID = 3,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 9,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 9,
+                            HORARIO_ID = 23,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 10,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 10,
+                            HORARIO_ID = 58,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 11,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 11,
+                            HORARIO_ID = 1,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 12,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 12,
+                            HORARIO_ID = 2,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 13,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 13,
+                            HORARIO_ID = 76,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 14,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 14,
+                            HORARIO_ID = 1,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 15,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 15,
+                            HORARIO_ID = 79,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 16,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 16,
+                            HORARIO_ID = 1,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 17,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 17,
+                            HORARIO_ID = 9,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 18,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 18,
+                            HORARIO_ID = 2,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 19,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 19,
+                            HORARIO_ID = 58,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 20,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 20,
+                            HORARIO_ID = 50,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 21,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 21,
+                            HORARIO_ID = 79,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 22,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 22,
+                            HORARIO_ID = 79,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 23,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 23,
+                            HORARIO_ID = 60,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 24,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 24,
+                            HORARIO_ID = 25,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 25,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 25,
+                            HORARIO_ID = 1,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 26,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 26,
+                            HORARIO_ID = 30,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 27,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 27,
+                            HORARIO_ID = 76,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 28,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 28,
+                            HORARIO_ID = 10,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 29,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 29,
+                            HORARIO_ID = 55,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 30,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 30,
+                            HORARIO_ID = 60,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 31,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 31,
+                            HORARIO_ID = 60,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 32,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 32,
+                            HORARIO_ID = 76,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 33,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 33,
+                            HORARIO_ID = 73,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 34,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 34,
+                            HORARIO_ID = 12,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 35,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 35,
+                            HORARIO_ID = 1,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 36,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 36,
+                            HORARIO_ID = 14,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 37,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 37,
+                            HORARIO_ID = 57,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 38,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 38,
+                            HORARIO_ID = 5,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 39,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 39,
+                            HORARIO_ID = 82,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 40,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 40,
+                            HORARIO_ID = 47,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 41,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 41,
+                            HORARIO_ID = 60,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 42,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 42,
+                            HORARIO_ID = 76,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 43,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 43,
+                            HORARIO_ID = 4,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 44,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 44,
+                            HORARIO_ID = 2,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 45,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 45,
+                            HORARIO_ID = 8,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 46,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 46,
+                            HORARIO_ID = 74,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 47,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 47,
+                            HORARIO_ID = 78,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 48,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 48,
+                            HORARIO_ID = 77,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 49,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 49,
+                            HORARIO_ID = 59,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 50,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 50,
+                            HORARIO_ID = 9,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 51,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 51,
+                            HORARIO_ID = 4,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 52,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 52,
+                            HORARIO_ID = 60,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 53,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 53,
+                            HORARIO_ID = 79,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 54,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 54,
+                            HORARIO_ID = 84,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 55,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 55,
+                            HORARIO_ID = 84,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 56,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 56,
+                            HORARIO_ID = 48,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 57,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 57,
+                            HORARIO_ID = 75,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 58,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 58,
+                            HORARIO_ID = 58,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 59,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 59,
+                            HORARIO_ID = 84,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 60,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 60,
+                            HORARIO_ID = 61,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 61,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 61,
+                            HORARIO_ID = 58,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 62,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 62,
+                            HORARIO_ID = 76,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 63,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 63,
+                            HORARIO_ID = 84,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 64,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 64,
+                            HORARIO_ID = 79,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 65,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 65,
+                            HORARIO_ID = 1,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 66,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 66,
+                            HORARIO_ID = 58,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 67,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 67,
+                            HORARIO_ID = 58,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 68,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 68,
+                            HORARIO_ID = 2,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 69,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 69,
+                            HORARIO_ID = 6,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 70,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 70,
+                            HORARIO_ID = 3,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 71,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 71,
+                            HORARIO_ID = 2,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 72,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 72,
+                            HORARIO_ID = 7,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 73,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 73,
+                            HORARIO_ID = 9,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 74,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 74,
+                            HORARIO_ID = 2,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 75,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 75,
+                            HORARIO_ID = 61,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 76,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 76,
+                            HORARIO_ID = 58,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 77,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 77,
+                            HORARIO_ID = 15,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 78,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 78,
+                            HORARIO_ID = 33,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 79,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 79,
+                            HORARIO_ID = 34,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 80,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 80,
+                            HORARIO_ID = 41,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 81,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 81,
+                            HORARIO_ID = 44,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 82,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 82,
+                            HORARIO_ID = 46,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 83,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 83,
+                            HORARIO_ID = 29,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 84,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 84,
+                            HORARIO_ID = 37,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 85,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 85,
+                            HORARIO_ID = 38,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 86,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 86,
+                            HORARIO_ID = 22,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 87,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 87,
+                            HORARIO_ID = 18,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 88,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 88,
+                            HORARIO_ID = 39,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 89,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 89,
+                            HORARIO_ID = 16,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 90,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 90,
+                            HORARIO_ID = 42,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 91,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 91,
+                            HORARIO_ID = 19,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 92,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 92,
+                            HORARIO_ID = 40,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 93,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 93,
+                            HORARIO_ID = 41,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 94,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 94,
+                            HORARIO_ID = 43,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        },
+                        new
+                        {
+                            ID = 95,
+                            CUPOS_DISPONIBLES = (short)30,
+                            CUPOS_TOTAL = (short)100,
+                            DOCENTE_ID = 1,
+                            GESTION_ID = 1,
+                            GRUPO_MATERIA_ID = 95,
+                            HORARIO_ID = 20,
+                            MODULO_ID = 1,
+                            NRO_AULA = 12
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.HorarioMateriaInscripcion", b =>
