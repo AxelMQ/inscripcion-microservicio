@@ -1,0 +1,67 @@
+using Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace Infrastructure.Data.Seeders;
+
+public class DocenteSeeder : IEntityTypeConfiguration<Docente>
+{
+    public void Configure(EntityTypeBuilder<Docente> builder)
+    {
+        builder.HasData(
+            new Docente { ID = 1, NOMBRE = "FLORES GUZMAN VALENTIN VICTOR", TELEFONO = 78481515, CI = 15157488 },
+            new Docente { ID = 2, NOMBRE = "LOBO LIMPIAS VICTOR HUGO", TELEFONO = 78481516, CI = 15157489 },
+            new Docente { ID = 3, NOMBRE = "ARANIBAR QUIROZ MARTHA MONICA", TELEFONO = 78481517, CI = 15157490 },
+            new Docente { ID = 4, NOMBRE = "SANCHEZ VELASCO ENRIQUE", TELEFONO = 78481518, CI = 15157491 },
+            new Docente { ID = 5, NOMBRE = "CALDERON FLORES MODESTO FRANKLIN", TELEFONO = 78481519, CI = 15157492 },
+            new Docente { ID = 6, NOMBRE = "LAZO ARTEAGA CARLOS ROBERTO", TELEFONO = 78481520, CI = 15157493 },
+            new Docente { ID = 7, NOMBRE = "ZUNA VILLAGOMEZ RICARDO", TELEFONO = 78481521, CI = 15157494 },
+            new Docente { ID = 8, NOMBRE = "MOLLO MAMANI ALBERTO", TELEFONO = 78481522, CI = 15157495 },
+            new Docente { ID = 9, NOMBRE = "ALIAGA HOWARD SHARON KENNY", TELEFONO = 78481523, CI = 15157496 },
+            new Docente { ID = 10, NOMBRE = "CONTRERAS VILLEGAS JUAN CARLOS", TELEFONO = 78481524, CI = 15157497 },
+            new Docente { ID = 11, NOMBRE = "MARTINEZ CARDONA SARAH MIRNA", TELEFONO = 78481525, CI = 15157498 },
+            new Docente { ID = 12, NOMBRE = "CACERES CHACON BRAULIO", TELEFONO = 78481526, CI = 15157499 },
+            new Docente { ID = 13, NOMBRE = "GUTIERREZ BRUNO KATIME ESTHER", TELEFONO = 78481527, CI = 15157500 },
+            new Docente { ID = 14, NOMBRE = "APAZA LEON ROSNAY", TELEFONO = 78481528, CI = 15157501 },
+            new Docente { ID = 15, NOMBRE = "ZUNIGA RUIZ WILMA", TELEFONO = 78481529, CI = 15157502 },
+            new Docente { ID = 16, NOMBRE = "CLAURE MEDRANO DE OROPEZA ELIZ", TELEFONO = 78481530, CI = 15157503 },
+            new Docente { ID = 17, NOMBRE = "AVENDANO GONZALES EUDAL", TELEFONO = 78481531, CI = 15157504 },
+            new Docente { ID = 18, NOMBRE = "OROPEZA CLAURE GUSTAVO ADOLFO", TELEFONO = 78481532, CI = 15157505 },
+            new Docente { ID = 19, NOMBRE = "VALDELOMAR ORELLANA TOMAS", TELEFONO = 78481533, CI = 15157506 },
+            new Docente { ID = 20, NOMBRE = "ACOSTA CABEZAS BARTOLO JAVIER", TELEFONO = 78481534, CI = 15157507 },
+            new Docente { ID = 21, NOMBRE = "CALDERON FLORES PIODESTO FRANKL", TELEFONO = 78481535, CI = 15157508 },
+            new Docente { ID = 22, NOMBRE = "ZEBALLOS PAREDES DANIEL LUIS", TELEFONO = 78481536, CI = 15157509 },
+            new Docente { ID = 23, NOMBRE = "MOLLO NAL4ANI ALBERTO", TELEFONO = 78481537, CI = 15157510 },
+            new Docente { ID = 24, NOMBRE = "GRIMALDO BRAVO PAUL", TELEFONO = 78481538, CI = 15157511 },
+            new Docente { ID = 25, NOMBRE = "LAZO ARTEAGA CARLOS ROBERTO", TELEFONO = 78481539, CI = 15157512 },
+            new Docente { ID = 26, NOMBRE = "GONZALES APARICIO MELISSA", TELEFONO = 78481540, CI = 15157513 },
+            new Docente { ID = 27, NOMBRE = "ORTEGA PAREDES FRANCISCO", TELEFONO = 78481541, CI = 15157514 },
+            new Docente { ID = 28, NOMBRE = "VILLARROEL RIVERA NATALIA", TELEFONO = 78481542, CI = 15157515 },
+            new Docente { ID = 29, NOMBRE = "CARRASCO CORDOVA LUIS", TELEFONO = 78481543, CI = 15157516 },
+            new Docente { ID = 30, NOMBRE = "MEDINA LOPEZ GLORIA", TELEFONO = 78481544, CI = 15157517 },
+            new Docente { ID = 31, NOMBRE = "MENDOZA CASTRO MARCO", TELEFONO = 78481545, CI = 15157518 },
+            new Docente { ID = 32, NOMBRE = "ALVAREZ ROMERO SANDRA", TELEFONO = 78481546, CI = 15157519 },
+            new Docente { ID = 33, NOMBRE = "RAMIREZ HUERTA CARLOS", TELEFONO = 78481547, CI = 15157520 },
+            new Docente { ID = 34, NOMBRE = "ESCOBAR FLORES VERONICA", TELEFONO = 78481548, CI = 15157521 },
+            new Docente { ID = 35, NOMBRE = "CASTILLO GOMEZ JUAN", TELEFONO = 78481549, CI = 15157522 },
+            new Docente { ID = 36, NOMBRE = "PEREZ SALAZAR LILIANA", TELEFONO = 78481550, CI = 15157523 },
+            new Docente { ID = 37, NOMBRE = "TORRES QUISPE RICARDO", TELEFONO = 78481551, CI = 15157524 },
+            new Docente { ID = 38, NOMBRE = "HUAMAN FLORES MIRIAM", TELEFONO = 78481552, CI = 15157525 },
+            new Docente { ID = 39, NOMBRE = "CHAVEZ LOPEZ EDWIN", TELEFONO = 78481553, CI = 15157526 },
+            new Docente { ID = 40, NOMBRE = "GARCIA VILLENA KARINA", TELEFONO = 78481554, CI = 15157527 },
+            new Docente { ID = 41, NOMBRE = "RODRIGUEZ SALAZAR LUIS", TELEFONO = 78481555, CI = 15157528 },
+            new Docente { ID = 42, NOMBRE = "FERNANDEZ CASTRO MARIA", TELEFONO = 78481556, CI = 15157529 },
+            new Docente { ID = 43, NOMBRE = "MARTINEZ HUAMAN PABLO", TELEFONO = 78481557, CI = 15157530 },
+            new Docente { ID = 44, NOMBRE = "QUISPE RAMOS GLADYS", TELEFONO = 78481558, CI = 15157531 },
+            new Docente { ID = 45, NOMBRE = "SALAZAR MORENO JULIO", TELEFONO = 78481559, CI = 15157532 },
+            new Docente { ID = 46, NOMBRE = "LOPEZ RIVERA ANGELA", TELEFONO = 78481560, CI = 15157533 },
+            new Docente { ID = 47, NOMBRE = "VILLANUEVA PEREZ CARLOS", TELEFONO = 78481561, CI = 15157534 },
+            new Docente { ID = 48, NOMBRE = "ORTEGA SALAZAR FABIOLA", TELEFONO = 78481562, CI = 15157535 },
+            new Docente { ID = 49, NOMBRE = "GOMEZ HUAMAN MARIO", TELEFONO = 78481563, CI = 15157536 },
+            new Docente { ID = 50, NOMBRE = "CARRASCO LOPEZ ELISA", TELEFONO = 78481564, CI = 15157537 }
+
+
+        );
+    }
+}
+
