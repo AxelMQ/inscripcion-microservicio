@@ -623,6 +623,181 @@ namespace Infrastructure.Migrations
                         {
                             ID = 3,
                             NOMBRE = "SC"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            NOMBRE = "SD"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            NOMBRE = "SE"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            NOMBRE = "SF"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            NOMBRE = "SG"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            NOMBRE = "SH"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            NOMBRE = "SI"
+                        },
+                        new
+                        {
+                            ID = 10,
+                            NOMBRE = "SK"
+                        },
+                        new
+                        {
+                            ID = 11,
+                            NOMBRE = "SN"
+                        },
+                        new
+                        {
+                            ID = 12,
+                            NOMBRE = "SM"
+                        },
+                        new
+                        {
+                            ID = 13,
+                            NOMBRE = "SP"
+                        },
+                        new
+                        {
+                            ID = 14,
+                            NOMBRE = "SR"
+                        },
+                        new
+                        {
+                            ID = 15,
+                            NOMBRE = "SS"
+                        },
+                        new
+                        {
+                            ID = 16,
+                            NOMBRE = "SX"
+                        },
+                        new
+                        {
+                            ID = 17,
+                            NOMBRE = "SZ"
+                        },
+                        new
+                        {
+                            ID = 18,
+                            NOMBRE = "F1"
+                        },
+                        new
+                        {
+                            ID = 19,
+                            NOMBRE = "BI"
+                        },
+                        new
+                        {
+                            ID = 20,
+                            NOMBRE = "CI"
+                        },
+                        new
+                        {
+                            ID = 21,
+                            NOMBRE = "C1"
+                        },
+                        new
+                        {
+                            ID = 22,
+                            NOMBRE = "I2"
+                        },
+                        new
+                        {
+                            ID = 23,
+                            NOMBRE = "ER"
+                        },
+                        new
+                        {
+                            ID = 24,
+                            NOMBRE = "R1"
+                        },
+                        new
+                        {
+                            ID = 25,
+                            NOMBRE = "1I"
+                        },
+                        new
+                        {
+                            ID = 26,
+                            NOMBRE = "I1"
+                        },
+                        new
+                        {
+                            ID = 27,
+                            NOMBRE = "NW"
+                        },
+                        new
+                        {
+                            ID = 28,
+                            NOMBRE = "NX"
+                        },
+                        new
+                        {
+                            ID = 29,
+                            NOMBRE = "W1"
+                        },
+                        new
+                        {
+                            ID = 30,
+                            NOMBRE = "X2"
+                        },
+                        new
+                        {
+                            ID = 31,
+                            NOMBRE = "X3"
+                        },
+                        new
+                        {
+                            ID = 32,
+                            NOMBRE = "X4"
+                        },
+                        new
+                        {
+                            ID = 33,
+                            NOMBRE = "Z1"
+                        },
+                        new
+                        {
+                            ID = 34,
+                            NOMBRE = "Z2"
+                        },
+                        new
+                        {
+                            ID = 35,
+                            NOMBRE = "Z3"
+                        },
+                        new
+                        {
+                            ID = 36,
+                            NOMBRE = "Z4"
+                        },
+                        new
+                        {
+                            ID = 37,
+                            NOMBRE = "Z5"
+                        },
+                        new
+                        {
+                            ID = 38,
+                            NOMBRE = "Z6"
                         });
                 });
 
