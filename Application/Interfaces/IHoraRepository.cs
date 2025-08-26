@@ -7,7 +7,7 @@ namespace Application.Interfaces
     public interface IHoraRepository
     {
         Task<IEnumerable<Hora>> GetAllAsync();
-        Task<Hora> GetByIdAsync(int id);
+        Task<Hora?> GetByIdAsync(int id);
         Task AddAsync(Hora hora);
         Task UpdateAsync(Hora hora);
         Task DeleteAsync(int id);

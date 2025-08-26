@@ -23,5 +23,6 @@ namespace Domain.Models
         // Propiedad de navegación - Se inicializa
         public ICollection<Inscripcion> Inscripciones { get; set; } = new List<Inscripcion>();
         public ICollection<Nota> Notas { get; set; } = new List<Nota>();
+        public ICollection<AlumnoPlanEstudio> AlumnoPlanEstudios { get; set; } = new List<AlumnoPlanEstudio>();
     }
 }

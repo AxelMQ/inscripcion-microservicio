@@ -7,7 +7,7 @@ namespace Application.Interfaces
     public interface IPlanEstudioRepository
     {
         Task<IEnumerable<PlanEstudio>> GetAllAsync();
-        Task<PlanEstudio> GetByIdAsync(int id);
+        Task<PlanEstudio?> GetByIdAsync(int id);
         Task AddAsync(PlanEstudio planEstudio);
         Task UpdateAsync(PlanEstudio planEstudio);
         Task DeleteAsync(int id);

@@ -35,6 +35,8 @@ namespace Infrastructure.Data
         public DbSet<Nota> Nota { get; set; }
         public DbSet<Grupo> Grupo { get; set; }
         public DbSet<GrupoMateria> GrupoMateria { get; set; }
+        public DbSet<AlumnoPlanEstudio> AlumnoPlanEstudio { get; set; }
+
         // Este método se usa para configurar el modelo de datos,
         // especialmente para relaciones y claves compuestas.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -169,6 +171,17 @@ namespace Infrastructure.Data
                 .HasOne(n => n.HorarioMateriaInscripcion)
                 .WithMany(hmi => hmi.Notas)
                 .HasForeignKey(n => n.HORARIO_MATERIA_INSCRIPCION_ID);
+
+            // Configuración de relaciones para AlumnoPlanEstudio
+            modelBuilder.Entity<AlumnoPlanEstudio>()
+                .HasOne(n => n.Alumno)
+                .WithMany(a => a.AlumnoPlanEstudios)
+                .HasForeignKey(n => n.ALUMNO_ID);
+
+            modelBuilder.Entity<AlumnoPlanEstudio>()
+                .HasOne(n => n.PlanEstudio)
+                .WithMany(hmi => hmi.AlumnoPlanEstudios)
+                .HasForeignKey(n => n.PLAN_ESTUDIO_ID);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -51,6 +51,8 @@ builder.Services.AddScoped<IHoraDiaRepository, HoraDiaRepository>();
 builder.Services.AddScoped<IHoraDiaHorarioRepository, HoraDiaHorarioRepository>();
 builder.Services.AddScoped<IHorarioMateriaInscripcionRepository, HorarioMateriaInscripcionRepository>();
 builder.Services.AddScoped<INotaRepository, NotaRepository>();
+builder.Services.AddScoped<IGrupoRepository, GrupoRepository>();
+builder.Services.AddScoped<IGrupoRepository, GrupoRepository>();
 
 /* // Register Use Cases
 builder.Services.AddScoped<IGetMateriasDelPlanEstudioUseCase, GetMateriasDelPlanEstudioUseCase>(); */
