@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250826120339_Initial")]
+    [Migration("20250826132957_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -831,31 +831,1057 @@ namespace Infrastructure.Migrations
                         {
                             ID = 1,
                             GRUPO_ID = 1,
-                            MATERIA_ID = 5
+                            MATERIA_ID = 15
                         },
                         new
                         {
                             ID = 2,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 6
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 15
                         },
                         new
                         {
                             ID = 3,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 15
+                        },
+                        new
+                        {
+                            ID = 4,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 5,
                             GRUPO_ID = 2,
                             MATERIA_ID = 7
                         },
                         new
                         {
-                            ID = 4,
+                            ID = 6,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 7,
+                            GRUPO_ID = 4,
+                            MATERIA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 8,
+                            GRUPO_ID = 5,
+                            MATERIA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 9,
+                            GRUPO_ID = 6,
+                            MATERIA_ID = 7
+                        },
+                        new
+                        {
+                            ID = 10,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 75
+                        },
+                        new
+                        {
+                            ID = 11,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 75
+                        },
+                        new
+                        {
+                            ID = 12,
+                            GRUPO_ID = 17,
+                            MATERIA_ID = 77
+                        },
+                        new
+                        {
+                            ID = 13,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 87
+                        },
+                        new
+                        {
+                            ID = 14,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 13
+                        },
+                        new
+                        {
+                            ID = 15,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 13
+                        },
+                        new
+                        {
+                            ID = 16,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 43
+                        },
+                        new
+                        {
+                            ID = 17,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 57
+                        },
+                        new
+                        {
+                            ID = 18,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 24
+                        },
+                        new
+                        {
+                            ID = 19,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 24
+                        },
+                        new
+                        {
+                            ID = 20,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 29
+                        },
+                        new
+                        {
+                            ID = 21,
+                            GRUPO_ID = 4,
+                            MATERIA_ID = 29
+                        },
+                        new
+                        {
+                            ID = 22,
+                            GRUPO_ID = 18,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 23,
+                            GRUPO_ID = 17,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 24,
+                            GRUPO_ID = 20,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 25,
+                            GRUPO_ID = 22,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 26,
+                            GRUPO_ID = 6,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 27,
+                            GRUPO_ID = 7,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 28,
+                            GRUPO_ID = 9,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 29,
+                            GRUPO_ID = 13,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 30,
+                            GRUPO_ID = 33,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 31,
+                            GRUPO_ID = 34,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 32,
+                            GRUPO_ID = 35,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 33,
+                            GRUPO_ID = 36,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 34,
+                            GRUPO_ID = 37,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 35,
+                            GRUPO_ID = 38,
+                            MATERIA_ID = 1
+                        },
+                        new
+                        {
+                            ID = 36,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 6
+                        },
+                        new
+                        {
+                            ID = 37,
+                            GRUPO_ID = 4,
+                            MATERIA_ID = 6
+                        },
+                        new
+                        {
+                            ID = 38,
+                            GRUPO_ID = 24,
+                            MATERIA_ID = 6
+                        },
+                        new
+                        {
+                            ID = 39,
+                            GRUPO_ID = 25,
+                            MATERIA_ID = 6
+                        },
+                        new
+                        {
+                            ID = 40,
+                            GRUPO_ID = 21,
+                            MATERIA_ID = 6
+                        },
+                        new
+                        {
+                            ID = 41,
+                            GRUPO_ID = 8,
+                            MATERIA_ID = 6
+                        },
+                        new
+                        {
+                            ID = 42,
+                            GRUPO_ID = 11,
+                            MATERIA_ID = 6
+                        },
+                        new
+                        {
+                            ID = 43,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 30
+                        },
+                        new
+                        {
+                            ID = 44,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 20
+                        },
+                        new
+                        {
+                            ID = 45,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 20
+                        },
+                        new
+                        {
+                            ID = 46,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 68
+                        },
+                        new
+                        {
+                            ID = 47,
+                            GRUPO_ID = 22,
+                            MATERIA_ID = 65
+                        },
+                        new
+                        {
+                            ID = 48,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 65
+                        },
+                        new
+                        {
+                            ID = 49,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 81
+                        },
+                        new
+                        {
+                            ID = 50,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 54
+                        },
+                        new
+                        {
+                            ID = 51,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 54
+                        },
+                        new
+                        {
+                            ID = 52,
+                            GRUPO_ID = 27,
+                            MATERIA_ID = 11
+                        },
+                        new
+                        {
+                            ID = 53,
+                            GRUPO_ID = 28,
+                            MATERIA_ID = 11
+                        },
+                        new
+                        {
+                            ID = 54,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 11
+                        },
+                        new
+                        {
+                            ID = 55,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 11
+                        },
+                        new
+                        {
+                            ID = 56,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 78
+                        },
+                        new
+                        {
+                            ID = 57,
+                            GRUPO_ID = 22,
+                            MATERIA_ID = 18
+                        },
+                        new
+                        {
+                            ID = 58,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 18
+                        },
+                        new
+                        {
+                            ID = 59,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 18
+                        },
+                        new
+                        {
+                            ID = 60,
+                            GRUPO_ID = 4,
+                            MATERIA_ID = 18
+                        },
+                        new
+                        {
+                            ID = 61,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 23
+                        },
+                        new
+                        {
+                            ID = 62,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 23
+                        },
+                        new
+                        {
+                            ID = 63,
+                            GRUPO_ID = 16,
+                            MATERIA_ID = 23
+                        },
+                        new
+                        {
+                            ID = 64,
+                            GRUPO_ID = 5,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 65,
+                            GRUPO_ID = 6,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 66,
+                            GRUPO_ID = 8,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 67,
+                            GRUPO_ID = 10,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 68,
+                            GRUPO_ID = 34,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 69,
+                            GRUPO_ID = 35,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 70,
+                            GRUPO_ID = 13,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 71,
+                            GRUPO_ID = 33,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 72,
+                            GRUPO_ID = 36,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 73,
+                            GRUPO_ID = 37,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 74,
+                            GRUPO_ID = 38,
+                            MATERIA_ID = 2
+                        },
+                        new
+                        {
+                            ID = 75,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 55
+                        },
+                        new
+                        {
+                            ID = 76,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 55
+                        },
+                        new
+                        {
+                            ID = 77,
+                            GRUPO_ID = 24,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 78,
+                            GRUPO_ID = 26,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 79,
+                            GRUPO_ID = 7,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 80,
+                            GRUPO_ID = 9,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 81,
+                            GRUPO_ID = 10,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 82,
+                            GRUPO_ID = 12,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 83,
+                            GRUPO_ID = 13,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 84,
+                            GRUPO_ID = 33,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 85,
+                            GRUPO_ID = 34,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 86,
+                            GRUPO_ID = 35,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 87,
+                            GRUPO_ID = 36,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 88,
+                            GRUPO_ID = 37,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 89,
+                            GRUPO_ID = 38,
+                            MATERIA_ID = 4
+                        },
+                        new
+                        {
+                            ID = 90,
+                            GRUPO_ID = 19,
+                            MATERIA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 91,
+                            GRUPO_ID = 24,
+                            MATERIA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 92,
+                            GRUPO_ID = 27,
+                            MATERIA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 93,
+                            GRUPO_ID = 28,
+                            MATERIA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 94,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 95,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 9
+                        },
+                        new
+                        {
+                            ID = 96,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 97,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 98,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 99,
+                            GRUPO_ID = 34,
+                            MATERIA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 100,
+                            GRUPO_ID = 35,
+                            MATERIA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 101,
+                            GRUPO_ID = 36,
+                            MATERIA_ID = 14
+                        },
+                        new
+                        {
+                            ID = 102,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 96
+                        },
+                        new
+                        {
+                            ID = 103,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 71
+                        },
+                        new
+                        {
+                            ID = 104,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 35
+                        },
+                        new
+                        {
+                            ID = 105,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 35
+                        },
+                        new
+                        {
+                            ID = 106,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 40
+                        },
+                        new
+                        {
+                            ID = 107,
+                            GRUPO_ID = 27,
+                            MATERIA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 108,
+                            GRUPO_ID = 28,
+                            MATERIA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 109,
+                            GRUPO_ID = 33,
+                            MATERIA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 110,
+                            GRUPO_ID = 34,
+                            MATERIA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 111,
+                            GRUPO_ID = 35,
+                            MATERIA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 112,
+                            GRUPO_ID = 36,
+                            MATERIA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 113,
+                            GRUPO_ID = 38,
+                            MATERIA_ID = 5
+                        },
+                        new
+                        {
+                            ID = 114,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 16
+                        },
+                        new
+                        {
+                            ID = 115,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 16
+                        },
+                        new
+                        {
+                            ID = 116,
+                            GRUPO_ID = 4,
+                            MATERIA_ID = 16
+                        },
+                        new
+                        {
+                            ID = 117,
+                            GRUPO_ID = 9,
+                            MATERIA_ID = 16
+                        },
+                        new
+                        {
+                            ID = 118,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 21
+                        },
+                        new
+                        {
+                            ID = 119,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 21
+                        },
+                        new
+                        {
+                            ID = 120,
+                            GRUPO_ID = 9,
+                            MATERIA_ID = 21
+                        },
+                        new
+                        {
+                            ID = 121,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 69
+                        },
+                        new
+                        {
+                            ID = 122,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 22
+                        },
+                        new
+                        {
+                            ID = 123,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 19
+                        },
+                        new
+                        {
+                            ID = 124,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 19
+                        },
+                        new
+                        {
+                            ID = 125,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 19
+                        },
+                        new
+                        {
+                            ID = 126,
+                            GRUPO_ID = 16,
+                            MATERIA_ID = 19
+                        },
+                        new
+                        {
+                            ID = 127,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 60
+                        },
+                        new
+                        {
+                            ID = 128,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 129,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 130,
                             GRUPO_ID = 2,
                             MATERIA_ID = 8
                         },
                         new
                         {
-                            ID = 5,
+                            ID = 131,
+                            GRUPO_ID = 7,
+                            MATERIA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 132,
+                            GRUPO_ID = 4,
+                            MATERIA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 133,
+                            GRUPO_ID = 6,
+                            MATERIA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 134,
+                            GRUPO_ID = 8,
+                            MATERIA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 135,
+                            GRUPO_ID = 9,
+                            MATERIA_ID = 8
+                        },
+                        new
+                        {
+                            ID = 136,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 12
+                        },
+                        new
+                        {
+                            ID = 137,
+                            GRUPO_ID = 4,
+                            MATERIA_ID = 12
+                        },
+                        new
+                        {
+                            ID = 138,
                             GRUPO_ID = 3,
-                            MATERIA_ID = 9
+                            MATERIA_ID = 12
+                        },
+                        new
+                        {
+                            ID = 139,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 12
+                        },
+                        new
+                        {
+                            ID = 140,
+                            GRUPO_ID = 9,
+                            MATERIA_ID = 12
+                        },
+                        new
+                        {
+                            ID = 141,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 95
+                        },
+                        new
+                        {
+                            ID = 142,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 34
+                        },
+                        new
+                        {
+                            ID = 143,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 34
+                        },
+                        new
+                        {
+                            ID = 144,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 34
+                        },
+                        new
+                        {
+                            ID = 145,
+                            GRUPO_ID = 24,
+                            MATERIA_ID = 39
+                        },
+                        new
+                        {
+                            ID = 146,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 39
+                        },
+                        new
+                        {
+                            ID = 147,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 39
+                        },
+                        new
+                        {
+                            ID = 148,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 97
+                        },
+                        new
+                        {
+                            ID = 149,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 98
+                        },
+                        new
+                        {
+                            ID = 150,
+                            GRUPO_ID = 24,
+                            MATERIA_ID = 80
+                        },
+                        new
+                        {
+                            ID = 151,
+                            GRUPO_ID = 14,
+                            MATERIA_ID = 88
+                        },
+                        new
+                        {
+                            ID = 152,
+                            GRUPO_ID = 14,
+                            MATERIA_ID = 93
+                        },
+                        new
+                        {
+                            ID = 153,
+                            GRUPO_ID = 24,
+                            MATERIA_ID = 85
+                        },
+                        new
+                        {
+                            ID = 154,
+                            GRUPO_ID = 9,
+                            MATERIA_ID = 44
+                        },
+                        new
+                        {
+                            ID = 155,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 44
+                        },
+                        new
+                        {
+                            ID = 156,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 27
+                        },
+                        new
+                        {
+                            ID = 157,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 27
+                        },
+                        new
+                        {
+                            ID = 158,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 38
+                        },
+                        new
+                        {
+                            ID = 159,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 38
+                        },
+                        new
+                        {
+                            ID = 160,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 37
+                        },
+                        new
+                        {
+                            ID = 161,
+                            GRUPO_ID = 23,
+                            MATERIA_ID = 79
+                        },
+                        new
+                        {
+                            ID = 162,
+                            GRUPO_ID = 24,
+                            MATERIA_ID = 83
+                        },
+                        new
+                        {
+                            ID = 163,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 28
+                        },
+                        new
+                        {
+                            ID = 164,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 28
+                        },
+                        new
+                        {
+                            ID = 165,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 33
+                        },
+                        new
+                        {
+                            ID = 166,
+                            GRUPO_ID = 2,
+                            MATERIA_ID = 33
+                        },
+                        new
+                        {
+                            ID = 167,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 56
+                        },
+                        new
+                        {
+                            ID = 168,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 91
+                        },
+                        new
+                        {
+                            ID = 169,
+                            GRUPO_ID = 15,
+                            MATERIA_ID = 41
+                        },
+                        new
+                        {
+                            ID = 170,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 41
+                        },
+                        new
+                        {
+                            ID = 171,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 41
+                        },
+                        new
+                        {
+                            ID = 172,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 42
+                        },
+                        new
+                        {
+                            ID = 173,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 42
+                        },
+                        new
+                        {
+                            ID = 174,
+                            GRUPO_ID = 14,
+                            MATERIA_ID = 86
+                        },
+                        new
+                        {
+                            ID = 175,
+                            GRUPO_ID = 3,
+                            MATERIA_ID = 76
+                        },
+                        new
+                        {
+                            ID = 176,
+                            GRUPO_ID = 1,
+                            MATERIA_ID = 61
                         });
                 });
 
