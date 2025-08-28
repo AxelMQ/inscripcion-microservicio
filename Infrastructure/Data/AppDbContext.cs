@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Models;
-using System.Reflection; // Necesitas importar este namespace
+using System.Reflection;
+using Application.Messages; // Necesitas importar este namespace
 
 namespace Infrastructure.Data
 {

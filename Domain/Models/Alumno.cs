@@ -1,14 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Core; // Asegúrate de que este using apunte a la ubicación de BaseEntity
 
 namespace Domain.Models
 {
     [Table("ALUMNO")]
-    public class Alumno
+    public class Alumno : BaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        // La propiedad ID ya no es necesaria aquí, se hereda de BaseEntity.
+        // Los atributos [Key] y [DatabaseGenerated] se manejarán en la configuración de Entity Framework.
 
         [StringLength(60)]
         public required string NOMBRE { get; set; }
