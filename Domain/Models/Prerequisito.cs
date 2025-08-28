@@ -1,15 +1,14 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+// Domain/Models/Prerequisito.cs
+using Domain.Core;
 
 namespace Domain.Models
 {
-[Table("PREREQUISITO")]
-public class Prerequisito
-{
-    public required int MATERIA_PLAN_ESTUDIO_ID { get; set; }
-    public MateriaPlanEstudio MateriaPlanEstudio { get; set; } = null!; // Se usa 'null!'
+    public class Prerequisito : BaseEntity
+    {
+        public int MateriaPlanEstudioId { get; set; }
+        public MateriaPlanEstudio MateriaPlanEstudio { get; set; } = null!;
 
-    public required int REQUISITO_ID { get; set; }
-    public MateriaPlanEstudio Requisito { get; set; } = null!; // Se usa 'null!'
-}
+        public int RequisitoId { get; set; }
+        public MateriaPlanEstudio Requisito { get; set; } = null!;
+    }
 }

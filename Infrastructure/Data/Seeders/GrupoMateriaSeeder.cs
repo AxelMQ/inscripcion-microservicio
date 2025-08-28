@@ -9,315 +9,315 @@ public class GrupoMateriaSeeder : IEntityTypeConfiguration<GrupoMateria>
   public void Configure(EntityTypeBuilder<GrupoMateria> builder)
   {
     builder.HasData(
-        // new GrupoMateria { ID = 1, MATERIA_ID = 5, GRUPO_ID = 1 },
-        // new GrupoMateria { ID = 2, MATERIA_ID = 6, GRUPO_ID = 1 },
-        // new GrupoMateria { ID = 3, MATERIA_ID = 7, GRUPO_ID = 2 },
-        // new GrupoMateria { ID = 4, MATERIA_ID = 8, GRUPO_ID = 2 },
-        // new GrupoMateria { ID = 5, MATERIA_ID = 9, GRUPO_ID = 3 }
+        // new GrupoMateria { Id = 1, MateriaId = 5, GrupoId = 1 },
+        // new GrupoMateria { Id = 2, MateriaId = 6, GrupoId = 1 },
+        // new GrupoMateria { Id = 3, MateriaId = 7, GrupoId = 2 },
+        // new GrupoMateria { Id = 4, MateriaId = 8, GrupoId = 2 },
+        // new GrupoMateria { Id = 5, MateriaId = 9, GrupoId = 3 }
         
-        new GrupoMateria { ID = 1, MATERIA_ID = 15, GRUPO_ID = 1 }, // ADMINISTRACION - SA
-        new GrupoMateria { ID = 2, MATERIA_ID = 15, GRUPO_ID = 2 }, // ADMINISTRACION - SB
-        new GrupoMateria { ID = 3, MATERIA_ID = 15, GRUPO_ID = 3 }, // ADMINISTRACION - SC
+        new GrupoMateria { Id = 1, MateriaId = 15, GrupoId = 1 }, // ADMINISTRACION - SA
+        new GrupoMateria { Id = 2, MateriaId = 15, GrupoId = 2 }, // ADMINISTRACION - SB
+        new GrupoMateria { Id = 3, MateriaId = 15, GrupoId = 3 }, // ADMINISTRACION - SC
 
         // ALGEBRA LINEAL
-        new GrupoMateria { ID = 4, MATERIA_ID = 7, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 5, MATERIA_ID = 7, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 6, MATERIA_ID = 7, GRUPO_ID = 3 }, // SC
-        new GrupoMateria { ID = 7, MATERIA_ID = 7, GRUPO_ID = 4 }, // SD
-        new GrupoMateria { ID = 8, MATERIA_ID = 7, GRUPO_ID = 5 }, // SE
-        new GrupoMateria { ID = 9, MATERIA_ID = 7, GRUPO_ID = 6 }, // SF
+        new GrupoMateria { Id = 4, MateriaId = 7, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 5, MateriaId = 7, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 6, MateriaId = 7, GrupoId = 3 }, // SC
+        new GrupoMateria { Id = 7, MateriaId = 7, GrupoId = 4 }, // SD
+        new GrupoMateria { Id = 8, MateriaId = 7, GrupoId = 5 }, // SE
+        new GrupoMateria { Id = 9, MateriaId = 7, GrupoId = 6 }, // SF
         
         // ANALISIS DE CIRCUITO
-        new GrupoMateria { ID = 10, MATERIA_ID = 75, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 11, MATERIA_ID = 75, GRUPO_ID = 2 }, // SB
+        new GrupoMateria { Id = 10, MateriaId = 75, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 11, MateriaId = 75, GrupoId = 2 }, // SB
 
         // ANALISIS DE CIRCUITO ELECTRONICO
-        new GrupoMateria { ID = 12, MATERIA_ID = 77, GRUPO_ID = 17 }, // SZ
+        new GrupoMateria { Id = 12, MateriaId = 77, GrupoId = 17 }, // SZ
 
         // APLICACIONES CON MICROPROCESADORES
-        new GrupoMateria { ID = 13, MATERIA_ID = 87, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 13, MateriaId = 87, GrupoId = 1 }, // SA
 
         // ARQUITECTURA DE COMPUTADORAS
-        new GrupoMateria { ID = 14, MATERIA_ID = 13, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 15, MATERIA_ID = 13, GRUPO_ID = 2 }, // SB
+        new GrupoMateria { Id = 14, MateriaId = 13, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 15, MateriaId = 13, GrupoId = 2 }, // SB
         
         // ARQUITECTURA DE SOFTWARE
-        new GrupoMateria { ID = 16, MATERIA_ID = 43, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 16, MateriaId = 43, GrupoId = 1 }, // SA
 
         // AUDITORIA INFORMATICA
-        new GrupoMateria { ID = 17, MATERIA_ID = 57, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 17, MateriaId = 57, GrupoId = 1 }, // SA
         
         // BASE DE DATOS I
-        new GrupoMateria { ID = 18, MATERIA_ID = 24, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 19, MATERIA_ID = 24, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 18, MateriaId = 24, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 19, MateriaId = 24, GrupoId = 3 }, // SC
 
         // BASE DE DATOS II
-        new GrupoMateria { ID = 20, MATERIA_ID = 29, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 21, MATERIA_ID = 29, GRUPO_ID = 4 }, // SD
+        new GrupoMateria { Id = 20, MateriaId = 29, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 21, MateriaId = 29, GrupoId = 4 }, // SD
         
         // CALCULO I
-        new GrupoMateria { ID = 22, MATERIA_ID = 1, GRUPO_ID = 18 }, // F1
-        new GrupoMateria { ID = 23, MATERIA_ID = 1, GRUPO_ID = 17 }, // SZ
-        new GrupoMateria { ID = 24, MATERIA_ID = 1, GRUPO_ID = 20 }, // CI
-        new GrupoMateria { ID = 25, MATERIA_ID = 1, GRUPO_ID = 22 }, // I2
-        new GrupoMateria { ID = 26, MATERIA_ID = 1, GRUPO_ID = 6 }, // SF
-        new GrupoMateria { ID = 27, MATERIA_ID = 1, GRUPO_ID = 7 }, // SG
-        new GrupoMateria { ID = 28, MATERIA_ID = 1, GRUPO_ID = 9 }, // SI
-        new GrupoMateria { ID = 29, MATERIA_ID = 1, GRUPO_ID = 13 }, // SP
-        new GrupoMateria { ID = 30, MATERIA_ID = 1, GRUPO_ID = 33 }, // Z1
-        new GrupoMateria { ID = 31, MATERIA_ID = 1, GRUPO_ID = 34 }, // Z2
-        new GrupoMateria { ID = 32, MATERIA_ID = 1, GRUPO_ID = 35 }, // Z3
-        new GrupoMateria { ID = 33, MATERIA_ID = 1, GRUPO_ID = 36 }, // Z4
-        new GrupoMateria { ID = 34, MATERIA_ID = 1, GRUPO_ID = 37 }, // Z5
-        new GrupoMateria { ID = 35, MATERIA_ID = 1, GRUPO_ID = 38 }, // Z6
+        new GrupoMateria { Id = 22, MateriaId = 1, GrupoId = 18 }, // F1
+        new GrupoMateria { Id = 23, MateriaId = 1, GrupoId = 17 }, // SZ
+        new GrupoMateria { Id = 24, MateriaId = 1, GrupoId = 20 }, // CI
+        new GrupoMateria { Id = 25, MateriaId = 1, GrupoId = 22 }, // I2
+        new GrupoMateria { Id = 26, MateriaId = 1, GrupoId = 6 }, // SF
+        new GrupoMateria { Id = 27, MateriaId = 1, GrupoId = 7 }, // SG
+        new GrupoMateria { Id = 28, MateriaId = 1, GrupoId = 9 }, // SI
+        new GrupoMateria { Id = 29, MateriaId = 1, GrupoId = 13 }, // SP
+        new GrupoMateria { Id = 30, MateriaId = 1, GrupoId = 33 }, // Z1
+        new GrupoMateria { Id = 31, MateriaId = 1, GrupoId = 34 }, // Z2
+        new GrupoMateria { Id = 32, MateriaId = 1, GrupoId = 35 }, // Z3
+        new GrupoMateria { Id = 33, MateriaId = 1, GrupoId = 36 }, // Z4
+        new GrupoMateria { Id = 34, MateriaId = 1, GrupoId = 37 }, // Z5
+        new GrupoMateria { Id = 35, MateriaId = 1, GrupoId = 38 }, // Z6
 
         // CALCULO II
-        new GrupoMateria { ID = 36, MATERIA_ID = 6, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 37, MATERIA_ID = 6, GRUPO_ID = 4 }, // SD
-        new GrupoMateria { ID = 38, MATERIA_ID = 6, GRUPO_ID = 24 }, // R1
-        new GrupoMateria { ID = 39, MATERIA_ID = 6, GRUPO_ID = 25 }, // 1I
-        new GrupoMateria { ID = 40, MATERIA_ID = 6, GRUPO_ID = 21 }, // C1
-        new GrupoMateria { ID = 41, MATERIA_ID = 6, GRUPO_ID = 8 }, // SH
-        new GrupoMateria { ID = 42, MATERIA_ID = 6, GRUPO_ID = 11 }, // SN
+        new GrupoMateria { Id = 36, MateriaId = 6, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 37, MateriaId = 6, GrupoId = 4 }, // SD
+        new GrupoMateria { Id = 38, MateriaId = 6, GrupoId = 24 }, // R1
+        new GrupoMateria { Id = 39, MateriaId = 6, GrupoId = 25 }, // 1I
+        new GrupoMateria { Id = 40, MateriaId = 6, GrupoId = 21 }, // C1
+        new GrupoMateria { Id = 41, MateriaId = 6, GrupoId = 8 }, // SH
+        new GrupoMateria { Id = 42, MateriaId = 6, GrupoId = 11 }, // SN
 
         // COMPILADORES
-        new GrupoMateria { ID = 43, MATERIA_ID = 30, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 43, MateriaId = 30, GrupoId = 1 }, // SA
 
         // CONTABILIDAD
-        new GrupoMateria { ID = 44, MATERIA_ID = 20, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 45, MATERIA_ID = 20, GRUPO_ID = 2 }, // SB
+        new GrupoMateria { Id = 44, MateriaId = 20, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 45, MateriaId = 20, GrupoId = 2 }, // SB
         
         // COSTOS Y PRESUPUESTO
-        new GrupoMateria { ID = 46, MATERIA_ID = 68, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 46, MateriaId = 68, GrupoId = 1 }, // SA
 
         // CRIPTOGRAFÍA Y SEGURIDAD
-        new GrupoMateria { ID = 47, MATERIA_ID = 65, GRUPO_ID = 22 }, // I2
-        new GrupoMateria { ID = 48, MATERIA_ID = 65, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 47, MateriaId = 65, GrupoId = 22 }, // I2
+        new GrupoMateria { Id = 48, MateriaId = 65, GrupoId = 1 }, // SA
 
         // DISEÑO DE CIRCUITOS INTEGRADOS
-        new GrupoMateria { ID = 49, MATERIA_ID = 81, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 49, MateriaId = 81, GrupoId = 1 }, // SA
 
         // ECONOMÍA PARA LA GESTIÓN
-        new GrupoMateria { ID = 50, MATERIA_ID = 54, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 51, MATERIA_ID = 54, GRUPO_ID = 2 }, // SB
+        new GrupoMateria { Id = 50, MateriaId = 54, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 51, MateriaId = 54, GrupoId = 2 }, // SB
 
         // ECUACIONES DIFERENCIALES
-        new GrupoMateria { ID = 52, MATERIA_ID = 11, GRUPO_ID = 27 }, // NW
-        new GrupoMateria { ID = 53, MATERIA_ID = 11, GRUPO_ID = 28 }, // NX
-        new GrupoMateria { ID = 54, MATERIA_ID = 11, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 55, MATERIA_ID = 11, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 52, MateriaId = 11, GrupoId = 27 }, // NW
+        new GrupoMateria { Id = 53, MateriaId = 11, GrupoId = 28 }, // NX
+        new GrupoMateria { Id = 54, MateriaId = 11, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 55, MateriaId = 11, GrupoId = 3 }, // SC
 
         // ELECTRÓNICA APLICADA A REDES
-        new GrupoMateria { ID = 56, MATERIA_ID = 78, GRUPO_ID = 2 }, // SB
+        new GrupoMateria { Id = 56, MateriaId = 78, GrupoId = 2 }, // SB
 
         // ESTRUCTURA DE DATOS I
-        new GrupoMateria { ID = 57, MATERIA_ID = 18, GRUPO_ID = 22 }, // I2
-        new GrupoMateria { ID = 58, MATERIA_ID = 18, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 59, MATERIA_ID = 18, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 60, MATERIA_ID = 18, GRUPO_ID = 4 }, // SD
+        new GrupoMateria { Id = 57, MateriaId = 18, GrupoId = 22 }, // I2
+        new GrupoMateria { Id = 58, MateriaId = 18, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 59, MateriaId = 18, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 60, MateriaId = 18, GrupoId = 4 }, // SD
         
         // ESTRUCTURA DE DATOS II
-        new GrupoMateria { ID = 61, MATERIA_ID = 23, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 62, MATERIA_ID = 23, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 63, MATERIA_ID = 23, GRUPO_ID = 16 }, // SX
+        new GrupoMateria { Id = 61, MateriaId = 23, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 62, MateriaId = 23, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 63, MateriaId = 23, GrupoId = 16 }, // SX
 
         // ESTRUCTURAS DISCRETAS    
-        new GrupoMateria { ID = 64, MATERIA_ID = 2, GRUPO_ID = 5 }, // SE
-        new GrupoMateria { ID = 65, MATERIA_ID = 2, GRUPO_ID = 6 }, // SF
-        new GrupoMateria { ID = 66, MATERIA_ID = 2, GRUPO_ID = 8 }, // SH
-        new GrupoMateria { ID = 67, MATERIA_ID = 2, GRUPO_ID = 10 }, // SK
-        new GrupoMateria { ID = 68, MATERIA_ID = 2, GRUPO_ID = 34 }, // Z2
-        new GrupoMateria { ID = 69, MATERIA_ID = 2, GRUPO_ID = 35 }, // Z3
-        new GrupoMateria { ID = 70, MATERIA_ID = 2, GRUPO_ID = 13 }, // SP
-        new GrupoMateria { ID = 71, MATERIA_ID = 2, GRUPO_ID = 33 }, // Z1
-        new GrupoMateria { ID = 72, MATERIA_ID = 2, GRUPO_ID = 36 }, // Z4
-        new GrupoMateria { ID = 73, MATERIA_ID = 2, GRUPO_ID = 37 }, // Z5
-        new GrupoMateria { ID = 74, MATERIA_ID = 2, GRUPO_ID = 38 }, // Z6
+        new GrupoMateria { Id = 64, MateriaId = 2, GrupoId = 5 }, // SE
+        new GrupoMateria { Id = 65, MateriaId = 2, GrupoId = 6 }, // SF
+        new GrupoMateria { Id = 66, MateriaId = 2, GrupoId = 8 }, // SH
+        new GrupoMateria { Id = 67, MateriaId = 2, GrupoId = 10 }, // SK
+        new GrupoMateria { Id = 68, MateriaId = 2, GrupoId = 34 }, // Z2
+        new GrupoMateria { Id = 69, MateriaId = 2, GrupoId = 35 }, // Z3
+        new GrupoMateria { Id = 70, MateriaId = 2, GrupoId = 13 }, // SP
+        new GrupoMateria { Id = 71, MateriaId = 2, GrupoId = 33 }, // Z1
+        new GrupoMateria { Id = 72, MateriaId = 2, GrupoId = 36 }, // Z4
+        new GrupoMateria { Id = 73, MateriaId = 2, GrupoId = 37 }, // Z5
+        new GrupoMateria { Id = 74, MateriaId = 2, GrupoId = 38 }, // Z6
 
         // FINANZAS PARA LA EMPRESA
-        new GrupoMateria { ID = 75, MATERIA_ID = 55, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 76, MATERIA_ID = 55, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 75, MateriaId = 55, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 76, MateriaId = 55, GrupoId = 3 }, // SC
 
         // FISICA I
-        new GrupoMateria { ID = 77, MATERIA_ID = 4, GRUPO_ID = 24 }, // R1
-        new GrupoMateria { ID = 78, MATERIA_ID = 4, GRUPO_ID = 26 }, // I1
-        new GrupoMateria { ID = 79, MATERIA_ID = 4, GRUPO_ID = 7 }, // SG
-        new GrupoMateria { ID = 80, MATERIA_ID = 4, GRUPO_ID = 9 }, // SI
-        new GrupoMateria { ID = 81, MATERIA_ID = 4, GRUPO_ID = 10 }, // SK
-        new GrupoMateria { ID = 82, MATERIA_ID = 4, GRUPO_ID = 12 }, // SM
-        new GrupoMateria { ID = 83, MATERIA_ID = 4, GRUPO_ID = 13 }, // SP
-        new GrupoMateria { ID = 84, MATERIA_ID = 4, GRUPO_ID = 33 }, // Z1
-        new GrupoMateria { ID = 85, MATERIA_ID = 4, GRUPO_ID = 34 }, // Z2
-        new GrupoMateria { ID = 86, MATERIA_ID = 4, GRUPO_ID = 35 }, // Z3
-        new GrupoMateria { ID = 87, MATERIA_ID = 4, GRUPO_ID = 36 }, // Z4
-        new GrupoMateria { ID = 88, MATERIA_ID = 4, GRUPO_ID = 37 }, // Z5
-        new GrupoMateria { ID = 89, MATERIA_ID = 4, GRUPO_ID = 38 }, // Z6
+        new GrupoMateria { Id = 77, MateriaId = 4, GrupoId = 24 }, // R1
+        new GrupoMateria { Id = 78, MateriaId = 4, GrupoId = 26 }, // I1
+        new GrupoMateria { Id = 79, MateriaId = 4, GrupoId = 7 }, // SG
+        new GrupoMateria { Id = 80, MateriaId = 4, GrupoId = 9 }, // SI
+        new GrupoMateria { Id = 81, MateriaId = 4, GrupoId = 10 }, // SK
+        new GrupoMateria { Id = 82, MateriaId = 4, GrupoId = 12 }, // SM
+        new GrupoMateria { Id = 83, MateriaId = 4, GrupoId = 13 }, // SP
+        new GrupoMateria { Id = 84, MateriaId = 4, GrupoId = 33 }, // Z1
+        new GrupoMateria { Id = 85, MateriaId = 4, GrupoId = 34 }, // Z2
+        new GrupoMateria { Id = 86, MateriaId = 4, GrupoId = 35 }, // Z3
+        new GrupoMateria { Id = 87, MateriaId = 4, GrupoId = 36 }, // Z4
+        new GrupoMateria { Id = 88, MateriaId = 4, GrupoId = 37 }, // Z5
+        new GrupoMateria { Id = 89, MateriaId = 4, GrupoId = 38 }, // Z6
 
         // FISICA II
-        new GrupoMateria { ID = 90, MATERIA_ID = 9, GRUPO_ID = 19 }, // BI
-        new GrupoMateria { ID = 91, MATERIA_ID = 9, GRUPO_ID = 24 }, // R1
-        new GrupoMateria { ID = 92, MATERIA_ID = 9, GRUPO_ID = 27 }, // NW
-        new GrupoMateria { ID = 93, MATERIA_ID = 9, GRUPO_ID = 28 }, // NX
-        new GrupoMateria { ID = 94, MATERIA_ID = 9, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 95, MATERIA_ID = 9, GRUPO_ID = 2 }, // SB
+        new GrupoMateria { Id = 90, MateriaId = 9, GrupoId = 19 }, // BI
+        new GrupoMateria { Id = 91, MateriaId = 9, GrupoId = 24 }, // R1
+        new GrupoMateria { Id = 92, MateriaId = 9, GrupoId = 27 }, // NW
+        new GrupoMateria { Id = 93, MateriaId = 9, GrupoId = 28 }, // NX
+        new GrupoMateria { Id = 94, MateriaId = 9, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 95, MateriaId = 9, GrupoId = 2 }, // SB
 
         // FISICA III
-        new GrupoMateria { ID = 96, MATERIA_ID = 14, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 97, MATERIA_ID = 14, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 98, MATERIA_ID = 14, GRUPO_ID = 3 }, // SC
-        new GrupoMateria { ID = 99, MATERIA_ID = 14, GRUPO_ID = 34 }, // X2
-        new GrupoMateria { ID = 100, MATERIA_ID = 14, GRUPO_ID = 35 }, // X3
-        new GrupoMateria { ID = 101, MATERIA_ID = 14, GRUPO_ID = 36 }, // X4
+        new GrupoMateria { Id = 96, MateriaId = 14, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 97, MateriaId = 14, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 98, MateriaId = 14, GrupoId = 3 }, // SC
+        new GrupoMateria { Id = 99, MateriaId = 14, GrupoId = 34 }, // X2
+        new GrupoMateria { Id = 100, MateriaId = 14, GrupoId = 35 }, // X3
+        new GrupoMateria { Id = 101, MateriaId = 14, GrupoId = 36 }, // X4
 
         // GESTIÓN Y ADMINISTRACIÓN DE REDES   
-        new GrupoMateria { ID = 102, MATERIA_ID = 96, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 102, MateriaId = 96, GrupoId = 1 }, // SA
 
         // INGENIERÍA DE LA CALIDAD  
-        new GrupoMateria { ID = 103, MATERIA_ID = 71, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 103, MateriaId = 71, GrupoId = 1 }, // SA
 
         // INGENIERÍA DE SOFTWARE I
-        new GrupoMateria { ID = 104, MATERIA_ID = 35, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 105, MATERIA_ID = 35, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 104, MateriaId = 35, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 105, MateriaId = 35, GrupoId = 3 }, // SC
 
         // INGENIERÍA DE SOFTWARE II
-        new GrupoMateria { ID = 106, MATERIA_ID = 40, GRUPO_ID = 2 }, // SB
+        new GrupoMateria { Id = 106, MateriaId = 40, GrupoId = 2 }, // SB
 
         // INGLÉS TÉCNICO I
-        new GrupoMateria { ID = 107, MATERIA_ID = 5, GRUPO_ID = 27 }, // NW
-        new GrupoMateria { ID = 108, MATERIA_ID = 5, GRUPO_ID = 28 }, // NX
-        new GrupoMateria { ID = 109, MATERIA_ID = 5, GRUPO_ID = 33 }, // Z1
-        new GrupoMateria { ID = 110, MATERIA_ID = 5, GRUPO_ID = 34 }, // Z2
-        new GrupoMateria { ID = 111, MATERIA_ID = 5, GRUPO_ID = 35 }, // Z3
-        new GrupoMateria { ID = 112, MATERIA_ID = 5, GRUPO_ID = 36 }, // Z4
-        new GrupoMateria { ID = 113, MATERIA_ID = 5, GRUPO_ID = 38 }, // Z6
+        new GrupoMateria { Id = 107, MateriaId = 5, GrupoId = 27 }, // NW
+        new GrupoMateria { Id = 108, MateriaId = 5, GrupoId = 28 }, // NX
+        new GrupoMateria { Id = 109, MateriaId = 5, GrupoId = 33 }, // Z1
+        new GrupoMateria { Id = 110, MateriaId = 5, GrupoId = 34 }, // Z2
+        new GrupoMateria { Id = 111, MateriaId = 5, GrupoId = 35 }, // Z3
+        new GrupoMateria { Id = 112, MateriaId = 5, GrupoId = 36 }, // Z4
+        new GrupoMateria { Id = 113, MateriaId = 5, GrupoId = 38 }, // Z6
 
 
         // PROBABILIDAD Y ESTADÍSTICA I
-        new GrupoMateria { ID = 114, MATERIA_ID = 16, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 115, MATERIA_ID = 16, GRUPO_ID = 3 }, // SC
-        new GrupoMateria { ID = 116, MATERIA_ID = 16, GRUPO_ID = 4 }, // SD
-        new GrupoMateria { ID = 117, MATERIA_ID = 16, GRUPO_ID = 9 }, // SI
+        new GrupoMateria { Id = 114, MateriaId = 16, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 115, MateriaId = 16, GrupoId = 3 }, // SC
+        new GrupoMateria { Id = 116, MateriaId = 16, GrupoId = 4 }, // SD
+        new GrupoMateria { Id = 117, MateriaId = 16, GrupoId = 9 }, // SI
 
         // PROBABILIDAD Y ESTADÍSTICA II
-        new GrupoMateria { ID = 118, MATERIA_ID = 21, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 119, MATERIA_ID = 21, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 120, MATERIA_ID = 21, GRUPO_ID = 9 }, // SI
+        new GrupoMateria { Id = 118, MateriaId = 21, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 119, MateriaId = 21, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 120, MateriaId = 21, GrupoId = 9 }, // SI
 
         // PRODUCCIÓN Y MARKETING
-        new GrupoMateria { ID = 121, MATERIA_ID = 69, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 121, MateriaId = 69, GrupoId = 1 }, // SA
 
         // PROGRAMACIÓN LÓGICA Y FUNCIONAL
-        new GrupoMateria { ID = 122, MATERIA_ID = 22, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 122, MateriaId = 22, GrupoId = 1 }, // SA
 
         // PROGRAMACIÓN ENSAMBLADOR
-        new GrupoMateria { ID = 123, MATERIA_ID = 19, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 124, MATERIA_ID = 19, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 125, MATERIA_ID = 19, GRUPO_ID = 3 }, // SC
-        new GrupoMateria { ID = 126, MATERIA_ID = 19, GRUPO_ID = 16 }, // SX
+        new GrupoMateria { Id = 123, MateriaId = 19, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 124, MateriaId = 19, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 125, MateriaId = 19, GrupoId = 3 }, // SC
+        new GrupoMateria { Id = 126, MateriaId = 19, GrupoId = 16 }, // SX
         
         // PROGRAMACIÓN GRÁFICA
-        new GrupoMateria { ID = 127, MATERIA_ID = 60, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 127, MateriaId = 60, GrupoId = 1 }, // SA
 
         // PROGRAMACIÓN I
-        new GrupoMateria { ID = 128, MATERIA_ID = 8, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 129, MATERIA_ID = 8, GRUPO_ID = 3 }, // SC
-        new GrupoMateria { ID = 130, MATERIA_ID = 8, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 131, MATERIA_ID = 8, GRUPO_ID = 7 }, // SG
-        new GrupoMateria { ID = 132, MATERIA_ID = 8, GRUPO_ID = 4 }, // SD
-        new GrupoMateria { ID = 133, MATERIA_ID = 8, GRUPO_ID = 6 }, // SF
-        new GrupoMateria { ID = 134, MATERIA_ID = 8, GRUPO_ID = 8 }, // SH
-        new GrupoMateria { ID = 135, MATERIA_ID = 8, GRUPO_ID = 9 }, // SI
+        new GrupoMateria { Id = 128, MateriaId = 8, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 129, MateriaId = 8, GrupoId = 3 }, // SC
+        new GrupoMateria { Id = 130, MateriaId = 8, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 131, MateriaId = 8, GrupoId = 7 }, // SG
+        new GrupoMateria { Id = 132, MateriaId = 8, GrupoId = 4 }, // SD
+        new GrupoMateria { Id = 133, MateriaId = 8, GrupoId = 6 }, // SF
+        new GrupoMateria { Id = 134, MateriaId = 8, GrupoId = 8 }, // SH
+        new GrupoMateria { Id = 135, MateriaId = 8, GrupoId = 9 }, // SI
 
         // PROGRAMACIÓN II
-        new GrupoMateria { ID = 136, MATERIA_ID = 12, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 137, MATERIA_ID = 12, GRUPO_ID = 4 }, // SD
-        new GrupoMateria { ID = 138, MATERIA_ID = 12, GRUPO_ID = 3 }, // SC
-        new GrupoMateria { ID = 139, MATERIA_ID = 12, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 140, MATERIA_ID = 12, GRUPO_ID = 9 }, // SI
+        new GrupoMateria { Id = 136, MateriaId = 12, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 137, MateriaId = 12, GrupoId = 4 }, // SD
+        new GrupoMateria { Id = 138, MateriaId = 12, GrupoId = 3 }, // SC
+        new GrupoMateria { Id = 139, MateriaId = 12, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 140, MateriaId = 12, GrupoId = 9 }, // SI
 
         // REDES ADHOC
-        new GrupoMateria { ID = 141, MATERIA_ID = 95, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 141, MateriaId = 95, GrupoId = 1 }, // SA
 
         // REDES I
-        new GrupoMateria { ID = 142, MATERIA_ID = 34, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 143, MATERIA_ID = 34, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 144, MATERIA_ID = 34, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 142, MateriaId = 34, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 143, MateriaId = 34, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 144, MateriaId = 34, GrupoId = 3 }, // SC
 
         // REDES II
-        new GrupoMateria { ID = 145, MATERIA_ID = 39, GRUPO_ID = 24 }, // R1
-        new GrupoMateria { ID = 146, MATERIA_ID = 39, GRUPO_ID = 2 }, // SB
-        new GrupoMateria { ID = 147, MATERIA_ID = 39, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 145, MateriaId = 39, GrupoId = 24 }, // R1
+        new GrupoMateria { Id = 146, MateriaId = 39, GrupoId = 2 }, // SB
+        new GrupoMateria { Id = 147, MateriaId = 39, GrupoId = 3 }, // SC
         
         // REDES INALÁMBRICAS Y COMUNICACIONES MÓVILES
-        new GrupoMateria { ID = 148, MATERIA_ID = 97, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 148, MateriaId = 97, GrupoId = 1 }, // SA
 
         // SEGURIDAD EN REDES Y TRANSMISIÓN DE DATOS
-        new GrupoMateria { ID = 149, MATERIA_ID = 98, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 149, MateriaId = 98, GrupoId = 1 }, // SA
 
         // SEÑALES Y SISTEMAS
-        new GrupoMateria { ID = 150, MATERIA_ID = 80, GRUPO_ID = 24 }, // R1
+        new GrupoMateria { Id = 150, MateriaId = 80, GrupoId = 24 }, // R1
         
         // SISTEMAS DE COMUNICACIÓN I
-        new GrupoMateria { ID = 151, MATERIA_ID = 88, GRUPO_ID = 14 }, // SR
+        new GrupoMateria { Id = 151, MateriaId = 88, GrupoId = 14 }, // SR
 
         // SISTEMAS DE COMUNICACIÓN II
-        new GrupoMateria { ID = 152, MATERIA_ID = 93, GRUPO_ID = 14 }, // SR
+        new GrupoMateria { Id = 152, MateriaId = 93, GrupoId = 14 }, // SR
 
         // SISTEMAS DE COMUNICACIÓN SCADA
-        new GrupoMateria { ID = 153, MATERIA_ID = 85, GRUPO_ID = 24 }, // R1
+        new GrupoMateria { Id = 153, MateriaId = 85, GrupoId = 24 }, // R1
 
         // SISTEMAS DE INFORMACIÓN GEOGRÁFICA
-        new GrupoMateria { ID = 154, MATERIA_ID = 44, GRUPO_ID = 9 }, // SI
-        new GrupoMateria { ID = 155, MATERIA_ID = 44, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 154, MateriaId = 44, GrupoId = 9 }, // SI
+        new GrupoMateria { Id = 155, MateriaId = 44, GrupoId = 1 }, // SA
 
         // SISTEMAS DE INFORMACIÓN I
-        new GrupoMateria { ID = 156, MATERIA_ID = 27, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 157, MATERIA_ID = 27, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 156, MateriaId = 27, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 157, MateriaId = 27, GrupoId = 3 }, // SC
 
         // SISTEMAS DE INFORMACIÓN II
-        new GrupoMateria { ID = 158, MATERIA_ID = 38, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 159, MATERIA_ID = 38, GRUPO_ID = 2 }, // SB
+        new GrupoMateria { Id = 158, MateriaId = 38, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 159, MateriaId = 38, GrupoId = 2 }, // SB
 
         // SISTEMAS EXPERTOS
-        new GrupoMateria { ID = 160, MATERIA_ID = 37, GRUPO_ID = 2 }, // SB
+        new GrupoMateria { Id = 160, MateriaId = 37, GrupoId = 2 }, // SB
 
         // SISTEMAS LÓGICOS Y DIGITALES I
-        new GrupoMateria { ID = 161, MATERIA_ID = 79, GRUPO_ID = 23 }, // ER
+        new GrupoMateria { Id = 161, MateriaId = 79, GrupoId = 23 }, // ER
 
         // SISTEMAS LÓGICOS Y DIGITALES II
-        new GrupoMateria { ID = 162, MATERIA_ID = 83, GRUPO_ID = 24 }, // R1
+        new GrupoMateria { Id = 162, MateriaId = 83, GrupoId = 24 }, // R1
         
         // SISTEMAS OPERATIVOS I
-        new GrupoMateria { ID = 163, MATERIA_ID = 28, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 164, MATERIA_ID = 28, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 163, MateriaId = 28, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 164, MateriaId = 28, GrupoId = 3 }, // SC
 
         // SISTEMAS OPERATIVOS II
-        new GrupoMateria { ID = 165, MATERIA_ID = 33, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 166, MATERIA_ID = 33, GRUPO_ID = 2 }, // SB
+        new GrupoMateria { Id = 165, MateriaId = 33, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 166, MateriaId = 33, GrupoId = 2 }, // SB
         
         // SISTEMAS PARA EL SOPORTE A LA TOMA DE DECISIONES
-        new GrupoMateria { ID = 167, MATERIA_ID = 56, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 167, MateriaId = 56, GrupoId = 1 }, // SA
         
         // TALLER DE ANÁLISIS Y DISEÑO DE REDES
-        new GrupoMateria { ID = 168, MATERIA_ID = 91, GRUPO_ID = 1 }, // SA
+        new GrupoMateria { Id = 168, MateriaId = 91, GrupoId = 1 }, // SA
         
         // TALLER DE GRADO I
-        new GrupoMateria { ID = 169, MATERIA_ID = 41, GRUPO_ID = 15 }, // SS
-        new GrupoMateria { ID = 170, MATERIA_ID = 41, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 171, MATERIA_ID = 41, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 169, MateriaId = 41, GrupoId = 15 }, // SS
+        new GrupoMateria { Id = 170, MateriaId = 41, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 171, MateriaId = 41, GrupoId = 3 }, // SC
 
         // TECNOLOGIA WEB
-        new GrupoMateria { ID = 172, MATERIA_ID = 42, GRUPO_ID = 1 }, // SA
-        new GrupoMateria { ID = 173, MATERIA_ID = 42, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 172, MateriaId = 42, GrupoId = 1 }, // SA
+        new GrupoMateria { Id = 173, MateriaId = 42, GrupoId = 3 }, // SC
         
         // TELEVISIÓN DIGITAL
-        new GrupoMateria { ID = 174, MATERIA_ID = 86, GRUPO_ID = 14 }, // SR
+        new GrupoMateria { Id = 174, MateriaId = 86, GrupoId = 14 }, // SR
 
         // TEORIA DE CAMPOS
-        new GrupoMateria { ID = 175, MATERIA_ID = 76, GRUPO_ID = 3 }, // SC
+        new GrupoMateria { Id = 175, MateriaId = 76, GrupoId = 3 }, // SC
 
         // TÓPICOS AVANZADOS DE PROGRAMACIÓN
-        new GrupoMateria { ID = 176, MATERIA_ID = 61, GRUPO_ID = 1 } // SA
+        new GrupoMateria { Id = 176, MateriaId = 61, GrupoId = 1 } // SA
 
 
     );

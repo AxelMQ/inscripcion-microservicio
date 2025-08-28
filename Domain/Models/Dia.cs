@@ -1,19 +1,15 @@
+// Domain/Models/Dia.cs
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Core;
 
 namespace Domain.Models
 {
-  [Table("DIA")]
-  public class Dia
-  {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int ID { get; set; }
+    public class Dia : BaseEntity
+    {
+        [MaxLength(15)]
+        public required string Nombre { get; set; }
 
-    [StringLength(15)]
-    public required string NOMBRE { get; set; }
-
-    // Propiedad de navegación - Se inicializa
-    public ICollection<HoraDia> HorasDia { get; set; } = new List<HoraDia>();
-  }
+        public ICollection<HoraDia> HorasDia { get; set; } = new List<HoraDia>();
+    }
 }

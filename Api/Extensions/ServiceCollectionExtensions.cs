@@ -11,6 +11,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Threading.Channels;
 using Microsoft.OpenApi.Models; // <-- Added this using directive
 
+
 namespace Api.Extensions
 {
     public static class ServiceCollectionExtensions
@@ -28,29 +29,12 @@ namespace Api.Extensions
             }
 
             services.AddDbContext<AppDbContext>(opt =>
-                opt.UseNpgsql(connString));
+    opt.UseNpgsql(connString)
+       .UseSnakeCaseNamingConvention());
 
             // ── Registrar Repositorios ──────────────────────────────────────────────────
-            services.AddScoped<IAlumnoRepository, AlumnoRepository>();
-            services.AddScoped<ICarreraRepository, CarreraRepository>();
-            services.AddScoped<IDocenteRepository, DocenteRepository>();
-            services.AddScoped<IDiaRepository, DiaRepository>();
-            services.AddScoped<IGestionRepository, GestionRepository>();
-            services.AddScoped<IHoraRepository, HoraRepository>();
-            services.AddScoped<IHorarioRepository, HorarioRepository>();
-            services.AddScoped<IHorarioMateriaRepository, HorarioMateriaRepository>();
-            services.AddScoped<IInscripcionRepository, InscripcionRepository>();
-            services.AddScoped<IMateriaRepository, MateriaRepository>();
-            services.AddScoped<IMateriaPlanEstudioRepository, MateriaPlanEstudioRepository>();
-            services.AddScoped<IModuloRepository, ModuloRepository>();
-            services.AddScoped<INivelRepository, NivelRepository>();
-            services.AddScoped<IPlanEstudioRepository, PlanEstudioRepository>();
-            services.AddScoped<IPrerequisitoRepository, PrerequisitoRepository>();
-            services.AddScoped<IHoraDiaRepository, HoraDiaRepository>();
-            services.AddScoped<IHoraDiaHorarioRepository, HoraDiaHorarioRepository>();
-            services.AddScoped<IHorarioMateriaInscripcionRepository, HorarioMateriaInscripcionRepository>();
-            services.AddScoped<INotaRepository, NotaRepository>();
-            services.AddScoped<IGrupoRepository, GrupoRepository>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // ── CONFIGURACION DEL SISTEMA ASINCRONO ───────────────────────────────────────
             services.AddSingleton(Channel.CreateUnbounded<RequestMessage>());
@@ -58,6 +42,8 @@ namespace Api.Extensions
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddHostedService<RequestProcessorService>();
             services.AddSingleton<RequestStatusTracker>();
+
+            // ── ESTRATEGIAS PARA LOS REPOSITORIOS ───────────────────────────────────────
             services.AddSingleton<IRequestProcessingStrategy, StudentProcessingStrategy>();
             services.AddSingleton<IRequestProcessingStrategy, MateriaProcessingStrategy>();
 

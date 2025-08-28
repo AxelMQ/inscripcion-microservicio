@@ -1,121 +1,106 @@
-// Archivo: Api/Controllers/NivelController.cs
-
-using Microsoft.AspNetCore.Mvc;
+// Api/Controllers/NivelController.cs
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using Domain.Models;
+using Api.Dtos;
 using Application.Interfaces;
-using Api.Dtos; // ¡Añade esta línea para resolver el error!
+using Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 
-[Route("api/[controller]")]
-[ApiController]
-public class NivelController : ControllerBase
+namespace Api.Controllers
 {
-    private readonly INivelRepository _nivelRepository;
-
-    public NivelController(INivelRepository nivelRepository)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class NivelController : ControllerBase
     {
-        _nivelRepository = nivelRepository;
-    }
+        private readonly IUnitOfWork _uow;
 
-    // Método de mapeo de Nivel a NivelDto
-    private NivelDto MapToDto(Nivel Nivel)
-    {
-        return new NivelDto
+        public NivelController(IUnitOfWork uow)
         {
-            ID = Nivel.ID,
-            NOMBRE = Nivel.NOMBRE,
+            _uow = uow;
+        }
+
+        // --- helpers de mapeo ---
+        private static NivelDto MapToDto(Nivel n) => new()
+        {
+            Id     = n.Id,
+            Orden = n.Orden,
+            Nombre = n.Nombre
         };
-    }
 
-    // Método de mapeo de NivelDto a Nivel
-    private Nivel MapToEntity(NivelDto NivelDto)
-    {
-        return new Nivel
+        private static Nivel MapToEntity(NivelDto dto) => new()
         {
-            ID = NivelDto.ID,
-            NOMBRE = NivelDto.NOMBRE,
+            Id     = dto.Id,
+            Orden = dto.Orden,
+            Nombre = dto.Nombre
         };
-    }
 
-    // Endpoint para obtener todos los Nivels
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<NivelDto>>> GetAll()
-    {
-        var Nivels = await _nivelRepository.GetAllAsync();
-        var NivelsDto = Nivels.Select(a => MapToDto(a)).ToList();
-        return Ok(NivelsDto);
-    }
-
-    // Endpoint para obtener un Nivel por ID
-    [HttpGet("{id}")]
-    public async Task<ActionResult<NivelDto>> GetById(int id)
-    {
-        var Nivel = await _nivelRepository.GetByIdAsync(id);
-        if (Nivel == null)
+        // GET: api/nivel
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<NivelDto>>> GetAll(CancellationToken ct)
         {
-            return NotFound();
-        }
-        var NivelDto = MapToDto(Nivel);
-        return Ok(NivelDto);
-    }
-
-    // Endpoint para crear un nuevo Nivel
-    [HttpPost]
-    public async Task<ActionResult<NivelDto>> Add(NivelDto NivelDto)
-    {
-        // VERIFICACIÓN CLAVE: Si el modelo no es válido, el framework
-        // ya llenó ModelState con los errores.
-        if (!ModelState.IsValid)
-        {
-            // Devuelve un código 400 Bad Request con los errores de validación
-            return BadRequest(ModelState);
+            var repo = _uow.GetRepository<Nivel>();
+            var niveles = await repo.GetAllAsync(ct);
+            return Ok(niveles.Select(MapToDto).ToList());
         }
 
-        var Nivel = MapToEntity(NivelDto);
-        await _nivelRepository.AddAsync(Nivel);
-        var newNivelDto = MapToDto(Nivel);
-        return CreatedAtAction(nameof(GetById), new { id = newNivelDto.ID }, newNivelDto);
-    }
-
-    // Endpoint para actualizar un Nivel
-    [HttpPut("{id}")]
-    public async Task<ActionResult> Update(int id, NivelDto NivelDto)
-    {
-        if (id != NivelDto.ID)
+        // GET: api/nivel/5
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<NivelDto>> GetById(int id, CancellationToken ct)
         {
-            return BadRequest();
+            var repo = _uow.GetRepository<Nivel>();
+            var nivel = await repo.GetByIdAsync(id, ct);
+            if (nivel is null) return NotFound();
+            return Ok(MapToDto(nivel));
         }
 
-        if (!ModelState.IsValid)
+        // POST: api/nivel
+        [HttpPost]
+        public async Task<ActionResult<NivelDto>> Add([FromBody] NivelDto dto, CancellationToken ct)
         {
-            return BadRequest(ModelState);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var repo = _uow.GetRepository<Nivel>();
+            var entity = MapToEntity(dto);
+
+            await repo.AddAsync(entity, ct);
+            await _uow.CompleteAsync(ct);
+
+            var created = MapToDto(entity);
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
-        var Nivel = await _nivelRepository.GetByIdAsync(id);
-        if (Nivel == null)
+        // PUT: api/nivel/5
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] NivelDto dto, CancellationToken ct)
         {
-            return NotFound();
+            if (id != dto.Id) return BadRequest();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var repo = _uow.GetRepository<Nivel>();
+            var existing = await repo.GetByIdAsync(id, ct);
+            if (existing is null) return NotFound();
+
+            existing.Nombre = dto.Nombre;
+
+            await repo.UpdateAsync(existing, ct);
+            await _uow.CompleteAsync(ct);
+            return NoContent();
         }
 
-        // Mapea los datos del DTO al modelo de dominio existente
-        Nivel.NOMBRE = NivelDto.NOMBRE;
-
-        await _nivelRepository.UpdateAsync(Nivel);
-        return NoContent();
-    }
-
-    // Endpoint para eliminar un Nivel
-    [HttpDelete("{id}")]
-    public async Task<ActionResult> Delete(int id)
-    {
-        var Nivel = await _nivelRepository.GetByIdAsync(id);
-        if (Nivel == null)
+        // DELETE: api/nivel/5
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id, CancellationToken ct)
         {
-            return NotFound();
+            var repo = _uow.GetRepository<Nivel>();
+
+            var existing = await repo.GetByIdAsync(id, ct);
+            if (existing is null) return NotFound();
+
+            await repo.DeleteAsync(id, ct);
+            await _uow.CompleteAsync(ct);
+            return NoContent();
         }
-        await _nivelRepository.DeleteAsync(id);
-        return NoContent();
     }
 }

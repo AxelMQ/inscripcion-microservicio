@@ -1,21 +1,18 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+// Domain/Models/Inscripcion.cs
+using System;
+using System.Collections.Generic;
+using Domain.Core;
 
 namespace Domain.Models
 {
-    [Table("INSCRIPCION")]
-    public class Inscripcion
+    public class Inscripcion : BaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public DateTime Fecha { get; set; }
 
-        public required DateTime FECHA { get; set; }
+        public int AlumnoId { get; set; }
+        public Alumno Alumno { get; set; } = null!;
 
-        public required int ALUMNO_ID { get; set; }
-        public Alumno Alumno { get; set; } = null!; // Se usa 'null!'
-
-        // Propiedad de navegación - Se inicializa
-        public ICollection<HorarioMateriaInscripcion> HorarioMateriaInscripciones { get; set; } = new List<HorarioMateriaInscripcion>();
+        public ICollection<HorarioMateriaInscripcion> HorarioMateriaInscripciones { get; set; } 
+            = new List<HorarioMateriaInscripcion>();
     }
 }

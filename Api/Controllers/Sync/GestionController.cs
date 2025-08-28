@@ -1,121 +1,104 @@
-// Archivo: Api/Controllers/GestionController.cs
-
-using Microsoft.AspNetCore.Mvc;
+// Api/Controllers/GestionController.cs
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using Domain.Models;
 using Application.Interfaces;
-using Api.Dtos; // ¡Añade esta línea para resolver el error!
+using Domain.Models;
+using Api.Dtos;
+using Microsoft.AspNetCore.Mvc;
 
-[Route("api/[controller]")]
-[ApiController]
-public class GestionController : ControllerBase
+namespace Api.Controllers
 {
-  private readonly IGestionRepository _gestionRepository;
-
-  public GestionController(IGestionRepository gestionRepository)
-  {
-    _gestionRepository = gestionRepository;
-  }
-
-  // Método de mapeo de Gestion a GestionDto
-  private GestionDto MapToDto(Gestion alumno)
-  {
-    return new GestionDto
+    [ApiController]
+    [Route("api/[controller]")]
+    public class GestionController : ControllerBase
     {
-      ID = alumno.ID,
-      NOMBRE = alumno.NOMBRE,
-    };
-  }
+        private readonly IUnitOfWork _uow;
 
-  // Método de mapeo de GestionDto a Gestion
-  private Gestion MapToEntity(GestionDto alumnoDto)
-  {
-    return new Gestion
-    {
-      ID = alumnoDto.ID,
-      NOMBRE = alumnoDto.NOMBRE
-    };
-  }
+        public GestionController(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
 
-  // Endpoint para obtener todos los alumnos
-  [HttpGet]
-  public async Task<ActionResult<IEnumerable<GestionDto>>> GetAll()
-  {
-    var alumnos = await _gestionRepository.GetAllAsync();
-    var alumnosDto = alumnos.Select(a => MapToDto(a)).ToList();
-    return Ok(alumnosDto);
-  }
+        // --- mapping helpers ---
+        private static GestionDto MapToDto(Gestion g) => new()
+        {
+            Id     = g.Id,
+            Nombre = g.Nombre
+        };
 
-  // Endpoint para obtener un alumno por ID
-  [HttpGet("{id}")]
-  public async Task<ActionResult<GestionDto>> GetById(int id)
-  {
-    var alumno = await _gestionRepository.GetByIdAsync(id);
-    if (alumno == null)
-    {
-      return NotFound();
+        private static Gestion MapToEntity(GestionDto dto) => new()
+        {
+            Id     = dto.Id,
+            Nombre = dto.Nombre
+        };
+
+        // GET: api/gestion
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<GestionDto>>> GetAll(CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Gestion>();
+            var list = await repo.GetAllAsync(ct);
+            return Ok(list.Select(MapToDto).ToList());
+        }
+
+        // GET: api/gestion/5
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<GestionDto>> GetById(int id, CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Gestion>();
+            var g = await repo.GetByIdAsync(id, ct);
+            if (g is null) return NotFound();
+            return Ok(MapToDto(g));
+        }
+
+        // POST: api/gestion
+        [HttpPost]
+        public async Task<ActionResult<GestionDto>> Add([FromBody] GestionDto dto, CancellationToken ct)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var repo = _uow.GetRepository<Gestion>();
+            var entity = MapToEntity(dto);
+
+            await repo.AddAsync(entity, ct);
+            await _uow.CompleteAsync(ct);
+
+            var created = MapToDto(entity);
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+        }
+
+        // PUT: api/gestion/5
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] GestionDto dto, CancellationToken ct)
+        {
+            if (id != dto.Id) return BadRequest();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var repo = _uow.GetRepository<Gestion>();
+            var existing = await repo.GetByIdAsync(id, ct);
+            if (existing is null) return NotFound();
+
+            existing.Nombre = dto.Nombre;
+
+            await repo.UpdateAsync(existing, ct);
+            await _uow.CompleteAsync(ct);
+            return NoContent();
+        }
+
+        // DELETE: api/gestion/5
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id, CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Gestion>();
+
+            var existing = await repo.GetByIdAsync(id, ct);
+            if (existing is null) return NotFound();
+
+            await repo.DeleteAsync(id, ct);
+            await _uow.CompleteAsync(ct);
+            return NoContent();
+        }
     }
-    var alumnoDto = MapToDto(alumno);
-    return Ok(alumnoDto);
-  }
-
-  // Endpoint para crear un nuevo alumno
-  [HttpPost]
-  public async Task<ActionResult<GestionDto>> Add(GestionDto alumnoDto)
-  {
-    // VERIFICACIÓN CLAVE: Si el modelo no es válido, el framework
-    // ya llenó ModelState con los errores.
-    if (!ModelState.IsValid)
-    {
-      // Devuelve un código 400 Bad Request con los errores de validación
-      return BadRequest(ModelState);
-    }
-
-    var alumno = MapToEntity(alumnoDto);
-    await _gestionRepository.AddAsync(alumno);
-    var newAlumnoDto = MapToDto(alumno);
-    return CreatedAtAction(nameof(GetById), new { id = newAlumnoDto.ID }, newAlumnoDto);
-  }
-
-  // Endpoint para actualizar un alumno
-  [HttpPut("{id}")]
-  public async Task<ActionResult> Update(int id, GestionDto alumnoDto)
-  {
-    if (id != alumnoDto.ID)
-    {
-      return BadRequest();
-    }
-
-    if (!ModelState.IsValid)
-    {
-      return BadRequest(ModelState);
-    }
-
-    var alumno = await _gestionRepository.GetByIdAsync(id);
-    if (alumno == null)
-    {
-      return NotFound();
-    }
-
-    // Mapea los datos del DTO al modelo de dominio existente
-    alumno.NOMBRE = alumnoDto.NOMBRE;
-
-    await _gestionRepository.UpdateAsync(alumno);
-    return NoContent();
-  }
-
-  // Endpoint para eliminar un alumno
-  [HttpDelete("{id}")]
-  public async Task<ActionResult> Delete(int id)
-  {
-    var alumno = await _gestionRepository.GetByIdAsync(id);
-    if (alumno == null)
-    {
-      return NotFound();
-    }
-    await _gestionRepository.DeleteAsync(id);
-    return NoContent();
-  }
 }

@@ -1,37 +1,31 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+// Domain/Models/HorarioMateria.cs
+using System.Collections.Generic;
+using Domain.Core;
 
 namespace Domain.Models
 {
-  [Table("HORARIO_MATERIA")]
-  public class HorarioMateria
-  {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int ID { get; set; }
+    public class HorarioMateria : BaseEntity
+    {
+        public short CuposDisponibles { get; set; }
+        public short CuposTotal { get; set; }
+        public int? NroAula { get; set; }
 
-    public required short CUPOS_DISPONIBLES { get; set; }
+        public int GestionId { get; set; }
+        public Gestion Gestion { get; set; } = null!;
 
-    public required short CUPOS_TOTAL { get; set; }
+        public int GrupoMateriaId { get; set; }
+        public GrupoMateria GrupoMateria { get; set; } = null!;
 
-    public int? NRO_AULA { get; set; }
+        public int ModuloId { get; set; }
+        public Modulo Modulo { get; set; } = null!;
 
-    public required int GESTION_ID { get; set; }
-    public Gestion Gestion { get; set; } = null!; // Se usa 'null!'
+        public int? DocenteId { get; set; }
+        public Docente? Docente { get; set; }
 
-    public required int GRUPO_MATERIA_ID { get; set; }
-    public GrupoMateria GrupoMateria { get; set; } = null!; // Se usa 'null!'
+        public int HorarioId { get; set; }
+        public Horario Horario { get; set; } = null!;
 
-    public required int MODULO_ID { get; set; }
-    public Modulo Modulo { get; set; } = null!; // Se usa 'null!'
-
-    public int? DOCENTE_ID { get; set; }
-    public Docente? Docente { get; set; }
-
-    public required int HORARIO_ID { get; set; }
-    public Horario Horario { get; set; } = null!; // Se usa 'null!'
-
-    // Propiedad de navegación - Se inicializa
-    public ICollection<HorarioMateriaInscripcion> HorarioMateriaInscripciones { get; set; } = new List<HorarioMateriaInscripcion>();
-  }
+        public ICollection<HorarioMateriaInscripcion> HorarioMateriaInscripciones { get; set; } 
+            = new List<HorarioMateriaInscripcion>();
+    }
 }

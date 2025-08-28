@@ -1,26 +1,18 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Domain.Core; // Asegúrate de que este using apunte a la ubicación de BaseEntity
+using Domain.Core;
 
 namespace Domain.Models
 {
-    [Table("ALUMNO")]
     public class Alumno : BaseEntity
     {
-        // La propiedad ID ya no es necesaria aquí, se hereda de BaseEntity.
-        // Los atributos [Key] y [DatabaseGenerated] se manejarán en la configuración de Entity Framework.
+        [MaxLength(60)]                 // válido como regla de dominio
+        public required string Nombre { get; set; }
 
-        [StringLength(60)]
-        public required string NOMBRE { get; set; }
+        public decimal Ppa { get; set; } // precisión se define en Infra
+        public int Telefono { get; set; }
+        public int Registro { get; set; }
 
-        [Column(TypeName = "numeric(10, 2)")]
-        public required decimal PPA { get; set; }
-
-        public int? TELEFONO { get; set; }
-
-        public required int REGISTRO { get; set; }
-
-        // Propiedad de navegación - Se inicializa
         public ICollection<Inscripcion> Inscripciones { get; set; } = new List<Inscripcion>();
         public ICollection<Nota> Notas { get; set; } = new List<Nota>();
         public ICollection<AlumnoPlanEstudio> AlumnoPlanEstudios { get; set; } = new List<AlumnoPlanEstudio>();

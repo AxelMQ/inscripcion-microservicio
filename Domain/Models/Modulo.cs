@@ -1,18 +1,14 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+// Domain/Models/Modulo.cs
+using System.Collections.Generic;
+using Domain.Core;
 
 namespace Domain.Models
 {
-[Table("MODULO")]
-public class Modulo
-{
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int ID { get; set; }
+    public class Modulo : BaseEntity
+    {
+        // 'short' es tipo valor → no necesita 'required'
+        public short NroModulo { get; set; }
 
-    public required short NRO_MODULO { get; set; }
-
-    // Propiedad de navegación - Se inicializa
-    public ICollection<HorarioMateria> HorariosMateria { get; set; } = new List<HorarioMateria>();
-}
+        public ICollection<HorarioMateria> HorariosMateria { get; set; } = new List<HorarioMateria>();
+    }
 }

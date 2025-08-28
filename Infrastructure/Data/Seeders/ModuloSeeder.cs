@@ -9,12 +9,12 @@ public class ModuloSeeder : IEntityTypeConfiguration<Modulo>
   public void Configure(EntityTypeBuilder<Modulo> builder)
   {
     builder.HasData(
-        new Modulo { ID = 1, NRO_MODULO = 236 },
-        new Modulo { ID = 2, NRO_MODULO = 225 },
-        new Modulo { ID = 3, NRO_MODULO = 260 },
-        new Modulo { ID = 4, NRO_MODULO = 224 },
-        new Modulo { ID = 5, NRO_MODULO = 256 },
-        new Modulo { ID = 6, NRO_MODULO = 222 }
+        new Modulo { Id = 1, NroModulo = 236 },
+        new Modulo { Id = 2, NroModulo = 225 },
+        new Modulo { Id = 3, NroModulo = 260 },
+        new Modulo { Id = 4, NroModulo = 224 },
+        new Modulo { Id = 5, NroModulo = 256 },
+        new Modulo { Id = 6, NroModulo = 222 }
     );
   }
 }

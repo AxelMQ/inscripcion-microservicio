@@ -1,44 +1,30 @@
 using Application.Interfaces;
 using Domain.Core;
 using Infrastructure.Data;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories;
+
+public class UnitOfWork : IUnitOfWork, IAsyncDisposable, IDisposable
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    private readonly AppDbContext _ctx;
+    private readonly Dictionary<Type, object> _repos = new();
+    private bool _disposed;
+
+    public UnitOfWork(AppDbContext ctx) => _ctx = ctx;
+
+    public IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
     {
-        private readonly AppDbContext _context;
-        private readonly IServiceProvider _serviceProvider;
-        private Dictionary<Type, object> _repositories;
+        if (_repos.TryGetValue(typeof(TEntity), out var repo))
+            return (IRepository<TEntity>)repo;
 
-        public UnitOfWork(AppDbContext context, IServiceProvider serviceProvider)
-        {
-            _context = context;
-            _serviceProvider = serviceProvider;
-            _repositories = new Dictionary<Type, object>();
-        }
-
-        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
-        {
-            if (_repositories.ContainsKey(typeof(TEntity)))
-            {
-                return (IRepository<TEntity>)_repositories[typeof(TEntity)];
-            }
-
-            // Si el repositorio no existe, lo crea y lo guarda para reusarlo
-            var repository = _serviceProvider.GetRequiredService<IRepository<TEntity>>();
-            _repositories.Add(typeof(TEntity), repository);
-            return repository;
-        }
-
-        public async Task CompleteAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
-
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
+        var repository = new Repository<TEntity>(_ctx);
+        _repos.Add(typeof(TEntity), repository);
+        return repository;
     }
+
+    public Task<int> CompleteAsync(CancellationToken ct = default)
+        => _ctx.SaveChangesAsync(ct);
+
+    public async ValueTask DisposeAsync() { if (_disposed) return; await _ctx.DisposeAsync(); _disposed = true; }
+    public void Dispose() { if (_disposed) return; _ctx.Dispose(); _disposed = true; }
 }

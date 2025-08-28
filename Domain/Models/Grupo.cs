@@ -1,19 +1,15 @@
+// Domain/Models/Grupo.cs
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Core;
 
 namespace Domain.Models
 {
-  [Table("GRUPO")]
-  public class Grupo
-  {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int ID { get; set; }
+    public class Grupo : BaseEntity
+    {
+        [MaxLength(15)]
+        public required string Nombre { get; set; }
 
-    [StringLength(15)]
-    public required string NOMBRE { get; set; }
-
-    // Propiedad de navegación - Se inicializa
-    public ICollection<GrupoMateria> GrupoMaterias { get; set; } = new List<GrupoMateria>();
-  }
+        public ICollection<GrupoMateria> GrupoMaterias { get; set; } = new List<GrupoMateria>();
+    }
 }

@@ -9,10 +9,10 @@ public class PlanEstudioSeeder : IEntityTypeConfiguration<PlanEstudio>
     public void Configure(EntityTypeBuilder<PlanEstudio> builder)
     {
         builder.HasData(
-            new PlanEstudio { ID = 1, CODIGO = "ING-INF", CARRERA_ID = 2 },
-            new PlanEstudio { ID = 2, CODIGO = "ING-SIS", CARRERA_ID = 3 },
-            new PlanEstudio { ID = 3, CODIGO = "ING-RED", CARRERA_ID = 1 },
-            new PlanEstudio { ID = 4, CODIGO = "ING-ROB", CARRERA_ID = 4 }
+            new PlanEstudio { Id = 1, Codigo = "ING-INF", CarreraId = 2 },
+            new PlanEstudio { Id = 2, Codigo = "ING-SIS", CarreraId = 3 },
+            new PlanEstudio { Id = 3, Codigo = "ING-RED", CarreraId = 1 },
+            new PlanEstudio { Id = 4, Codigo = "ING-ROB", CarreraId = 4 }
         );
     }
 }

@@ -9,14 +9,14 @@ public class GestionSeeder : IEntityTypeConfiguration<Gestion>
   public void Configure(EntityTypeBuilder<Gestion> builder)
   {
     builder.HasData(
-      new Gestion { ID = 1, NOMBRE = "1/2025" },  
-      new Gestion { ID = 2, NOMBRE = "2/2025" },
-      new Gestion { ID = 3, NOMBRE = "3/2025" },
-      new Gestion { ID = 4, NOMBRE = "4/2025" },
-      new Gestion { ID = 5, NOMBRE = "1/2024" },
-      new Gestion { ID = 6, NOMBRE = "2/2024" },
-      new Gestion { ID = 7, NOMBRE = "3/2024" },
-      new Gestion { ID = 8, NOMBRE = "4/2024" }
+      new Gestion { Id = 1, Nombre = "1/2025" },  
+      new Gestion { Id = 2, Nombre = "2/2025" },
+      new Gestion { Id = 3, Nombre = "3/2025" },
+      new Gestion { Id = 4, Nombre = "4/2025" },
+      new Gestion { Id = 5, Nombre = "1/2024" },
+      new Gestion { Id = 6, Nombre = "2/2024" },
+      new Gestion { Id = 7, Nombre = "3/2024" },
+      new Gestion { Id = 8, Nombre = "4/2024" }
     );
   }
 }

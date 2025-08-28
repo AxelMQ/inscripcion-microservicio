@@ -9,12 +9,12 @@ public class DiaSeeder : IEntityTypeConfiguration<Dia>
   public void Configure(EntityTypeBuilder<Dia> builder)
   {
     builder.HasData(
-        new Dia { ID = 1, NOMBRE = "LUNES" },
-        new Dia { ID = 2, NOMBRE = "MARTES" },
-        new Dia { ID = 3, NOMBRE = "MIERCOLES" },
-        new Dia { ID = 4, NOMBRE = "JUEVES" },
-        new Dia { ID = 5, NOMBRE = "VIERNES" },
-        new Dia { ID = 6, NOMBRE = "SABADO" }
+        new Dia { Id = 1, Nombre = "LUNES" },
+        new Dia { Id = 2, Nombre = "MARTES" },
+        new Dia { Id = 3, Nombre = "MIERCOLES" },
+        new Dia { Id = 4, Nombre = "JUEVES" },
+        new Dia { Id = 5, Nombre = "VIERNES" },
+        new Dia { Id = 6, Nombre = "SABADO" }
     );
   }
 }

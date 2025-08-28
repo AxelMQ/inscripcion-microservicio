@@ -19,7 +19,7 @@ public class StatusController : ControllerBase
         var status = _tracker.GetStatus(id);
         if (status == null)
         {
-            return NotFound("ID de petición no encontrado.");
+            return NotFound("Id de petición no encontrado.");
         }
         return Ok(status);
     }

@@ -1,25 +1,22 @@
+// Domain/Models/Carrera.cs
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Core;
 
 namespace Domain.Models
 {
-    [Table("CARRERA")]
-    public class Carrera
+    public class Carrera : BaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        [MaxLength(10)]
+        public required string Codigo { get; set; }
 
-        [StringLength(10)]
-        public required string CODIGO { get; set; }
+        // 0 = PRESENCIAL ; 1 = VIRTUAL ; 2 = HIBRIDO
+        public short Modalidad { get; set; }
 
-        public required short MODALIDAD { get; set; } // 0 = PRESENCIAL ; 1 = VIRTUAL ; 2 = HIBRIDO
+        [MaxLength(63)]
+        public required string Nombre { get; set; }
 
-        [StringLength(63)]
-        public required string NOMBRE { get; set; }
-
-        // Propiedad de navegación - Se inicializa
+        // Navegación
         public ICollection<PlanEstudio> PlanesEstudio { get; set; } = new List<PlanEstudio>();
     }
-
 }

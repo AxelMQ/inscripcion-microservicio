@@ -1,23 +1,20 @@
+// Domain/Models/Docente.cs
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Core;
 
 namespace Domain.Models
 {
-  [Table("DOCENTE")]
-  public class Docente
-  {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int ID { get; set; }
+    public class Docente : BaseEntity
+    {
+        [MaxLength(125)]
+        public required string Nombre { get; set; }
 
-    [StringLength(125)]
-    public required string NOMBRE { get; set; }
+        // Teléfono podría ser string si necesitas soportar "+" o ceros a la izquierda
+        public long? Telefono { get; set; }
 
-    public long? TELEFONO { get; set; }
+        public int Ci { get; set; }
 
-    public required int CI { get; set; }
-
-    // Propiedad de navegación - Se inicializa
-    public ICollection<HorarioMateria> HorariosMateria { get; set; } = new List<HorarioMateria>();
-  }
+        public ICollection<HorarioMateria> HorariosMateria { get; set; } = new List<HorarioMateria>();
+    }
 }

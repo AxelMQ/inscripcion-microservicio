@@ -1,127 +1,111 @@
-// Archivo: Api/Controllers/CarreraController.cs
-
-using Microsoft.AspNetCore.Mvc;
+// Api/Controllers/CarreraController.cs
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using Domain.Models;
 using Application.Interfaces;
-using Api.Dtos; // ¡Añade esta línea para resolver el error!
+using Domain.Models;
+using Api.Dtos;
+using Microsoft.AspNetCore.Mvc;
 
-[Route("api/[controller]")]
-[ApiController]
-public class CarreraController : ControllerBase
+namespace Api.Controllers
 {
-  private readonly ICarreraRepository _carreraRepository;
-
-  public CarreraController(ICarreraRepository carreraRepository)
-  {
-    _carreraRepository = carreraRepository;
-  }
-
-  // Método de mapeo de Carrera a CarreraDto
-  private CarreraDto MapToDto(Carrera carrera)
-  {
-    return new CarreraDto
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CarreraController : ControllerBase
     {
-      ID = carrera.ID,
-      NOMBRE = carrera.NOMBRE,
-      MODALIDAD = carrera.MODALIDAD,
-      CODIGO = carrera.CODIGO
-    };
-  }
+        private readonly IUnitOfWork _uow;
 
-  // Método de mapeo de CarreraDto a Carrera
-  private Carrera MapToEntity(CarreraDto carreraDto)
-  {
-    return new Carrera
-    {
-      ID = carreraDto.ID,
-      NOMBRE = carreraDto.NOMBRE,
-      MODALIDAD = carreraDto.MODALIDAD,
-      CODIGO = carreraDto.CODIGO
-    };
-  }
+        public CarreraController(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
 
-  // Endpoint para obtener todos los alumnos
-  [HttpGet]
-  public async Task<ActionResult<IEnumerable<CarreraDto>>> GetAll()
-  {
-    var alumnos = await _carreraRepository.GetAllAsync();
-    var alumnosDto = alumnos.Select(a => MapToDto(a)).ToList();
-    return Ok(alumnosDto);
-  }
+        // ---- Mapping helpers ----
+        private static CarreraDto MapToDto(Carrera carrera) => new()
+        {
+            Id        = carrera.Id,
+            Nombre    = carrera.Nombre,
+            MODALIDAD = carrera.Modalidad,
+            Codigo    = carrera.Codigo
+        };
 
-  // Endpoint para obtener un carrera por ID
-  [HttpGet("{id}")]
-  public async Task<ActionResult<CarreraDto>> GetById(int id)
-  {
-    var carrera = await _carreraRepository.GetByIdAsync(id);
-    if (carrera == null)
-    {
-      return NotFound();
+        private static Carrera MapToEntity(CarreraDto dto) => new()
+        {
+            Id        = dto.Id,
+            Nombre    = dto.Nombre,
+            Modalidad = dto.MODALIDAD,
+            Codigo    = dto.Codigo
+        };
+
+        // GET: api/carrera
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CarreraDto>>> GetAll(CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Carrera>();
+            var carreras = await repo.GetAllAsync(ct);
+            return Ok(carreras.Select(MapToDto).ToList());
+        }
+
+        // GET: api/carrera/5
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<CarreraDto>> GetById(int id, CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Carrera>();
+            var carrera = await repo.GetByIdAsync(id, ct);
+            if (carrera is null) return NotFound();
+            return Ok(MapToDto(carrera));
+        }
+
+        // POST: api/carrera
+        [HttpPost]
+        public async Task<ActionResult<CarreraDto>> Add([FromBody] CarreraDto carreraDto, CancellationToken ct)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var repo = _uow.GetRepository<Carrera>();
+            var entity = MapToEntity(carreraDto);
+
+            await repo.AddAsync(entity, ct);
+            await _uow.CompleteAsync(ct);
+
+            var createdDto = MapToDto(entity);
+            return CreatedAtAction(nameof(GetById), new { id = createdDto.Id }, createdDto);
+        }
+
+        // PUT: api/carrera/5
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] CarreraDto carreraDto, CancellationToken ct)
+        {
+            if (id != carreraDto.Id) return BadRequest();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var repo = _uow.GetRepository<Carrera>();
+            var existing = await repo.GetByIdAsync(id, ct);
+            if (existing is null) return NotFound();
+
+            // mapear cambios
+            existing.Nombre    = carreraDto.Nombre;
+            existing.Modalidad = carreraDto.MODALIDAD;
+            existing.Codigo    = carreraDto.Codigo;
+
+            await repo.UpdateAsync(existing, ct);
+            await _uow.CompleteAsync(ct);
+            return NoContent();
+        }
+
+        // DELETE: api/carrera/5
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id, CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Carrera>();
+
+            var existing = await repo.GetByIdAsync(id, ct);
+            if (existing is null) return NotFound();
+
+            await repo.DeleteAsync(id, ct);
+            await _uow.CompleteAsync(ct);
+            return NoContent();
+        }
     }
-    var carreraDto = MapToDto(carrera);
-    return Ok(carreraDto);
-  }
-
-  // Endpoint para crear un nuevo carrera
-  [HttpPost]
-  public async Task<ActionResult<CarreraDto>> Add(CarreraDto carreraDto)
-  {
-    // VERIFICACIÓN CLAVE: Si el modelo no es válido, el framework
-    // ya llenó ModelState con los errores.
-    if (!ModelState.IsValid)
-    {
-      // Devuelve un código 400 Bad Request con los errores de validación
-      return BadRequest(ModelState);
-    }
-
-    var carrera = MapToEntity(carreraDto);
-    await _carreraRepository.AddAsync(carrera);
-    var newAlumnoDto = MapToDto(carrera);
-    return CreatedAtAction(nameof(GetById), new { id = newAlumnoDto.ID }, newAlumnoDto);
-  }
-
-  // Endpoint para actualizar un carrera
-  [HttpPut("{id}")]
-  public async Task<ActionResult> Update(int id, CarreraDto carreraDto)
-  {
-    if (id != carreraDto.ID)
-    {
-      return BadRequest();
-    }
-
-    if (!ModelState.IsValid)
-    {
-      return BadRequest(ModelState);
-    }
-
-    var carrera = await _carreraRepository.GetByIdAsync(id);
-    if (carrera == null)
-    {
-      return NotFound();
-    }
-
-    // Mapea los datos del DTO al modelo de dominio existente
-    carrera.NOMBRE = carreraDto.NOMBRE;
-    carrera.MODALIDAD = carreraDto.MODALIDAD;
-    carrera.CODIGO = carreraDto.CODIGO;
-
-    await _carreraRepository.UpdateAsync(carrera);
-    return NoContent();
-  }
-
-  // Endpoint para eliminar un carrera
-  [HttpDelete("{id}")]
-  public async Task<ActionResult> Delete(int id)
-  {
-    var carrera = await _carreraRepository.GetByIdAsync(id);
-    if (carrera == null)
-    {
-      return NotFound();
-    }
-    await _carreraRepository.DeleteAsync(id);
-    return NoContent();
-  }
 }

@@ -1,10 +1,8 @@
 using Domain.Core;
 
-namespace Application.Interfaces
+namespace Application.Interfaces;
+public interface IUnitOfWork
 {
-    public interface IUnitOfWork
-    {
-        IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity;
-        Task CompleteAsync();
-    }
+    IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity;
+    Task<int> CompleteAsync(CancellationToken ct = default);
 }

@@ -1,21 +1,15 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+// Domain/Models/Hora.cs
+using System.Collections.Generic;
+using Domain.Core;
 
 namespace Domain.Models
 {
-  [Table("HORA")]
-  public class Hora
-  {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int ID { get; set; }
+    public class Hora : BaseEntity
+    {
+        // TimeOnly es value type → ya es no-null; no hace falta 'required'
+        public TimeOnly HrInicio { get; set; }
+        public TimeOnly HrFin    { get; set; }
 
-    public required TimeOnly HR_INICIO { get; set; }
-
-    public required TimeOnly HR_FIN { get; set; }
-
-    // Propiedad de navegación - Se inicializa
-    public ICollection<HoraDia> HorasDia { get; set; } = new List<HoraDia>();
-  }
-
+        public ICollection<HoraDia> HorasDia { get; set; } = new List<HoraDia>();
+    }
 }

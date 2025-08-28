@@ -1,19 +1,14 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+// Domain/Models/HoraDiaHorario.cs
+using Domain.Core;
 
 namespace Domain.Models
 {
-    [Table("HORA_DIA_HORARIO")]
-    public class HoraDiaHorario
+    public class HoraDiaHorario : BaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public int HoraDiaId { get; set; }
+        public HoraDia HoraDia { get; set; } = null!;
 
-        public required int HORA_DIA_ID { get; set; }
-        public HoraDia HoraDia { get; set; } = null!; // Se usa 'null!'
-
-        public required int HORARIO_ID { get; set; }
-        public Horario Horario { get; set; } = null!; // Se usa 'null!'
+        public int HorarioId { get; set; }
+        public Horario Horario { get; set; } = null!;
     }
 }

@@ -4,8 +4,6 @@ namespace Domain.Core
 {
     public abstract class BaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public int Id { get; set; }
     }
 }

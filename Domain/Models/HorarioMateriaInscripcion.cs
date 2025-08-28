@@ -1,23 +1,17 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+// Domain/Models/HorarioMateriaInscripcion.cs
+using System.Collections.Generic;
+using Domain.Core;
 
 namespace Domain.Models
 {
-    [Table("HORARIO_MATERIA_INSCRIPCION")]
-    public class HorarioMateriaInscripcion
+    public class HorarioMateriaInscripcion : BaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public int HorarioMateriaId { get; set; }
+        public HorarioMateria HorarioMateria { get; set; } = null!;
 
-        public required int HORARIO_MATERIA_ID { get; set; }
-        public HorarioMateria HorarioMateria { get; set; } = null!; // Se usa 'null!'
+        public int InscripcionId { get; set; }
+        public Inscripcion Inscripcion { get; set; } = null!;
 
-        public required int INSCRIPCION_ID { get; set; }
-        public Inscripcion Inscripcion { get; set; } = null!; // Se usa 'null!'
-
-        
         public ICollection<Nota> Notas { get; set; } = new List<Nota>();
     }
-
 }

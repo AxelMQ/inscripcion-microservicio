@@ -1,25 +1,25 @@
+// Domain/Models/Materia.cs
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Core;
 
 namespace Domain.Models
 {
-    [Table("MATERIA")]
-    public class Materia: BaseEntity
+    public class Materia : BaseEntity
     {
-        public required short CREDITO { get; set; }
+        public short Credito { get; set; }
 
-        public bool? ES_ELECTIVA { get; set; }
+        // Si en tu dominio puede ser “desconocido”, mantenla como bool?; 
+        // si no, dejala no-nullable. Aquí la dejo no-nullable.
+        public bool EsElectiva { get; set; }
 
-        [StringLength(50)]
-        public required string NOMBRE { get; set; }
+        [MaxLength(50)]
+        public required string Nombre { get; set; }
 
-        [StringLength(15)]
-        public required string SIGLA { get; set; }
+        [MaxLength(15)]
+        public required string Sigla { get; set; }
 
-        // Propiedad de navegación - Se inicializa
         public ICollection<MateriaPlanEstudio> MateriaPlanEstudios { get; set; } = new List<MateriaPlanEstudio>();
         public ICollection<GrupoMateria> GrupoMaterias { get; set; } = new List<GrupoMateria>();
     }
-
 }

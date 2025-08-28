@@ -6,13 +6,13 @@ namespace Api.Dtos
 {
     public class DocenteDto
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        [Required(ErrorMessage = "El campo 'NOMBRE' es obligatorio.")]
-        [StringLength(60, ErrorMessage = "El campo 'NOMBRE' no puede tener más de 60 caracteres.")]
-        public required string NOMBRE { get; set; }
+        [Required(ErrorMessage = "El campo 'Nombre' es obligatorio.")]
+        [StringLength(60, ErrorMessage = "El campo 'Nombre' no puede tener más de 60 caracteres.")]
+        public required string Nombre { get; set; }
 
-        public long? TELEFONO { get; set; }
+        public long? Telefono { get; set; }
 
         [Required(ErrorMessage = "El campo 'CI' es obligatorio.")]
         public required int CI { get; set; }

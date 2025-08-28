@@ -37,21 +37,21 @@ namespace Api.Controllers.Async
 
             var requestMessage = new RequestMessage
             {
-                // El ID se genera en el constructor, no lo asignamos aquí.
+                // El Id se genera en el constructor, no lo asignamos aquí.
                 Operation = OperationType.Insert,
                 Table = TableType.Materias,
                 BodyJson = bodyJson,
                 CallbackUrl = "http://tu-api/callbacks/alumnos/status"
             };
 
-            // 1. Registra la petición con el ID que se generó automáticamente.
+            // 1. Registra la petición con el Id que se generó automáticamente.
             _tracker.AddRequest(requestMessage.Id, "Petición recibida y en cola.");
 
             requestMessage.GenerateToken();
 
             await _channelWriter.WriteAsync(requestMessage);
 
-            // 2. Devuelve el ID generado para que el cliente pueda rastrear la petición.
+            // 2. Devuelve el Id generado para que el cliente pueda rastrear la petición.
             return Accepted(new { RequestId = requestMessage.Id, Status = "Pending" });
         }
     }

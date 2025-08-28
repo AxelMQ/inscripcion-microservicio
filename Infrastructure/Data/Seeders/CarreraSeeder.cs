@@ -9,10 +9,10 @@ public class CarreraSeeder : IEntityTypeConfiguration<Carrera>
     public void Configure(EntityTypeBuilder<Carrera> builder)
     {
         builder.HasData(
-            new Carrera { ID = 1, CODIGO = "185", MODALIDAD = 0, NOMBRE = "INGENIERIA EN REDES Y TELECOMUNICACIONES" },
-            new Carrera { ID = 2, CODIGO = "183", MODALIDAD = 0, NOMBRE = "INGENIERIA INFORMATICA" },
-            new Carrera { ID = 3, CODIGO = "184", MODALIDAD = 0, NOMBRE = "INGENIERIA EN SISTEMAS" },
-            new Carrera { ID = 4, CODIGO = "323", MODALIDAD = 0, NOMBRE = "INGENIERIA ROBOTICA" }
+            new Carrera { Id = 1, Codigo = "185", Modalidad = 0, Nombre = "INGENIERIA EN REDES Y TELECOMUNICACIONES" },
+            new Carrera { Id = 2, Codigo = "183", Modalidad = 0, Nombre = "INGENIERIA INFORMATICA" },
+            new Carrera { Id = 3, Codigo = "184", Modalidad = 0, Nombre = "INGENIERIA EN SISTEMAS" },
+            new Carrera { Id = 4, Codigo = "323", Modalidad = 0, Nombre = "INGENIERIA ROBOTICA" }
         );
     }
 }

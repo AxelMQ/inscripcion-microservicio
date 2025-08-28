@@ -1,24 +1,19 @@
+// Domain/Models/PlanEstudio.cs
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Core;
 
 namespace Domain.Models
 {
-    [Table("PLAN_ESTUDIO")]
-    public class PlanEstudio
+    public class PlanEstudio : BaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        [MaxLength(10)]
+        public required string Codigo { get; set; }
 
-        [StringLength(10)]
-        public required string CODIGO { get; set; }
+        public int CarreraId { get; set; }
+        public Carrera Carrera { get; set; } = null!;
 
-        public required int CARRERA_ID { get; set; }
-        public Carrera Carrera { get; set; } = null!; // Se usa 'null!' porque el mapeo de EF lo inicializará
-
-        // Propiedad de navegación - Se inicializa
         public ICollection<MateriaPlanEstudio> MateriaPlanEstudios { get; set; } = new List<MateriaPlanEstudio>();
-
         public ICollection<AlumnoPlanEstudio> AlumnoPlanEstudios { get; set; } = new List<AlumnoPlanEstudio>();
     }
 }

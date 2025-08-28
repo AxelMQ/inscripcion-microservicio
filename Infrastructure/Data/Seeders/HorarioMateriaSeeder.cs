@@ -13,128 +13,128 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
             // HORARIO 10: Lunes - Miércoles - Viernes (18:15 - 19:45)
             new HorarioMateria
             {
-                ID = 1,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 1,
-                HORARIO_ID = 10,
+                Id = 1,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 1,
+                HorarioId = 10,
             },
             // ADMINISTRACION - SB
             // HORARIO 1: Lunes - Miércoles - Viernes (07:00 - 08:30)
             new HorarioMateria
             {
-                ID = 2,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 2,
-                HORARIO_ID = 1,
+                Id = 2,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 2,
+                HorarioId = 1,
             },
             // ADMINISTRACION - SC
             // HORARIO 1: Lunes - Miércoles - Viernes (07:00 - 08:30)
             new HorarioMateria
             {
-                ID = 3,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 3,
-                HORARIO_ID = 1,
+                Id = 3,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 3,
+                HorarioId = 1,
             },
             //------------------------------------------------------------------------------------
             // ALGEBRA LINEAL - SA
             // HORARIO 2: Lunes - Miércoles - Viernes (08:30 - 10:00)
             new HorarioMateria
             {
-                ID = 4,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 4,
-                HORARIO_ID = 2,
+                Id = 4,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 4,
+                HorarioId = 2,
             },
             // ALGEBRA LINEAL - SB
             // HORARIO 3: Lunes - Miércoles - Viernes (10:00 - 11:30)
             new HorarioMateria
             {
-                ID = 5,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 5,
-                HORARIO_ID = 3,
+                Id = 5,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 5,
+                HorarioId = 3,
             },
             // ALGEBRA LINEAL - SC
             // HORARIO 1: Lunes - Miércoles - Viernes (07:00 - 08:30)
             new HorarioMateria
             {
-                ID = 6,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 6,
-                HORARIO_ID = 1,
+                Id = 6,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 6,
+                HorarioId = 1,
             },
             // ALGEBRA LINEAL - SD
             // HORARIO 4: Lunes - Miércoles - Viernes (11:30 - 13:00)
             new HorarioMateria
             {
-                ID = 7,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 7,
-                HORARIO_ID = 4,
+                Id = 7,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 7,
+                HorarioId = 4,
             },
             // ALGEBRA LINEAL - SE
             // HORARIO 3: Lunes - Miércoles - Viernes (10:00 - 11:30)
             new HorarioMateria
             {
-                ID = 8,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 8,
-                HORARIO_ID = 3,
+                Id = 8,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 8,
+                HorarioId = 3,
             },
             // ALGEBRA LINEAL - SF
             // HORARIO 23: Lunes - Miércoles (07:00 - 09:15)
             new HorarioMateria
             {
-                ID = 9,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 9,
-                HORARIO_ID = 23,
+                Id = 9,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 9,
+                HorarioId = 23,
             },
 
             // ==========================================================
@@ -143,29 +143,29 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
             //  HORARIO 58: Martes - Jueves (07:00 - 09:15)
             new HorarioMateria
             {
-                ID = 10,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 10,
-                HORARIO_ID = 58,
+                Id = 10,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 10,
+                HorarioId = 58,
             },
             // ANALISIS DE CIRCUITO - SB
             // HORARIO 1: Lunes - Miércoles - Viernes (07:00 - 08:30)
             new HorarioMateria
             {
-                ID = 11,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 11,
-                HORARIO_ID = 1,
+                Id = 11,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 11,
+                HorarioId = 1,
             },
 
             // ==========================================================
@@ -174,15 +174,15 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
             // HORARIO 2: Lunes - Miércoles - Viernes (08:30 - 10:00)
             new HorarioMateria
             {
-                ID = 12,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 12,
-                HORARIO_ID = 2,
+                Id = 12,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 12,
+                HorarioId = 2,
             },
 
             // =====================================================
@@ -190,15 +190,15 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
             // HORARIO 76: Martes - Jueves (16:00 - 18:15)
             new HorarioMateria
             {
-                ID = 13,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 13,
-                HORARIO_ID = 76,
+                Id = 13,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 13,
+                HorarioId = 76,
             },
 
         // =====================================================
@@ -206,60 +206,60 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 1: Lunes - Miércoles - Viernes (07:00 - 08:30)
         new HorarioMateria
         {
-            ID = 14,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 14,
-            HORARIO_ID = 1,
+            Id = 14,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 14,
+            HorarioId = 1,
         },
 
         // ARQUITECTURA DE COMPUTADORAS - SB - 15
         // HORARIO 79: Martes - Jueves (18:15 - 20:30)
         new HorarioMateria
         {
-            ID = 15,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 15,
-            HORARIO_ID = 79,
+            Id = 15,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 15,
+            HorarioId = 79,
         },
         // =====================================================
         // ARQUITECTURA DE SOFTWARE - SA - 16
         // HORARIO 1: Lunes - Miércoles - Viernes (07:00 - 08:30)
         new HorarioMateria
         {
-            ID = 16,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 16,
-            HORARIO_ID = 1,
+            Id = 16,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 16,
+            HorarioId = 1,
         },
         // =====================================================
         // AUDITORIA INFORMATICA - SA - 17
         // HORARIO 9: Lunes - Miércoles - Viernes (16:45 - 18:15)
             new HorarioMateria
             {
-                ID = 17,
-                CUPOS_DISPONIBLES = 30,
-                CUPOS_TOTAL = 100,
-                NRO_AULA = 12,
-                GESTION_ID = 1,
-                MODULO_ID = 1,
-                DOCENTE_ID = 1,
-                GRUPO_MATERIA_ID = 17,
-                HORARIO_ID = 9,
+                Id = 17,
+                CuposDisponibles = 30,
+                CuposTotal = 100,
+                NroAula = 12,
+                GestionId = 1,
+                ModuloId = 1,
+                DocenteId = 1,
+                GrupoMateriaId = 17,
+                HorarioId = 9,
             },
 
         // =====================================================
@@ -267,30 +267,30 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 2: Lunes - Miércoles - Viernes (08:30 - 10:00)
         new HorarioMateria
         {
-            ID = 18,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 18,
-            HORARIO_ID = 2,
+            Id = 18,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 18,
+            HorarioId = 2,
         },
 
         // BASE DE DATOS I - SC - 19
         // HORARIO 58: Martes - Jueves (07:00 - 09:15)
         new HorarioMateria
         {
-            ID = 19,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 19,
-            HORARIO_ID = 58,
+            Id = 19,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 19,
+            HorarioId = 58,
         },
 
         // =====================================================
@@ -298,29 +298,29 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 50: Miércoles - Viernes (10:45 - 13:00)
         new HorarioMateria
         {
-            ID = 20,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 20,
-            HORARIO_ID = 50,
+            Id = 20,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 20,
+            HorarioId = 50,
         },
         // BASE DE DATOS II - SD - 21
         // HORARIO 79: Martes - Jueves (18:15 - 20:30)
         new HorarioMateria
         {
-            ID = 21,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 21,
-            HORARIO_ID = 79,
+            Id = 21,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 21,
+            HorarioId = 79,
         },
 
         // =====================================================
@@ -328,210 +328,210 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 79: Martes - Jueves (18:15 - 20:30)
         new HorarioMateria
         {
-            ID = 22,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 22,
-            HORARIO_ID = 79,
+            Id = 22,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 22,
+            HorarioId = 79,
         },
 
         // CALCULO I - SZ - 23
         // HORARIO 60: Martes - Jueves (09:15 - 11:30)
         new HorarioMateria
         {
-            ID = 23,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 23,
-            HORARIO_ID = 60,
+            Id = 23,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 23,
+            HorarioId = 60,
         },
 
         // CALCULO I - CI - 24
         // HORARIO 25: Lunes - Miércoles (13:45 - 16:00)
         new HorarioMateria
         {
-            ID = 24,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 24,
-            HORARIO_ID = 25,
+            Id = 24,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 24,
+            HorarioId = 25,
         },
 
         // CALCULO I - I2 - 25
         // HORARIO 1: Lunes - Miércoles - Viernes (07:00 - 08:30)
         new HorarioMateria
         {
-            ID = 25,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 25,
-            HORARIO_ID = 1,
+            Id = 25,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 25,
+            HorarioId = 1,
         },
 
         // CALCULO I - SF - 26
         // HORARIO 30: Lunes - Jueves (07:00 - 09:15)
         new HorarioMateria
         {
-            ID = 26,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 26,
-            HORARIO_ID = 30,
+            Id = 26,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 26,
+            HorarioId = 30,
         },
 
         // CALCULO I - SG - 27
         // HORARIO 76: Martes - Jueves (16:00 - 18:15)
         new HorarioMateria
         {
-            ID = 27,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 27,
-            HORARIO_ID = 76,
+            Id = 27,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 27,
+            HorarioId = 76,
         },
 
         // CALCULO I - SI - 28
         // HORARIO 10: Lunes - Miércoles - Viernes (18:15 - 19:45)
         new HorarioMateria
         {
-            ID = 28,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 28,
-            HORARIO_ID = 10,
+            Id = 28,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 28,
+            HorarioId = 10,
         },
 
         // CALCULO I - SP - 29
         // HORARIO 55: Martes - Viernes (07:00 - 09:15)
         new HorarioMateria
         {
-            ID = 29,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 29,
-            HORARIO_ID = 55,
+            Id = 29,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 29,
+            HorarioId = 55,
         },
 
         // CALCULO I - Z1 - 30
         // HORARIO 60: Martes - Jueves (09:15 - 11:30)
         new HorarioMateria
         {
-            ID = 30,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 30,
-            HORARIO_ID = 60,
+            Id = 30,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 30,
+            HorarioId = 60,
         },
 
         // CALCULO I - Z2 - 31
         // HORARIO 60: Martes - Jueves (09:15 - 11:30)
         new HorarioMateria
         {
-            ID = 31,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 31,
-            HORARIO_ID = 60,
+            Id = 31,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 31,
+            HorarioId = 60,
         },
 
         // CALCULO I - Z3 - 32
         // HORARIO 76: Martes - Jueves (16:00 - 18:15)
         new HorarioMateria
         {
-            ID = 32,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 32,
-            HORARIO_ID = 76,
+            Id = 32,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 32,
+            HorarioId = 76,
         },
 
         // CALCULO I - Z4 - 33
         // HORARIO 73: Martes - Jueves (13:45 - 16:00)
         new HorarioMateria
         {
-            ID = 33,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 33,
-            HORARIO_ID = 73,
+            Id = 33,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 33,
+            HorarioId = 73,
         },
 
         // CALCULO I - Z5 - 34
         // HORARIO 12: Lunes - Miércoles - Viernes (19:45 - 21:15)
         new HorarioMateria
         {
-            ID = 34,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 34,
-            HORARIO_ID = 12,
+            Id = 34,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 34,
+            HorarioId = 12,
         },
 
         // CALCULO I - Z6 - 35
         // HORARIO 1: Lunes - Miércoles - Viernes (07:00 - 08:30)
         new HorarioMateria
         {
-            ID = 35,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 35,
-            HORARIO_ID = 1,
+            Id = 35,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 35,
+            HorarioId = 1,
         },
 
         // =========================
@@ -539,105 +539,105 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 14: Lunes - Miércoles - Viernes (20:30 - 22:00)
          new HorarioMateria
          {
-             ID = 36,
-             CUPOS_DISPONIBLES = 30,
-             CUPOS_TOTAL = 100,
-             NRO_AULA = 12,
-             GESTION_ID = 1,
-             MODULO_ID = 1,
-             DOCENTE_ID = 1,
-             GRUPO_MATERIA_ID = 36,
-             HORARIO_ID = 14,
+             Id = 36,
+             CuposDisponibles = 30,
+             CuposTotal = 100,
+             NroAula = 12,
+             GestionId = 1,
+             ModuloId = 1,
+             DocenteId = 1,
+             GrupoMateriaId = 36,
+             HorarioId = 14,
          },
 
         // CALCULO II - SD - 37
         // HORARIO 57: Martes - Jueves - Sabado (07:00 - 08:30)
         new HorarioMateria
         {
-            ID = 37,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 37,
-            HORARIO_ID = 57,
+            Id = 37,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 37,
+            HorarioId = 57,
         },
 
         // CALCULO II - R1 - 38
         // HORARIO 5: Lunes - Miércoles - Viernes (12:15 - 13:45)
         new HorarioMateria
         {
-            ID = 38,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 38,
-            HORARIO_ID = 5,
+            Id = 38,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 38,
+            HorarioId = 5,
         },
 
         // CALCULO II - 1I - 39
         // HORARIO 82: Martes - Jueves (19:00 - 21:15)
         new HorarioMateria
         {
-            ID = 39,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 39,
-            HORARIO_ID = 82,
+            Id = 39,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 39,
+            HorarioId = 82,
         },
 
         // CALCULO II - C1 - 40
         // HORARIO 47: Miércoles (09:15 - 11:30) - Viernes (07:00 - 09:15)
         new HorarioMateria
         {
-            ID = 40,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 40,
-            HORARIO_ID = 47,
+            Id = 40,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 40,
+            HorarioId = 47,
         },
 
         // CALCULO II - SH - 41
         // HORARIO 60: Martes - Jueves (09:15 - 11:30)
          new HorarioMateria
          {
-             ID = 41,
-             CUPOS_DISPONIBLES = 30,
-             CUPOS_TOTAL = 100,
-             NRO_AULA = 12,
-             GESTION_ID = 1,
-             MODULO_ID = 1,
-             DOCENTE_ID = 1,
-             GRUPO_MATERIA_ID = 41,
-             HORARIO_ID = 60,
+             Id = 41,
+             CuposDisponibles = 30,
+             CuposTotal = 100,
+             NroAula = 12,
+             GestionId = 1,
+             ModuloId = 1,
+             DocenteId = 1,
+             GrupoMateriaId = 41,
+             HorarioId = 60,
          },
 
         // CALCULO II - SN - 42
         // HORARIO 76: Martes - Jueves (16:00 - 18:15)
         new HorarioMateria
         {
-            ID = 42,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 42,
-            HORARIO_ID = 76,
+            Id = 42,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 42,
+            HorarioId = 76,
         },
 
         // =========================
@@ -645,15 +645,15 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 4: Lunes - Miércoles - Viernes (11:30 - 13:00)
         new HorarioMateria
         {
-            ID = 43,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 43,
-            HORARIO_ID = 4,
+            Id = 43,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 43,
+            HorarioId = 4,
         },
 
 
@@ -662,30 +662,30 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 2: Lunes - Miércoles - Viernes (08:30 - 10:00)
         new HorarioMateria
         {
-            ID = 44,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 44,
-            HORARIO_ID = 2,
+            Id = 44,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 44,
+            HorarioId = 2,
         },
 
         // CONTABILIDAD - SB - 45
         // HORARIO 8: Lunes - Miércoles - Viernes (16:00 - 17:30)
         new HorarioMateria
         {
-            ID = 45,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 45,
-            HORARIO_ID = 8,
+            Id = 45,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 45,
+            HorarioId = 8,
         },
 
         // ==========================
@@ -693,15 +693,15 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 74: Martes - Jueves (15:15 - 16:45)
         new HorarioMateria
         {
-            ID = 46,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 46,
-            HORARIO_ID = 74,
+            Id = 46,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 46,
+            HorarioId = 74,
         },
 
         // ==========================
@@ -709,30 +709,30 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 78: Martes - Jueves (17:30 - 19:00)
         new HorarioMateria
         {
-            ID = 47,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 47,
-            HORARIO_ID = 78,
+            Id = 47,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 47,
+            HorarioId = 78,
         },
 
         // CRIPTOGRAFÍA Y SEGURIDAD SA - 48
         //HORARIO 77: Martes - Jueves (16:00 - 17:30)
         new HorarioMateria
         {
-            ID = 48,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 48,
-            HORARIO_ID = 77,
+            Id = 48,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 48,
+            HorarioId = 77,
         },
 
         //=============================================
@@ -740,15 +740,15 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 59: Martes - Jueves (07:00 - 08:30)
          new HorarioMateria
          {
-             ID = 49,
-             CUPOS_DISPONIBLES = 30,
-             CUPOS_TOTAL = 100,
-             NRO_AULA = 12,
-             GESTION_ID = 1,
-             MODULO_ID = 1,
-             DOCENTE_ID = 1,
-             GRUPO_MATERIA_ID = 49,
-             HORARIO_ID = 59,
+             Id = 49,
+             CuposDisponibles = 30,
+             CuposTotal = 100,
+             NroAula = 12,
+             GestionId = 1,
+             ModuloId = 1,
+             DocenteId = 1,
+             GrupoMateriaId = 49,
+             HorarioId = 59,
          },
 
 
@@ -757,30 +757,30 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 9: Lunes - Miércoles - Viernes (16:45 - 18:15)
         new HorarioMateria
         {
-            ID = 50,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 50,
-            HORARIO_ID = 9,
+            Id = 50,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 50,
+            HorarioId = 9,
         },
 
         // ECONOMÍA PARA LA GESTIÓN - SB - 51
         // HORARIO 4: Lunes - Miércoles - Viernes (11:30 - 13:00)
         new HorarioMateria
         {
-            ID = 51,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 51,
-            HORARIO_ID = 4,
+            Id = 51,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 51,
+            HorarioId = 4,
         },
 
         // ===================================================
@@ -788,60 +788,60 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 60: Martes - Jueves (09:15 - 11:30) 
         new HorarioMateria
         {
-            ID = 52,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 52,
-            HORARIO_ID = 60,
+            Id = 52,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 52,
+            HorarioId = 60,
         },
 
         // ECUACIONES DIFERENCIALES - NX - 53
         // HORARIO 79: Martes - Jueves (18:15 - 20:30)
         new HorarioMateria
         {
-            ID = 53,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 53,
-            HORARIO_ID = 79,
+            Id = 53,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 53,
+            HorarioId = 79,
         },
 
         // ECUACIONES DIFERENCIALES - SA - 54
         // HORARIO 84: Martes - Jueves (20:30 - 22:45)
         new HorarioMateria
         {
-            ID = 54,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 54,
-            HORARIO_ID = 84,
+            Id = 54,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 54,
+            HorarioId = 84,
         },
 
         // ECUACIONES DIFERENCIALES - SC - 55
         // HORARIO 84: Martes - Jueves (20:30 - 22:45)
         new HorarioMateria
         {
-            ID = 55,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 55,
-            HORARIO_ID = 84,
+            Id = 55,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 55,
+            HorarioId = 84,
         },
 
         // =======================================
@@ -849,15 +849,15 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 48: Miércoles (11:30 - 13:45) - Viernes (10:00 - 12:15)
         new HorarioMateria
         {
-            ID = 56,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 56,
-            HORARIO_ID = 48,
+            Id = 56,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 56,
+            HorarioId = 48,
         },
 
         // =======================================
@@ -865,60 +865,60 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 75: Martes - Jueves (15:15 - 17:30)
         new HorarioMateria
         {
-            ID = 57,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 57,
-            HORARIO_ID = 75,
+            Id = 57,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 57,
+            HorarioId = 75,
         },
 
         // ESTRUCTURA DE DATOS I - SA - 58
         // HORARIO 58: Martes - Jueves (07:00 - 09:15)
         new HorarioMateria
         {
-            ID = 58,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 58,
-            HORARIO_ID = 58,
+            Id = 58,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 58,
+            HorarioId = 58,
         },
 
         // ESTRUCTURA DE DATOS I - SB - 59
         // HORARIO 84: Martes - Jueves (20:30 - 22:45)
         new HorarioMateria
         {
-            ID = 59,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 59,
-            HORARIO_ID = 84,
+            Id = 59,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 59,
+            HorarioId = 84,
         },
 
         // ESTRUCTURA DE DATOS I - SD - 60
         // HORARIO 61: Martes - Jueves (11:30 - 13:45)
         new HorarioMateria
         {
-            ID = 60,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 60,
-            HORARIO_ID = 61,
+            Id = 60,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 60,
+            HorarioId = 61,
         },
 
         // ===================================================
@@ -926,45 +926,45 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 58: Martes - Jueves (07:00 - 09:15)
         new HorarioMateria
         {
-            ID = 61,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 61,
-            HORARIO_ID = 58,
+            Id = 61,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 61,
+            HorarioId = 58,
         },
 
         // ESTRUCTURA DE DATOS II - SB - 62
         // HORARIO 76: Martes - Jueves (16:00 - 18:15)
         new HorarioMateria
         {
-            ID = 62,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 62,
-            HORARIO_ID = 76,
+            Id = 62,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 62,
+            HorarioId = 76,
         },
 
         // ESTRUCTURA DE DATOS II - SX - 63
         // HORARIO 84: Martes - Jueves (20:30 - 22:45)
         new HorarioMateria
         {
-            ID = 63,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 63,
-            HORARIO_ID = 84,
+            Id = 63,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 63,
+            HorarioId = 84,
         },
 
         // ====================================
@@ -972,165 +972,165 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 79: Martes - Jueves (18:15 - 20:30)
         new HorarioMateria
         {
-            ID = 64,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 64,
-            HORARIO_ID = 79,
+            Id = 64,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 64,
+            HorarioId = 79,
         },
 
         // ESTRUCTURAS DISCRETAS - SF - 65
         // HORARIO 1: Lunes - Miércoles - Viernes (07:00 - 08:30)
         new HorarioMateria
         {
-            ID = 65,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 65,
-            HORARIO_ID = 1,
+            Id = 65,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 65,
+            HorarioId = 1,
         },
 
         // ESTRUCTURAS DISCRETAS - SH - 66
         // HORARIO 58: Martes - Jueves (07:00 - 09:15)
         new HorarioMateria
         {
-            ID = 66,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 66,
-            HORARIO_ID = 58,
+            Id = 66,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 66,
+            HorarioId = 58,
         },
 
         // ESTRUCTURAS DISCRETAS - SK - 67
         // HORARIO 58: Martes - Jueves (07:00 - 09:15)
         new HorarioMateria
         {
-            ID = 67,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 67,
-            HORARIO_ID = 58,
+            Id = 67,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 67,
+            HorarioId = 58,
         },
 
         // ESTRUCTURAS DISCRETAS - Z2 - 68
         // HORARIO 2: Lunes - Miércoles - Viernes (08:30 - 10:00)
         new HorarioMateria
         {
-            ID = 68,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 68,
-            HORARIO_ID = 2,
+            Id = 68,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 68,
+            HorarioId = 2,
         },
 
         // ESTRUCTURAS DISCRETAS - Z3 - 69
         // HORARIO 6: Lunes - Miércoles - Viernes (13:45 - 15:15)
         new HorarioMateria
         {
-            ID = 69,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 69,
-            HORARIO_ID = 6,
+            Id = 69,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 69,
+            HorarioId = 6,
         },
 
         // ESTRUCTURAS DISCRETAS - SP - 70
         // HORARIO 3: Lunes - Miércoles - Viernes (10:00 - 11:30)
         new HorarioMateria
         {
-            ID = 70,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 70,
-            HORARIO_ID = 3,
+            Id = 70,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 70,
+            HorarioId = 3,
         },
 
         // ESTRUCTURAS DISCRETAS - Z1 - 71
         // HORARIO 2: Lunes - Miércoles - Viernes (08:30 - 10:00)
         new HorarioMateria
         {
-            ID = 71,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 71,
-            HORARIO_ID = 2,
+            Id = 71,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 71,
+            HorarioId = 2,
         },
 
         // ESTRUCTURAS DISCRETAS - Z4 - 72
         // HORARIO 7: Lunes - Miércoles - Viernes (15:15 - 16:45)
         new HorarioMateria
         {
-            ID = 72,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 72,
-            HORARIO_ID = 7,
+            Id = 72,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 72,
+            HorarioId = 7,
         },
 
         // ESTRUCTURAS DISCRETAS - Z5 - 73
         // HORARIO 9: Lunes - Miércoles - Viernes (16:45 - 18:15)
         new HorarioMateria
         {
-            ID = 73,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 73,
-            HORARIO_ID = 9,
+            Id = 73,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 73,
+            HorarioId = 9,
         },
 
         // ESTRUCTURAS DISCRETAS - Z6 - 74
         // HORARIO 2: Lunes - Miércoles - Viernes (08:30 - 10:00)
         new HorarioMateria
         {
-            ID = 74,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 74,
-            HORARIO_ID = 2,
+            Id = 74,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 74,
+            HorarioId = 2,
         },
 
         // ==========================================
@@ -1138,30 +1138,30 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 61: Martes - Jueves (11:30 - 13:45)
         new HorarioMateria
         {
-            ID = 75,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 75,
-            HORARIO_ID = 61,
+            Id = 75,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 75,
+            HorarioId = 61,
         },
 
         // FINANZAS PARA LA EMPRESA - SC - 76
         // HORARIO 58: Martes - Jueves (07:00 - 09:15)
         new HorarioMateria
         {
-            ID = 76,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 76,
-            HORARIO_ID = 58,
+            Id = 76,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 76,
+            HorarioId = 58,
         },
 
         // ==========================================
@@ -1169,195 +1169,195 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 15: Lunes - Miércoles - Viernes - Sabado  (07:00 - 08:30)
         new HorarioMateria
         {
-            ID = 77,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 77,
-            HORARIO_ID = 15,
+            Id = 77,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 77,
+            HorarioId = 15,
         },
 
         // FISICA I - I1 - 78
         // HORARIO 33: Lunes (12:15 - 13:45) - Martes - Jueves (16:00 - 18:15)
         new HorarioMateria
         {
-            ID = 78,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 78,
-            HORARIO_ID = 33,
+            Id = 78,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 78,
+            HorarioId = 33,
         },
 
         // FISICA I - SG - 79
         // HORARIO 34: Lunes (13:00 - 14:30) - Martes - Jueves (07:00 - 09:15)
         new HorarioMateria
         {
-            ID = 79,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 79,
-            HORARIO_ID = 34,
+            Id = 79,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 79,
+            HorarioId = 34,
         },
 
         // FISICA I - SI - 80
         // HORARIO 41:  Martes - Jueves (07:00 - 09:15) - Viernes (10:00 - 11:30)
         new HorarioMateria
         {
-            ID = 80,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 80,
-            HORARIO_ID = 41,
+            Id = 80,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 80,
+            HorarioId = 41,
         },
 
         // FISICA I - SK - 81
         // HORARIO 44:  Martes - Jueves (16:00 - 18:15) - Viernes (16:00 - 17:30)
         new HorarioMateria
         {
-            ID = 81,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 81,
-            HORARIO_ID = 44,
+            Id = 81,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 81,
+            HorarioId = 44,
         },
 
         // FISICA I - SM - 82
         // HORARIO 46:  Lunes - Martes - Miercoles (15:15 - 16:45) - Martes (16:45 - 18:15)
         new HorarioMateria
         {
-            ID = 82,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 82,
-            HORARIO_ID = 46,
+            Id = 82,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 82,
+            HorarioId = 46,
         },
 
         // FISICA I - SP - 83
         // HORARIO 29: Lunes - Miércoles (07:00 - 09:15) - Miercoles (14:30-16:00)
         new HorarioMateria
         {
-            ID = 83,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 83,
-            HORARIO_ID = 29,
+            Id = 83,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 83,
+            HorarioId = 29,
         },
 
         // FISICA I - Z1 - 84
         // HORARIO 37:  Martes - Jueves (07:00 - 09:15) - Martes (12:15 - 13:45)
         new HorarioMateria
         {
-            ID = 84,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 84,
-            HORARIO_ID = 37,
+            Id = 84,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 84,
+            HorarioId = 37,
         },
 
         // FISICA I - Z2 - 85
         // HORARIO 38:  Martes - Jueves (07:00 - 09:15) - Martes (11:30 - 13:00)
         new HorarioMateria
         {
-            ID = 85,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 85,
-            HORARIO_ID = 38,
+            Id = 85,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 85,
+            HorarioId = 38,
         },
 
         // FISICA I - Z3 - 86
         // HORARIO 22: Lunes - Miércoles - Viernes (16:45 - 18:15) - Viernes (18:15 - 19:45)
         new HorarioMateria
         {
-            ID = 86,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 86,
-            HORARIO_ID = 22,
+            Id = 86,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 86,
+            HorarioId = 22,
         },
 
         // FISICA I - Z4 - 87
         // HORARIO 18: Lunes - Miércoles - Viernes (16:45 - 18:15) - Sábado (08:30 - 10:00)
         new HorarioMateria
         {
-            ID = 87,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 87,
-            HORARIO_ID = 18,
+            Id = 87,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 87,
+            HorarioId = 18,
         },
 
         // FISICA I - Z5 - 88
         // HORARIO 39:  Martes - Jueves (18:15 - 20:30) - Martes (16:45 - 18:15)
         new HorarioMateria
         {
-            ID = 88,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 88,
-            HORARIO_ID = 39,
+            Id = 88,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 88,
+            HorarioId = 39,
         },
 
         // FISICA I - Z6 - 89
         // HORARIO 16: Lunes - Miércoles - Viernes (10:00 - 11:30) - Sábado (18:15 - 19:45)
         new HorarioMateria
         {
-            ID = 89,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 89,
-            HORARIO_ID = 16,
+            Id = 89,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 89,
+            HorarioId = 16,
         },
 
         // ========================================
@@ -1365,90 +1365,90 @@ public class HorarioMateriaSeeder : IEntityTypeConfiguration<HorarioMateria>
         // HORARIO 42:  Martes - Jueves (07:00 - 09:15) - Viernes (18:15 - 19:45)
         new HorarioMateria
         {
-            ID = 90,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 90,
-            HORARIO_ID = 42,
+            Id = 90,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 90,
+            HorarioId = 42,
         },
 
         // FISICA II - R1 - 91
         // HORARIO 19: Lunes - Miércoles - Viernes (19:45 - 21:15) - Sábado (09:15 - 10:45)
         new HorarioMateria
         {
-            ID = 91,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 91,
-            HORARIO_ID = 19,
+            Id = 91,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 91,
+            HorarioId = 19,
         },
 
         // FISICA II - NW - 92
         // HORARIO 40:  Martes - Jueves (18:15 - 20:30) - Miercoles (20:30 - 22:00)
         new HorarioMateria
         {
-            ID = 92,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 92,
-            HORARIO_ID = 40,
+            Id = 92,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 92,
+            HorarioId = 40,
         },
 
         // FISICA II - NX- 93
         // HORARIO 41:  Martes - Jueves (07:00 - 09:15) - Viernes (10:00 - 11:30)
         new HorarioMateria
         {
-            ID = 93,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 93,
-            HORARIO_ID = 41,
+            Id = 93,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 93,
+            HorarioId = 41,
         },
 
         // FISICA II - SA -94
         // HORARIO 43:  Martes - Jueves (13:45 - 16:00) - Viernes (15:15 - 16:45)
         new HorarioMateria
         {
-            ID = 94,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 94,
-            HORARIO_ID = 43,
+            Id = 94,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 94,
+            HorarioId = 43,
         },
 
         // FISICA II - SB - 95
         // HORARIO 20: Lunes - Miércoles - Viernes (13:45 - 15:15) - Viernes (16:45 - 18:15)
         new HorarioMateria
         {
-            ID = 95,
-            CUPOS_DISPONIBLES = 30,
-            CUPOS_TOTAL = 100,
-            NRO_AULA = 12,
-            GESTION_ID = 1,
-            MODULO_ID = 1,
-            DOCENTE_ID = 1,
-            GRUPO_MATERIA_ID = 95,
-            HORARIO_ID = 20,
+            Id = 95,
+            CuposDisponibles = 30,
+            CuposTotal = 100,
+            NroAula = 12,
+            GestionId = 1,
+            ModuloId = 1,
+            DocenteId = 1,
+            GrupoMateriaId = 95,
+            HorarioId = 20,
         }
 
         // ====================================

@@ -1,127 +1,110 @@
-// Archivo: Api/Controllers/DocenteController.cs
-
-using Microsoft.AspNetCore.Mvc;
+// Api/Controllers/DocenteController.cs
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using Domain.Models;
 using Application.Interfaces;
-using Api.Dtos; // ¡Añade esta línea para resolver el error!
+using Domain.Models;
+using Api.Dtos;
+using Microsoft.AspNetCore.Mvc;
 
-[Route("api/[controller]")]
-[ApiController]
-public class DocenteController : ControllerBase
+namespace Api.Controllers
 {
-  private readonly IDocenteRepository _docenteRepository;
-
-  public DocenteController(IDocenteRepository alumnoRepository)
-  {
-    _docenteRepository = alumnoRepository;
-  }
-
-  // Método de mapeo de Docente a DocenteDto
-  private DocenteDto MapToDto(Docente docente)
-  {
-    return new DocenteDto
+    [ApiController]
+    [Route("api/[controller]")]
+    public class DocenteController : ControllerBase
     {
-      ID = docente.ID,
-      NOMBRE = docente.NOMBRE,
-      CI = docente.CI,
-      TELEFONO = docente.TELEFONO
-    };
-  }
+        private readonly IUnitOfWork _uow;
 
-  // Método de mapeo de DocenteDto a Docente
-  private Docente MapToEntity(DocenteDto docenteDto)
-  {
-    return new Docente
-    {
-      ID = docenteDto.ID,
-      NOMBRE = docenteDto.NOMBRE,
-      CI = docenteDto.CI,
-      TELEFONO = docenteDto.TELEFONO
-    };
-  }
+        public DocenteController(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
 
-  // Endpoint para obtener todos los alumnos
-  [HttpGet]
-  public async Task<ActionResult<IEnumerable<DocenteDto>>> GetAll()
-  {
-    var alumnos = await _docenteRepository.GetAllAsync();
-    var alumnosDto = alumnos.Select(a => MapToDto(a)).ToList();
-    return Ok(alumnosDto);
-  }
+        // --- mapping helpers ---
+        private static DocenteDto MapToDto(Docente d) => new()
+        {
+            Id       = d.Id,
+            Nombre   = d.Nombre,
+            CI       = d.Ci,
+            Telefono = d.Telefono
+        };
 
-  // Endpoint para obtener un docente por ID
-  [HttpGet("{id}")]
-  public async Task<ActionResult<DocenteDto>> GetById(int id)
-  {
-    var docente = await _docenteRepository.GetByIdAsync(id);
-    if (docente == null)
-    {
-      return NotFound();
+        private static Docente MapToEntity(DocenteDto dto) => new()
+        {
+            Id       = dto.Id,
+            Nombre   = dto.Nombre,
+            Ci       = dto.CI,
+            Telefono = dto.Telefono
+        };
+
+        // GET: api/docente
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<DocenteDto>>> GetAll(CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Docente>();
+            var list = await repo.GetAllAsync(ct);
+            return Ok(list.Select(MapToDto).ToList());
+        }
+
+        // GET: api/docente/5
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<DocenteDto>> GetById(int id, CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Docente>();
+            var docente = await repo.GetByIdAsync(id, ct);
+            if (docente is null) return NotFound();
+            return Ok(MapToDto(docente));
+        }
+
+        // POST: api/docente
+        [HttpPost]
+        public async Task<ActionResult<DocenteDto>> Add([FromBody] DocenteDto dto, CancellationToken ct)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var repo = _uow.GetRepository<Docente>();
+            var entity = MapToEntity(dto);
+
+            await repo.AddAsync(entity, ct);
+            await _uow.CompleteAsync(ct);
+
+            var created = MapToDto(entity);
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+        }
+
+        // PUT: api/docente/5
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] DocenteDto dto, CancellationToken ct)
+        {
+            if (id != dto.Id) return BadRequest();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var repo = _uow.GetRepository<Docente>();
+            var existing = await repo.GetByIdAsync(id, ct);
+            if (existing is null) return NotFound();
+
+            existing.Nombre   = dto.Nombre;
+            existing.Ci       = dto.CI;
+            existing.Telefono = dto.Telefono;
+
+            await repo.UpdateAsync(existing, ct);
+            await _uow.CompleteAsync(ct);
+            return NoContent();
+        }
+
+        // DELETE: api/docente/5
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id, CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Docente>();
+
+            var existing = await repo.GetByIdAsync(id, ct);
+            if (existing is null) return NotFound();
+
+            await repo.DeleteAsync(id, ct);
+            await _uow.CompleteAsync(ct);
+            return NoContent();
+        }
     }
-    var docenteDto = MapToDto(docente);
-    return Ok(docenteDto);
-  }
-
-  // Endpoint para crear un nuevo docente
-  [HttpPost]
-  public async Task<ActionResult<DocenteDto>> Add(DocenteDto docenteDto)
-  {
-    // VERIFICACIÓN CLAVE: Si el modelo no es válido, el framework
-    // ya llenó ModelState con los errores.
-    if (!ModelState.IsValid)
-    {
-      // Devuelve un código 400 Bad Request con los errores de validación
-      return BadRequest(ModelState);
-    }
-
-    var docente = MapToEntity(docenteDto);
-    await _docenteRepository.AddAsync(docente);
-    var newAlumnoDto = MapToDto(docente);
-    return CreatedAtAction(nameof(GetById), new { id = newAlumnoDto.ID }, newAlumnoDto);
-  }
-
-  // Endpoint para actualizar un docente
-  [HttpPut("{id}")]
-  public async Task<ActionResult> Update(int id, DocenteDto docenteDto)
-  {
-    if (id != docenteDto.ID)
-    {
-      return BadRequest();
-    }
-
-    if (!ModelState.IsValid)
-    {
-      return BadRequest(ModelState);
-    }
-
-    var docente = await _docenteRepository.GetByIdAsync(id);
-    if (docente == null)
-    {
-      return NotFound();
-    }
-
-    // Mapea los datos del DTO al modelo de dominio existente
-    docente.NOMBRE = docenteDto.NOMBRE;
-    docente.CI = docenteDto.CI;
-    docente.TELEFONO = docenteDto.TELEFONO;
-
-    await _docenteRepository.UpdateAsync(docente);
-    return NoContent();
-  }
-
-  // Endpoint para eliminar un docente
-  [HttpDelete("{id}")]
-  public async Task<ActionResult> Delete(int id)
-  {
-    var docente = await _docenteRepository.GetByIdAsync(id);
-    if (docente == null)
-    {
-      return NotFound();
-    }
-    await _docenteRepository.DeleteAsync(id);
-    return NoContent();
-  }
 }

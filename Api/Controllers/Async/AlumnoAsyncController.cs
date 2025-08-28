@@ -34,7 +34,7 @@ public class AlumnoAsyncController : ControllerBase
         
         var requestMessage = new RequestMessage
         {
-            // El ID se genera automáticamente en el constructor.
+            // El Id se genera automáticamente en el constructor.
             Operation = OperationType.Insert,
             Table = TableType.Alumnos, // Usa tu Enum para la tabla de alumnos
             BodyJson = bodyJson,
@@ -48,7 +48,7 @@ public class AlumnoAsyncController : ControllerBase
         await _channelWriter.WriteAsync(requestMessage);
         
         // Devuelve una respuesta 202 Accepted, indicando que la petición ha sido recibida
-        // y se procesará más tarde. Opcionalmente, puedes devolver el ID de correlación
+        // y se procesará más tarde. Opcionalmente, puedes devolver el Id de correlación
         // para que el cliente pueda rastrear la petición.
         return Accepted(new { Id = requestMessage.Id });
     }

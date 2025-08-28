@@ -1,97 +1,104 @@
-// Archivo: Api/Controllers/GrupoController.cs
-
-using Microsoft.AspNetCore.Mvc;
+// Api/Controllers/GrupoController.cs
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using Domain.Models;
 using Application.Interfaces;
+using Domain.Models;
 using Api.Dtos;
+using Microsoft.AspNetCore.Mvc;
 
-[Route("api/[controller]")]
-[ApiController]
-public class GrupoController : ControllerBase
+namespace Api.Controllers
 {
-  private readonly IGrupoRepository _grupoRepository;
-
-  public GrupoController(IGrupoRepository grupoRepository)
-  {
-    _grupoRepository = grupoRepository;
-  }
-
-  // --- Helpers de mapeo ---
-  private static GrupoDto MapToDto(Grupo grupo) => new GrupoDto
-  {
-    ID = grupo.ID,
-    NOMBRE = grupo.NOMBRE
-  };
-
-  private static void MapDtoToEntityForUpdate(GrupoDto dto, Grupo entity)
-  {
-    entity.NOMBRE = dto.NOMBRE;
-  }
-
-  // GET: api/grupo
-  [HttpGet]
-  public async Task<ActionResult<IEnumerable<GrupoDto>>> GetAll()
-  {
-    var grupos = await _grupoRepository.GetAllAsync();
-    var dtos = grupos.Select(MapToDto).ToList();
-    return Ok(dtos);
-  }
-
-  // GET: api/grupo/5
-  [HttpGet("{id}")]
-  public async Task<ActionResult<GrupoDto>> GetById(int id)
-  {
-    var grupo = await _grupoRepository.GetByIdAsync(id);
-    if (grupo == null) return NotFound();
-
-    return Ok(MapToDto(grupo));
-  }
-
-  // POST: api/grupo
-  [HttpPost]
-  public async Task<ActionResult<GrupoDto>> Add([FromBody] GrupoDto dto)
-  {
-    // [ApiController] maneja 400 por validación automáticamente.
-    // Ignoramos cualquier ID que venga en el body; lo genera la BD/ORM.
-    var entity = new Grupo
+    [ApiController]
+    [Route("api/[controller]")]
+    public class GrupoController : ControllerBase
     {
-      NOMBRE = dto.NOMBRE
-    };
+        private readonly IUnitOfWork _uow;
 
-    await _grupoRepository.AddAsync(entity);
+        public GrupoController(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
 
-    var readDto = MapToDto(entity);
-    return CreatedAtAction(nameof(GetById), new { id = readDto.ID }, readDto);
-  }
+        // --- Helpers de mapeo ---
+        private static GrupoDto MapToDto(Grupo g) => new()
+        {
+            Id     = g.Id,
+            Nombre = g.Nombre
+        };
 
-  // PUT: api/grupo/5
-  [HttpPut("{id}")]
-  public async Task<IActionResult> Update(int id, [FromBody] GrupoDto dto)
-  {
-    // Si el body trae ID y no coincide con la URL, rechazamos para evitar inconsistencias.
-    if (dto.ID.HasValue && dto.ID.Value != id)
-      return BadRequest("El id del cuerpo no coincide con el id de la URL.");
+        private static void MapDtoToEntityForUpdate(GrupoDto dto, Grupo entity)
+        {
+            entity.Nombre = dto.Nombre;
+        }
 
-    var entity = await _grupoRepository.GetByIdAsync(id);
-    if (entity == null) return NotFound();
+        // GET: api/grupo
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<GrupoDto>>> GetAll(CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Grupo>();
+            var grupos = await repo.GetAllAsync(ct);
+            return Ok(grupos.Select(MapToDto).ToList());
+        }
 
-    MapDtoToEntityForUpdate(dto, entity);
-    await _grupoRepository.UpdateAsync(entity);
+        // GET: api/grupo/5
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<GrupoDto>> GetById(int id, CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Grupo>();
+            var grupo = await repo.GetByIdAsync(id, ct);
+            if (grupo is null) return NotFound();
+            return Ok(MapToDto(grupo));
+        }
 
-    return NoContent();
-  }
+        // POST: api/grupo
+        [HttpPost]
+        public async Task<ActionResult<GrupoDto>> Add([FromBody] GrupoDto dto, CancellationToken ct)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-  // DELETE: api/grupo/5
-  [HttpDelete("{id}")]
-  public async Task<IActionResult> Delete(int id)
-  {
-    var entity = await _grupoRepository.GetByIdAsync(id);
-    if (entity == null) return NotFound();
+            var repo = _uow.GetRepository<Grupo>();
+            var entity = new Grupo { Nombre = dto.Nombre };
 
-    await _grupoRepository.DeleteAsync(id);
-    return NoContent();
-  }
+            await repo.AddAsync(entity, ct);
+            await _uow.CompleteAsync(ct);
+
+            var readDto = MapToDto(entity);
+            return CreatedAtAction(nameof(GetById), new { id = readDto.Id }, readDto);
+        }
+
+        // PUT: api/grupo/5
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] GrupoDto dto, CancellationToken ct)
+        {
+            if (dto.Id.HasValue && dto.Id.Value != id)
+                return BadRequest("El id del cuerpo no coincide con el id de la URL.");
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var repo = _uow.GetRepository<Grupo>();
+            var entity = await repo.GetByIdAsync(id, ct);
+            if (entity is null) return NotFound();
+
+            MapDtoToEntityForUpdate(dto, entity);
+            await repo.UpdateAsync(entity, ct);
+            await _uow.CompleteAsync(ct);
+
+            return NoContent();
+        }
+
+        // DELETE: api/grupo/5
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id, CancellationToken ct)
+        {
+            var repo = _uow.GetRepository<Grupo>();
+            var entity = await repo.GetByIdAsync(id, ct);
+            if (entity is null) return NotFound();
+
+            await repo.DeleteAsync(id, ct);
+            await _uow.CompleteAsync(ct);
+            return NoContent();
+        }
+    }
 }

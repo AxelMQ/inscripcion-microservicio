@@ -24,8625 +24,8812 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Models.Alumno", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("NOMBRE")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(60)
-                        .HasColumnType("character varying(60)");
+                        .HasColumnType("character varying(60)")
+                        .HasColumnName("nombre");
 
-                    b.Property<decimal>("PPA")
-                        .HasColumnType("numeric(10, 2)");
+                    b.Property<decimal>("Ppa")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)")
+                        .HasColumnName("ppa");
 
-                    b.Property<int>("REGISTRO")
-                        .HasColumnType("integer");
+                    b.Property<int>("Registro")
+                        .HasColumnType("integer")
+                        .HasColumnName("registro");
 
-                    b.Property<int?>("TELEFONO")
-                        .HasColumnType("integer");
+                    b.Property<int>("Telefono")
+                        .HasColumnType("integer")
+                        .HasColumnName("telefono");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_alumno");
 
-                    b.ToTable("ALUMNO");
+                    b.ToTable("alumno", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Models.AlumnoPlanEstudio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AlumnoId")
+                        .HasColumnType("integer")
+                        .HasColumnName("alumno_id");
+
+                    b.Property<int>("PlanEstudioId")
+                        .HasColumnType("integer")
+                        .HasColumnName("plan_estudio_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_alumno_plan_estudio");
+
+                    b.HasIndex("AlumnoId")
+                        .HasDatabaseName("ix_alumno_plan_estudio_alumno_id");
+
+                    b.HasIndex("PlanEstudioId")
+                        .HasDatabaseName("ix_alumno_plan_estudio_plan_estudio_id");
+
+                    b.ToTable("alumno_plan_estudio", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Carrera", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CODIGO")
+                    b.Property<string>("Codigo")
                         .IsRequired()
                         .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("codigo");
 
-                    b.Property<short>("MODALIDAD")
-                        .HasColumnType("smallint");
+                    b.Property<short>("Modalidad")
+                        .HasColumnType("smallint")
+                        .HasColumnName("modalidad");
 
-                    b.Property<string>("NOMBRE")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(63)
-                        .HasColumnType("character varying(63)");
+                        .HasColumnType("character varying(63)")
+                        .HasColumnName("nombre");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_carrera");
 
-                    b.ToTable("CARRERA");
+                    b.ToTable("carrera", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            CODIGO = "185",
-                            MODALIDAD = (short)0,
-                            NOMBRE = "INGENIERIA EN REDES Y TELECOMUNICACIONES"
+                            Id = 1,
+                            Codigo = "185",
+                            Modalidad = (short)0,
+                            Nombre = "INGENIERIA EN REDES Y TELECOMUNICACIONES"
                         },
                         new
                         {
-                            ID = 2,
-                            CODIGO = "183",
-                            MODALIDAD = (short)0,
-                            NOMBRE = "INGENIERIA INFORMATICA"
+                            Id = 2,
+                            Codigo = "183",
+                            Modalidad = (short)0,
+                            Nombre = "INGENIERIA INFORMATICA"
                         },
                         new
                         {
-                            ID = 3,
-                            CODIGO = "184",
-                            MODALIDAD = (short)0,
-                            NOMBRE = "INGENIERIA EN SISTEMAS"
+                            Id = 3,
+                            Codigo = "184",
+                            Modalidad = (short)0,
+                            Nombre = "INGENIERIA EN SISTEMAS"
                         },
                         new
                         {
-                            ID = 4,
-                            CODIGO = "323",
-                            MODALIDAD = (short)0,
-                            NOMBRE = "INGENIERIA ROBOTICA"
+                            Id = 4,
+                            Codigo = "323",
+                            Modalidad = (short)0,
+                            Nombre = "INGENIERIA ROBOTICA"
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.Dia", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("NOMBRE")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)");
+                        .HasColumnType("character varying(15)")
+                        .HasColumnName("nombre");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_dia");
 
-                    b.ToTable("DIA");
+                    b.ToTable("dia", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            NOMBRE = "LUNES"
+                            Id = 1,
+                            Nombre = "LUNES"
                         },
                         new
                         {
-                            ID = 2,
-                            NOMBRE = "MARTES"
+                            Id = 2,
+                            Nombre = "MARTES"
                         },
                         new
                         {
-                            ID = 3,
-                            NOMBRE = "MIERCOLES"
+                            Id = 3,
+                            Nombre = "MIERCOLES"
                         },
                         new
                         {
-                            ID = 4,
-                            NOMBRE = "JUEVES"
+                            Id = 4,
+                            Nombre = "JUEVES"
                         },
                         new
                         {
-                            ID = 5,
-                            NOMBRE = "VIERNES"
+                            Id = 5,
+                            Nombre = "VIERNES"
                         },
                         new
                         {
-                            ID = 6,
-                            NOMBRE = "SABADO"
+                            Id = 6,
+                            Nombre = "SABADO"
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.Docente", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CI")
-                        .HasColumnType("integer");
+                    b.Property<int>("Ci")
+                        .HasColumnType("integer")
+                        .HasColumnName("ci");
 
-                    b.Property<string>("NOMBRE")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(125)
-                        .HasColumnType("character varying(125)");
+                        .HasColumnType("character varying(125)")
+                        .HasColumnName("nombre");
 
-                    b.Property<long?>("TELEFONO")
-                        .HasColumnType("bigint");
+                    b.Property<long?>("Telefono")
+                        .HasColumnType("bigint")
+                        .HasColumnName("telefono");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_docente");
 
-                    b.ToTable("DOCENTE");
+                    b.ToTable("docente", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            CI = 15157488,
-                            NOMBRE = "FLORES GUZMAN VALENTIN VICTOR",
-                            TELEFONO = 78481515L
+                            Id = 1,
+                            Ci = 15157488,
+                            Nombre = "FLORES GUZMAN VALENTIN VICTOR",
+                            Telefono = 78481515L
                         },
                         new
                         {
-                            ID = 2,
-                            CI = 15157489,
-                            NOMBRE = "LOBO LIMPIAS VICTOR HUGO",
-                            TELEFONO = 78481516L
+                            Id = 2,
+                            Ci = 15157489,
+                            Nombre = "LOBO LIMPIAS VICTOR HUGO",
+                            Telefono = 78481516L
                         },
                         new
                         {
-                            ID = 3,
-                            CI = 15157490,
-                            NOMBRE = "ARANIBAR QUIROZ MARTHA MONICA",
-                            TELEFONO = 78481517L
+                            Id = 3,
+                            Ci = 15157490,
+                            Nombre = "ARANIBAR QUIROZ MARTHA MONICA",
+                            Telefono = 78481517L
                         },
                         new
                         {
-                            ID = 4,
-                            CI = 15157491,
-                            NOMBRE = "SANCHEZ VELASCO ENRIQUE",
-                            TELEFONO = 78481518L
+                            Id = 4,
+                            Ci = 15157491,
+                            Nombre = "SANCHEZ VELASCO ENRIQUE",
+                            Telefono = 78481518L
                         },
                         new
                         {
-                            ID = 5,
-                            CI = 15157492,
-                            NOMBRE = "CALDERON FLORES MODESTO FRANKLIN",
-                            TELEFONO = 78481519L
+                            Id = 5,
+                            Ci = 15157492,
+                            Nombre = "CALDERON FLORES MODESTO FRANKLIN",
+                            Telefono = 78481519L
                         },
                         new
                         {
-                            ID = 6,
-                            CI = 15157493,
-                            NOMBRE = "LAZO ARTEAGA CARLOS ROBERTO",
-                            TELEFONO = 78481520L
+                            Id = 6,
+                            Ci = 15157493,
+                            Nombre = "LAZO ARTEAGA CARLOS ROBERTO",
+                            Telefono = 78481520L
                         },
                         new
                         {
-                            ID = 7,
-                            CI = 15157494,
-                            NOMBRE = "ZUNA VILLAGOMEZ RICARDO",
-                            TELEFONO = 78481521L
+                            Id = 7,
+                            Ci = 15157494,
+                            Nombre = "ZUNA VILLAGOMEZ RICARDO",
+                            Telefono = 78481521L
                         },
                         new
                         {
-                            ID = 8,
-                            CI = 15157495,
-                            NOMBRE = "MOLLO MAMANI ALBERTO",
-                            TELEFONO = 78481522L
+                            Id = 8,
+                            Ci = 15157495,
+                            Nombre = "MOLLO MAMANI ALBERTO",
+                            Telefono = 78481522L
                         },
                         new
                         {
-                            ID = 9,
-                            CI = 15157496,
-                            NOMBRE = "ALIAGA HOWARD SHARON KENNY",
-                            TELEFONO = 78481523L
+                            Id = 9,
+                            Ci = 15157496,
+                            Nombre = "ALIAGA HOWARD SHARON KENNY",
+                            Telefono = 78481523L
                         },
                         new
                         {
-                            ID = 10,
-                            CI = 15157497,
-                            NOMBRE = "CONTRERAS VILLEGAS JUAN CARLOS",
-                            TELEFONO = 78481524L
+                            Id = 10,
+                            Ci = 15157497,
+                            Nombre = "CONTRERAS VILLEGAS JUAN CARLOS",
+                            Telefono = 78481524L
                         },
                         new
                         {
-                            ID = 11,
-                            CI = 15157498,
-                            NOMBRE = "MARTINEZ CARDONA SARAH MIRNA",
-                            TELEFONO = 78481525L
+                            Id = 11,
+                            Ci = 15157498,
+                            Nombre = "MARTINEZ CARDONA SARAH MIRNA",
+                            Telefono = 78481525L
                         },
                         new
                         {
-                            ID = 12,
-                            CI = 15157499,
-                            NOMBRE = "CACERES CHACON BRAULIO",
-                            TELEFONO = 78481526L
+                            Id = 12,
+                            Ci = 15157499,
+                            Nombre = "CACERES CHACON BRAULIO",
+                            Telefono = 78481526L
                         },
                         new
                         {
-                            ID = 13,
-                            CI = 15157500,
-                            NOMBRE = "GUTIERREZ BRUNO KATIME ESTHER",
-                            TELEFONO = 78481527L
+                            Id = 13,
+                            Ci = 15157500,
+                            Nombre = "GUTIERREZ BRUNO KATIME ESTHER",
+                            Telefono = 78481527L
                         },
                         new
                         {
-                            ID = 14,
-                            CI = 15157501,
-                            NOMBRE = "APAZA LEON ROSNAY",
-                            TELEFONO = 78481528L
+                            Id = 14,
+                            Ci = 15157501,
+                            Nombre = "APAZA LEON ROSNAY",
+                            Telefono = 78481528L
                         },
                         new
                         {
-                            ID = 15,
-                            CI = 15157502,
-                            NOMBRE = "ZUNIGA RUIZ WILMA",
-                            TELEFONO = 78481529L
+                            Id = 15,
+                            Ci = 15157502,
+                            Nombre = "ZUNIGA RUIZ WILMA",
+                            Telefono = 78481529L
                         },
                         new
                         {
-                            ID = 16,
-                            CI = 15157503,
-                            NOMBRE = "CLAURE MEDRANO DE OROPEZA ELIZ",
-                            TELEFONO = 78481530L
+                            Id = 16,
+                            Ci = 15157503,
+                            Nombre = "CLAURE MEDRANO DE OROPEZA ELIZ",
+                            Telefono = 78481530L
                         },
                         new
                         {
-                            ID = 17,
-                            CI = 15157504,
-                            NOMBRE = "AVENDANO GONZALES EUDAL",
-                            TELEFONO = 78481531L
+                            Id = 17,
+                            Ci = 15157504,
+                            Nombre = "AVENDANO GONZALES EUDAL",
+                            Telefono = 78481531L
                         },
                         new
                         {
-                            ID = 18,
-                            CI = 15157505,
-                            NOMBRE = "OROPEZA CLAURE GUSTAVO ADOLFO",
-                            TELEFONO = 78481532L
+                            Id = 18,
+                            Ci = 15157505,
+                            Nombre = "OROPEZA CLAURE GUSTAVO ADOLFO",
+                            Telefono = 78481532L
                         },
                         new
                         {
-                            ID = 19,
-                            CI = 15157506,
-                            NOMBRE = "VALDELOMAR ORELLANA TOMAS",
-                            TELEFONO = 78481533L
+                            Id = 19,
+                            Ci = 15157506,
+                            Nombre = "VALDELOMAR ORELLANA TOMAS",
+                            Telefono = 78481533L
                         },
                         new
                         {
-                            ID = 20,
-                            CI = 15157507,
-                            NOMBRE = "ACOSTA CABEZAS BARTOLO JAVIER",
-                            TELEFONO = 78481534L
+                            Id = 20,
+                            Ci = 15157507,
+                            Nombre = "ACOSTA CABEZAS BARTOLO JAVIER",
+                            Telefono = 78481534L
                         },
                         new
                         {
-                            ID = 21,
-                            CI = 15157508,
-                            NOMBRE = "CALDERON FLORES PIODESTO FRANKL",
-                            TELEFONO = 78481535L
+                            Id = 21,
+                            Ci = 15157508,
+                            Nombre = "CALDERON FLORES PIODESTO FRANKL",
+                            Telefono = 78481535L
                         },
                         new
                         {
-                            ID = 22,
-                            CI = 15157509,
-                            NOMBRE = "ZEBALLOS PAREDES DANIEL LUIS",
-                            TELEFONO = 78481536L
+                            Id = 22,
+                            Ci = 15157509,
+                            Nombre = "ZEBALLOS PAREDES DANIEL LUIS",
+                            Telefono = 78481536L
                         },
                         new
                         {
-                            ID = 23,
-                            CI = 15157510,
-                            NOMBRE = "MOLLO NAL4ANI ALBERTO",
-                            TELEFONO = 78481537L
+                            Id = 23,
+                            Ci = 15157510,
+                            Nombre = "MOLLO NAL4ANI ALBERTO",
+                            Telefono = 78481537L
                         },
                         new
                         {
-                            ID = 24,
-                            CI = 15157511,
-                            NOMBRE = "GRIMALDO BRAVO PAUL",
-                            TELEFONO = 78481538L
+                            Id = 24,
+                            Ci = 15157511,
+                            Nombre = "GRIMALDO BRAVO PAUL",
+                            Telefono = 78481538L
                         },
                         new
                         {
-                            ID = 25,
-                            CI = 15157512,
-                            NOMBRE = "LAZO ARTEAGA CARLOS ROBERTO",
-                            TELEFONO = 78481539L
+                            Id = 25,
+                            Ci = 15157512,
+                            Nombre = "LAZO ARTEAGA CARLOS ROBERTO",
+                            Telefono = 78481539L
                         },
                         new
                         {
-                            ID = 26,
-                            CI = 15157513,
-                            NOMBRE = "GONZALES APARICIO MELISSA",
-                            TELEFONO = 78481540L
+                            Id = 26,
+                            Ci = 15157513,
+                            Nombre = "GONZALES APARICIO MELISSA",
+                            Telefono = 78481540L
                         },
                         new
                         {
-                            ID = 27,
-                            CI = 15157514,
-                            NOMBRE = "ORTEGA PAREDES FRANCISCO",
-                            TELEFONO = 78481541L
+                            Id = 27,
+                            Ci = 15157514,
+                            Nombre = "ORTEGA PAREDES FRANCISCO",
+                            Telefono = 78481541L
                         },
                         new
                         {
-                            ID = 28,
-                            CI = 15157515,
-                            NOMBRE = "VILLARROEL RIVERA NATALIA",
-                            TELEFONO = 78481542L
+                            Id = 28,
+                            Ci = 15157515,
+                            Nombre = "VILLARROEL RIVERA NATALIA",
+                            Telefono = 78481542L
                         },
                         new
                         {
-                            ID = 29,
-                            CI = 15157516,
-                            NOMBRE = "CARRASCO CORDOVA LUIS",
-                            TELEFONO = 78481543L
+                            Id = 29,
+                            Ci = 15157516,
+                            Nombre = "CARRASCO CORDOVA LUIS",
+                            Telefono = 78481543L
                         },
                         new
                         {
-                            ID = 30,
-                            CI = 15157517,
-                            NOMBRE = "MEDINA LOPEZ GLORIA",
-                            TELEFONO = 78481544L
+                            Id = 30,
+                            Ci = 15157517,
+                            Nombre = "MEDINA LOPEZ GLORIA",
+                            Telefono = 78481544L
                         },
                         new
                         {
-                            ID = 31,
-                            CI = 15157518,
-                            NOMBRE = "MENDOZA CASTRO MARCO",
-                            TELEFONO = 78481545L
+                            Id = 31,
+                            Ci = 15157518,
+                            Nombre = "MENDOZA CASTRO MARCO",
+                            Telefono = 78481545L
                         },
                         new
                         {
-                            ID = 32,
-                            CI = 15157519,
-                            NOMBRE = "ALVAREZ ROMERO SANDRA",
-                            TELEFONO = 78481546L
+                            Id = 32,
+                            Ci = 15157519,
+                            Nombre = "ALVAREZ ROMERO SANDRA",
+                            Telefono = 78481546L
                         },
                         new
                         {
-                            ID = 33,
-                            CI = 15157520,
-                            NOMBRE = "RAMIREZ HUERTA CARLOS",
-                            TELEFONO = 78481547L
+                            Id = 33,
+                            Ci = 15157520,
+                            Nombre = "RAMIREZ HUERTA CARLOS",
+                            Telefono = 78481547L
                         },
                         new
                         {
-                            ID = 34,
-                            CI = 15157521,
-                            NOMBRE = "ESCOBAR FLORES VERONICA",
-                            TELEFONO = 78481548L
+                            Id = 34,
+                            Ci = 15157521,
+                            Nombre = "ESCOBAR FLORES VERONICA",
+                            Telefono = 78481548L
                         },
                         new
                         {
-                            ID = 35,
-                            CI = 15157522,
-                            NOMBRE = "CASTILLO GOMEZ JUAN",
-                            TELEFONO = 78481549L
+                            Id = 35,
+                            Ci = 15157522,
+                            Nombre = "CASTILLO GOMEZ JUAN",
+                            Telefono = 78481549L
                         },
                         new
                         {
-                            ID = 36,
-                            CI = 15157523,
-                            NOMBRE = "PEREZ SALAZAR LILIANA",
-                            TELEFONO = 78481550L
+                            Id = 36,
+                            Ci = 15157523,
+                            Nombre = "PEREZ SALAZAR LILIANA",
+                            Telefono = 78481550L
                         },
                         new
                         {
-                            ID = 37,
-                            CI = 15157524,
-                            NOMBRE = "TORRES QUISPE RICARDO",
-                            TELEFONO = 78481551L
+                            Id = 37,
+                            Ci = 15157524,
+                            Nombre = "TORRES QUISPE RICARDO",
+                            Telefono = 78481551L
                         },
                         new
                         {
-                            ID = 38,
-                            CI = 15157525,
-                            NOMBRE = "HUAMAN FLORES MIRIAM",
-                            TELEFONO = 78481552L
+                            Id = 38,
+                            Ci = 15157525,
+                            Nombre = "HUAMAN FLORES MIRIAM",
+                            Telefono = 78481552L
                         },
                         new
                         {
-                            ID = 39,
-                            CI = 15157526,
-                            NOMBRE = "CHAVEZ LOPEZ EDWIN",
-                            TELEFONO = 78481553L
+                            Id = 39,
+                            Ci = 15157526,
+                            Nombre = "CHAVEZ LOPEZ EDWIN",
+                            Telefono = 78481553L
                         },
                         new
                         {
-                            ID = 40,
-                            CI = 15157527,
-                            NOMBRE = "GARCIA VILLENA KARINA",
-                            TELEFONO = 78481554L
+                            Id = 40,
+                            Ci = 15157527,
+                            Nombre = "GARCIA VILLENA KARINA",
+                            Telefono = 78481554L
                         },
                         new
                         {
-                            ID = 41,
-                            CI = 15157528,
-                            NOMBRE = "RODRIGUEZ SALAZAR LUIS",
-                            TELEFONO = 78481555L
+                            Id = 41,
+                            Ci = 15157528,
+                            Nombre = "RODRIGUEZ SALAZAR LUIS",
+                            Telefono = 78481555L
                         },
                         new
                         {
-                            ID = 42,
-                            CI = 15157529,
-                            NOMBRE = "FERNANDEZ CASTRO MARIA",
-                            TELEFONO = 78481556L
+                            Id = 42,
+                            Ci = 15157529,
+                            Nombre = "FERNANDEZ CASTRO MARIA",
+                            Telefono = 78481556L
                         },
                         new
                         {
-                            ID = 43,
-                            CI = 15157530,
-                            NOMBRE = "MARTINEZ HUAMAN PABLO",
-                            TELEFONO = 78481557L
+                            Id = 43,
+                            Ci = 15157530,
+                            Nombre = "MARTINEZ HUAMAN PABLO",
+                            Telefono = 78481557L
                         },
                         new
                         {
-                            ID = 44,
-                            CI = 15157531,
-                            NOMBRE = "QUISPE RAMOS GLADYS",
-                            TELEFONO = 78481558L
+                            Id = 44,
+                            Ci = 15157531,
+                            Nombre = "QUISPE RAMOS GLADYS",
+                            Telefono = 78481558L
                         },
                         new
                         {
-                            ID = 45,
-                            CI = 15157532,
-                            NOMBRE = "SALAZAR MORENO JULIO",
-                            TELEFONO = 78481559L
+                            Id = 45,
+                            Ci = 15157532,
+                            Nombre = "SALAZAR MORENO JULIO",
+                            Telefono = 78481559L
                         },
                         new
                         {
-                            ID = 46,
-                            CI = 15157533,
-                            NOMBRE = "LOPEZ RIVERA ANGELA",
-                            TELEFONO = 78481560L
+                            Id = 46,
+                            Ci = 15157533,
+                            Nombre = "LOPEZ RIVERA ANGELA",
+                            Telefono = 78481560L
                         },
                         new
                         {
-                            ID = 47,
-                            CI = 15157534,
-                            NOMBRE = "VILLANUEVA PEREZ CARLOS",
-                            TELEFONO = 78481561L
+                            Id = 47,
+                            Ci = 15157534,
+                            Nombre = "VILLANUEVA PEREZ CARLOS",
+                            Telefono = 78481561L
                         },
                         new
                         {
-                            ID = 48,
-                            CI = 15157535,
-                            NOMBRE = "ORTEGA SALAZAR FABIOLA",
-                            TELEFONO = 78481562L
+                            Id = 48,
+                            Ci = 15157535,
+                            Nombre = "ORTEGA SALAZAR FABIOLA",
+                            Telefono = 78481562L
                         },
                         new
                         {
-                            ID = 49,
-                            CI = 15157536,
-                            NOMBRE = "GOMEZ HUAMAN MARIO",
-                            TELEFONO = 78481563L
+                            Id = 49,
+                            Ci = 15157536,
+                            Nombre = "GOMEZ HUAMAN MARIO",
+                            Telefono = 78481563L
                         },
                         new
                         {
-                            ID = 50,
-                            CI = 15157537,
-                            NOMBRE = "CARRASCO LOPEZ ELISA",
-                            TELEFONO = 78481564L
+                            Id = 50,
+                            Ci = 15157537,
+                            Nombre = "CARRASCO LOPEZ ELISA",
+                            Telefono = 78481564L
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.Gestion", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("NOMBRE")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(25)
-                        .HasColumnType("character varying(25)");
+                        .HasColumnType("character varying(25)")
+                        .HasColumnName("nombre");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_gestion");
 
-                    b.ToTable("GESTION");
+                    b.ToTable("gestion", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            NOMBRE = "1/2025"
+                            Id = 1,
+                            Nombre = "1/2025"
                         },
                         new
                         {
-                            ID = 2,
-                            NOMBRE = "2/2025"
+                            Id = 2,
+                            Nombre = "2/2025"
                         },
                         new
                         {
-                            ID = 3,
-                            NOMBRE = "3/2025"
+                            Id = 3,
+                            Nombre = "3/2025"
                         },
                         new
                         {
-                            ID = 4,
-                            NOMBRE = "4/2025"
+                            Id = 4,
+                            Nombre = "4/2025"
                         },
                         new
                         {
-                            ID = 5,
-                            NOMBRE = "1/2024"
+                            Id = 5,
+                            Nombre = "1/2024"
                         },
                         new
                         {
-                            ID = 6,
-                            NOMBRE = "2/2024"
+                            Id = 6,
+                            Nombre = "2/2024"
                         },
                         new
                         {
-                            ID = 7,
-                            NOMBRE = "3/2024"
+                            Id = 7,
+                            Nombre = "3/2024"
                         },
                         new
                         {
-                            ID = 8,
-                            NOMBRE = "4/2024"
+                            Id = 8,
+                            Nombre = "4/2024"
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.Grupo", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("NOMBRE")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)");
+                        .HasColumnType("character varying(15)")
+                        .HasColumnName("nombre");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_grupo");
 
-                    b.ToTable("GRUPO");
+                    b.ToTable("grupo", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            NOMBRE = "SA"
+                            Id = 1,
+                            Nombre = "SA"
                         },
                         new
                         {
-                            ID = 2,
-                            NOMBRE = "SB"
+                            Id = 2,
+                            Nombre = "SB"
                         },
                         new
                         {
-                            ID = 3,
-                            NOMBRE = "SC"
+                            Id = 3,
+                            Nombre = "SC"
                         },
                         new
                         {
-                            ID = 4,
-                            NOMBRE = "SD"
+                            Id = 4,
+                            Nombre = "SD"
                         },
                         new
                         {
-                            ID = 5,
-                            NOMBRE = "SE"
+                            Id = 5,
+                            Nombre = "SE"
                         },
                         new
                         {
-                            ID = 6,
-                            NOMBRE = "SF"
+                            Id = 6,
+                            Nombre = "SF"
                         },
                         new
                         {
-                            ID = 7,
-                            NOMBRE = "SG"
+                            Id = 7,
+                            Nombre = "SG"
                         },
                         new
                         {
-                            ID = 8,
-                            NOMBRE = "SH"
+                            Id = 8,
+                            Nombre = "SH"
                         },
                         new
                         {
-                            ID = 9,
-                            NOMBRE = "SI"
+                            Id = 9,
+                            Nombre = "SI"
                         },
                         new
                         {
-                            ID = 10,
-                            NOMBRE = "SK"
+                            Id = 10,
+                            Nombre = "SK"
                         },
                         new
                         {
-                            ID = 11,
-                            NOMBRE = "SN"
+                            Id = 11,
+                            Nombre = "SN"
                         },
                         new
                         {
-                            ID = 12,
-                            NOMBRE = "SM"
+                            Id = 12,
+                            Nombre = "SM"
                         },
                         new
                         {
-                            ID = 13,
-                            NOMBRE = "SP"
+                            Id = 13,
+                            Nombre = "SP"
                         },
                         new
                         {
-                            ID = 14,
-                            NOMBRE = "SR"
+                            Id = 14,
+                            Nombre = "SR"
                         },
                         new
                         {
-                            ID = 15,
-                            NOMBRE = "SS"
+                            Id = 15,
+                            Nombre = "SS"
                         },
                         new
                         {
-                            ID = 16,
-                            NOMBRE = "SX"
+                            Id = 16,
+                            Nombre = "SX"
                         },
                         new
                         {
-                            ID = 17,
-                            NOMBRE = "SZ"
+                            Id = 17,
+                            Nombre = "SZ"
                         },
                         new
                         {
-                            ID = 18,
-                            NOMBRE = "F1"
+                            Id = 18,
+                            Nombre = "F1"
                         },
                         new
                         {
-                            ID = 19,
-                            NOMBRE = "BI"
+                            Id = 19,
+                            Nombre = "BI"
                         },
                         new
                         {
-                            ID = 20,
-                            NOMBRE = "CI"
+                            Id = 20,
+                            Nombre = "CI"
                         },
                         new
                         {
-                            ID = 21,
-                            NOMBRE = "C1"
+                            Id = 21,
+                            Nombre = "C1"
                         },
                         new
                         {
-                            ID = 22,
-                            NOMBRE = "I2"
+                            Id = 22,
+                            Nombre = "I2"
                         },
                         new
                         {
-                            ID = 23,
-                            NOMBRE = "ER"
+                            Id = 23,
+                            Nombre = "ER"
                         },
                         new
                         {
-                            ID = 24,
-                            NOMBRE = "R1"
+                            Id = 24,
+                            Nombre = "R1"
                         },
                         new
                         {
-                            ID = 25,
-                            NOMBRE = "1I"
+                            Id = 25,
+                            Nombre = "1I"
                         },
                         new
                         {
-                            ID = 26,
-                            NOMBRE = "I1"
+                            Id = 26,
+                            Nombre = "I1"
                         },
                         new
                         {
-                            ID = 27,
-                            NOMBRE = "NW"
+                            Id = 27,
+                            Nombre = "NW"
                         },
                         new
                         {
-                            ID = 28,
-                            NOMBRE = "NX"
+                            Id = 28,
+                            Nombre = "NX"
                         },
                         new
                         {
-                            ID = 29,
-                            NOMBRE = "W1"
+                            Id = 29,
+                            Nombre = "W1"
                         },
                         new
                         {
-                            ID = 30,
-                            NOMBRE = "X2"
+                            Id = 30,
+                            Nombre = "X2"
                         },
                         new
                         {
-                            ID = 31,
-                            NOMBRE = "X3"
+                            Id = 31,
+                            Nombre = "X3"
                         },
                         new
                         {
-                            ID = 32,
-                            NOMBRE = "X4"
+                            Id = 32,
+                            Nombre = "X4"
                         },
                         new
                         {
-                            ID = 33,
-                            NOMBRE = "Z1"
+                            Id = 33,
+                            Nombre = "Z1"
                         },
                         new
                         {
-                            ID = 34,
-                            NOMBRE = "Z2"
+                            Id = 34,
+                            Nombre = "Z2"
                         },
                         new
                         {
-                            ID = 35,
-                            NOMBRE = "Z3"
+                            Id = 35,
+                            Nombre = "Z3"
                         },
                         new
                         {
-                            ID = 36,
-                            NOMBRE = "Z4"
+                            Id = 36,
+                            Nombre = "Z4"
                         },
                         new
                         {
-                            ID = 37,
-                            NOMBRE = "Z5"
+                            Id = 37,
+                            Nombre = "Z5"
                         },
                         new
                         {
-                            ID = 38,
-                            NOMBRE = "Z6"
+                            Id = 38,
+                            Nombre = "Z6"
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.GrupoMateria", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("GRUPO_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("GrupoId")
+                        .HasColumnType("integer")
+                        .HasColumnName("grupo_id");
 
-                    b.Property<int>("MATERIA_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("MateriaId")
+                        .HasColumnType("integer")
+                        .HasColumnName("materia_id");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_grupo_materia");
 
-                    b.HasIndex("GRUPO_ID");
+                    b.HasIndex("GrupoId")
+                        .HasDatabaseName("ix_grupo_materia_grupo_id");
 
-                    b.HasIndex("MATERIA_ID");
+                    b.HasIndex("MateriaId")
+                        .HasDatabaseName("ix_grupo_materia_materia_id");
 
-                    b.ToTable("GRUPO_MATERIA");
+                    b.ToTable("grupo_materia", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 15
+                            Id = 1,
+                            GrupoId = 1,
+                            MateriaId = 15
                         },
                         new
                         {
-                            ID = 2,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 15
+                            Id = 2,
+                            GrupoId = 2,
+                            MateriaId = 15
                         },
                         new
                         {
-                            ID = 3,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 15
+                            Id = 3,
+                            GrupoId = 3,
+                            MateriaId = 15
                         },
                         new
                         {
-                            ID = 4,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 7
+                            Id = 4,
+                            GrupoId = 1,
+                            MateriaId = 7
                         },
                         new
                         {
-                            ID = 5,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 7
+                            Id = 5,
+                            GrupoId = 2,
+                            MateriaId = 7
                         },
                         new
                         {
-                            ID = 6,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 7
+                            Id = 6,
+                            GrupoId = 3,
+                            MateriaId = 7
                         },
                         new
                         {
-                            ID = 7,
-                            GRUPO_ID = 4,
-                            MATERIA_ID = 7
+                            Id = 7,
+                            GrupoId = 4,
+                            MateriaId = 7
                         },
                         new
                         {
-                            ID = 8,
-                            GRUPO_ID = 5,
-                            MATERIA_ID = 7
+                            Id = 8,
+                            GrupoId = 5,
+                            MateriaId = 7
                         },
                         new
                         {
-                            ID = 9,
-                            GRUPO_ID = 6,
-                            MATERIA_ID = 7
+                            Id = 9,
+                            GrupoId = 6,
+                            MateriaId = 7
                         },
                         new
                         {
-                            ID = 10,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 75
+                            Id = 10,
+                            GrupoId = 1,
+                            MateriaId = 75
                         },
                         new
                         {
-                            ID = 11,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 75
+                            Id = 11,
+                            GrupoId = 2,
+                            MateriaId = 75
                         },
                         new
                         {
-                            ID = 12,
-                            GRUPO_ID = 17,
-                            MATERIA_ID = 77
+                            Id = 12,
+                            GrupoId = 17,
+                            MateriaId = 77
                         },
                         new
                         {
-                            ID = 13,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 87
+                            Id = 13,
+                            GrupoId = 1,
+                            MateriaId = 87
                         },
                         new
                         {
-                            ID = 14,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 13
+                            Id = 14,
+                            GrupoId = 1,
+                            MateriaId = 13
                         },
                         new
                         {
-                            ID = 15,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 13
+                            Id = 15,
+                            GrupoId = 2,
+                            MateriaId = 13
                         },
                         new
                         {
-                            ID = 16,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 43
+                            Id = 16,
+                            GrupoId = 1,
+                            MateriaId = 43
                         },
                         new
                         {
-                            ID = 17,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 57
+                            Id = 17,
+                            GrupoId = 1,
+                            MateriaId = 57
                         },
                         new
                         {
-                            ID = 18,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 24
+                            Id = 18,
+                            GrupoId = 1,
+                            MateriaId = 24
                         },
                         new
                         {
-                            ID = 19,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 24
+                            Id = 19,
+                            GrupoId = 3,
+                            MateriaId = 24
                         },
                         new
                         {
-                            ID = 20,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 29
+                            Id = 20,
+                            GrupoId = 2,
+                            MateriaId = 29
                         },
                         new
                         {
-                            ID = 21,
-                            GRUPO_ID = 4,
-                            MATERIA_ID = 29
+                            Id = 21,
+                            GrupoId = 4,
+                            MateriaId = 29
                         },
                         new
                         {
-                            ID = 22,
-                            GRUPO_ID = 18,
-                            MATERIA_ID = 1
+                            Id = 22,
+                            GrupoId = 18,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 23,
-                            GRUPO_ID = 17,
-                            MATERIA_ID = 1
+                            Id = 23,
+                            GrupoId = 17,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 24,
-                            GRUPO_ID = 20,
-                            MATERIA_ID = 1
+                            Id = 24,
+                            GrupoId = 20,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 25,
-                            GRUPO_ID = 22,
-                            MATERIA_ID = 1
+                            Id = 25,
+                            GrupoId = 22,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 26,
-                            GRUPO_ID = 6,
-                            MATERIA_ID = 1
+                            Id = 26,
+                            GrupoId = 6,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 27,
-                            GRUPO_ID = 7,
-                            MATERIA_ID = 1
+                            Id = 27,
+                            GrupoId = 7,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 28,
-                            GRUPO_ID = 9,
-                            MATERIA_ID = 1
+                            Id = 28,
+                            GrupoId = 9,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 29,
-                            GRUPO_ID = 13,
-                            MATERIA_ID = 1
+                            Id = 29,
+                            GrupoId = 13,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 30,
-                            GRUPO_ID = 33,
-                            MATERIA_ID = 1
+                            Id = 30,
+                            GrupoId = 33,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 31,
-                            GRUPO_ID = 34,
-                            MATERIA_ID = 1
+                            Id = 31,
+                            GrupoId = 34,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 32,
-                            GRUPO_ID = 35,
-                            MATERIA_ID = 1
+                            Id = 32,
+                            GrupoId = 35,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 33,
-                            GRUPO_ID = 36,
-                            MATERIA_ID = 1
+                            Id = 33,
+                            GrupoId = 36,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 34,
-                            GRUPO_ID = 37,
-                            MATERIA_ID = 1
+                            Id = 34,
+                            GrupoId = 37,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 35,
-                            GRUPO_ID = 38,
-                            MATERIA_ID = 1
+                            Id = 35,
+                            GrupoId = 38,
+                            MateriaId = 1
                         },
                         new
                         {
-                            ID = 36,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 6
+                            Id = 36,
+                            GrupoId = 2,
+                            MateriaId = 6
                         },
                         new
                         {
-                            ID = 37,
-                            GRUPO_ID = 4,
-                            MATERIA_ID = 6
+                            Id = 37,
+                            GrupoId = 4,
+                            MateriaId = 6
                         },
                         new
                         {
-                            ID = 38,
-                            GRUPO_ID = 24,
-                            MATERIA_ID = 6
+                            Id = 38,
+                            GrupoId = 24,
+                            MateriaId = 6
                         },
                         new
                         {
-                            ID = 39,
-                            GRUPO_ID = 25,
-                            MATERIA_ID = 6
+                            Id = 39,
+                            GrupoId = 25,
+                            MateriaId = 6
                         },
                         new
                         {
-                            ID = 40,
-                            GRUPO_ID = 21,
-                            MATERIA_ID = 6
+                            Id = 40,
+                            GrupoId = 21,
+                            MateriaId = 6
                         },
                         new
                         {
-                            ID = 41,
-                            GRUPO_ID = 8,
-                            MATERIA_ID = 6
+                            Id = 41,
+                            GrupoId = 8,
+                            MateriaId = 6
                         },
                         new
                         {
-                            ID = 42,
-                            GRUPO_ID = 11,
-                            MATERIA_ID = 6
+                            Id = 42,
+                            GrupoId = 11,
+                            MateriaId = 6
                         },
                         new
                         {
-                            ID = 43,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 30
+                            Id = 43,
+                            GrupoId = 1,
+                            MateriaId = 30
                         },
                         new
                         {
-                            ID = 44,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 20
+                            Id = 44,
+                            GrupoId = 1,
+                            MateriaId = 20
                         },
                         new
                         {
-                            ID = 45,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 20
+                            Id = 45,
+                            GrupoId = 2,
+                            MateriaId = 20
                         },
                         new
                         {
-                            ID = 46,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 68
+                            Id = 46,
+                            GrupoId = 1,
+                            MateriaId = 68
                         },
                         new
                         {
-                            ID = 47,
-                            GRUPO_ID = 22,
-                            MATERIA_ID = 65
+                            Id = 47,
+                            GrupoId = 22,
+                            MateriaId = 65
                         },
                         new
                         {
-                            ID = 48,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 65
+                            Id = 48,
+                            GrupoId = 1,
+                            MateriaId = 65
                         },
                         new
                         {
-                            ID = 49,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 81
+                            Id = 49,
+                            GrupoId = 1,
+                            MateriaId = 81
                         },
                         new
                         {
-                            ID = 50,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 54
+                            Id = 50,
+                            GrupoId = 1,
+                            MateriaId = 54
                         },
                         new
                         {
-                            ID = 51,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 54
+                            Id = 51,
+                            GrupoId = 2,
+                            MateriaId = 54
                         },
                         new
                         {
-                            ID = 52,
-                            GRUPO_ID = 27,
-                            MATERIA_ID = 11
+                            Id = 52,
+                            GrupoId = 27,
+                            MateriaId = 11
                         },
                         new
                         {
-                            ID = 53,
-                            GRUPO_ID = 28,
-                            MATERIA_ID = 11
+                            Id = 53,
+                            GrupoId = 28,
+                            MateriaId = 11
                         },
                         new
                         {
-                            ID = 54,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 11
+                            Id = 54,
+                            GrupoId = 1,
+                            MateriaId = 11
                         },
                         new
                         {
-                            ID = 55,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 11
+                            Id = 55,
+                            GrupoId = 3,
+                            MateriaId = 11
                         },
                         new
                         {
-                            ID = 56,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 78
+                            Id = 56,
+                            GrupoId = 2,
+                            MateriaId = 78
                         },
                         new
                         {
-                            ID = 57,
-                            GRUPO_ID = 22,
-                            MATERIA_ID = 18
+                            Id = 57,
+                            GrupoId = 22,
+                            MateriaId = 18
                         },
                         new
                         {
-                            ID = 58,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 18
+                            Id = 58,
+                            GrupoId = 1,
+                            MateriaId = 18
                         },
                         new
                         {
-                            ID = 59,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 18
+                            Id = 59,
+                            GrupoId = 2,
+                            MateriaId = 18
                         },
                         new
                         {
-                            ID = 60,
-                            GRUPO_ID = 4,
-                            MATERIA_ID = 18
+                            Id = 60,
+                            GrupoId = 4,
+                            MateriaId = 18
                         },
                         new
                         {
-                            ID = 61,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 23
+                            Id = 61,
+                            GrupoId = 1,
+                            MateriaId = 23
                         },
                         new
                         {
-                            ID = 62,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 23
+                            Id = 62,
+                            GrupoId = 2,
+                            MateriaId = 23
                         },
                         new
                         {
-                            ID = 63,
-                            GRUPO_ID = 16,
-                            MATERIA_ID = 23
+                            Id = 63,
+                            GrupoId = 16,
+                            MateriaId = 23
                         },
                         new
                         {
-                            ID = 64,
-                            GRUPO_ID = 5,
-                            MATERIA_ID = 2
+                            Id = 64,
+                            GrupoId = 5,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 65,
-                            GRUPO_ID = 6,
-                            MATERIA_ID = 2
+                            Id = 65,
+                            GrupoId = 6,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 66,
-                            GRUPO_ID = 8,
-                            MATERIA_ID = 2
+                            Id = 66,
+                            GrupoId = 8,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 67,
-                            GRUPO_ID = 10,
-                            MATERIA_ID = 2
+                            Id = 67,
+                            GrupoId = 10,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 68,
-                            GRUPO_ID = 34,
-                            MATERIA_ID = 2
+                            Id = 68,
+                            GrupoId = 34,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 69,
-                            GRUPO_ID = 35,
-                            MATERIA_ID = 2
+                            Id = 69,
+                            GrupoId = 35,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 70,
-                            GRUPO_ID = 13,
-                            MATERIA_ID = 2
+                            Id = 70,
+                            GrupoId = 13,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 71,
-                            GRUPO_ID = 33,
-                            MATERIA_ID = 2
+                            Id = 71,
+                            GrupoId = 33,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 72,
-                            GRUPO_ID = 36,
-                            MATERIA_ID = 2
+                            Id = 72,
+                            GrupoId = 36,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 73,
-                            GRUPO_ID = 37,
-                            MATERIA_ID = 2
+                            Id = 73,
+                            GrupoId = 37,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 74,
-                            GRUPO_ID = 38,
-                            MATERIA_ID = 2
+                            Id = 74,
+                            GrupoId = 38,
+                            MateriaId = 2
                         },
                         new
                         {
-                            ID = 75,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 55
+                            Id = 75,
+                            GrupoId = 1,
+                            MateriaId = 55
                         },
                         new
                         {
-                            ID = 76,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 55
+                            Id = 76,
+                            GrupoId = 3,
+                            MateriaId = 55
                         },
                         new
                         {
-                            ID = 77,
-                            GRUPO_ID = 24,
-                            MATERIA_ID = 4
+                            Id = 77,
+                            GrupoId = 24,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 78,
-                            GRUPO_ID = 26,
-                            MATERIA_ID = 4
+                            Id = 78,
+                            GrupoId = 26,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 79,
-                            GRUPO_ID = 7,
-                            MATERIA_ID = 4
+                            Id = 79,
+                            GrupoId = 7,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 80,
-                            GRUPO_ID = 9,
-                            MATERIA_ID = 4
+                            Id = 80,
+                            GrupoId = 9,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 81,
-                            GRUPO_ID = 10,
-                            MATERIA_ID = 4
+                            Id = 81,
+                            GrupoId = 10,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 82,
-                            GRUPO_ID = 12,
-                            MATERIA_ID = 4
+                            Id = 82,
+                            GrupoId = 12,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 83,
-                            GRUPO_ID = 13,
-                            MATERIA_ID = 4
+                            Id = 83,
+                            GrupoId = 13,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 84,
-                            GRUPO_ID = 33,
-                            MATERIA_ID = 4
+                            Id = 84,
+                            GrupoId = 33,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 85,
-                            GRUPO_ID = 34,
-                            MATERIA_ID = 4
+                            Id = 85,
+                            GrupoId = 34,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 86,
-                            GRUPO_ID = 35,
-                            MATERIA_ID = 4
+                            Id = 86,
+                            GrupoId = 35,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 87,
-                            GRUPO_ID = 36,
-                            MATERIA_ID = 4
+                            Id = 87,
+                            GrupoId = 36,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 88,
-                            GRUPO_ID = 37,
-                            MATERIA_ID = 4
+                            Id = 88,
+                            GrupoId = 37,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 89,
-                            GRUPO_ID = 38,
-                            MATERIA_ID = 4
+                            Id = 89,
+                            GrupoId = 38,
+                            MateriaId = 4
                         },
                         new
                         {
-                            ID = 90,
-                            GRUPO_ID = 19,
-                            MATERIA_ID = 9
+                            Id = 90,
+                            GrupoId = 19,
+                            MateriaId = 9
                         },
                         new
                         {
-                            ID = 91,
-                            GRUPO_ID = 24,
-                            MATERIA_ID = 9
+                            Id = 91,
+                            GrupoId = 24,
+                            MateriaId = 9
                         },
                         new
                         {
-                            ID = 92,
-                            GRUPO_ID = 27,
-                            MATERIA_ID = 9
+                            Id = 92,
+                            GrupoId = 27,
+                            MateriaId = 9
                         },
                         new
                         {
-                            ID = 93,
-                            GRUPO_ID = 28,
-                            MATERIA_ID = 9
+                            Id = 93,
+                            GrupoId = 28,
+                            MateriaId = 9
                         },
                         new
                         {
-                            ID = 94,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 9
+                            Id = 94,
+                            GrupoId = 1,
+                            MateriaId = 9
                         },
                         new
                         {
-                            ID = 95,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 9
+                            Id = 95,
+                            GrupoId = 2,
+                            MateriaId = 9
                         },
                         new
                         {
-                            ID = 96,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 14
+                            Id = 96,
+                            GrupoId = 1,
+                            MateriaId = 14
                         },
                         new
                         {
-                            ID = 97,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 14
+                            Id = 97,
+                            GrupoId = 2,
+                            MateriaId = 14
                         },
                         new
                         {
-                            ID = 98,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 14
+                            Id = 98,
+                            GrupoId = 3,
+                            MateriaId = 14
                         },
                         new
                         {
-                            ID = 99,
-                            GRUPO_ID = 34,
-                            MATERIA_ID = 14
+                            Id = 99,
+                            GrupoId = 34,
+                            MateriaId = 14
                         },
                         new
                         {
-                            ID = 100,
-                            GRUPO_ID = 35,
-                            MATERIA_ID = 14
+                            Id = 100,
+                            GrupoId = 35,
+                            MateriaId = 14
                         },
                         new
                         {
-                            ID = 101,
-                            GRUPO_ID = 36,
-                            MATERIA_ID = 14
+                            Id = 101,
+                            GrupoId = 36,
+                            MateriaId = 14
                         },
                         new
                         {
-                            ID = 102,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 96
+                            Id = 102,
+                            GrupoId = 1,
+                            MateriaId = 96
                         },
                         new
                         {
-                            ID = 103,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 71
+                            Id = 103,
+                            GrupoId = 1,
+                            MateriaId = 71
                         },
                         new
                         {
-                            ID = 104,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 35
+                            Id = 104,
+                            GrupoId = 2,
+                            MateriaId = 35
                         },
                         new
                         {
-                            ID = 105,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 35
+                            Id = 105,
+                            GrupoId = 3,
+                            MateriaId = 35
                         },
                         new
                         {
-                            ID = 106,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 40
+                            Id = 106,
+                            GrupoId = 2,
+                            MateriaId = 40
                         },
                         new
                         {
-                            ID = 107,
-                            GRUPO_ID = 27,
-                            MATERIA_ID = 5
+                            Id = 107,
+                            GrupoId = 27,
+                            MateriaId = 5
                         },
                         new
                         {
-                            ID = 108,
-                            GRUPO_ID = 28,
-                            MATERIA_ID = 5
+                            Id = 108,
+                            GrupoId = 28,
+                            MateriaId = 5
                         },
                         new
                         {
-                            ID = 109,
-                            GRUPO_ID = 33,
-                            MATERIA_ID = 5
+                            Id = 109,
+                            GrupoId = 33,
+                            MateriaId = 5
                         },
                         new
                         {
-                            ID = 110,
-                            GRUPO_ID = 34,
-                            MATERIA_ID = 5
+                            Id = 110,
+                            GrupoId = 34,
+                            MateriaId = 5
                         },
                         new
                         {
-                            ID = 111,
-                            GRUPO_ID = 35,
-                            MATERIA_ID = 5
+                            Id = 111,
+                            GrupoId = 35,
+                            MateriaId = 5
                         },
                         new
                         {
-                            ID = 112,
-                            GRUPO_ID = 36,
-                            MATERIA_ID = 5
+                            Id = 112,
+                            GrupoId = 36,
+                            MateriaId = 5
                         },
                         new
                         {
-                            ID = 113,
-                            GRUPO_ID = 38,
-                            MATERIA_ID = 5
+                            Id = 113,
+                            GrupoId = 38,
+                            MateriaId = 5
                         },
                         new
                         {
-                            ID = 114,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 16
+                            Id = 114,
+                            GrupoId = 2,
+                            MateriaId = 16
                         },
                         new
                         {
-                            ID = 115,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 16
+                            Id = 115,
+                            GrupoId = 3,
+                            MateriaId = 16
                         },
                         new
                         {
-                            ID = 116,
-                            GRUPO_ID = 4,
-                            MATERIA_ID = 16
+                            Id = 116,
+                            GrupoId = 4,
+                            MateriaId = 16
                         },
                         new
                         {
-                            ID = 117,
-                            GRUPO_ID = 9,
-                            MATERIA_ID = 16
+                            Id = 117,
+                            GrupoId = 9,
+                            MateriaId = 16
                         },
                         new
                         {
-                            ID = 118,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 21
+                            Id = 118,
+                            GrupoId = 1,
+                            MateriaId = 21
                         },
                         new
                         {
-                            ID = 119,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 21
+                            Id = 119,
+                            GrupoId = 2,
+                            MateriaId = 21
                         },
                         new
                         {
-                            ID = 120,
-                            GRUPO_ID = 9,
-                            MATERIA_ID = 21
+                            Id = 120,
+                            GrupoId = 9,
+                            MateriaId = 21
                         },
                         new
                         {
-                            ID = 121,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 69
+                            Id = 121,
+                            GrupoId = 1,
+                            MateriaId = 69
                         },
                         new
                         {
-                            ID = 122,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 22
+                            Id = 122,
+                            GrupoId = 1,
+                            MateriaId = 22
                         },
                         new
                         {
-                            ID = 123,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 19
+                            Id = 123,
+                            GrupoId = 1,
+                            MateriaId = 19
                         },
                         new
                         {
-                            ID = 124,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 19
+                            Id = 124,
+                            GrupoId = 2,
+                            MateriaId = 19
                         },
                         new
                         {
-                            ID = 125,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 19
+                            Id = 125,
+                            GrupoId = 3,
+                            MateriaId = 19
                         },
                         new
                         {
-                            ID = 126,
-                            GRUPO_ID = 16,
-                            MATERIA_ID = 19
+                            Id = 126,
+                            GrupoId = 16,
+                            MateriaId = 19
                         },
                         new
                         {
-                            ID = 127,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 60
+                            Id = 127,
+                            GrupoId = 1,
+                            MateriaId = 60
                         },
                         new
                         {
-                            ID = 128,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 8
+                            Id = 128,
+                            GrupoId = 1,
+                            MateriaId = 8
                         },
                         new
                         {
-                            ID = 129,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 8
+                            Id = 129,
+                            GrupoId = 3,
+                            MateriaId = 8
                         },
                         new
                         {
-                            ID = 130,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 8
+                            Id = 130,
+                            GrupoId = 2,
+                            MateriaId = 8
                         },
                         new
                         {
-                            ID = 131,
-                            GRUPO_ID = 7,
-                            MATERIA_ID = 8
+                            Id = 131,
+                            GrupoId = 7,
+                            MateriaId = 8
                         },
                         new
                         {
-                            ID = 132,
-                            GRUPO_ID = 4,
-                            MATERIA_ID = 8
+                            Id = 132,
+                            GrupoId = 4,
+                            MateriaId = 8
                         },
                         new
                         {
-                            ID = 133,
-                            GRUPO_ID = 6,
-                            MATERIA_ID = 8
+                            Id = 133,
+                            GrupoId = 6,
+                            MateriaId = 8
                         },
                         new
                         {
-                            ID = 134,
-                            GRUPO_ID = 8,
-                            MATERIA_ID = 8
+                            Id = 134,
+                            GrupoId = 8,
+                            MateriaId = 8
                         },
                         new
                         {
-                            ID = 135,
-                            GRUPO_ID = 9,
-                            MATERIA_ID = 8
+                            Id = 135,
+                            GrupoId = 9,
+                            MateriaId = 8
                         },
                         new
                         {
-                            ID = 136,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 12
+                            Id = 136,
+                            GrupoId = 1,
+                            MateriaId = 12
                         },
                         new
                         {
-                            ID = 137,
-                            GRUPO_ID = 4,
-                            MATERIA_ID = 12
+                            Id = 137,
+                            GrupoId = 4,
+                            MateriaId = 12
                         },
                         new
                         {
-                            ID = 138,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 12
+                            Id = 138,
+                            GrupoId = 3,
+                            MateriaId = 12
                         },
                         new
                         {
-                            ID = 139,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 12
+                            Id = 139,
+                            GrupoId = 2,
+                            MateriaId = 12
                         },
                         new
                         {
-                            ID = 140,
-                            GRUPO_ID = 9,
-                            MATERIA_ID = 12
+                            Id = 140,
+                            GrupoId = 9,
+                            MateriaId = 12
                         },
                         new
                         {
-                            ID = 141,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 95
+                            Id = 141,
+                            GrupoId = 1,
+                            MateriaId = 95
                         },
                         new
                         {
-                            ID = 142,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 34
+                            Id = 142,
+                            GrupoId = 1,
+                            MateriaId = 34
                         },
                         new
                         {
-                            ID = 143,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 34
+                            Id = 143,
+                            GrupoId = 2,
+                            MateriaId = 34
                         },
                         new
                         {
-                            ID = 144,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 34
+                            Id = 144,
+                            GrupoId = 3,
+                            MateriaId = 34
                         },
                         new
                         {
-                            ID = 145,
-                            GRUPO_ID = 24,
-                            MATERIA_ID = 39
+                            Id = 145,
+                            GrupoId = 24,
+                            MateriaId = 39
                         },
                         new
                         {
-                            ID = 146,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 39
+                            Id = 146,
+                            GrupoId = 2,
+                            MateriaId = 39
                         },
                         new
                         {
-                            ID = 147,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 39
+                            Id = 147,
+                            GrupoId = 3,
+                            MateriaId = 39
                         },
                         new
                         {
-                            ID = 148,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 97
+                            Id = 148,
+                            GrupoId = 1,
+                            MateriaId = 97
                         },
                         new
                         {
-                            ID = 149,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 98
+                            Id = 149,
+                            GrupoId = 1,
+                            MateriaId = 98
                         },
                         new
                         {
-                            ID = 150,
-                            GRUPO_ID = 24,
-                            MATERIA_ID = 80
+                            Id = 150,
+                            GrupoId = 24,
+                            MateriaId = 80
                         },
                         new
                         {
-                            ID = 151,
-                            GRUPO_ID = 14,
-                            MATERIA_ID = 88
+                            Id = 151,
+                            GrupoId = 14,
+                            MateriaId = 88
                         },
                         new
                         {
-                            ID = 152,
-                            GRUPO_ID = 14,
-                            MATERIA_ID = 93
+                            Id = 152,
+                            GrupoId = 14,
+                            MateriaId = 93
                         },
                         new
                         {
-                            ID = 153,
-                            GRUPO_ID = 24,
-                            MATERIA_ID = 85
+                            Id = 153,
+                            GrupoId = 24,
+                            MateriaId = 85
                         },
                         new
                         {
-                            ID = 154,
-                            GRUPO_ID = 9,
-                            MATERIA_ID = 44
+                            Id = 154,
+                            GrupoId = 9,
+                            MateriaId = 44
                         },
                         new
                         {
-                            ID = 155,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 44
+                            Id = 155,
+                            GrupoId = 1,
+                            MateriaId = 44
                         },
                         new
                         {
-                            ID = 156,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 27
+                            Id = 156,
+                            GrupoId = 1,
+                            MateriaId = 27
                         },
                         new
                         {
-                            ID = 157,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 27
+                            Id = 157,
+                            GrupoId = 3,
+                            MateriaId = 27
                         },
                         new
                         {
-                            ID = 158,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 38
+                            Id = 158,
+                            GrupoId = 1,
+                            MateriaId = 38
                         },
                         new
                         {
-                            ID = 159,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 38
+                            Id = 159,
+                            GrupoId = 2,
+                            MateriaId = 38
                         },
                         new
                         {
-                            ID = 160,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 37
+                            Id = 160,
+                            GrupoId = 2,
+                            MateriaId = 37
                         },
                         new
                         {
-                            ID = 161,
-                            GRUPO_ID = 23,
-                            MATERIA_ID = 79
+                            Id = 161,
+                            GrupoId = 23,
+                            MateriaId = 79
                         },
                         new
                         {
-                            ID = 162,
-                            GRUPO_ID = 24,
-                            MATERIA_ID = 83
+                            Id = 162,
+                            GrupoId = 24,
+                            MateriaId = 83
                         },
                         new
                         {
-                            ID = 163,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 28
+                            Id = 163,
+                            GrupoId = 1,
+                            MateriaId = 28
                         },
                         new
                         {
-                            ID = 164,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 28
+                            Id = 164,
+                            GrupoId = 3,
+                            MateriaId = 28
                         },
                         new
                         {
-                            ID = 165,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 33
+                            Id = 165,
+                            GrupoId = 1,
+                            MateriaId = 33
                         },
                         new
                         {
-                            ID = 166,
-                            GRUPO_ID = 2,
-                            MATERIA_ID = 33
+                            Id = 166,
+                            GrupoId = 2,
+                            MateriaId = 33
                         },
                         new
                         {
-                            ID = 167,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 56
+                            Id = 167,
+                            GrupoId = 1,
+                            MateriaId = 56
                         },
                         new
                         {
-                            ID = 168,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 91
+                            Id = 168,
+                            GrupoId = 1,
+                            MateriaId = 91
                         },
                         new
                         {
-                            ID = 169,
-                            GRUPO_ID = 15,
-                            MATERIA_ID = 41
+                            Id = 169,
+                            GrupoId = 15,
+                            MateriaId = 41
                         },
                         new
                         {
-                            ID = 170,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 41
+                            Id = 170,
+                            GrupoId = 1,
+                            MateriaId = 41
                         },
                         new
                         {
-                            ID = 171,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 41
+                            Id = 171,
+                            GrupoId = 3,
+                            MateriaId = 41
                         },
                         new
                         {
-                            ID = 172,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 42
+                            Id = 172,
+                            GrupoId = 1,
+                            MateriaId = 42
                         },
                         new
                         {
-                            ID = 173,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 42
+                            Id = 173,
+                            GrupoId = 3,
+                            MateriaId = 42
                         },
                         new
                         {
-                            ID = 174,
-                            GRUPO_ID = 14,
-                            MATERIA_ID = 86
+                            Id = 174,
+                            GrupoId = 14,
+                            MateriaId = 86
                         },
                         new
                         {
-                            ID = 175,
-                            GRUPO_ID = 3,
-                            MATERIA_ID = 76
+                            Id = 175,
+                            GrupoId = 3,
+                            MateriaId = 76
                         },
                         new
                         {
-                            ID = 176,
-                            GRUPO_ID = 1,
-                            MATERIA_ID = 61
+                            Id = 176,
+                            GrupoId = 1,
+                            MateriaId = 61
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.Hora", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<TimeOnly>("HR_FIN")
-                        .HasColumnType("time without time zone");
+                    b.Property<TimeOnly>("HrFin")
+                        .HasColumnType("time without time zone")
+                        .HasColumnName("hr_fin");
 
-                    b.Property<TimeOnly>("HR_INICIO")
-                        .HasColumnType("time without time zone");
+                    b.Property<TimeOnly>("HrInicio")
+                        .HasColumnType("time without time zone")
+                        .HasColumnName("hr_inicio");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_hora");
 
-                    b.ToTable("HORA");
+                    b.ToTable("hora", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            HR_FIN = new TimeOnly(8, 30, 0),
-                            HR_INICIO = new TimeOnly(7, 0, 0)
+                            Id = 1,
+                            HrFin = new TimeOnly(8, 30, 0),
+                            HrInicio = new TimeOnly(7, 0, 0)
                         },
                         new
                         {
-                            ID = 2,
-                            HR_FIN = new TimeOnly(10, 0, 0),
-                            HR_INICIO = new TimeOnly(8, 30, 0)
+                            Id = 2,
+                            HrFin = new TimeOnly(10, 0, 0),
+                            HrInicio = new TimeOnly(8, 30, 0)
                         },
                         new
                         {
-                            ID = 3,
-                            HR_FIN = new TimeOnly(11, 30, 0),
-                            HR_INICIO = new TimeOnly(10, 0, 0)
+                            Id = 3,
+                            HrFin = new TimeOnly(11, 30, 0),
+                            HrInicio = new TimeOnly(10, 0, 0)
                         },
                         new
                         {
-                            ID = 4,
-                            HR_FIN = new TimeOnly(13, 0, 0),
-                            HR_INICIO = new TimeOnly(11, 30, 0)
+                            Id = 4,
+                            HrFin = new TimeOnly(13, 0, 0),
+                            HrInicio = new TimeOnly(11, 30, 0)
                         },
                         new
                         {
-                            ID = 5,
-                            HR_FIN = new TimeOnly(14, 30, 0),
-                            HR_INICIO = new TimeOnly(13, 0, 0)
+                            Id = 5,
+                            HrFin = new TimeOnly(14, 30, 0),
+                            HrInicio = new TimeOnly(13, 0, 0)
                         },
                         new
                         {
-                            ID = 6,
-                            HR_FIN = new TimeOnly(16, 0, 0),
-                            HR_INICIO = new TimeOnly(14, 30, 0)
+                            Id = 6,
+                            HrFin = new TimeOnly(16, 0, 0),
+                            HrInicio = new TimeOnly(14, 30, 0)
                         },
                         new
                         {
-                            ID = 7,
-                            HR_FIN = new TimeOnly(9, 15, 0),
-                            HR_INICIO = new TimeOnly(7, 0, 0)
+                            Id = 7,
+                            HrFin = new TimeOnly(9, 15, 0),
+                            HrInicio = new TimeOnly(7, 0, 0)
                         },
                         new
                         {
-                            ID = 8,
-                            HR_FIN = new TimeOnly(11, 30, 0),
-                            HR_INICIO = new TimeOnly(9, 15, 0)
+                            Id = 8,
+                            HrFin = new TimeOnly(11, 30, 0),
+                            HrInicio = new TimeOnly(9, 15, 0)
                         },
                         new
                         {
-                            ID = 9,
-                            HR_FIN = new TimeOnly(13, 0, 0),
-                            HR_INICIO = new TimeOnly(11, 30, 0)
+                            Id = 9,
+                            HrFin = new TimeOnly(13, 0, 0),
+                            HrInicio = new TimeOnly(11, 30, 0)
                         },
                         new
                         {
-                            ID = 10,
-                            HR_FIN = new TimeOnly(18, 15, 0),
-                            HR_INICIO = new TimeOnly(16, 0, 0)
+                            Id = 10,
+                            HrFin = new TimeOnly(18, 15, 0),
+                            HrInicio = new TimeOnly(16, 0, 0)
                         },
                         new
                         {
-                            ID = 11,
-                            HR_FIN = new TimeOnly(20, 30, 0),
-                            HR_INICIO = new TimeOnly(18, 15, 0)
+                            Id = 11,
+                            HrFin = new TimeOnly(20, 30, 0),
+                            HrInicio = new TimeOnly(18, 15, 0)
                         },
                         new
                         {
-                            ID = 12,
-                            HR_FIN = new TimeOnly(22, 45, 0),
-                            HR_INICIO = new TimeOnly(20, 30, 0)
+                            Id = 12,
+                            HrFin = new TimeOnly(22, 45, 0),
+                            HrInicio = new TimeOnly(20, 30, 0)
                         },
                         new
                         {
-                            ID = 13,
-                            HR_FIN = new TimeOnly(12, 15, 0),
-                            HR_INICIO = new TimeOnly(10, 0, 0)
+                            Id = 13,
+                            HrFin = new TimeOnly(12, 15, 0),
+                            HrInicio = new TimeOnly(10, 0, 0)
                         },
                         new
                         {
-                            ID = 14,
-                            HR_FIN = new TimeOnly(13, 45, 0),
-                            HR_INICIO = new TimeOnly(11, 30, 0)
+                            Id = 14,
+                            HrFin = new TimeOnly(13, 45, 0),
+                            HrInicio = new TimeOnly(11, 30, 0)
                         },
                         new
                         {
-                            ID = 15,
-                            HR_FIN = new TimeOnly(16, 0, 0),
-                            HR_INICIO = new TimeOnly(13, 45, 0)
+                            Id = 15,
+                            HrFin = new TimeOnly(16, 0, 0),
+                            HrInicio = new TimeOnly(13, 45, 0)
                         },
                         new
                         {
-                            ID = 16,
-                            HR_FIN = new TimeOnly(16, 45, 0),
-                            HR_INICIO = new TimeOnly(15, 15, 0)
+                            Id = 16,
+                            HrFin = new TimeOnly(16, 45, 0),
+                            HrInicio = new TimeOnly(15, 15, 0)
                         },
                         new
                         {
-                            ID = 17,
-                            HR_FIN = new TimeOnly(17, 30, 0),
-                            HR_INICIO = new TimeOnly(15, 15, 0)
+                            Id = 17,
+                            HrFin = new TimeOnly(17, 30, 0),
+                            HrInicio = new TimeOnly(15, 15, 0)
                         },
                         new
                         {
-                            ID = 18,
-                            HR_FIN = new TimeOnly(19, 0, 0),
-                            HR_INICIO = new TimeOnly(17, 30, 0)
+                            Id = 18,
+                            HrFin = new TimeOnly(19, 0, 0),
+                            HrInicio = new TimeOnly(17, 30, 0)
                         },
                         new
                         {
-                            ID = 19,
-                            HR_FIN = new TimeOnly(21, 15, 0),
-                            HR_INICIO = new TimeOnly(19, 0, 0)
+                            Id = 19,
+                            HrFin = new TimeOnly(21, 15, 0),
+                            HrInicio = new TimeOnly(19, 0, 0)
                         },
                         new
                         {
-                            ID = 20,
-                            HR_FIN = new TimeOnly(20, 30, 0),
-                            HR_INICIO = new TimeOnly(19, 0, 0)
+                            Id = 20,
+                            HrFin = new TimeOnly(20, 30, 0),
+                            HrInicio = new TimeOnly(19, 0, 0)
                         },
                         new
                         {
-                            ID = 21,
-                            HR_FIN = new TimeOnly(22, 0, 0),
-                            HR_INICIO = new TimeOnly(19, 45, 0)
+                            Id = 21,
+                            HrFin = new TimeOnly(22, 0, 0),
+                            HrInicio = new TimeOnly(19, 45, 0)
                         },
                         new
                         {
-                            ID = 22,
-                            HR_FIN = new TimeOnly(13, 0, 0),
-                            HR_INICIO = new TimeOnly(10, 45, 0)
+                            Id = 22,
+                            HrFin = new TimeOnly(13, 0, 0),
+                            HrInicio = new TimeOnly(10, 45, 0)
                         },
                         new
                         {
-                            ID = 23,
-                            HR_FIN = new TimeOnly(15, 15, 0),
-                            HR_INICIO = new TimeOnly(13, 45, 0)
+                            Id = 23,
+                            HrFin = new TimeOnly(15, 15, 0),
+                            HrInicio = new TimeOnly(13, 45, 0)
                         },
                         new
                         {
-                            ID = 24,
-                            HR_FIN = new TimeOnly(15, 15, 0),
-                            HR_INICIO = new TimeOnly(13, 0, 0)
+                            Id = 24,
+                            HrFin = new TimeOnly(15, 15, 0),
+                            HrInicio = new TimeOnly(13, 0, 0)
                         },
                         new
                         {
-                            ID = 25,
-                            HR_FIN = new TimeOnly(16, 45, 0),
-                            HR_INICIO = new TimeOnly(15, 15, 0)
+                            Id = 25,
+                            HrFin = new TimeOnly(16, 45, 0),
+                            HrInicio = new TimeOnly(15, 15, 0)
                         },
                         new
                         {
-                            ID = 26,
-                            HR_FIN = new TimeOnly(17, 30, 0),
-                            HR_INICIO = new TimeOnly(16, 0, 0)
+                            Id = 26,
+                            HrFin = new TimeOnly(17, 30, 0),
+                            HrInicio = new TimeOnly(16, 0, 0)
                         },
                         new
                         {
-                            ID = 27,
-                            HR_FIN = new TimeOnly(18, 15, 0),
-                            HR_INICIO = new TimeOnly(16, 45, 0)
+                            Id = 27,
+                            HrFin = new TimeOnly(18, 15, 0),
+                            HrInicio = new TimeOnly(16, 45, 0)
                         },
                         new
                         {
-                            ID = 28,
-                            HR_FIN = new TimeOnly(19, 45, 0),
-                            HR_INICIO = new TimeOnly(18, 15, 0)
+                            Id = 28,
+                            HrFin = new TimeOnly(19, 45, 0),
+                            HrInicio = new TimeOnly(18, 15, 0)
                         },
                         new
                         {
-                            ID = 29,
-                            HR_FIN = new TimeOnly(21, 15, 0),
-                            HR_INICIO = new TimeOnly(19, 45, 0)
+                            Id = 29,
+                            HrFin = new TimeOnly(21, 15, 0),
+                            HrInicio = new TimeOnly(19, 45, 0)
                         },
                         new
                         {
-                            ID = 30,
-                            HR_FIN = new TimeOnly(22, 45, 0),
-                            HR_INICIO = new TimeOnly(21, 15, 0)
+                            Id = 30,
+                            HrFin = new TimeOnly(22, 45, 0),
+                            HrInicio = new TimeOnly(21, 15, 0)
                         },
                         new
                         {
-                            ID = 31,
-                            HR_FIN = new TimeOnly(22, 0, 0),
-                            HR_INICIO = new TimeOnly(20, 30, 0)
+                            Id = 31,
+                            HrFin = new TimeOnly(22, 0, 0),
+                            HrInicio = new TimeOnly(20, 30, 0)
                         },
                         new
                         {
-                            ID = 32,
-                            HR_FIN = new TimeOnly(13, 45, 0),
-                            HR_INICIO = new TimeOnly(12, 15, 0)
+                            Id = 32,
+                            HrFin = new TimeOnly(13, 45, 0),
+                            HrInicio = new TimeOnly(12, 15, 0)
                         },
                         new
                         {
-                            ID = 33,
-                            HR_FIN = new TimeOnly(19, 45, 0),
-                            HR_INICIO = new TimeOnly(18, 26, 0)
+                            Id = 33,
+                            HrFin = new TimeOnly(19, 45, 0),
+                            HrInicio = new TimeOnly(18, 26, 0)
                         },
                         new
                         {
-                            ID = 34,
-                            HR_FIN = new TimeOnly(10, 45, 0),
-                            HR_INICIO = new TimeOnly(9, 15, 0)
+                            Id = 34,
+                            HrFin = new TimeOnly(10, 45, 0),
+                            HrInicio = new TimeOnly(9, 15, 0)
                         },
                         new
                         {
-                            ID = 35,
-                            HR_FIN = new TimeOnly(11, 30, 0),
-                            HR_INICIO = new TimeOnly(8, 30, 0)
+                            Id = 35,
+                            HrFin = new TimeOnly(11, 30, 0),
+                            HrInicio = new TimeOnly(8, 30, 0)
                         },
                         new
                         {
-                            ID = 36,
-                            HR_FIN = new TimeOnly(16, 0, 0),
-                            HR_INICIO = new TimeOnly(13, 0, 0)
+                            Id = 36,
+                            HrFin = new TimeOnly(16, 0, 0),
+                            HrInicio = new TimeOnly(13, 0, 0)
                         },
                         new
                         {
-                            ID = 37,
-                            HR_FIN = new TimeOnly(12, 15, 0),
-                            HR_INICIO = new TimeOnly(9, 15, 0)
+                            Id = 37,
+                            HrFin = new TimeOnly(12, 15, 0),
+                            HrInicio = new TimeOnly(9, 15, 0)
                         },
                         new
                         {
-                            ID = 38,
-                            HR_FIN = new TimeOnly(21, 15, 0),
-                            HR_INICIO = new TimeOnly(18, 15, 0)
+                            Id = 38,
+                            HrFin = new TimeOnly(21, 15, 0),
+                            HrInicio = new TimeOnly(18, 15, 0)
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.HoraDia", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DIA_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("DiaId")
+                        .HasColumnType("integer")
+                        .HasColumnName("dia_id");
 
-                    b.Property<int>("HORA_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("HoraId")
+                        .HasColumnType("integer")
+                        .HasColumnName("hora_id");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_hora_dia");
 
-                    b.HasIndex("DIA_ID");
+                    b.HasIndex("DiaId")
+                        .HasDatabaseName("ix_hora_dia_dia_id");
 
-                    b.HasIndex("HORA_ID");
+                    b.HasIndex("HoraId")
+                        .HasDatabaseName("ix_hora_dia_hora_id");
 
-                    b.ToTable("HORA_DIA");
+                    b.ToTable("hora_dia", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            DIA_ID = 1,
-                            HORA_ID = 1
+                            Id = 1,
+                            DiaId = 1,
+                            HoraId = 1
                         },
                         new
                         {
-                            ID = 2,
-                            DIA_ID = 1,
-                            HORA_ID = 7
+                            Id = 2,
+                            DiaId = 1,
+                            HoraId = 7
                         },
                         new
                         {
-                            ID = 3,
-                            DIA_ID = 1,
-                            HORA_ID = 2
+                            Id = 3,
+                            DiaId = 1,
+                            HoraId = 2
                         },
                         new
                         {
-                            ID = 4,
-                            DIA_ID = 1,
-                            HORA_ID = 8
+                            Id = 4,
+                            DiaId = 1,
+                            HoraId = 8
                         },
                         new
                         {
-                            ID = 5,
-                            DIA_ID = 1,
-                            HORA_ID = 3
+                            Id = 5,
+                            DiaId = 1,
+                            HoraId = 3
                         },
                         new
                         {
-                            ID = 6,
-                            DIA_ID = 1,
-                            HORA_ID = 4
+                            Id = 6,
+                            DiaId = 1,
+                            HoraId = 4
                         },
                         new
                         {
-                            ID = 7,
-                            DIA_ID = 1,
-                            HORA_ID = 32
+                            Id = 7,
+                            DiaId = 1,
+                            HoraId = 32
                         },
                         new
                         {
-                            ID = 8,
-                            DIA_ID = 1,
-                            HORA_ID = 5
+                            Id = 8,
+                            DiaId = 1,
+                            HoraId = 5
                         },
                         new
                         {
-                            ID = 9,
-                            DIA_ID = 1,
-                            HORA_ID = 23
+                            Id = 9,
+                            DiaId = 1,
+                            HoraId = 23
                         },
                         new
                         {
-                            ID = 10,
-                            DIA_ID = 1,
-                            HORA_ID = 15
+                            Id = 10,
+                            DiaId = 1,
+                            HoraId = 15
                         },
                         new
                         {
-                            ID = 11,
-                            DIA_ID = 1,
-                            HORA_ID = 25
+                            Id = 11,
+                            DiaId = 1,
+                            HoraId = 25
                         },
                         new
                         {
-                            ID = 12,
-                            DIA_ID = 1,
-                            HORA_ID = 10
+                            Id = 12,
+                            DiaId = 1,
+                            HoraId = 10
                         },
                         new
                         {
-                            ID = 13,
-                            DIA_ID = 1,
-                            HORA_ID = 26
+                            Id = 13,
+                            DiaId = 1,
+                            HoraId = 26
                         },
                         new
                         {
-                            ID = 14,
-                            DIA_ID = 1,
-                            HORA_ID = 27
+                            Id = 14,
+                            DiaId = 1,
+                            HoraId = 27
                         },
                         new
                         {
-                            ID = 15,
-                            DIA_ID = 1,
-                            HORA_ID = 28
+                            Id = 15,
+                            DiaId = 1,
+                            HoraId = 28
                         },
                         new
                         {
-                            ID = 16,
-                            DIA_ID = 1,
-                            HORA_ID = 20
+                            Id = 16,
+                            DiaId = 1,
+                            HoraId = 20
                         },
                         new
                         {
-                            ID = 17,
-                            DIA_ID = 1,
-                            HORA_ID = 21
+                            Id = 17,
+                            DiaId = 1,
+                            HoraId = 21
                         },
                         new
                         {
-                            ID = 18,
-                            DIA_ID = 1,
-                            HORA_ID = 29
+                            Id = 18,
+                            DiaId = 1,
+                            HoraId = 29
                         },
                         new
                         {
-                            ID = 19,
-                            DIA_ID = 1,
-                            HORA_ID = 31
+                            Id = 19,
+                            DiaId = 1,
+                            HoraId = 31
                         },
                         new
                         {
-                            ID = 20,
-                            DIA_ID = 1,
-                            HORA_ID = 30
+                            Id = 20,
+                            DiaId = 1,
+                            HoraId = 30
                         },
                         new
                         {
-                            ID = 21,
-                            DIA_ID = 2,
-                            HORA_ID = 1
+                            Id = 21,
+                            DiaId = 2,
+                            HoraId = 1
                         },
                         new
                         {
-                            ID = 22,
-                            DIA_ID = 2,
-                            HORA_ID = 7
+                            Id = 22,
+                            DiaId = 2,
+                            HoraId = 7
                         },
                         new
                         {
-                            ID = 23,
-                            DIA_ID = 2,
-                            HORA_ID = 8
+                            Id = 23,
+                            DiaId = 2,
+                            HoraId = 8
                         },
                         new
                         {
-                            ID = 24,
-                            DIA_ID = 2,
-                            HORA_ID = 37
+                            Id = 24,
+                            DiaId = 2,
+                            HoraId = 37
                         },
                         new
                         {
-                            ID = 25,
-                            DIA_ID = 2,
-                            HORA_ID = 22
+                            Id = 25,
+                            DiaId = 2,
+                            HoraId = 22
                         },
                         new
                         {
-                            ID = 26,
-                            DIA_ID = 2,
-                            HORA_ID = 9
+                            Id = 26,
+                            DiaId = 2,
+                            HoraId = 9
                         },
                         new
                         {
-                            ID = 27,
-                            DIA_ID = 2,
-                            HORA_ID = 14
+                            Id = 27,
+                            DiaId = 2,
+                            HoraId = 14
                         },
                         new
                         {
-                            ID = 28,
-                            DIA_ID = 2,
-                            HORA_ID = 32
+                            Id = 28,
+                            DiaId = 2,
+                            HoraId = 32
                         },
                         new
                         {
-                            ID = 29,
-                            DIA_ID = 2,
-                            HORA_ID = 36
+                            Id = 29,
+                            DiaId = 2,
+                            HoraId = 36
                         },
                         new
                         {
-                            ID = 30,
-                            DIA_ID = 2,
-                            HORA_ID = 24
+                            Id = 30,
+                            DiaId = 2,
+                            HoraId = 24
                         },
                         new
                         {
-                            ID = 31,
-                            DIA_ID = 2,
-                            HORA_ID = 23
+                            Id = 31,
+                            DiaId = 2,
+                            HoraId = 23
                         },
                         new
                         {
-                            ID = 32,
-                            DIA_ID = 2,
-                            HORA_ID = 15
+                            Id = 32,
+                            DiaId = 2,
+                            HoraId = 15
                         },
                         new
                         {
-                            ID = 33,
-                            DIA_ID = 2,
-                            HORA_ID = 25
+                            Id = 33,
+                            DiaId = 2,
+                            HoraId = 25
                         },
                         new
                         {
-                            ID = 34,
-                            DIA_ID = 2,
-                            HORA_ID = 17
+                            Id = 34,
+                            DiaId = 2,
+                            HoraId = 17
                         },
                         new
                         {
-                            ID = 35,
-                            DIA_ID = 2,
-                            HORA_ID = 26
+                            Id = 35,
+                            DiaId = 2,
+                            HoraId = 26
                         },
                         new
                         {
-                            ID = 36,
-                            DIA_ID = 2,
-                            HORA_ID = 10
+                            Id = 36,
+                            DiaId = 2,
+                            HoraId = 10
                         },
                         new
                         {
-                            ID = 37,
-                            DIA_ID = 2,
-                            HORA_ID = 27
+                            Id = 37,
+                            DiaId = 2,
+                            HoraId = 27
                         },
                         new
                         {
-                            ID = 38,
-                            DIA_ID = 2,
-                            HORA_ID = 18
+                            Id = 38,
+                            DiaId = 2,
+                            HoraId = 18
                         },
                         new
                         {
-                            ID = 39,
-                            DIA_ID = 2,
-                            HORA_ID = 28
+                            Id = 39,
+                            DiaId = 2,
+                            HoraId = 28
                         },
                         new
                         {
-                            ID = 40,
-                            DIA_ID = 2,
-                            HORA_ID = 11
+                            Id = 40,
+                            DiaId = 2,
+                            HoraId = 11
                         },
                         new
                         {
-                            ID = 41,
-                            DIA_ID = 2,
-                            HORA_ID = 20
+                            Id = 41,
+                            DiaId = 2,
+                            HoraId = 20
                         },
                         new
                         {
-                            ID = 42,
-                            DIA_ID = 2,
-                            HORA_ID = 19
+                            Id = 42,
+                            DiaId = 2,
+                            HoraId = 19
                         },
                         new
                         {
-                            ID = 43,
-                            DIA_ID = 2,
-                            HORA_ID = 31
+                            Id = 43,
+                            DiaId = 2,
+                            HoraId = 31
                         },
                         new
                         {
-                            ID = 44,
-                            DIA_ID = 2,
-                            HORA_ID = 12
+                            Id = 44,
+                            DiaId = 2,
+                            HoraId = 12
                         },
                         new
                         {
-                            ID = 45,
-                            DIA_ID = 2,
-                            HORA_ID = 30
+                            Id = 45,
+                            DiaId = 2,
+                            HoraId = 30
                         },
                         new
                         {
-                            ID = 46,
-                            DIA_ID = 3,
-                            HORA_ID = 7
+                            Id = 46,
+                            DiaId = 3,
+                            HoraId = 7
                         },
                         new
                         {
-                            ID = 47,
-                            DIA_ID = 3,
-                            HORA_ID = 1
+                            Id = 47,
+                            DiaId = 3,
+                            HoraId = 1
                         },
                         new
                         {
-                            ID = 48,
-                            DIA_ID = 3,
-                            HORA_ID = 2
+                            Id = 48,
+                            DiaId = 3,
+                            HoraId = 2
                         },
                         new
                         {
-                            ID = 49,
-                            DIA_ID = 3,
-                            HORA_ID = 8
+                            Id = 49,
+                            DiaId = 3,
+                            HoraId = 8
                         },
                         new
                         {
-                            ID = 50,
-                            DIA_ID = 3,
-                            HORA_ID = 3
+                            Id = 50,
+                            DiaId = 3,
+                            HoraId = 3
                         },
                         new
                         {
-                            ID = 51,
-                            DIA_ID = 3,
-                            HORA_ID = 4
+                            Id = 51,
+                            DiaId = 3,
+                            HoraId = 4
                         },
                         new
                         {
-                            ID = 52,
-                            DIA_ID = 3,
-                            HORA_ID = 14
+                            Id = 52,
+                            DiaId = 3,
+                            HoraId = 14
                         },
                         new
                         {
-                            ID = 53,
-                            DIA_ID = 3,
-                            HORA_ID = 32
+                            Id = 53,
+                            DiaId = 3,
+                            HoraId = 32
                         },
                         new
                         {
-                            ID = 54,
-                            DIA_ID = 3,
-                            HORA_ID = 23
+                            Id = 54,
+                            DiaId = 3,
+                            HoraId = 23
                         },
                         new
                         {
-                            ID = 55,
-                            DIA_ID = 3,
-                            HORA_ID = 15
+                            Id = 55,
+                            DiaId = 3,
+                            HoraId = 15
                         },
                         new
                         {
-                            ID = 56,
-                            DIA_ID = 3,
-                            HORA_ID = 6
+                            Id = 56,
+                            DiaId = 3,
+                            HoraId = 6
                         },
                         new
                         {
-                            ID = 57,
-                            DIA_ID = 3,
-                            HORA_ID = 25
+                            Id = 57,
+                            DiaId = 3,
+                            HoraId = 25
                         },
                         new
                         {
-                            ID = 58,
-                            DIA_ID = 3,
-                            HORA_ID = 10
+                            Id = 58,
+                            DiaId = 3,
+                            HoraId = 10
                         },
                         new
                         {
-                            ID = 59,
-                            DIA_ID = 3,
-                            HORA_ID = 27
+                            Id = 59,
+                            DiaId = 3,
+                            HoraId = 27
                         },
                         new
                         {
-                            ID = 60,
-                            DIA_ID = 3,
-                            HORA_ID = 26
+                            Id = 60,
+                            DiaId = 3,
+                            HoraId = 26
                         },
                         new
                         {
-                            ID = 61,
-                            DIA_ID = 3,
-                            HORA_ID = 28
+                            Id = 61,
+                            DiaId = 3,
+                            HoraId = 28
                         },
                         new
                         {
-                            ID = 62,
-                            DIA_ID = 3,
-                            HORA_ID = 20
+                            Id = 62,
+                            DiaId = 3,
+                            HoraId = 20
                         },
                         new
                         {
-                            ID = 63,
-                            DIA_ID = 3,
-                            HORA_ID = 29
+                            Id = 63,
+                            DiaId = 3,
+                            HoraId = 29
                         },
                         new
                         {
-                            ID = 64,
-                            DIA_ID = 3,
-                            HORA_ID = 31
+                            Id = 64,
+                            DiaId = 3,
+                            HoraId = 31
                         },
                         new
                         {
-                            ID = 65,
-                            DIA_ID = 3,
-                            HORA_ID = 30
+                            Id = 65,
+                            DiaId = 3,
+                            HoraId = 30
                         },
                         new
                         {
-                            ID = 66,
-                            DIA_ID = 4,
-                            HORA_ID = 1
+                            Id = 66,
+                            DiaId = 4,
+                            HoraId = 1
                         },
                         new
                         {
-                            ID = 67,
-                            DIA_ID = 4,
-                            HORA_ID = 7
+                            Id = 67,
+                            DiaId = 4,
+                            HoraId = 7
                         },
                         new
                         {
-                            ID = 68,
-                            DIA_ID = 4,
-                            HORA_ID = 8
+                            Id = 68,
+                            DiaId = 4,
+                            HoraId = 8
                         },
                         new
                         {
-                            ID = 69,
-                            DIA_ID = 4,
-                            HORA_ID = 22
+                            Id = 69,
+                            DiaId = 4,
+                            HoraId = 22
                         },
                         new
                         {
-                            ID = 70,
-                            DIA_ID = 4,
-                            HORA_ID = 14
+                            Id = 70,
+                            DiaId = 4,
+                            HoraId = 14
                         },
                         new
                         {
-                            ID = 71,
-                            DIA_ID = 4,
-                            HORA_ID = 24
+                            Id = 71,
+                            DiaId = 4,
+                            HoraId = 24
                         },
                         new
                         {
-                            ID = 72,
-                            DIA_ID = 4,
-                            HORA_ID = 15
+                            Id = 72,
+                            DiaId = 4,
+                            HoraId = 15
                         },
                         new
                         {
-                            ID = 73,
-                            DIA_ID = 4,
-                            HORA_ID = 17
+                            Id = 73,
+                            DiaId = 4,
+                            HoraId = 17
                         },
                         new
                         {
-                            ID = 74,
-                            DIA_ID = 4,
-                            HORA_ID = 25
+                            Id = 74,
+                            DiaId = 4,
+                            HoraId = 25
                         },
                         new
                         {
-                            ID = 75,
-                            DIA_ID = 4,
-                            HORA_ID = 26
+                            Id = 75,
+                            DiaId = 4,
+                            HoraId = 26
                         },
                         new
                         {
-                            ID = 76,
-                            DIA_ID = 4,
-                            HORA_ID = 10
+                            Id = 76,
+                            DiaId = 4,
+                            HoraId = 10
                         },
                         new
                         {
-                            ID = 77,
-                            DIA_ID = 4,
-                            HORA_ID = 18
+                            Id = 77,
+                            DiaId = 4,
+                            HoraId = 18
                         },
                         new
                         {
-                            ID = 78,
-                            DIA_ID = 4,
-                            HORA_ID = 28
+                            Id = 78,
+                            DiaId = 4,
+                            HoraId = 28
                         },
                         new
                         {
-                            ID = 79,
-                            DIA_ID = 4,
-                            HORA_ID = 11
+                            Id = 79,
+                            DiaId = 4,
+                            HoraId = 11
                         },
                         new
                         {
-                            ID = 80,
-                            DIA_ID = 4,
-                            HORA_ID = 20
+                            Id = 80,
+                            DiaId = 4,
+                            HoraId = 20
                         },
                         new
                         {
-                            ID = 81,
-                            DIA_ID = 4,
-                            HORA_ID = 19
+                            Id = 81,
+                            DiaId = 4,
+                            HoraId = 19
                         },
                         new
                         {
-                            ID = 82,
-                            DIA_ID = 4,
-                            HORA_ID = 31
+                            Id = 82,
+                            DiaId = 4,
+                            HoraId = 31
                         },
                         new
                         {
-                            ID = 83,
-                            DIA_ID = 4,
-                            HORA_ID = 12
+                            Id = 83,
+                            DiaId = 4,
+                            HoraId = 12
                         },
                         new
                         {
-                            ID = 84,
-                            DIA_ID = 4,
-                            HORA_ID = 30
+                            Id = 84,
+                            DiaId = 4,
+                            HoraId = 30
                         },
                         new
                         {
-                            ID = 85,
-                            DIA_ID = 5,
-                            HORA_ID = 1
+                            Id = 85,
+                            DiaId = 5,
+                            HoraId = 1
                         },
                         new
                         {
-                            ID = 86,
-                            DIA_ID = 5,
-                            HORA_ID = 7
+                            Id = 86,
+                            DiaId = 5,
+                            HoraId = 7
                         },
                         new
                         {
-                            ID = 87,
-                            DIA_ID = 5,
-                            HORA_ID = 2
+                            Id = 87,
+                            DiaId = 5,
+                            HoraId = 2
                         },
                         new
                         {
-                            ID = 88,
-                            DIA_ID = 5,
-                            HORA_ID = 8
+                            Id = 88,
+                            DiaId = 5,
+                            HoraId = 8
                         },
                         new
                         {
-                            ID = 89,
-                            DIA_ID = 5,
-                            HORA_ID = 3
+                            Id = 89,
+                            DiaId = 5,
+                            HoraId = 3
                         },
                         new
                         {
-                            ID = 90,
-                            DIA_ID = 5,
-                            HORA_ID = 13
+                            Id = 90,
+                            DiaId = 5,
+                            HoraId = 13
                         },
                         new
                         {
-                            ID = 91,
-                            DIA_ID = 3,
-                            HORA_ID = 4
+                            Id = 91,
+                            DiaId = 3,
+                            HoraId = 4
                         },
                         new
                         {
-                            ID = 92,
-                            DIA_ID = 5,
-                            HORA_ID = 14
+                            Id = 92,
+                            DiaId = 5,
+                            HoraId = 14
                         },
                         new
                         {
-                            ID = 93,
-                            DIA_ID = 5,
-                            HORA_ID = 32
+                            Id = 93,
+                            DiaId = 5,
+                            HoraId = 32
                         },
                         new
                         {
-                            ID = 94,
-                            DIA_ID = 5,
-                            HORA_ID = 15
+                            Id = 94,
+                            DiaId = 5,
+                            HoraId = 15
                         },
                         new
                         {
-                            ID = 95,
-                            DIA_ID = 5,
-                            HORA_ID = 23
+                            Id = 95,
+                            DiaId = 5,
+                            HoraId = 23
                         },
                         new
                         {
-                            ID = 96,
-                            DIA_ID = 5,
-                            HORA_ID = 25
+                            Id = 96,
+                            DiaId = 5,
+                            HoraId = 25
                         },
                         new
                         {
-                            ID = 97,
-                            DIA_ID = 5,
-                            HORA_ID = 26
+                            Id = 97,
+                            DiaId = 5,
+                            HoraId = 26
                         },
                         new
                         {
-                            ID = 98,
-                            DIA_ID = 5,
-                            HORA_ID = 27
+                            Id = 98,
+                            DiaId = 5,
+                            HoraId = 27
                         },
                         new
                         {
-                            ID = 99,
-                            DIA_ID = 5,
-                            HORA_ID = 38
+                            Id = 99,
+                            DiaId = 5,
+                            HoraId = 38
                         },
                         new
                         {
-                            ID = 100,
-                            DIA_ID = 5,
-                            HORA_ID = 28
+                            Id = 100,
+                            DiaId = 5,
+                            HoraId = 28
                         },
                         new
                         {
-                            ID = 101,
-                            DIA_ID = 5,
-                            HORA_ID = 20
+                            Id = 101,
+                            DiaId = 5,
+                            HoraId = 20
                         },
                         new
                         {
-                            ID = 102,
-                            DIA_ID = 5,
-                            HORA_ID = 21
+                            Id = 102,
+                            DiaId = 5,
+                            HoraId = 21
                         },
                         new
                         {
-                            ID = 103,
-                            DIA_ID = 5,
-                            HORA_ID = 29
+                            Id = 103,
+                            DiaId = 5,
+                            HoraId = 29
                         },
                         new
                         {
-                            ID = 104,
-                            DIA_ID = 5,
-                            HORA_ID = 31
+                            Id = 104,
+                            DiaId = 5,
+                            HoraId = 31
                         },
                         new
                         {
-                            ID = 105,
-                            DIA_ID = 5,
-                            HORA_ID = 30
+                            Id = 105,
+                            DiaId = 5,
+                            HoraId = 30
                         },
                         new
                         {
-                            ID = 106,
-                            DIA_ID = 6,
-                            HORA_ID = 1
+                            Id = 106,
+                            DiaId = 6,
+                            HoraId = 1
                         },
                         new
                         {
-                            ID = 107,
-                            DIA_ID = 6,
-                            HORA_ID = 2
+                            Id = 107,
+                            DiaId = 6,
+                            HoraId = 2
                         },
                         new
                         {
-                            ID = 108,
-                            DIA_ID = 6,
-                            HORA_ID = 35
+                            Id = 108,
+                            DiaId = 6,
+                            HoraId = 35
                         },
                         new
                         {
-                            ID = 109,
-                            DIA_ID = 6,
-                            HORA_ID = 34
+                            Id = 109,
+                            DiaId = 6,
+                            HoraId = 34
                         },
                         new
                         {
-                            ID = 110,
-                            DIA_ID = 6,
-                            HORA_ID = 13
+                            Id = 110,
+                            DiaId = 6,
+                            HoraId = 13
                         },
                         new
                         {
-                            ID = 111,
-                            DIA_ID = 6,
-                            HORA_ID = 25
+                            Id = 111,
+                            DiaId = 6,
+                            HoraId = 25
                         },
                         new
                         {
-                            ID = 112,
-                            DIA_ID = 6,
-                            HORA_ID = 28
+                            Id = 112,
+                            DiaId = 6,
+                            HoraId = 28
                         },
                         new
                         {
-                            ID = 113,
-                            DIA_ID = 6,
-                            HORA_ID = 33
+                            Id = 113,
+                            DiaId = 6,
+                            HoraId = 33
                         },
                         new
                         {
-                            ID = 114,
-                            DIA_ID = 3,
-                            HORA_ID = 22
+                            Id = 114,
+                            DiaId = 3,
+                            HoraId = 22
                         },
                         new
                         {
-                            ID = 115,
-                            DIA_ID = 5,
-                            HORA_ID = 22
+                            Id = 115,
+                            DiaId = 5,
+                            HoraId = 22
                         },
                         new
                         {
-                            ID = 116,
-                            DIA_ID = 3,
-                            HORA_ID = 21
+                            Id = 116,
+                            DiaId = 3,
+                            HoraId = 21
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.HoraDiaHorario", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("HORARIO_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("HoraDiaId")
+                        .HasColumnType("integer")
+                        .HasColumnName("hora_dia_id");
 
-                    b.Property<int>("HORA_DIA_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("HorarioId")
+                        .HasColumnType("integer")
+                        .HasColumnName("horario_id");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_hora_dia_horario");
 
-                    b.HasIndex("HORARIO_ID");
+                    b.HasIndex("HoraDiaId")
+                        .HasDatabaseName("ix_hora_dia_horario_hora_dia_id");
 
-                    b.HasIndex("HORA_DIA_ID");
+                    b.HasIndex("HorarioId")
+                        .HasDatabaseName("ix_hora_dia_horario_horario_id");
 
-                    b.ToTable("HORA_DIA_HORARIO");
+                    b.ToTable("hora_dia_horario", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            HORARIO_ID = 1,
-                            HORA_DIA_ID = 1
+                            Id = 1,
+                            HoraDiaId = 1,
+                            HorarioId = 1
                         },
                         new
                         {
-                            ID = 2,
-                            HORARIO_ID = 1,
-                            HORA_DIA_ID = 47
+                            Id = 2,
+                            HoraDiaId = 47,
+                            HorarioId = 1
                         },
                         new
                         {
-                            ID = 3,
-                            HORARIO_ID = 1,
-                            HORA_DIA_ID = 85
+                            Id = 3,
+                            HoraDiaId = 85,
+                            HorarioId = 1
                         },
                         new
                         {
-                            ID = 4,
-                            HORARIO_ID = 2,
-                            HORA_DIA_ID = 3
+                            Id = 4,
+                            HoraDiaId = 3,
+                            HorarioId = 2
                         },
                         new
                         {
-                            ID = 5,
-                            HORARIO_ID = 2,
-                            HORA_DIA_ID = 48
+                            Id = 5,
+                            HoraDiaId = 48,
+                            HorarioId = 2
                         },
                         new
                         {
-                            ID = 6,
-                            HORARIO_ID = 2,
-                            HORA_DIA_ID = 87
+                            Id = 6,
+                            HoraDiaId = 87,
+                            HorarioId = 2
                         },
                         new
                         {
-                            ID = 7,
-                            HORARIO_ID = 3,
-                            HORA_DIA_ID = 5
+                            Id = 7,
+                            HoraDiaId = 5,
+                            HorarioId = 3
                         },
                         new
                         {
-                            ID = 8,
-                            HORARIO_ID = 3,
-                            HORA_DIA_ID = 50
+                            Id = 8,
+                            HoraDiaId = 50,
+                            HorarioId = 3
                         },
                         new
                         {
-                            ID = 9,
-                            HORARIO_ID = 3,
-                            HORA_DIA_ID = 89
+                            Id = 9,
+                            HoraDiaId = 89,
+                            HorarioId = 3
                         },
                         new
                         {
-                            ID = 10,
-                            HORARIO_ID = 4,
-                            HORA_DIA_ID = 6
+                            Id = 10,
+                            HoraDiaId = 6,
+                            HorarioId = 4
                         },
                         new
                         {
-                            ID = 11,
-                            HORARIO_ID = 4,
-                            HORA_DIA_ID = 51
+                            Id = 11,
+                            HoraDiaId = 51,
+                            HorarioId = 4
                         },
                         new
                         {
-                            ID = 12,
-                            HORARIO_ID = 4,
-                            HORA_DIA_ID = 91
+                            Id = 12,
+                            HoraDiaId = 91,
+                            HorarioId = 4
                         },
                         new
                         {
-                            ID = 13,
-                            HORARIO_ID = 5,
-                            HORA_DIA_ID = 7
+                            Id = 13,
+                            HoraDiaId = 7,
+                            HorarioId = 5
                         },
                         new
                         {
-                            ID = 14,
-                            HORARIO_ID = 5,
-                            HORA_DIA_ID = 53
+                            Id = 14,
+                            HoraDiaId = 53,
+                            HorarioId = 5
                         },
                         new
                         {
-                            ID = 15,
-                            HORARIO_ID = 5,
-                            HORA_DIA_ID = 93
+                            Id = 15,
+                            HoraDiaId = 93,
+                            HorarioId = 5
                         },
                         new
                         {
-                            ID = 16,
-                            HORARIO_ID = 6,
-                            HORA_DIA_ID = 9
+                            Id = 16,
+                            HoraDiaId = 9,
+                            HorarioId = 6
                         },
                         new
                         {
-                            ID = 17,
-                            HORARIO_ID = 6,
-                            HORA_DIA_ID = 54
+                            Id = 17,
+                            HoraDiaId = 54,
+                            HorarioId = 6
                         },
                         new
                         {
-                            ID = 18,
-                            HORARIO_ID = 6,
-                            HORA_DIA_ID = 95
+                            Id = 18,
+                            HoraDiaId = 95,
+                            HorarioId = 6
                         },
                         new
                         {
-                            ID = 19,
-                            HORARIO_ID = 7,
-                            HORA_DIA_ID = 11
+                            Id = 19,
+                            HoraDiaId = 11,
+                            HorarioId = 7
                         },
                         new
                         {
-                            ID = 20,
-                            HORARIO_ID = 7,
-                            HORA_DIA_ID = 57
+                            Id = 20,
+                            HoraDiaId = 57,
+                            HorarioId = 7
                         },
                         new
                         {
-                            ID = 21,
-                            HORARIO_ID = 7,
-                            HORA_DIA_ID = 96
+                            Id = 21,
+                            HoraDiaId = 96,
+                            HorarioId = 7
                         },
                         new
                         {
-                            ID = 22,
-                            HORARIO_ID = 8,
-                            HORA_DIA_ID = 13
+                            Id = 22,
+                            HoraDiaId = 13,
+                            HorarioId = 8
                         },
                         new
                         {
-                            ID = 23,
-                            HORARIO_ID = 8,
-                            HORA_DIA_ID = 60
+                            Id = 23,
+                            HoraDiaId = 60,
+                            HorarioId = 8
                         },
                         new
                         {
-                            ID = 24,
-                            HORARIO_ID = 8,
-                            HORA_DIA_ID = 97
+                            Id = 24,
+                            HoraDiaId = 97,
+                            HorarioId = 8
                         },
                         new
                         {
-                            ID = 25,
-                            HORARIO_ID = 9,
-                            HORA_DIA_ID = 14
+                            Id = 25,
+                            HoraDiaId = 14,
+                            HorarioId = 9
                         },
                         new
                         {
-                            ID = 26,
-                            HORARIO_ID = 9,
-                            HORA_DIA_ID = 59
+                            Id = 26,
+                            HoraDiaId = 59,
+                            HorarioId = 9
                         },
                         new
                         {
-                            ID = 27,
-                            HORARIO_ID = 9,
-                            HORA_DIA_ID = 98
+                            Id = 27,
+                            HoraDiaId = 98,
+                            HorarioId = 9
                         },
                         new
                         {
-                            ID = 28,
-                            HORARIO_ID = 10,
-                            HORA_DIA_ID = 15
+                            Id = 28,
+                            HoraDiaId = 15,
+                            HorarioId = 10
                         },
                         new
                         {
-                            ID = 29,
-                            HORARIO_ID = 10,
-                            HORA_DIA_ID = 61
+                            Id = 29,
+                            HoraDiaId = 61,
+                            HorarioId = 10
                         },
                         new
                         {
-                            ID = 30,
-                            HORARIO_ID = 10,
-                            HORA_DIA_ID = 100
+                            Id = 30,
+                            HoraDiaId = 100,
+                            HorarioId = 10
                         },
                         new
                         {
-                            ID = 31,
-                            HORARIO_ID = 11,
-                            HORA_DIA_ID = 16
+                            Id = 31,
+                            HoraDiaId = 16,
+                            HorarioId = 11
                         },
                         new
                         {
-                            ID = 32,
-                            HORARIO_ID = 11,
-                            HORA_DIA_ID = 62
+                            Id = 32,
+                            HoraDiaId = 62,
+                            HorarioId = 11
                         },
                         new
                         {
-                            ID = 33,
-                            HORARIO_ID = 11,
-                            HORA_DIA_ID = 101
+                            Id = 33,
+                            HoraDiaId = 101,
+                            HorarioId = 11
                         },
                         new
                         {
-                            ID = 34,
-                            HORARIO_ID = 12,
-                            HORA_DIA_ID = 18
+                            Id = 34,
+                            HoraDiaId = 18,
+                            HorarioId = 12
                         },
                         new
                         {
-                            ID = 35,
-                            HORARIO_ID = 12,
-                            HORA_DIA_ID = 63
+                            Id = 35,
+                            HoraDiaId = 63,
+                            HorarioId = 12
                         },
                         new
                         {
-                            ID = 36,
-                            HORARIO_ID = 12,
-                            HORA_DIA_ID = 103
+                            Id = 36,
+                            HoraDiaId = 103,
+                            HorarioId = 12
                         },
                         new
                         {
-                            ID = 37,
-                            HORARIO_ID = 13,
-                            HORA_DIA_ID = 20
+                            Id = 37,
+                            HoraDiaId = 20,
+                            HorarioId = 13
                         },
                         new
                         {
-                            ID = 38,
-                            HORARIO_ID = 13,
-                            HORA_DIA_ID = 65
+                            Id = 38,
+                            HoraDiaId = 65,
+                            HorarioId = 13
                         },
                         new
                         {
-                            ID = 39,
-                            HORARIO_ID = 13,
-                            HORA_DIA_ID = 105
+                            Id = 39,
+                            HoraDiaId = 105,
+                            HorarioId = 13
                         },
                         new
                         {
-                            ID = 40,
-                            HORARIO_ID = 14,
-                            HORA_DIA_ID = 19
+                            Id = 40,
+                            HoraDiaId = 19,
+                            HorarioId = 14
                         },
                         new
                         {
-                            ID = 41,
-                            HORARIO_ID = 14,
-                            HORA_DIA_ID = 64
+                            Id = 41,
+                            HoraDiaId = 64,
+                            HorarioId = 14
                         },
                         new
                         {
-                            ID = 42,
-                            HORARIO_ID = 14,
-                            HORA_DIA_ID = 104
+                            Id = 42,
+                            HoraDiaId = 104,
+                            HorarioId = 14
                         },
                         new
                         {
-                            ID = 43,
-                            HORARIO_ID = 15,
-                            HORA_DIA_ID = 1
+                            Id = 43,
+                            HoraDiaId = 1,
+                            HorarioId = 15
                         },
                         new
                         {
-                            ID = 44,
-                            HORARIO_ID = 15,
-                            HORA_DIA_ID = 47
+                            Id = 44,
+                            HoraDiaId = 47,
+                            HorarioId = 15
                         },
                         new
                         {
-                            ID = 45,
-                            HORARIO_ID = 15,
-                            HORA_DIA_ID = 85
+                            Id = 45,
+                            HoraDiaId = 85,
+                            HorarioId = 15
                         },
                         new
                         {
-                            ID = 46,
-                            HORARIO_ID = 15,
-                            HORA_DIA_ID = 106
+                            Id = 46,
+                            HoraDiaId = 106,
+                            HorarioId = 15
                         },
                         new
                         {
-                            ID = 47,
-                            HORARIO_ID = 16,
-                            HORA_DIA_ID = 5
+                            Id = 47,
+                            HoraDiaId = 5,
+                            HorarioId = 16
                         },
                         new
                         {
-                            ID = 48,
-                            HORARIO_ID = 16,
-                            HORA_DIA_ID = 50
+                            Id = 48,
+                            HoraDiaId = 50,
+                            HorarioId = 16
                         },
                         new
                         {
-                            ID = 49,
-                            HORARIO_ID = 16,
-                            HORA_DIA_ID = 89
+                            Id = 49,
+                            HoraDiaId = 89,
+                            HorarioId = 16
                         },
                         new
                         {
-                            ID = 50,
-                            HORARIO_ID = 16,
-                            HORA_DIA_ID = 112
+                            Id = 50,
+                            HoraDiaId = 112,
+                            HorarioId = 16
                         },
                         new
                         {
-                            ID = 51,
-                            HORARIO_ID = 17,
-                            HORA_DIA_ID = 5
+                            Id = 51,
+                            HoraDiaId = 5,
+                            HorarioId = 17
                         },
                         new
                         {
-                            ID = 52,
-                            HORARIO_ID = 17,
-                            HORA_DIA_ID = 50
+                            Id = 52,
+                            HoraDiaId = 50,
+                            HorarioId = 17
                         },
                         new
                         {
-                            ID = 53,
-                            HORARIO_ID = 17,
-                            HORA_DIA_ID = 89
+                            Id = 53,
+                            HoraDiaId = 89,
+                            HorarioId = 17
                         },
                         new
                         {
-                            ID = 54,
-                            HORARIO_ID = 17,
-                            HORA_DIA_ID = 113
+                            Id = 54,
+                            HoraDiaId = 113,
+                            HorarioId = 17
                         },
                         new
                         {
-                            ID = 55,
-                            HORARIO_ID = 18,
-                            HORA_DIA_ID = 14
+                            Id = 55,
+                            HoraDiaId = 14,
+                            HorarioId = 18
                         },
                         new
                         {
-                            ID = 56,
-                            HORARIO_ID = 18,
-                            HORA_DIA_ID = 59
+                            Id = 56,
+                            HoraDiaId = 59,
+                            HorarioId = 18
                         },
                         new
                         {
-                            ID = 57,
-                            HORARIO_ID = 18,
-                            HORA_DIA_ID = 98
+                            Id = 57,
+                            HoraDiaId = 98,
+                            HorarioId = 18
                         },
                         new
                         {
-                            ID = 58,
-                            HORARIO_ID = 18,
-                            HORA_DIA_ID = 107
+                            Id = 58,
+                            HoraDiaId = 107,
+                            HorarioId = 18
                         },
                         new
                         {
-                            ID = 59,
-                            HORARIO_ID = 19,
-                            HORA_DIA_ID = 18
+                            Id = 59,
+                            HoraDiaId = 18,
+                            HorarioId = 19
                         },
                         new
                         {
-                            ID = 60,
-                            HORARIO_ID = 19,
-                            HORA_DIA_ID = 63
+                            Id = 60,
+                            HoraDiaId = 63,
+                            HorarioId = 19
                         },
                         new
                         {
-                            ID = 61,
-                            HORARIO_ID = 19,
-                            HORA_DIA_ID = 103
+                            Id = 61,
+                            HoraDiaId = 103,
+                            HorarioId = 19
                         },
                         new
                         {
-                            ID = 62,
-                            HORARIO_ID = 19,
-                            HORA_DIA_ID = 109
+                            Id = 62,
+                            HoraDiaId = 109,
+                            HorarioId = 19
                         },
                         new
                         {
-                            ID = 63,
-                            HORARIO_ID = 20,
-                            HORA_DIA_ID = 9
+                            Id = 63,
+                            HoraDiaId = 9,
+                            HorarioId = 20
                         },
                         new
                         {
-                            ID = 64,
-                            HORARIO_ID = 20,
-                            HORA_DIA_ID = 54
+                            Id = 64,
+                            HoraDiaId = 54,
+                            HorarioId = 20
                         },
                         new
                         {
-                            ID = 65,
-                            HORARIO_ID = 20,
-                            HORA_DIA_ID = 95
+                            Id = 65,
+                            HoraDiaId = 95,
+                            HorarioId = 20
                         },
                         new
                         {
-                            ID = 66,
-                            HORARIO_ID = 20,
-                            HORA_DIA_ID = 98
+                            Id = 66,
+                            HoraDiaId = 98,
+                            HorarioId = 20
                         },
                         new
                         {
-                            ID = 67,
-                            HORARIO_ID = 21,
-                            HORA_DIA_ID = 11
+                            Id = 67,
+                            HoraDiaId = 11,
+                            HorarioId = 21
                         },
                         new
                         {
-                            ID = 68,
-                            HORARIO_ID = 21,
-                            HORA_DIA_ID = 57
+                            Id = 68,
+                            HoraDiaId = 57,
+                            HorarioId = 21
                         },
                         new
                         {
-                            ID = 69,
-                            HORARIO_ID = 21,
-                            HORA_DIA_ID = 96
+                            Id = 69,
+                            HoraDiaId = 96,
+                            HorarioId = 21
                         },
                         new
                         {
-                            ID = 70,
-                            HORARIO_ID = 21,
-                            HORA_DIA_ID = 105
+                            Id = 70,
+                            HoraDiaId = 105,
+                            HorarioId = 21
                         },
                         new
                         {
-                            ID = 71,
-                            HORARIO_ID = 22,
-                            HORA_DIA_ID = 14
+                            Id = 71,
+                            HoraDiaId = 14,
+                            HorarioId = 22
                         },
                         new
                         {
-                            ID = 72,
-                            HORARIO_ID = 22,
-                            HORA_DIA_ID = 59
+                            Id = 72,
+                            HoraDiaId = 59,
+                            HorarioId = 22
                         },
                         new
                         {
-                            ID = 73,
-                            HORARIO_ID = 22,
-                            HORA_DIA_ID = 98
+                            Id = 73,
+                            HoraDiaId = 98,
+                            HorarioId = 22
                         },
                         new
                         {
-                            ID = 74,
-                            HORARIO_ID = 22,
-                            HORA_DIA_ID = 100
+                            Id = 74,
+                            HoraDiaId = 100,
+                            HorarioId = 22
                         },
                         new
                         {
-                            ID = 75,
-                            HORARIO_ID = 23,
-                            HORA_DIA_ID = 2
+                            Id = 75,
+                            HoraDiaId = 2,
+                            HorarioId = 23
                         },
                         new
                         {
-                            ID = 76,
-                            HORARIO_ID = 23,
-                            HORA_DIA_ID = 46
+                            Id = 76,
+                            HoraDiaId = 46,
+                            HorarioId = 23
                         },
                         new
                         {
-                            ID = 77,
-                            HORARIO_ID = 24,
-                            HORA_DIA_ID = 4
+                            Id = 77,
+                            HoraDiaId = 4,
+                            HorarioId = 24
                         },
                         new
                         {
-                            ID = 78,
-                            HORARIO_ID = 24,
-                            HORA_DIA_ID = 49
+                            Id = 78,
+                            HoraDiaId = 49,
+                            HorarioId = 24
                         },
                         new
                         {
-                            ID = 79,
-                            HORARIO_ID = 25,
-                            HORA_DIA_ID = 10
+                            Id = 79,
+                            HoraDiaId = 10,
+                            HorarioId = 25
                         },
                         new
                         {
-                            ID = 80,
-                            HORARIO_ID = 25,
-                            HORA_DIA_ID = 55
+                            Id = 80,
+                            HoraDiaId = 55,
+                            HorarioId = 25
                         },
                         new
                         {
-                            ID = 81,
-                            HORARIO_ID = 26,
-                            HORA_DIA_ID = 12
+                            Id = 81,
+                            HoraDiaId = 12,
+                            HorarioId = 26
                         },
                         new
                         {
-                            ID = 82,
-                            HORARIO_ID = 26,
-                            HORA_DIA_ID = 58
+                            Id = 82,
+                            HoraDiaId = 58,
+                            HorarioId = 26
                         },
                         new
                         {
-                            ID = 83,
-                            HORARIO_ID = 27,
-                            HORA_DIA_ID = 16
+                            Id = 83,
+                            HoraDiaId = 16,
+                            HorarioId = 27
                         },
                         new
                         {
-                            ID = 84,
-                            HORARIO_ID = 27,
-                            HORA_DIA_ID = 62
+                            Id = 84,
+                            HoraDiaId = 62,
+                            HorarioId = 27
                         },
                         new
                         {
-                            ID = 85,
-                            HORARIO_ID = 28,
-                            HORA_DIA_ID = 17
+                            Id = 85,
+                            HoraDiaId = 17,
+                            HorarioId = 28
                         },
                         new
                         {
-                            ID = 86,
-                            HORARIO_ID = 28,
-                            HORA_DIA_ID = 116
+                            Id = 86,
+                            HoraDiaId = 116,
+                            HorarioId = 28
                         },
                         new
                         {
-                            ID = 87,
-                            HORARIO_ID = 29,
-                            HORA_DIA_ID = 2
+                            Id = 87,
+                            HoraDiaId = 2,
+                            HorarioId = 29
                         },
                         new
                         {
-                            ID = 88,
-                            HORARIO_ID = 29,
-                            HORA_DIA_ID = 46
+                            Id = 88,
+                            HoraDiaId = 46,
+                            HorarioId = 29
                         },
                         new
                         {
-                            ID = 89,
-                            HORARIO_ID = 29,
-                            HORA_DIA_ID = 56
+                            Id = 89,
+                            HoraDiaId = 56,
+                            HorarioId = 29
                         },
                         new
                         {
-                            ID = 90,
-                            HORARIO_ID = 30,
-                            HORA_DIA_ID = 2
+                            Id = 90,
+                            HoraDiaId = 2,
+                            HorarioId = 30
                         },
                         new
                         {
-                            ID = 91,
-                            HORARIO_ID = 30,
-                            HORA_DIA_ID = 67
+                            Id = 91,
+                            HoraDiaId = 67,
+                            HorarioId = 30
                         },
                         new
                         {
-                            ID = 92,
-                            HORARIO_ID = 31,
-                            HORA_DIA_ID = 10
+                            Id = 92,
+                            HoraDiaId = 10,
+                            HorarioId = 31
                         },
                         new
                         {
-                            ID = 93,
-                            HORARIO_ID = 31,
-                            HORA_DIA_ID = 72
+                            Id = 93,
+                            HoraDiaId = 72,
+                            HorarioId = 31
                         },
                         new
                         {
-                            ID = 94,
-                            HORARIO_ID = 31,
-                            HORA_DIA_ID = 96
+                            Id = 94,
+                            HoraDiaId = 96,
+                            HorarioId = 31
                         },
                         new
                         {
-                            ID = 95,
-                            HORARIO_ID = 32,
-                            HORA_DIA_ID = 2
+                            Id = 95,
+                            HoraDiaId = 2,
+                            HorarioId = 32
                         },
                         new
                         {
-                            ID = 96,
-                            HORARIO_ID = 32,
-                            HORA_DIA_ID = 86
+                            Id = 96,
+                            HoraDiaId = 86,
+                            HorarioId = 32
                         },
                         new
                         {
-                            ID = 97,
-                            HORARIO_ID = 32,
-                            HORA_DIA_ID = 21
+                            Id = 97,
+                            HoraDiaId = 21,
+                            HorarioId = 32
                         },
                         new
                         {
-                            ID = 98,
-                            HORARIO_ID = 33,
-                            HORA_DIA_ID = 7
+                            Id = 98,
+                            HoraDiaId = 7,
+                            HorarioId = 33
                         },
                         new
                         {
-                            ID = 99,
-                            HORARIO_ID = 33,
-                            HORA_DIA_ID = 36
+                            Id = 99,
+                            HoraDiaId = 36,
+                            HorarioId = 33
                         },
                         new
                         {
-                            ID = 100,
-                            HORARIO_ID = 33,
-                            HORA_DIA_ID = 76
+                            Id = 100,
+                            HoraDiaId = 76,
+                            HorarioId = 33
                         },
                         new
                         {
-                            ID = 101,
-                            HORARIO_ID = 34,
-                            HORA_DIA_ID = 8
+                            Id = 101,
+                            HoraDiaId = 8,
+                            HorarioId = 34
                         },
                         new
                         {
-                            ID = 102,
-                            HORARIO_ID = 34,
-                            HORA_DIA_ID = 22
+                            Id = 102,
+                            HoraDiaId = 22,
+                            HorarioId = 34
                         },
                         new
                         {
-                            ID = 103,
-                            HORARIO_ID = 34,
-                            HORA_DIA_ID = 67
+                            Id = 103,
+                            HoraDiaId = 67,
+                            HorarioId = 34
                         },
                         new
                         {
-                            ID = 104,
-                            HORARIO_ID = 35,
-                            HORA_DIA_ID = 12
+                            Id = 104,
+                            HoraDiaId = 12,
+                            HorarioId = 35
                         },
                         new
                         {
-                            ID = 105,
-                            HORARIO_ID = 35,
-                            HORA_DIA_ID = 21
+                            Id = 105,
+                            HoraDiaId = 21,
+                            HorarioId = 35
                         },
                         new
                         {
-                            ID = 106,
-                            HORARIO_ID = 35,
-                            HORA_DIA_ID = 94
+                            Id = 106,
+                            HoraDiaId = 94,
+                            HorarioId = 35
                         },
                         new
                         {
-                            ID = 107,
-                            HORARIO_ID = 36,
-                            HORA_DIA_ID = 24
+                            Id = 107,
+                            HoraDiaId = 24,
+                            HorarioId = 36
                         },
                         new
                         {
-                            ID = 108,
-                            HORARIO_ID = 37,
-                            HORA_DIA_ID = 22
+                            Id = 108,
+                            HoraDiaId = 22,
+                            HorarioId = 37
                         },
                         new
                         {
-                            ID = 109,
-                            HORARIO_ID = 37,
-                            HORA_DIA_ID = 67
+                            Id = 109,
+                            HoraDiaId = 67,
+                            HorarioId = 37
                         },
                         new
                         {
-                            ID = 110,
-                            HORARIO_ID = 37,
-                            HORA_DIA_ID = 28
+                            Id = 110,
+                            HoraDiaId = 28,
+                            HorarioId = 37
                         },
                         new
                         {
-                            ID = 111,
-                            HORARIO_ID = 38,
-                            HORA_DIA_ID = 22
+                            Id = 111,
+                            HoraDiaId = 22,
+                            HorarioId = 38
                         },
                         new
                         {
-                            ID = 112,
-                            HORARIO_ID = 38,
-                            HORA_DIA_ID = 67
+                            Id = 112,
+                            HoraDiaId = 67,
+                            HorarioId = 38
                         },
                         new
                         {
-                            ID = 113,
-                            HORARIO_ID = 38,
-                            HORA_DIA_ID = 26
+                            Id = 113,
+                            HoraDiaId = 26,
+                            HorarioId = 38
                         },
                         new
                         {
-                            ID = 114,
-                            HORARIO_ID = 39,
-                            HORA_DIA_ID = 40
+                            Id = 114,
+                            HoraDiaId = 40,
+                            HorarioId = 39
                         },
                         new
                         {
-                            ID = 115,
-                            HORARIO_ID = 39,
-                            HORA_DIA_ID = 79
+                            Id = 115,
+                            HoraDiaId = 79,
+                            HorarioId = 39
                         },
                         new
                         {
-                            ID = 116,
-                            HORARIO_ID = 39,
-                            HORA_DIA_ID = 37
+                            Id = 116,
+                            HoraDiaId = 37,
+                            HorarioId = 39
                         },
                         new
                         {
-                            ID = 117,
-                            HORARIO_ID = 40,
-                            HORA_DIA_ID = 40
+                            Id = 117,
+                            HoraDiaId = 40,
+                            HorarioId = 40
                         },
                         new
                         {
-                            ID = 118,
-                            HORARIO_ID = 40,
-                            HORA_DIA_ID = 79
+                            Id = 118,
+                            HoraDiaId = 79,
+                            HorarioId = 40
                         },
                         new
                         {
-                            ID = 119,
-                            HORARIO_ID = 40,
-                            HORA_DIA_ID = 64
+                            Id = 119,
+                            HoraDiaId = 64,
+                            HorarioId = 40
                         },
                         new
                         {
-                            ID = 120,
-                            HORARIO_ID = 41,
-                            HORA_DIA_ID = 22
+                            Id = 120,
+                            HoraDiaId = 22,
+                            HorarioId = 41
                         },
                         new
                         {
-                            ID = 121,
-                            HORARIO_ID = 41,
-                            HORA_DIA_ID = 67
+                            Id = 121,
+                            HoraDiaId = 67,
+                            HorarioId = 41
                         },
                         new
                         {
-                            ID = 122,
-                            HORARIO_ID = 41,
-                            HORA_DIA_ID = 89
+                            Id = 122,
+                            HoraDiaId = 89,
+                            HorarioId = 41
                         },
                         new
                         {
-                            ID = 123,
-                            HORARIO_ID = 42,
-                            HORA_DIA_ID = 22
+                            Id = 123,
+                            HoraDiaId = 22,
+                            HorarioId = 42
                         },
                         new
                         {
-                            ID = 124,
-                            HORARIO_ID = 42,
-                            HORA_DIA_ID = 67
+                            Id = 124,
+                            HoraDiaId = 67,
+                            HorarioId = 42
                         },
                         new
                         {
-                            ID = 125,
-                            HORARIO_ID = 42,
-                            HORA_DIA_ID = 100
+                            Id = 125,
+                            HoraDiaId = 100,
+                            HorarioId = 42
                         },
                         new
                         {
-                            ID = 126,
-                            HORARIO_ID = 43,
-                            HORA_DIA_ID = 32
+                            Id = 126,
+                            HoraDiaId = 32,
+                            HorarioId = 43
                         },
                         new
                         {
-                            ID = 127,
-                            HORARIO_ID = 43,
-                            HORA_DIA_ID = 72
+                            Id = 127,
+                            HoraDiaId = 72,
+                            HorarioId = 43
                         },
                         new
                         {
-                            ID = 128,
-                            HORARIO_ID = 43,
-                            HORA_DIA_ID = 96
+                            Id = 128,
+                            HoraDiaId = 96,
+                            HorarioId = 43
                         },
                         new
                         {
-                            ID = 129,
-                            HORARIO_ID = 44,
-                            HORA_DIA_ID = 36
+                            Id = 129,
+                            HoraDiaId = 36,
+                            HorarioId = 44
                         },
                         new
                         {
-                            ID = 130,
-                            HORARIO_ID = 44,
-                            HORA_DIA_ID = 76
+                            Id = 130,
+                            HoraDiaId = 76,
+                            HorarioId = 44
                         },
                         new
                         {
-                            ID = 131,
-                            HORARIO_ID = 44,
-                            HORA_DIA_ID = 97
+                            Id = 131,
+                            HoraDiaId = 97,
+                            HorarioId = 44
                         },
                         new
                         {
-                            ID = 132,
-                            HORARIO_ID = 45,
-                            HORA_DIA_ID = 31
+                            Id = 132,
+                            HoraDiaId = 31,
+                            HorarioId = 45
                         },
                         new
                         {
-                            ID = 133,
-                            HORARIO_ID = 45,
-                            HORA_DIA_ID = 58
+                            Id = 133,
+                            HoraDiaId = 58,
+                            HorarioId = 45
                         },
                         new
                         {
-                            ID = 134,
-                            HORARIO_ID = 45,
-                            HORA_DIA_ID = 94
+                            Id = 134,
+                            HoraDiaId = 94,
+                            HorarioId = 45
                         },
                         new
                         {
-                            ID = 135,
-                            HORARIO_ID = 46,
-                            HORA_DIA_ID = 11
+                            Id = 135,
+                            HoraDiaId = 11,
+                            HorarioId = 46
                         },
                         new
                         {
-                            ID = 136,
-                            HORARIO_ID = 46,
-                            HORA_DIA_ID = 33
+                            Id = 136,
+                            HoraDiaId = 33,
+                            HorarioId = 46
                         },
                         new
                         {
-                            ID = 137,
-                            HORARIO_ID = 46,
-                            HORA_DIA_ID = 57
+                            Id = 137,
+                            HoraDiaId = 57,
+                            HorarioId = 46
                         },
                         new
                         {
-                            ID = 138,
-                            HORARIO_ID = 46,
-                            HORA_DIA_ID = 37
+                            Id = 138,
+                            HoraDiaId = 37,
+                            HorarioId = 46
                         },
                         new
                         {
-                            ID = 139,
-                            HORARIO_ID = 47,
-                            HORA_DIA_ID = 49
+                            Id = 139,
+                            HoraDiaId = 49,
+                            HorarioId = 47
                         },
                         new
                         {
-                            ID = 140,
-                            HORARIO_ID = 47,
-                            HORA_DIA_ID = 86
+                            Id = 140,
+                            HoraDiaId = 86,
+                            HorarioId = 47
                         },
                         new
                         {
-                            ID = 141,
-                            HORARIO_ID = 48,
-                            HORA_DIA_ID = 52
+                            Id = 141,
+                            HoraDiaId = 52,
+                            HorarioId = 48
                         },
                         new
                         {
-                            ID = 142,
-                            HORARIO_ID = 48,
-                            HORA_DIA_ID = 90
+                            Id = 142,
+                            HoraDiaId = 90,
+                            HorarioId = 48
                         },
                         new
                         {
-                            ID = 143,
-                            HORARIO_ID = 49,
-                            HORA_DIA_ID = 50
+                            Id = 143,
+                            HoraDiaId = 50,
+                            HorarioId = 49
                         },
                         new
                         {
-                            ID = 144,
-                            HORARIO_ID = 49,
-                            HORA_DIA_ID = 96
+                            Id = 144,
+                            HoraDiaId = 96,
+                            HorarioId = 49
                         },
                         new
                         {
-                            ID = 145,
-                            HORARIO_ID = 49,
-                            HORA_DIA_ID = 111
+                            Id = 145,
+                            HoraDiaId = 111,
+                            HorarioId = 49
                         },
                         new
                         {
-                            ID = 146,
-                            HORARIO_ID = 50,
-                            HORA_DIA_ID = 114
+                            Id = 146,
+                            HoraDiaId = 114,
+                            HorarioId = 50
                         },
                         new
                         {
-                            ID = 147,
-                            HORARIO_ID = 50,
-                            HORA_DIA_ID = 115
+                            Id = 147,
+                            HoraDiaId = 115,
+                            HorarioId = 50
                         },
                         new
                         {
-                            ID = 148,
-                            HORARIO_ID = 51,
-                            HORA_DIA_ID = 64
+                            Id = 148,
+                            HoraDiaId = 64,
+                            HorarioId = 51
                         },
                         new
                         {
-                            ID = 149,
-                            HORARIO_ID = 51,
-                            HORA_DIA_ID = 99
+                            Id = 149,
+                            HoraDiaId = 99,
+                            HorarioId = 51
                         },
                         new
                         {
-                            ID = 150,
-                            HORARIO_ID = 52,
-                            HORA_DIA_ID = 55
+                            Id = 150,
+                            HoraDiaId = 55,
+                            HorarioId = 52
                         },
                         new
                         {
-                            ID = 151,
-                            HORARIO_ID = 52,
-                            HORA_DIA_ID = 110
+                            Id = 151,
+                            HoraDiaId = 110,
+                            HorarioId = 52
                         },
                         new
                         {
-                            ID = 152,
-                            HORARIO_ID = 53,
-                            HORA_DIA_ID = 48
+                            Id = 152,
+                            HoraDiaId = 48,
+                            HorarioId = 53
                         },
                         new
                         {
-                            ID = 153,
-                            HORARIO_ID = 53,
-                            HORA_DIA_ID = 67
+                            Id = 153,
+                            HoraDiaId = 67,
+                            HorarioId = 53
                         },
                         new
                         {
-                            ID = 154,
-                            HORARIO_ID = 53,
-                            HORA_DIA_ID = 88
+                            Id = 154,
+                            HoraDiaId = 88,
+                            HorarioId = 53
                         },
                         new
                         {
-                            ID = 155,
-                            HORARIO_ID = 54,
-                            HORA_DIA_ID = 70
+                            Id = 155,
+                            HoraDiaId = 70,
+                            HorarioId = 54
                         },
                         new
                         {
-                            ID = 156,
-                            HORARIO_ID = 54,
-                            HORA_DIA_ID = 92
+                            Id = 156,
+                            HoraDiaId = 92,
+                            HorarioId = 54
                         },
                         new
                         {
-                            ID = 157,
-                            HORARIO_ID = 55,
-                            HORA_DIA_ID = 22
+                            Id = 157,
+                            HoraDiaId = 22,
+                            HorarioId = 55
                         },
                         new
                         {
-                            ID = 158,
-                            HORARIO_ID = 55,
-                            HORA_DIA_ID = 86
+                            Id = 158,
+                            HoraDiaId = 86,
+                            HorarioId = 55
                         },
                         new
                         {
-                            ID = 159,
-                            HORARIO_ID = 56,
-                            HORA_DIA_ID = 29
+                            Id = 159,
+                            HoraDiaId = 29,
+                            HorarioId = 56
                         },
                         new
                         {
-                            ID = 160,
-                            HORARIO_ID = 56,
-                            HORA_DIA_ID = 95
+                            Id = 160,
+                            HoraDiaId = 95,
+                            HorarioId = 56
                         },
                         new
                         {
-                            ID = 161,
-                            HORARIO_ID = 57,
-                            HORA_DIA_ID = 21
+                            Id = 161,
+                            HoraDiaId = 21,
+                            HorarioId = 57
                         },
                         new
                         {
-                            ID = 162,
-                            HORARIO_ID = 57,
-                            HORA_DIA_ID = 66
+                            Id = 162,
+                            HoraDiaId = 66,
+                            HorarioId = 57
                         },
                         new
                         {
-                            ID = 163,
-                            HORARIO_ID = 57,
-                            HORA_DIA_ID = 106
+                            Id = 163,
+                            HoraDiaId = 106,
+                            HorarioId = 57
                         },
                         new
                         {
-                            ID = 164,
-                            HORARIO_ID = 58,
-                            HORA_DIA_ID = 22
+                            Id = 164,
+                            HoraDiaId = 22,
+                            HorarioId = 58
                         },
                         new
                         {
-                            ID = 165,
-                            HORARIO_ID = 58,
-                            HORA_DIA_ID = 86
+                            Id = 165,
+                            HoraDiaId = 86,
+                            HorarioId = 58
                         },
                         new
                         {
-                            ID = 166,
-                            HORARIO_ID = 59,
-                            HORA_DIA_ID = 21
+                            Id = 166,
+                            HoraDiaId = 21,
+                            HorarioId = 59
                         },
                         new
                         {
-                            ID = 167,
-                            HORARIO_ID = 59,
-                            HORA_DIA_ID = 66
+                            Id = 167,
+                            HoraDiaId = 66,
+                            HorarioId = 59
                         },
                         new
                         {
-                            ID = 168,
-                            HORARIO_ID = 60,
-                            HORA_DIA_ID = 23
+                            Id = 168,
+                            HoraDiaId = 23,
+                            HorarioId = 60
                         },
                         new
                         {
-                            ID = 169,
-                            HORARIO_ID = 60,
-                            HORA_DIA_ID = 68
+                            Id = 169,
+                            HoraDiaId = 68,
+                            HorarioId = 60
                         },
                         new
                         {
-                            ID = 170,
-                            HORARIO_ID = 61,
-                            HORA_DIA_ID = 27
+                            Id = 170,
+                            HoraDiaId = 27,
+                            HorarioId = 61
                         },
                         new
                         {
-                            ID = 171,
-                            HORARIO_ID = 61,
-                            HORA_DIA_ID = 70
+                            Id = 171,
+                            HoraDiaId = 70,
+                            HorarioId = 61
                         },
                         new
                         {
-                            ID = 172,
-                            HORARIO_ID = 72,
-                            HORA_DIA_ID = 31
+                            Id = 172,
+                            HoraDiaId = 31,
+                            HorarioId = 72
                         },
                         new
                         {
-                            ID = 173,
-                            HORARIO_ID = 72,
-                            HORA_DIA_ID = 71
+                            Id = 173,
+                            HoraDiaId = 71,
+                            HorarioId = 72
                         },
                         new
                         {
-                            ID = 174,
-                            HORARIO_ID = 73,
-                            HORA_DIA_ID = 32
+                            Id = 174,
+                            HoraDiaId = 32,
+                            HorarioId = 73
                         },
                         new
                         {
-                            ID = 175,
-                            HORARIO_ID = 73,
-                            HORA_DIA_ID = 72
+                            Id = 175,
+                            HoraDiaId = 72,
+                            HorarioId = 73
                         },
                         new
                         {
-                            ID = 176,
-                            HORARIO_ID = 74,
-                            HORA_DIA_ID = 33
+                            Id = 176,
+                            HoraDiaId = 33,
+                            HorarioId = 74
                         },
                         new
                         {
-                            ID = 177,
-                            HORARIO_ID = 74,
-                            HORA_DIA_ID = 74
+                            Id = 177,
+                            HoraDiaId = 74,
+                            HorarioId = 74
                         },
                         new
                         {
-                            ID = 178,
-                            HORARIO_ID = 75,
-                            HORA_DIA_ID = 34
+                            Id = 178,
+                            HoraDiaId = 34,
+                            HorarioId = 75
                         },
                         new
                         {
-                            ID = 179,
-                            HORARIO_ID = 75,
-                            HORA_DIA_ID = 73
+                            Id = 179,
+                            HoraDiaId = 73,
+                            HorarioId = 75
                         },
                         new
                         {
-                            ID = 180,
-                            HORARIO_ID = 76,
-                            HORA_DIA_ID = 36
+                            Id = 180,
+                            HoraDiaId = 36,
+                            HorarioId = 76
                         },
                         new
                         {
-                            ID = 181,
-                            HORARIO_ID = 76,
-                            HORA_DIA_ID = 76
+                            Id = 181,
+                            HoraDiaId = 76,
+                            HorarioId = 76
                         },
                         new
                         {
-                            ID = 182,
-                            HORARIO_ID = 77,
-                            HORA_DIA_ID = 35
+                            Id = 182,
+                            HoraDiaId = 35,
+                            HorarioId = 77
                         },
                         new
                         {
-                            ID = 183,
-                            HORARIO_ID = 77,
-                            HORA_DIA_ID = 75
+                            Id = 183,
+                            HoraDiaId = 75,
+                            HorarioId = 77
                         },
                         new
                         {
-                            ID = 184,
-                            HORARIO_ID = 78,
-                            HORA_DIA_ID = 38
+                            Id = 184,
+                            HoraDiaId = 38,
+                            HorarioId = 78
                         },
                         new
                         {
-                            ID = 185,
-                            HORARIO_ID = 78,
-                            HORA_DIA_ID = 77
+                            Id = 185,
+                            HoraDiaId = 77,
+                            HorarioId = 78
                         },
                         new
                         {
-                            ID = 186,
-                            HORARIO_ID = 79,
-                            HORA_DIA_ID = 40
+                            Id = 186,
+                            HoraDiaId = 40,
+                            HorarioId = 79
                         },
                         new
                         {
-                            ID = 187,
-                            HORARIO_ID = 79,
-                            HORA_DIA_ID = 79
+                            Id = 187,
+                            HoraDiaId = 79,
+                            HorarioId = 79
                         },
                         new
                         {
-                            ID = 188,
-                            HORARIO_ID = 80,
-                            HORA_DIA_ID = 39
+                            Id = 188,
+                            HoraDiaId = 39,
+                            HorarioId = 80
                         },
                         new
                         {
-                            ID = 189,
-                            HORARIO_ID = 80,
-                            HORA_DIA_ID = 78
+                            Id = 189,
+                            HoraDiaId = 78,
+                            HorarioId = 80
                         },
                         new
                         {
-                            ID = 190,
-                            HORARIO_ID = 81,
-                            HORA_DIA_ID = 41
+                            Id = 190,
+                            HoraDiaId = 41,
+                            HorarioId = 81
                         },
                         new
                         {
-                            ID = 191,
-                            HORARIO_ID = 81,
-                            HORA_DIA_ID = 80
+                            Id = 191,
+                            HoraDiaId = 80,
+                            HorarioId = 81
                         },
                         new
                         {
-                            ID = 192,
-                            HORARIO_ID = 82,
-                            HORA_DIA_ID = 42
+                            Id = 192,
+                            HoraDiaId = 42,
+                            HorarioId = 82
                         },
                         new
                         {
-                            ID = 193,
-                            HORARIO_ID = 82,
-                            HORA_DIA_ID = 81
+                            Id = 193,
+                            HoraDiaId = 81,
+                            HorarioId = 82
                         },
                         new
                         {
-                            ID = 194,
-                            HORARIO_ID = 83,
-                            HORA_DIA_ID = 43
+                            Id = 194,
+                            HoraDiaId = 43,
+                            HorarioId = 83
                         },
                         new
                         {
-                            ID = 195,
-                            HORARIO_ID = 83,
-                            HORA_DIA_ID = 82
+                            Id = 195,
+                            HoraDiaId = 82,
+                            HorarioId = 83
                         },
                         new
                         {
-                            ID = 196,
-                            HORARIO_ID = 84,
-                            HORA_DIA_ID = 44
+                            Id = 196,
+                            HoraDiaId = 44,
+                            HorarioId = 84
                         },
                         new
                         {
-                            ID = 197,
-                            HORARIO_ID = 84,
-                            HORA_DIA_ID = 83
+                            Id = 197,
+                            HoraDiaId = 83,
+                            HorarioId = 84
                         },
                         new
                         {
-                            ID = 198,
-                            HORARIO_ID = 85,
-                            HORA_DIA_ID = 45
+                            Id = 198,
+                            HoraDiaId = 45,
+                            HorarioId = 85
                         },
                         new
                         {
-                            ID = 199,
-                            HORARIO_ID = 85,
-                            HORA_DIA_ID = 84
+                            Id = 199,
+                            HoraDiaId = 84,
+                            HorarioId = 85
                         },
                         new
                         {
-                            ID = 200,
-                            HORARIO_ID = 86,
-                            HORA_DIA_ID = 108
+                            Id = 200,
+                            HoraDiaId = 108,
+                            HorarioId = 86
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.Horario", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_horario");
 
-                    b.ToTable("HORARIO");
+                    b.ToTable("horario", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1
+                            Id = 1
                         },
                         new
                         {
-                            ID = 2
+                            Id = 2
                         },
                         new
                         {
-                            ID = 3
+                            Id = 3
                         },
                         new
                         {
-                            ID = 4
+                            Id = 4
                         },
                         new
                         {
-                            ID = 5
+                            Id = 5
                         },
                         new
                         {
-                            ID = 6
+                            Id = 6
                         },
                         new
                         {
-                            ID = 7
+                            Id = 7
                         },
                         new
                         {
-                            ID = 8
+                            Id = 8
                         },
                         new
                         {
-                            ID = 9
+                            Id = 9
                         },
                         new
                         {
-                            ID = 10
+                            Id = 10
                         },
                         new
                         {
-                            ID = 11
+                            Id = 11
                         },
                         new
                         {
-                            ID = 12
+                            Id = 12
                         },
                         new
                         {
-                            ID = 13
+                            Id = 13
                         },
                         new
                         {
-                            ID = 14
+                            Id = 14
                         },
                         new
                         {
-                            ID = 15
+                            Id = 15
                         },
                         new
                         {
-                            ID = 16
+                            Id = 16
                         },
                         new
                         {
-                            ID = 17
+                            Id = 17
                         },
                         new
                         {
-                            ID = 18
+                            Id = 18
                         },
                         new
                         {
-                            ID = 19
+                            Id = 19
                         },
                         new
                         {
-                            ID = 20
+                            Id = 20
                         },
                         new
                         {
-                            ID = 21
+                            Id = 21
                         },
                         new
                         {
-                            ID = 22
+                            Id = 22
                         },
                         new
                         {
-                            ID = 23
+                            Id = 23
                         },
                         new
                         {
-                            ID = 24
+                            Id = 24
                         },
                         new
                         {
-                            ID = 25
+                            Id = 25
                         },
                         new
                         {
-                            ID = 26
+                            Id = 26
                         },
                         new
                         {
-                            ID = 27
+                            Id = 27
                         },
                         new
                         {
-                            ID = 28
+                            Id = 28
                         },
                         new
                         {
-                            ID = 29
+                            Id = 29
                         },
                         new
                         {
-                            ID = 30
+                            Id = 30
                         },
                         new
                         {
-                            ID = 31
+                            Id = 31
                         },
                         new
                         {
-                            ID = 32
+                            Id = 32
                         },
                         new
                         {
-                            ID = 33
+                            Id = 33
                         },
                         new
                         {
-                            ID = 34
+                            Id = 34
                         },
                         new
                         {
-                            ID = 35
+                            Id = 35
                         },
                         new
                         {
-                            ID = 36
+                            Id = 36
                         },
                         new
                         {
-                            ID = 37
+                            Id = 37
                         },
                         new
                         {
-                            ID = 38
+                            Id = 38
                         },
                         new
                         {
-                            ID = 39
+                            Id = 39
                         },
                         new
                         {
-                            ID = 40
+                            Id = 40
                         },
                         new
                         {
-                            ID = 41
+                            Id = 41
                         },
                         new
                         {
-                            ID = 42
+                            Id = 42
                         },
                         new
                         {
-                            ID = 43
+                            Id = 43
                         },
                         new
                         {
-                            ID = 44
+                            Id = 44
                         },
                         new
                         {
-                            ID = 45
+                            Id = 45
                         },
                         new
                         {
-                            ID = 46
+                            Id = 46
                         },
                         new
                         {
-                            ID = 47
+                            Id = 47
                         },
                         new
                         {
-                            ID = 48
+                            Id = 48
                         },
                         new
                         {
-                            ID = 49
+                            Id = 49
                         },
                         new
                         {
-                            ID = 50
+                            Id = 50
                         },
                         new
                         {
-                            ID = 51
+                            Id = 51
                         },
                         new
                         {
-                            ID = 52
+                            Id = 52
                         },
                         new
                         {
-                            ID = 53
+                            Id = 53
                         },
                         new
                         {
-                            ID = 54
+                            Id = 54
                         },
                         new
                         {
-                            ID = 55
+                            Id = 55
                         },
                         new
                         {
-                            ID = 56
+                            Id = 56
                         },
                         new
                         {
-                            ID = 57
+                            Id = 57
                         },
                         new
                         {
-                            ID = 58
+                            Id = 58
                         },
                         new
                         {
-                            ID = 59
+                            Id = 59
                         },
                         new
                         {
-                            ID = 60
+                            Id = 60
                         },
                         new
                         {
-                            ID = 61
+                            Id = 61
                         },
                         new
                         {
-                            ID = 62
+                            Id = 62
                         },
                         new
                         {
-                            ID = 63
+                            Id = 63
                         },
                         new
                         {
-                            ID = 64
+                            Id = 64
                         },
                         new
                         {
-                            ID = 65
+                            Id = 65
                         },
                         new
                         {
-                            ID = 66
+                            Id = 66
                         },
                         new
                         {
-                            ID = 67
+                            Id = 67
                         },
                         new
                         {
-                            ID = 68
+                            Id = 68
                         },
                         new
                         {
-                            ID = 69
+                            Id = 69
                         },
                         new
                         {
-                            ID = 70
+                            Id = 70
                         },
                         new
                         {
-                            ID = 71
+                            Id = 71
                         },
                         new
                         {
-                            ID = 72
+                            Id = 72
                         },
                         new
                         {
-                            ID = 73
+                            Id = 73
                         },
                         new
                         {
-                            ID = 74
+                            Id = 74
                         },
                         new
                         {
-                            ID = 75
+                            Id = 75
                         },
                         new
                         {
-                            ID = 76
+                            Id = 76
                         },
                         new
                         {
-                            ID = 77
+                            Id = 77
                         },
                         new
                         {
-                            ID = 78
+                            Id = 78
                         },
                         new
                         {
-                            ID = 79
+                            Id = 79
                         },
                         new
                         {
-                            ID = 80
+                            Id = 80
                         },
                         new
                         {
-                            ID = 81
+                            Id = 81
                         },
                         new
                         {
-                            ID = 82
+                            Id = 82
                         },
                         new
                         {
-                            ID = 83
+                            Id = 83
                         },
                         new
                         {
-                            ID = 84
+                            Id = 84
                         },
                         new
                         {
-                            ID = 85
+                            Id = 85
                         },
                         new
                         {
-                            ID = 86
+                            Id = 86
                         },
                         new
                         {
-                            ID = 87
+                            Id = 87
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.HorarioMateria", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<short>("CUPOS_DISPONIBLES")
-                        .HasColumnType("smallint");
+                    b.Property<short>("CuposDisponibles")
+                        .HasColumnType("smallint")
+                        .HasColumnName("cupos_disponibles");
 
-                    b.Property<short>("CUPOS_TOTAL")
-                        .HasColumnType("smallint");
+                    b.Property<short>("CuposTotal")
+                        .HasColumnType("smallint")
+                        .HasColumnName("cupos_total");
 
-                    b.Property<int?>("DOCENTE_ID")
-                        .HasColumnType("integer");
+                    b.Property<int?>("DocenteId")
+                        .HasColumnType("integer")
+                        .HasColumnName("docente_id");
 
-                    b.Property<int>("GESTION_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("GestionId")
+                        .HasColumnType("integer")
+                        .HasColumnName("gestion_id");
 
-                    b.Property<int>("GRUPO_MATERIA_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("GrupoMateriaId")
+                        .HasColumnType("integer")
+                        .HasColumnName("grupo_materia_id");
 
-                    b.Property<int>("HORARIO_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("HorarioId")
+                        .HasColumnType("integer")
+                        .HasColumnName("horario_id");
 
-                    b.Property<int>("MODULO_ID")
-                        .HasColumnType("integer");
+                    b.Property<int?>("MateriaPlanEstudioId")
+                        .HasColumnType("integer")
+                        .HasColumnName("materia_plan_estudio_id");
 
-                    b.Property<int?>("MateriaPlanEstudioID")
-                        .HasColumnType("integer");
+                    b.Property<int>("ModuloId")
+                        .HasColumnType("integer")
+                        .HasColumnName("modulo_id");
 
-                    b.Property<int?>("NRO_AULA")
-                        .HasColumnType("integer");
+                    b.Property<int?>("NroAula")
+                        .HasColumnType("integer")
+                        .HasColumnName("nro_aula");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_horario_materia");
 
-                    b.HasIndex("DOCENTE_ID");
+                    b.HasIndex("DocenteId")
+                        .HasDatabaseName("ix_horario_materia_docente_id");
 
-                    b.HasIndex("GESTION_ID");
+                    b.HasIndex("GestionId")
+                        .HasDatabaseName("ix_horario_materia_gestion_id");
 
-                    b.HasIndex("GRUPO_MATERIA_ID");
+                    b.HasIndex("GrupoMateriaId")
+                        .HasDatabaseName("ix_horario_materia_grupo_materia_id");
 
-                    b.HasIndex("HORARIO_ID");
+                    b.HasIndex("HorarioId")
+                        .HasDatabaseName("ix_horario_materia_horario_id");
 
-                    b.HasIndex("MODULO_ID");
+                    b.HasIndex("MateriaPlanEstudioId")
+                        .HasDatabaseName("ix_horario_materia_materia_plan_estudio_id");
 
-                    b.HasIndex("MateriaPlanEstudioID");
+                    b.HasIndex("ModuloId")
+                        .HasDatabaseName("ix_horario_materia_modulo_id");
 
-                    b.ToTable("HORARIO_MATERIA");
+                    b.ToTable("horario_materia", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 1,
-                            HORARIO_ID = 10,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 2,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 2,
-                            HORARIO_ID = 1,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 3,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 3,
-                            HORARIO_ID = 1,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 4,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 4,
-                            HORARIO_ID = 2,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 5,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 5,
-                            HORARIO_ID = 3,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 6,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 6,
-                            HORARIO_ID = 1,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 7,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 7,
-                            HORARIO_ID = 4,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 8,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 8,
-                            HORARIO_ID = 3,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 9,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 9,
-                            HORARIO_ID = 23,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 1,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 1,
+                            HorarioId = 10,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 2,
+                            HorarioId = 1,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 3,
+                            HorarioId = 1,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 4,
+                            HorarioId = 2,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 5,
+                            HorarioId = 3,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 6,
+                            HorarioId = 1,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 7,
+                            HorarioId = 4,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 8,
+                            HorarioId = 3,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 9,
+                            HorarioId = 23,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 10,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 10,
-                            HORARIO_ID = 58,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 10,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 10,
+                            HorarioId = 58,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 11,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 11,
-                            HORARIO_ID = 1,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 11,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 11,
+                            HorarioId = 1,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 12,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 12,
-                            HORARIO_ID = 2,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 12,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 12,
+                            HorarioId = 2,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 13,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 13,
-                            HORARIO_ID = 76,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 13,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 13,
+                            HorarioId = 76,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 14,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 14,
-                            HORARIO_ID = 1,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 14,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 14,
+                            HorarioId = 1,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 15,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 15,
-                            HORARIO_ID = 79,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 15,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 15,
+                            HorarioId = 79,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 16,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 16,
-                            HORARIO_ID = 1,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 16,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 16,
+                            HorarioId = 1,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 17,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 17,
-                            HORARIO_ID = 9,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 17,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 17,
+                            HorarioId = 9,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 18,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 18,
-                            HORARIO_ID = 2,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 18,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 18,
+                            HorarioId = 2,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 19,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 19,
-                            HORARIO_ID = 58,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 19,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 19,
+                            HorarioId = 58,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 20,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 20,
-                            HORARIO_ID = 50,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 20,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 20,
+                            HorarioId = 50,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 21,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 21,
-                            HORARIO_ID = 79,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 21,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 21,
+                            HorarioId = 79,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 22,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 22,
-                            HORARIO_ID = 79,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 22,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 22,
+                            HorarioId = 79,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 23,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 23,
-                            HORARIO_ID = 60,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 23,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 23,
+                            HorarioId = 60,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 24,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 24,
-                            HORARIO_ID = 25,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 24,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 24,
+                            HorarioId = 25,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 25,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 25,
-                            HORARIO_ID = 1,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 25,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 25,
+                            HorarioId = 1,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 26,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 26,
-                            HORARIO_ID = 30,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 26,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 26,
+                            HorarioId = 30,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 27,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 27,
-                            HORARIO_ID = 76,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 27,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 27,
+                            HorarioId = 76,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 28,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 28,
-                            HORARIO_ID = 10,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 28,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 28,
+                            HorarioId = 10,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 29,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 29,
-                            HORARIO_ID = 55,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 29,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 29,
+                            HorarioId = 55,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 30,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 30,
-                            HORARIO_ID = 60,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 30,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 30,
+                            HorarioId = 60,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 31,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 31,
-                            HORARIO_ID = 60,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 31,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 31,
+                            HorarioId = 60,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 32,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 32,
-                            HORARIO_ID = 76,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 32,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 32,
+                            HorarioId = 76,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 33,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 33,
-                            HORARIO_ID = 73,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 33,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 33,
+                            HorarioId = 73,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 34,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 34,
-                            HORARIO_ID = 12,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 34,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 34,
+                            HorarioId = 12,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 35,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 35,
-                            HORARIO_ID = 1,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 35,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 35,
+                            HorarioId = 1,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 36,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 36,
-                            HORARIO_ID = 14,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 36,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 36,
+                            HorarioId = 14,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 37,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 37,
-                            HORARIO_ID = 57,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 37,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 37,
+                            HorarioId = 57,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 38,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 38,
-                            HORARIO_ID = 5,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 38,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 38,
+                            HorarioId = 5,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 39,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 39,
-                            HORARIO_ID = 82,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 39,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 39,
+                            HorarioId = 82,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 40,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 40,
-                            HORARIO_ID = 47,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 40,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 40,
+                            HorarioId = 47,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 41,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 41,
-                            HORARIO_ID = 60,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 41,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 41,
+                            HorarioId = 60,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 42,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 42,
-                            HORARIO_ID = 76,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 42,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 42,
+                            HorarioId = 76,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 43,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 43,
-                            HORARIO_ID = 4,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 43,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 43,
+                            HorarioId = 4,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 44,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 44,
-                            HORARIO_ID = 2,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 44,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 44,
+                            HorarioId = 2,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 45,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 45,
-                            HORARIO_ID = 8,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 45,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 45,
+                            HorarioId = 8,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 46,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 46,
-                            HORARIO_ID = 74,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 46,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 46,
+                            HorarioId = 74,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 47,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 47,
-                            HORARIO_ID = 78,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 47,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 47,
+                            HorarioId = 78,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 48,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 48,
-                            HORARIO_ID = 77,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 48,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 48,
+                            HorarioId = 77,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 49,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 49,
-                            HORARIO_ID = 59,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 49,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 49,
+                            HorarioId = 59,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 50,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 50,
-                            HORARIO_ID = 9,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 50,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 50,
+                            HorarioId = 9,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 51,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 51,
-                            HORARIO_ID = 4,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 51,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 51,
+                            HorarioId = 4,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 52,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 52,
-                            HORARIO_ID = 60,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 52,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 52,
+                            HorarioId = 60,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 53,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 53,
-                            HORARIO_ID = 79,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 53,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 53,
+                            HorarioId = 79,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 54,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 54,
-                            HORARIO_ID = 84,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 54,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 54,
+                            HorarioId = 84,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 55,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 55,
-                            HORARIO_ID = 84,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 55,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 55,
+                            HorarioId = 84,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 56,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 56,
-                            HORARIO_ID = 48,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 56,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 56,
+                            HorarioId = 48,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 57,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 57,
-                            HORARIO_ID = 75,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 57,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 57,
+                            HorarioId = 75,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 58,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 58,
-                            HORARIO_ID = 58,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 58,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 58,
+                            HorarioId = 58,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 59,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 59,
-                            HORARIO_ID = 84,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 59,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 59,
+                            HorarioId = 84,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 60,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 60,
-                            HORARIO_ID = 61,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 60,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 60,
+                            HorarioId = 61,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 61,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 61,
-                            HORARIO_ID = 58,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 61,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 61,
+                            HorarioId = 58,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 62,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 62,
-                            HORARIO_ID = 76,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 62,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 62,
+                            HorarioId = 76,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 63,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 63,
-                            HORARIO_ID = 84,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 63,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 63,
+                            HorarioId = 84,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 64,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 64,
-                            HORARIO_ID = 79,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 64,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 64,
+                            HorarioId = 79,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 65,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 65,
-                            HORARIO_ID = 1,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 65,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 65,
+                            HorarioId = 1,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 66,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 66,
-                            HORARIO_ID = 58,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 66,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 66,
+                            HorarioId = 58,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 67,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 67,
-                            HORARIO_ID = 58,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 67,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 67,
+                            HorarioId = 58,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 68,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 68,
-                            HORARIO_ID = 2,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 68,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 68,
+                            HorarioId = 2,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 69,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 69,
-                            HORARIO_ID = 6,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 69,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 69,
+                            HorarioId = 6,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 70,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 70,
-                            HORARIO_ID = 3,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 70,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 70,
+                            HorarioId = 3,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 71,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 71,
-                            HORARIO_ID = 2,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 71,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 71,
+                            HorarioId = 2,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 72,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 72,
-                            HORARIO_ID = 7,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 72,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 72,
+                            HorarioId = 7,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 73,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 73,
-                            HORARIO_ID = 9,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 73,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 73,
+                            HorarioId = 9,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 74,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 74,
-                            HORARIO_ID = 2,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 74,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 74,
+                            HorarioId = 2,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 75,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 75,
-                            HORARIO_ID = 61,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 75,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 75,
+                            HorarioId = 61,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 76,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 76,
-                            HORARIO_ID = 58,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 76,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 76,
+                            HorarioId = 58,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 77,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 77,
-                            HORARIO_ID = 15,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 77,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 77,
+                            HorarioId = 15,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 78,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 78,
-                            HORARIO_ID = 33,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 78,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 78,
+                            HorarioId = 33,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 79,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 79,
-                            HORARIO_ID = 34,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 79,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 79,
+                            HorarioId = 34,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 80,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 80,
-                            HORARIO_ID = 41,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 80,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 80,
+                            HorarioId = 41,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 81,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 81,
-                            HORARIO_ID = 44,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 81,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 81,
+                            HorarioId = 44,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 82,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 82,
-                            HORARIO_ID = 46,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 82,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 82,
+                            HorarioId = 46,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 83,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 83,
-                            HORARIO_ID = 29,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 83,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 83,
+                            HorarioId = 29,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 84,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 84,
-                            HORARIO_ID = 37,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 84,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 84,
+                            HorarioId = 37,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 85,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 85,
-                            HORARIO_ID = 38,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 85,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 85,
+                            HorarioId = 38,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 86,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 86,
-                            HORARIO_ID = 22,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 86,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 86,
+                            HorarioId = 22,
+                            ModuloId = 1,
+                            NroAula = 12
                         },
                         new
                         {
-                            ID = 87,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 87,
-                            HORARIO_ID = 18,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 88,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 88,
-                            HORARIO_ID = 39,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 89,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 89,
-                            HORARIO_ID = 16,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 90,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 90,
-                            HORARIO_ID = 42,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 91,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 91,
-                            HORARIO_ID = 19,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 92,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 92,
-                            HORARIO_ID = 40,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 93,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 93,
-                            HORARIO_ID = 41,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 94,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 94,
-                            HORARIO_ID = 43,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
-                        },
-                        new
-                        {
-                            ID = 95,
-                            CUPOS_DISPONIBLES = (short)30,
-                            CUPOS_TOTAL = (short)100,
-                            DOCENTE_ID = 1,
-                            GESTION_ID = 1,
-                            GRUPO_MATERIA_ID = 95,
-                            HORARIO_ID = 20,
-                            MODULO_ID = 1,
-                            NRO_AULA = 12
+                            Id = 87,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 87,
+                            HorarioId = 18,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 88,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 88,
+                            HorarioId = 39,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 89,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 89,
+                            HorarioId = 16,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 90,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 90,
+                            HorarioId = 42,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 91,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 91,
+                            HorarioId = 19,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 92,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 92,
+                            HorarioId = 40,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 93,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 93,
+                            HorarioId = 41,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 94,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 94,
+                            HorarioId = 43,
+                            ModuloId = 1,
+                            NroAula = 12
+                        },
+                        new
+                        {
+                            Id = 95,
+                            CuposDisponibles = (short)30,
+                            CuposTotal = (short)100,
+                            DocenteId = 1,
+                            GestionId = 1,
+                            GrupoMateriaId = 95,
+                            HorarioId = 20,
+                            ModuloId = 1,
+                            NroAula = 12
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.HorarioMateriaInscripcion", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("HORARIO_MATERIA_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("HorarioMateriaId")
+                        .HasColumnType("integer")
+                        .HasColumnName("horario_materia_id");
 
-                    b.Property<int>("INSCRIPCION_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("InscripcionId")
+                        .HasColumnType("integer")
+                        .HasColumnName("inscripcion_id");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_horario_materia_inscripcion");
 
-                    b.HasIndex("HORARIO_MATERIA_ID");
+                    b.HasIndex("HorarioMateriaId")
+                        .HasDatabaseName("ix_horario_materia_inscripcion_horario_materia_id");
 
-                    b.HasIndex("INSCRIPCION_ID");
+                    b.HasIndex("InscripcionId")
+                        .HasDatabaseName("ix_horario_materia_inscripcion_inscripcion_id");
 
-                    b.ToTable("HORARIO_MATERIA_INSCRIPCION");
+                    b.ToTable("horario_materia_inscripcion", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Inscripcion", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ALUMNO_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("AlumnoId")
+                        .HasColumnType("integer")
+                        .HasColumnName("alumno_id");
 
-                    b.Property<DateTime>("FECHA")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("fecha");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_inscripcion");
 
-                    b.HasIndex("ALUMNO_ID");
+                    b.HasIndex("AlumnoId")
+                        .HasDatabaseName("ix_inscripcion_alumno_id");
 
-                    b.ToTable("INSCRIPCION");
+                    b.ToTable("inscripcion", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Materia", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<short>("CREDITO")
-                        .HasColumnType("smallint");
+                    b.Property<short>("Credito")
+                        .HasColumnType("smallint")
+                        .HasColumnName("credito");
 
-                    b.Property<bool?>("ES_ELECTIVA")
-                        .HasColumnType("boolean");
+                    b.Property<bool>("EsElectiva")
+                        .HasColumnType("boolean")
+                        .HasColumnName("es_electiva");
 
-                    b.Property<string>("NOMBRE")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("nombre");
 
-                    b.Property<string>("SIGLA")
+                    b.Property<string>("Sigla")
                         .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)");
+                        .HasColumnType("character varying(15)")
+                        .HasColumnName("sigla");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_materia");
 
-                    b.ToTable("MATERIA");
+                    b.ToTable("materia", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "CÁLCULO I",
-                            SIGLA = "MAT101"
+                            Id = 1,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "CÁLCULO I",
+                            Sigla = "MAT101"
                         },
                         new
                         {
-                            ID = 2,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ESTRUCTURAS DISCRETAS",
-                            SIGLA = "INF119"
+                            Id = 2,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "ESTRUCTURAS DISCRETAS",
+                            Sigla = "INF119"
                         },
                         new
                         {
-                            ID = 3,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INTRODUCCIÓN A LA INFORMÁTICA",
-                            SIGLA = "INF110"
+                            Id = 3,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "INTRODUCCIÓN A LA INFORMÁTICA",
+                            Sigla = "INF110"
                         },
                         new
                         {
-                            ID = 4,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "FÍSICA I",
-                            SIGLA = "FIS100"
+                            Id = 4,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "FÍSICA I",
+                            Sigla = "FIS100"
                         },
                         new
                         {
-                            ID = 5,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INGLÉS TÉCNICO I",
-                            SIGLA = "LIN100"
+                            Id = 5,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "INGLÉS TÉCNICO I",
+                            Sigla = "LIN100"
                         },
                         new
                         {
-                            ID = 6,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "CÁLCULO II",
-                            SIGLA = "MAT102"
+                            Id = 6,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "CÁLCULO II",
+                            Sigla = "MAT102"
                         },
                         new
                         {
-                            ID = 7,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ÁLGEBRA LINEAL",
-                            SIGLA = "MAT103"
+                            Id = 7,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "ÁLGEBRA LINEAL",
+                            Sigla = "MAT103"
                         },
                         new
                         {
-                            ID = 8,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROGRAMACIÓN I",
-                            SIGLA = "INF120"
+                            Id = 8,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "PROGRAMACIÓN I",
+                            Sigla = "INF120"
                         },
                         new
                         {
-                            ID = 9,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "FÍSICA II",
-                            SIGLA = "FIS102"
+                            Id = 9,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "FÍSICA II",
+                            Sigla = "FIS102"
                         },
                         new
                         {
-                            ID = 10,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INGLÉS TÉCNICO II",
-                            SIGLA = "LIN101"
+                            Id = 10,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "INGLÉS TÉCNICO II",
+                            Sigla = "LIN101"
                         },
                         new
                         {
-                            ID = 11,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ECUACIONES DIFERENCIALES",
-                            SIGLA = "MAT207"
+                            Id = 11,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "ECUACIONES DIFERENCIALES",
+                            Sigla = "MAT207"
                         },
                         new
                         {
-                            ID = 12,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROGRAMACIÓN II",
-                            SIGLA = "INF210"
+                            Id = 12,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "PROGRAMACIÓN II",
+                            Sigla = "INF210"
                         },
                         new
                         {
-                            ID = 13,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ARQUITECTURA DE COMPUTADORAS",
-                            SIGLA = "INF211"
+                            Id = 13,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "ARQUITECTURA DE COMPUTADORAS",
+                            Sigla = "INF211"
                         },
                         new
                         {
-                            ID = 14,
-                            CREDITO = (short)6,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "FÍSICA III",
-                            SIGLA = "FIS200"
+                            Id = 14,
+                            Credito = (short)6,
+                            EsElectiva = false,
+                            Nombre = "FÍSICA III",
+                            Sigla = "FIS200"
                         },
                         new
                         {
-                            ID = 15,
-                            CREDITO = (short)4,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ADMINISTRACIÓN",
-                            SIGLA = "ADM100"
+                            Id = 15,
+                            Credito = (short)4,
+                            EsElectiva = false,
+                            Nombre = "ADMINISTRACIÓN",
+                            Sigla = "ADM100"
                         },
                         new
                         {
-                            ID = 16,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROBABILIDAD Y ESTADÍSTICA I",
-                            SIGLA = "MAT202"
+                            Id = 16,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "PROBABILIDAD Y ESTADÍSTICA I",
+                            Sigla = "MAT202"
                         },
                         new
                         {
-                            ID = 17,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "MÉTODOS NUMÉRICOS",
-                            SIGLA = "MAT205"
+                            Id = 17,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "MÉTODOS NUMÉRICOS",
+                            Sigla = "MAT205"
                         },
                         new
                         {
-                            ID = 18,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ESTRUCTURA DE DATOS I",
-                            SIGLA = "INF220"
+                            Id = 18,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "ESTRUCTURA DE DATOS I",
+                            Sigla = "INF220"
                         },
                         new
                         {
-                            ID = 19,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROGRAMACIÓN ENSAMBLADOR",
-                            SIGLA = "INF221"
+                            Id = 19,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "PROGRAMACIÓN ENSAMBLADOR",
+                            Sigla = "INF221"
                         },
                         new
                         {
-                            ID = 20,
-                            CREDITO = (short)4,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "CONTABILIDAD",
-                            SIGLA = "ADM200"
+                            Id = 20,
+                            Credito = (short)4,
+                            EsElectiva = false,
+                            Nombre = "CONTABILIDAD",
+                            Sigla = "ADM200"
                         },
                         new
                         {
-                            ID = 21,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROBABILIDAD Y ESTADÍSTICA II",
-                            SIGLA = "MAT302"
+                            Id = 21,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "PROBABILIDAD Y ESTADÍSTICA II",
+                            Sigla = "MAT302"
                         },
                         new
                         {
-                            ID = 22,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PROGRAMACIÓN LÓGICA Y FUNCIONAL",
-                            SIGLA = "INF318"
+                            Id = 22,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "PROGRAMACIÓN LÓGICA Y FUNCIONAL",
+                            Sigla = "INF318"
                         },
                         new
                         {
-                            ID = 23,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ESTRUCTURA DE DATOS II",
-                            SIGLA = "INF310"
+                            Id = 23,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "ESTRUCTURA DE DATOS II",
+                            Sigla = "INF310"
                         },
                         new
                         {
-                            ID = 24,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "BASE DE DATOS I",
-                            SIGLA = "INF312"
+                            Id = 24,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "BASE DE DATOS I",
+                            Sigla = "INF312"
                         },
                         new
                         {
-                            ID = 25,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "LENGUAJES FORMALES",
-                            SIGLA = "INF319"
+                            Id = 25,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "LENGUAJES FORMALES",
+                            Sigla = "INF319"
                         },
                         new
                         {
-                            ID = 53,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ORGANIZACIÓN Y MÉTODOS",
-                            SIGLA = "ADM330"
+                            Id = 53,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "ORGANIZACIÓN Y MÉTODOS",
+                            Sigla = "ADM330"
                         },
                         new
                         {
-                            ID = 54,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ECONOMÍA PARA LA GESTIÓN",
-                            SIGLA = "ECO300"
+                            Id = 54,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "ECONOMÍA PARA LA GESTIÓN",
+                            Sigla = "ECO300"
                         },
                         new
                         {
-                            ID = 26,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INVESTIGACIÓN OPERATIVA I",
-                            SIGLA = "MAT329"
+                            Id = 26,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "INVESTIGACIÓN OPERATIVA I",
+                            Sigla = "MAT329"
                         },
                         new
                         {
-                            ID = 27,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE INFORMACIÓN I",
-                            SIGLA = "INF342"
+                            Id = 27,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS DE INFORMACIÓN I",
+                            Sigla = "INF342"
                         },
                         new
                         {
-                            ID = 28,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS OPERATIVOS I",
-                            SIGLA = "INF323"
+                            Id = 28,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS OPERATIVOS I",
+                            Sigla = "INF323"
                         },
                         new
                         {
-                            ID = 29,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "BASE DE DATOS II",
-                            SIGLA = "INF322"
+                            Id = 29,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "BASE DE DATOS II",
+                            Sigla = "INF322"
                         },
                         new
                         {
-                            ID = 30,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "COMPILADORES",
-                            SIGLA = "INF329"
+                            Id = 30,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "COMPILADORES",
+                            Sigla = "INF329"
                         },
                         new
                         {
-                            ID = 55,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "FINANZAS PARA LA EMPRESA",
-                            SIGLA = "ADM320"
+                            Id = 55,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "FINANZAS PARA LA EMPRESA",
+                            Sigla = "ADM320"
                         },
                         new
                         {
-                            ID = 31,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INVESTIGACIÓN OPERATIVA II",
-                            SIGLA = "MAT419"
+                            Id = 31,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "INVESTIGACIÓN OPERATIVA II",
+                            Sigla = "MAT419"
                         },
                         new
                         {
-                            ID = 32,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INTELIGENCIA ARTIFICIAL",
-                            SIGLA = "INF418"
+                            Id = 32,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "INTELIGENCIA ARTIFICIAL",
+                            Sigla = "INF418"
                         },
                         new
                         {
-                            ID = 33,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS OPERATIVOS II",
-                            SIGLA = "INF413"
+                            Id = 33,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS OPERATIVOS II",
+                            Sigla = "INF413"
                         },
                         new
                         {
-                            ID = 34,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "REDES I",
-                            SIGLA = "INF433"
+                            Id = 34,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "REDES I",
+                            Sigla = "INF433"
                         },
                         new
                         {
-                            ID = 35,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INGENIERÍA DE SOFTWARE I",
-                            SIGLA = "INF422"
+                            Id = 35,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "INGENIERÍA DE SOFTWARE I",
+                            Sigla = "INF422"
                         },
                         new
                         {
-                            ID = 56,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS PARA EL SOPORTE A LA TOMA DE DECISIONES",
-                            SIGLA = "INF432"
+                            Id = 56,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS PARA EL SOPORTE A LA TOMA DE DECISIONES",
+                            Sigla = "INF432"
                         },
                         new
                         {
-                            ID = 36,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "PREPARACIÓN Y EVALUACIÓN DE PROYECTOS",
-                            SIGLA = "ECO449"
+                            Id = 36,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "PREPARACIÓN Y EVALUACIÓN DE PROYECTOS",
+                            Sigla = "ECO449"
                         },
                         new
                         {
-                            ID = 37,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS EXPERTOS",
-                            SIGLA = "INF428"
+                            Id = 37,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS EXPERTOS",
+                            Sigla = "INF428"
                         },
                         new
                         {
-                            ID = 38,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE INFORMACIÓN II",
-                            SIGLA = "INF412"
+                            Id = 38,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS DE INFORMACIÓN II",
+                            Sigla = "INF412"
                         },
                         new
                         {
-                            ID = 39,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "REDES II",
-                            SIGLA = "INF423"
+                            Id = 39,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "REDES II",
+                            Sigla = "INF423"
                         },
                         new
                         {
-                            ID = 40,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INGENIERÍA DE SOFTWARE II",
-                            SIGLA = "INF512"
+                            Id = 40,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "INGENIERÍA DE SOFTWARE II",
+                            Sigla = "INF512"
                         },
                         new
                         {
-                            ID = 57,
-                            CREDITO = (short)4,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "AUDITORÍA INFORMÁTICA",
-                            SIGLA = "INF462"
+                            Id = 57,
+                            Credito = (short)4,
+                            EsElectiva = false,
+                            Nombre = "AUDITORÍA INFORMÁTICA",
+                            Sigla = "INF462"
                         },
                         new
                         {
-                            ID = 41,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "TALLER DE GRADO I",
-                            SIGLA = "INF511"
+                            Id = 41,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "TALLER DE GRADO I",
+                            Sigla = "INF511"
                         },
                         new
                         {
-                            ID = 42,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "TECNOLOGÍA WEB",
-                            SIGLA = "INF513"
+                            Id = 42,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "TECNOLOGÍA WEB",
+                            Sigla = "INF513"
                         },
                         new
                         {
-                            ID = 43,
-                            CREDITO = (short)4,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ARQUITECTURA DE SOFTWARE",
-                            SIGLA = "INF552"
+                            Id = 43,
+                            Credito = (short)4,
+                            EsElectiva = false,
+                            Nombre = "ARQUITECTURA DE SOFTWARE",
+                            Sigla = "INF552"
                         },
                         new
                         {
-                            ID = 44,
-                            CREDITO = (short)4,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE INFORMACIÓN GEOGRÁFICA",
-                            SIGLA = "INF442"
+                            Id = 44,
+                            Credito = (short)4,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS DE INFORMACIÓN GEOGRÁFICA",
+                            Sigla = "INF442"
                         },
                         new
                         {
-                            ID = 58,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "MODALIDAD DE GRADUACIÓN",
-                            SIGLA = "GRLO01"
+                            Id = 58,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "MODALIDAD DE GRADUACIÓN",
+                            Sigla = "GRLO01"
                         },
                         new
                         {
-                            ID = 59,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "MODELACIÓN Y SIMULACIÓN DE SISTEMAS",
-                            SIGLA = "ELCI01"
+                            Id = 59,
+                            Credito = (short)10,
+                            EsElectiva = true,
+                            Nombre = "MODELACIÓN Y SIMULACIÓN DE SISTEMAS",
+                            Sigla = "ELCI01"
                         },
                         new
                         {
-                            ID = 60,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "PROGRAMACIÓN GRÁFICA",
-                            SIGLA = "ELCI02"
+                            Id = 60,
+                            Credito = (short)10,
+                            EsElectiva = true,
+                            Nombre = "PROGRAMACIÓN GRÁFICA",
+                            Sigla = "ELCI02"
                         },
                         new
                         {
-                            ID = 61,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "TÓPICOS AVANZADOS DE PROGRAMACIÓN",
-                            SIGLA = "ELCI03"
+                            Id = 61,
+                            Credito = (short)10,
+                            EsElectiva = true,
+                            Nombre = "TÓPICOS AVANZADOS DE PROGRAMACIÓN",
+                            Sigla = "ELCI03"
                         },
                         new
                         {
-                            ID = 62,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "PROGRAMACIÓN DE APLICACIONES DE TIEMPO REAL",
-                            SIGLA = "ELCI04"
+                            Id = 62,
+                            Credito = (short)10,
+                            EsElectiva = true,
+                            Nombre = "PROGRAMACIÓN DE APLICACIONES DE TIEMPO REAL",
+                            Sigla = "ELCI04"
                         },
                         new
                         {
-                            ID = 63,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "SISTEMAS DISTRIBUIDOS",
-                            SIGLA = "ELCI05"
+                            Id = 63,
+                            Credito = (short)10,
+                            EsElectiva = true,
+                            Nombre = "SISTEMAS DISTRIBUIDOS",
+                            Sigla = "ELCI05"
                         },
                         new
                         {
-                            ID = 64,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "INTERACCIÓN HOMBRE COMPUTADOR",
-                            SIGLA = "ELCI06"
+                            Id = 64,
+                            Credito = (short)10,
+                            EsElectiva = true,
+                            Nombre = "INTERACCIÓN HOMBRE COMPUTADOR",
+                            Sigla = "ELCI06"
                         },
                         new
                         {
-                            ID = 65,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "CRIPTOGRAFÍA Y SEGURIDAD",
-                            SIGLA = "ELCI07"
+                            Id = 65,
+                            Credito = (short)10,
+                            EsElectiva = true,
+                            Nombre = "CRIPTOGRAFÍA Y SEGURIDAD",
+                            Sigla = "ELCI07"
                         },
                         new
                         {
-                            ID = 66,
-                            CREDITO = (short)10,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "CONTROL AND AUTOMATIZACIÓN",
-                            SIGLA = "ELCI08"
+                            Id = 66,
+                            Credito = (short)10,
+                            EsElectiva = true,
+                            Nombre = "CONTROL AND AUTOMATIZACIÓN",
+                            Sigla = "ELCI08"
                         },
                         new
                         {
-                            ID = 67,
-                            CREDITO = (short)3,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "ADMINISTRACIÓN DE RECURSOS HUMANOS",
-                            SIGLA = "ELC001"
+                            Id = 67,
+                            Credito = (short)3,
+                            EsElectiva = true,
+                            Nombre = "ADMINISTRACIÓN DE RECURSOS HUMANOS",
+                            Sigla = "ELC001"
                         },
                         new
                         {
-                            ID = 68,
-                            CREDITO = (short)3,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "COSTOS Y PRESUPUESTOS",
-                            SIGLA = "ELC002"
+                            Id = 68,
+                            Credito = (short)3,
+                            EsElectiva = true,
+                            Nombre = "COSTOS Y PRESUPUESTOS",
+                            Sigla = "ELC002"
                         },
                         new
                         {
-                            ID = 69,
-                            CREDITO = (short)3,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "PRODUCCIÓN Y MARKETING",
-                            SIGLA = "ELC003"
+                            Id = 69,
+                            Credito = (short)3,
+                            EsElectiva = true,
+                            Nombre = "PRODUCCIÓN Y MARKETING",
+                            Sigla = "ELC003"
                         },
                         new
                         {
-                            ID = 70,
-                            CREDITO = (short)3,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "REINGENIERÍA",
-                            SIGLA = "ELC004"
+                            Id = 70,
+                            Credito = (short)3,
+                            EsElectiva = true,
+                            Nombre = "REINGENIERÍA",
+                            Sigla = "ELC004"
                         },
                         new
                         {
-                            ID = 71,
-                            CREDITO = (short)3,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "INGENIERÍA DE LA CALIDAD",
-                            SIGLA = "ELC005"
+                            Id = 71,
+                            Credito = (short)3,
+                            EsElectiva = true,
+                            Nombre = "INGENIERÍA DE LA CALIDAD",
+                            Sigla = "ELC005"
                         },
                         new
                         {
-                            ID = 72,
-                            CREDITO = (short)3,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "BENCHMARKING",
-                            SIGLA = "ELC006"
+                            Id = 72,
+                            Credito = (short)3,
+                            EsElectiva = true,
+                            Nombre = "BENCHMARKING",
+                            Sigla = "ELC006"
                         },
                         new
                         {
-                            ID = 73,
-                            CREDITO = (short)3,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "INTRODUCCIÓN A LA MACROECONOMÍA",
-                            SIGLA = "ELC007"
+                            Id = 73,
+                            Credito = (short)3,
+                            EsElectiva = true,
+                            Nombre = "INTRODUCCIÓN A LA MACROECONOMÍA",
+                            Sigla = "ELC007"
                         },
                         new
                         {
-                            ID = 74,
-                            CREDITO = (short)3,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "LEGISLACIÓN EN CIENCIAS DE LA COMPUTACIÓN",
-                            SIGLA = "ELC008"
+                            Id = 74,
+                            Credito = (short)3,
+                            EsElectiva = true,
+                            Nombre = "LEGISLACIÓN EN CIENCIAS DE LA COMPUTACIÓN",
+                            Sigla = "ELC008"
                         },
                         new
                         {
-                            ID = 75,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ANÁLISIS DE CIRCUITOS",
-                            SIGLA = "RDS210"
+                            Id = 75,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "ANÁLISIS DE CIRCUITOS",
+                            Sigla = "RDS210"
                         },
                         new
                         {
-                            ID = 76,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "TEORÍA DE CAMPOS",
-                            SIGLA = "ELT241"
+                            Id = 76,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "TEORÍA DE CAMPOS",
+                            Sigla = "ELT241"
                         },
                         new
                         {
-                            ID = 77,
-                            CREDITO = (short)4,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ANÁLISIS DE CIRCUITOS ELECTRÓNICOS",
-                            SIGLA = "RDS220"
+                            Id = 77,
+                            Credito = (short)4,
+                            EsElectiva = false,
+                            Nombre = "ANÁLISIS DE CIRCUITOS ELECTRÓNICOS",
+                            Sigla = "RDS220"
                         },
                         new
                         {
-                            ID = 78,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "ELECTRÓNICA APLICADA A REDES",
-                            SIGLA = "RDS310"
+                            Id = 78,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "ELECTRÓNICA APLICADA A REDES",
+                            Sigla = "RDS310"
                         },
                         new
                         {
-                            ID = 79,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS LÓGICOS Y DIGITALES I",
-                            SIGLA = "ELT352"
+                            Id = 79,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS LÓGICOS Y DIGITALES I",
+                            Sigla = "ELT352"
                         },
                         new
                         {
-                            ID = 80,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SEÑALES Y SISTEMAS",
-                            SIGLA = "ELT354"
+                            Id = 80,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SEÑALES Y SISTEMAS",
+                            Sigla = "ELT354"
                         },
                         new
                         {
-                            ID = 81,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "DISEÑO DE CIRCUITOS INTEGRADOS",
-                            SIGLA = "ELC201"
+                            Id = 81,
+                            Credito = (short)5,
+                            EsElectiva = true,
+                            Nombre = "DISEÑO DE CIRCUITOS INTEGRADOS",
+                            Sigla = "ELC201"
                         },
                         new
                         {
-                            ID = 82,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "INSTRUMENTACIÓN",
-                            SIGLA = "ELC202"
+                            Id = 82,
+                            Credito = (short)5,
+                            EsElectiva = true,
+                            Nombre = "INSTRUMENTACIÓN",
+                            Sigla = "ELC202"
                         },
                         new
                         {
-                            ID = 83,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS LÓGICOS Y DIGITALES II",
-                            SIGLA = "ELT362"
+                            Id = 83,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS LÓGICOS Y DIGITALES II",
+                            Sigla = "ELT362"
                         },
                         new
                         {
-                            ID = 84,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "INTERPRETACIÓN DE SISTEMAS Y SEÑALES",
-                            SIGLA = "RDS320"
+                            Id = 84,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "INTERPRETACIÓN DE SISTEMAS Y SEÑALES",
+                            Sigla = "RDS320"
                         },
                         new
                         {
-                            ID = 85,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "SISTEMAS DE COMUNICACIÓN SCADA",
-                            SIGLA = "ELC203"
+                            Id = 85,
+                            Credito = (short)5,
+                            EsElectiva = true,
+                            Nombre = "SISTEMAS DE COMUNICACIÓN SCADA",
+                            Sigla = "ELC203"
                         },
                         new
                         {
-                            ID = 86,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "TELEVISIÓN DIGITAL",
-                            SIGLA = "ELC204"
+                            Id = 86,
+                            Credito = (short)5,
+                            EsElectiva = true,
+                            Nombre = "TELEVISIÓN DIGITAL",
+                            Sigla = "ELC204"
                         },
                         new
                         {
-                            ID = 87,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "APLICACIONES CON MICROPROCESADORES",
-                            SIGLA = "RDS410"
+                            Id = 87,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "APLICACIONES CON MICROPROCESADORES",
+                            Sigla = "RDS410"
                         },
                         new
                         {
-                            ID = 88,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE COMUNICACIÓN I",
-                            SIGLA = "ELT374"
+                            Id = 88,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS DE COMUNICACIÓN I",
+                            Sigla = "ELT374"
                         },
                         new
                         {
-                            ID = 89,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "DOMÓTICA",
-                            SIGLA = "ELC205"
+                            Id = 89,
+                            Credito = (short)5,
+                            EsElectiva = true,
+                            Nombre = "DOMÓTICA",
+                            Sigla = "ELC205"
                         },
                         new
                         {
-                            ID = 90,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "LÍNEAS DE TRANSMISIÓN Y ANTENAS",
-                            SIGLA = "ELC206"
+                            Id = 90,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "LÍNEAS DE TRANSMISIÓN Y ANTENAS",
+                            Sigla = "ELC206"
                         },
                         new
                         {
-                            ID = 91,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "TALLER DE ANÁLISIS Y DISEÑO DE REDES",
-                            SIGLA = "RDS421"
+                            Id = 91,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "TALLER DE ANÁLISIS Y DISEÑO DE REDES",
+                            Sigla = "RDS421"
                         },
                         new
                         {
-                            ID = 92,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "LEGISLACIÓN EN REDES Y COMUNICACIONES",
-                            SIGLA = "RS429"
+                            Id = 92,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "LEGISLACIÓN EN REDES Y COMUNICACIONES",
+                            Sigla = "RS429"
                         },
                         new
                         {
-                            ID = 93,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SISTEMAS DE COMUNICACIÓN II",
-                            SIGLA = "ELC384"
+                            Id = 93,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SISTEMAS DE COMUNICACIÓN II",
+                            Sigla = "ELC384"
                         },
                         new
                         {
-                            ID = 94,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "TÉCNICAS DE PRESENTACIÓN PARA INGENIERÍA",
-                            SIGLA = "ELC207"
+                            Id = 94,
+                            Credito = (short)5,
+                            EsElectiva = true,
+                            Nombre = "TÉCNICAS DE PRESENTACIÓN PARA INGENIERÍA",
+                            Sigla = "ELC207"
                         },
                         new
                         {
-                            ID = 95,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = true,
-                            NOMBRE = "REDES ADHOC",
-                            SIGLA = "ELC208"
+                            Id = 95,
+                            Credito = (short)5,
+                            EsElectiva = true,
+                            Nombre = "REDES ADHOC",
+                            Sigla = "ELC208"
                         },
                         new
                         {
-                            ID = 96,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "GESTIÓN Y ADMINISTRACIÓN DE REDES",
-                            SIGLA = "RDS511"
+                            Id = 96,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "GESTIÓN Y ADMINISTRACIÓN DE REDES",
+                            Sigla = "RDS511"
                         },
                         new
                         {
-                            ID = 97,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "REDES INALÁMBRICAS Y COMUNICACIONES MÓVILES",
-                            SIGLA = "RDS512"
+                            Id = 97,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "REDES INALÁMBRICAS Y COMUNICACIONES MÓVILES",
+                            Sigla = "RDS512"
                         },
                         new
                         {
-                            ID = 98,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "SEGURIDAD EN REDES Y TRANSMISIÓN DE DATOS",
-                            SIGLA = "RDS519"
+                            Id = 98,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "SEGURIDAD EN REDES Y TRANSMISIÓN DE DATOS",
+                            Sigla = "RDS519"
                         },
                         new
                         {
-                            ID = 99,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "MODALIDAD DE TITULACIÓN A NIVEL TÉCNICO SUPERIOR",
-                            SIGLA = "GRT001"
+                            Id = 99,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "MODALIDAD DE TITULACIÓN A NIVEL TÉCNICO SUPERIOR",
+                            Sigla = "GRT001"
                         },
                         new
                         {
-                            ID = 100,
-                            CREDITO = (short)5,
-                            ES_ELECTIVA = false,
-                            NOMBRE = "MODALIDAD DE TITULACIÓN LICENCIATURA",
-                            SIGLA = "GRL001"
+                            Id = 100,
+                            Credito = (short)5,
+                            EsElectiva = false,
+                            Nombre = "MODALIDAD DE TITULACIÓN LICENCIATURA",
+                            Sigla = "GRL001"
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.MateriaPlanEstudio", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("MATERIA_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("MateriaId")
+                        .HasColumnType("integer")
+                        .HasColumnName("materia_id");
 
-                    b.Property<int>("NIVEL_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("NivelId")
+                        .HasColumnType("integer")
+                        .HasColumnName("nivel_id");
 
-                    b.Property<int>("PLAN_ESTUDIO_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("PlanEstudioId")
+                        .HasColumnType("integer")
+                        .HasColumnName("plan_estudio_id");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_materia_plan_estudio");
 
-                    b.HasIndex("MATERIA_ID");
+                    b.HasIndex("MateriaId")
+                        .HasDatabaseName("ix_materia_plan_estudio_materia_id");
 
-                    b.HasIndex("NIVEL_ID");
+                    b.HasIndex("NivelId")
+                        .HasDatabaseName("ix_materia_plan_estudio_nivel_id");
 
-                    b.HasIndex("PLAN_ESTUDIO_ID");
+                    b.HasIndex("PlanEstudioId")
+                        .HasDatabaseName("ix_materia_plan_estudio_plan_estudio_id");
 
-                    b.ToTable("MATERIA_PLAN_ESTUDIO");
+                    b.ToTable("materia_plan_estudio", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            MATERIA_ID = 1,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 1,
+                            MateriaId = 1,
+                            NivelId = 1,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 2,
-                            MATERIA_ID = 2,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 2,
+                            MateriaId = 2,
+                            NivelId = 1,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 3,
-                            MATERIA_ID = 3,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 3,
+                            MateriaId = 3,
+                            NivelId = 1,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 4,
-                            MATERIA_ID = 4,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 4,
+                            MateriaId = 4,
+                            NivelId = 1,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 5,
-                            MATERIA_ID = 5,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 5,
+                            MateriaId = 5,
+                            NivelId = 1,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 6,
-                            MATERIA_ID = 6,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 6,
+                            MateriaId = 6,
+                            NivelId = 2,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 7,
-                            MATERIA_ID = 7,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 7,
+                            MateriaId = 7,
+                            NivelId = 2,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 8,
-                            MATERIA_ID = 8,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 8,
+                            MateriaId = 8,
+                            NivelId = 2,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 9,
-                            MATERIA_ID = 9,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 9,
+                            MateriaId = 9,
+                            NivelId = 2,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 10,
-                            MATERIA_ID = 10,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 10,
+                            MateriaId = 10,
+                            NivelId = 2,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 11,
-                            MATERIA_ID = 11,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 11,
+                            MateriaId = 11,
+                            NivelId = 3,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 12,
-                            MATERIA_ID = 12,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 12,
+                            MateriaId = 12,
+                            NivelId = 3,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 13,
-                            MATERIA_ID = 13,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 13,
+                            MateriaId = 13,
+                            NivelId = 3,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 14,
-                            MATERIA_ID = 14,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 14,
+                            MateriaId = 14,
+                            NivelId = 3,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 15,
-                            MATERIA_ID = 15,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 15,
+                            MateriaId = 15,
+                            NivelId = 3,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 16,
-                            MATERIA_ID = 16,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 16,
+                            MateriaId = 16,
+                            NivelId = 4,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 17,
-                            MATERIA_ID = 17,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 17,
+                            MateriaId = 17,
+                            NivelId = 4,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 18,
-                            MATERIA_ID = 18,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 18,
+                            MateriaId = 18,
+                            NivelId = 4,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 19,
-                            MATERIA_ID = 19,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 19,
+                            MateriaId = 19,
+                            NivelId = 4,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 20,
-                            MATERIA_ID = 20,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 20,
+                            MateriaId = 20,
+                            NivelId = 4,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 21,
-                            MATERIA_ID = 21,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 21,
+                            MateriaId = 21,
+                            NivelId = 5,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 22,
-                            MATERIA_ID = 22,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 22,
+                            MateriaId = 22,
+                            NivelId = 5,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 23,
-                            MATERIA_ID = 23,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 23,
+                            MateriaId = 23,
+                            NivelId = 5,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 24,
-                            MATERIA_ID = 24,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 24,
+                            MateriaId = 24,
+                            NivelId = 5,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 25,
-                            MATERIA_ID = 25,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 25,
+                            MateriaId = 25,
+                            NivelId = 5,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 26,
-                            MATERIA_ID = 26,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 26,
+                            MateriaId = 26,
+                            NivelId = 6,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 27,
-                            MATERIA_ID = 27,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 27,
+                            MateriaId = 27,
+                            NivelId = 6,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 28,
-                            MATERIA_ID = 28,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 28,
+                            MateriaId = 28,
+                            NivelId = 6,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 29,
-                            MATERIA_ID = 29,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 29,
+                            MateriaId = 29,
+                            NivelId = 6,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 30,
-                            MATERIA_ID = 30,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 30,
+                            MateriaId = 30,
+                            NivelId = 6,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 31,
-                            MATERIA_ID = 31,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 31,
+                            MateriaId = 31,
+                            NivelId = 7,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 32,
-                            MATERIA_ID = 32,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 32,
+                            MateriaId = 32,
+                            NivelId = 7,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 33,
-                            MATERIA_ID = 33,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 33,
+                            MateriaId = 33,
+                            NivelId = 7,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 34,
-                            MATERIA_ID = 34,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 34,
+                            MateriaId = 34,
+                            NivelId = 7,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 35,
-                            MATERIA_ID = 38,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 35,
+                            MateriaId = 38,
+                            NivelId = 7,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 36,
-                            MATERIA_ID = 36,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 36,
+                            MateriaId = 36,
+                            NivelId = 8,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 37,
-                            MATERIA_ID = 37,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 37,
+                            MateriaId = 37,
+                            NivelId = 8,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 38,
-                            MATERIA_ID = 44,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 38,
+                            MateriaId = 44,
+                            NivelId = 8,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 39,
-                            MATERIA_ID = 39,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 39,
+                            MateriaId = 39,
+                            NivelId = 8,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 40,
-                            MATERIA_ID = 35,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 40,
+                            MateriaId = 35,
+                            NivelId = 8,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 41,
-                            MATERIA_ID = 41,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 41,
+                            MateriaId = 41,
+                            NivelId = 9,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 44,
-                            MATERIA_ID = 40,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 44,
+                            MateriaId = 40,
+                            NivelId = 9,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 42,
-                            MATERIA_ID = 42,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 42,
+                            MateriaId = 42,
+                            NivelId = 9,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 43,
-                            MATERIA_ID = 43,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 43,
+                            MateriaId = 43,
+                            NivelId = 9,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 45,
-                            MATERIA_ID = 100,
-                            NIVEL_ID = 10,
-                            PLAN_ESTUDIO_ID = 1
+                            Id = 45,
+                            MateriaId = 100,
+                            NivelId = 10,
+                            PlanEstudioId = 1
                         },
                         new
                         {
-                            ID = 46,
-                            MATERIA_ID = 1,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 46,
+                            MateriaId = 1,
+                            NivelId = 1,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 47,
-                            MATERIA_ID = 2,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 47,
+                            MateriaId = 2,
+                            NivelId = 1,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 48,
-                            MATERIA_ID = 3,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 48,
+                            MateriaId = 3,
+                            NivelId = 1,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 49,
-                            MATERIA_ID = 4,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 49,
+                            MateriaId = 4,
+                            NivelId = 1,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 50,
-                            MATERIA_ID = 5,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 50,
+                            MateriaId = 5,
+                            NivelId = 1,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 51,
-                            MATERIA_ID = 6,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 51,
+                            MateriaId = 6,
+                            NivelId = 2,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 52,
-                            MATERIA_ID = 7,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 52,
+                            MateriaId = 7,
+                            NivelId = 2,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 53,
-                            MATERIA_ID = 8,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 53,
+                            MateriaId = 8,
+                            NivelId = 2,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 54,
-                            MATERIA_ID = 9,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 54,
+                            MateriaId = 9,
+                            NivelId = 2,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 55,
-                            MATERIA_ID = 10,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 55,
+                            MateriaId = 10,
+                            NivelId = 2,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 56,
-                            MATERIA_ID = 11,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 56,
+                            MateriaId = 11,
+                            NivelId = 3,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 57,
-                            MATERIA_ID = 12,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 57,
+                            MateriaId = 12,
+                            NivelId = 3,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 58,
-                            MATERIA_ID = 13,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 58,
+                            MateriaId = 13,
+                            NivelId = 3,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 59,
-                            MATERIA_ID = 14,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 59,
+                            MateriaId = 14,
+                            NivelId = 3,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 60,
-                            MATERIA_ID = 15,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 60,
+                            MateriaId = 15,
+                            NivelId = 3,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 61,
-                            MATERIA_ID = 16,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 61,
+                            MateriaId = 16,
+                            NivelId = 4,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 62,
-                            MATERIA_ID = 17,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 62,
+                            MateriaId = 17,
+                            NivelId = 4,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 63,
-                            MATERIA_ID = 18,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 63,
+                            MateriaId = 18,
+                            NivelId = 4,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 64,
-                            MATERIA_ID = 19,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 64,
+                            MateriaId = 19,
+                            NivelId = 4,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 65,
-                            MATERIA_ID = 20,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 65,
+                            MateriaId = 20,
+                            NivelId = 4,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 66,
-                            MATERIA_ID = 21,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 66,
+                            MateriaId = 21,
+                            NivelId = 5,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 68,
-                            MATERIA_ID = 23,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 68,
+                            MateriaId = 23,
+                            NivelId = 5,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 69,
-                            MATERIA_ID = 24,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 69,
+                            MateriaId = 24,
+                            NivelId = 5,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 71,
-                            MATERIA_ID = 53,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 71,
+                            MateriaId = 53,
+                            NivelId = 5,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 72,
-                            MATERIA_ID = 54,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 72,
+                            MateriaId = 54,
+                            NivelId = 5,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 73,
-                            MATERIA_ID = 26,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 73,
+                            MateriaId = 26,
+                            NivelId = 6,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 74,
-                            MATERIA_ID = 27,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 74,
+                            MateriaId = 27,
+                            NivelId = 6,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 75,
-                            MATERIA_ID = 28,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 75,
+                            MateriaId = 28,
+                            NivelId = 6,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 76,
-                            MATERIA_ID = 29,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 76,
+                            MateriaId = 29,
+                            NivelId = 6,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 78,
-                            MATERIA_ID = 55,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 78,
+                            MateriaId = 55,
+                            NivelId = 6,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 79,
-                            MATERIA_ID = 31,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 79,
+                            MateriaId = 31,
+                            NivelId = 7,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 81,
-                            MATERIA_ID = 33,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 81,
+                            MateriaId = 33,
+                            NivelId = 7,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 82,
-                            MATERIA_ID = 34,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 82,
+                            MateriaId = 34,
+                            NivelId = 7,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 83,
-                            MATERIA_ID = 38,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 83,
+                            MateriaId = 38,
+                            NivelId = 7,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 84,
-                            MATERIA_ID = 56,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 84,
+                            MateriaId = 56,
+                            NivelId = 7,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 85,
-                            MATERIA_ID = 36,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 85,
+                            MateriaId = 36,
+                            NivelId = 8,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 87,
-                            MATERIA_ID = 35,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 87,
+                            MateriaId = 35,
+                            NivelId = 8,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 88,
-                            MATERIA_ID = 39,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 88,
+                            MateriaId = 39,
+                            NivelId = 8,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 89,
-                            MATERIA_ID = 44,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 89,
+                            MateriaId = 44,
+                            NivelId = 8,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 90,
-                            MATERIA_ID = 57,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 90,
+                            MateriaId = 57,
+                            NivelId = 8,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 91,
-                            MATERIA_ID = 41,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 91,
+                            MateriaId = 41,
+                            NivelId = 9,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 92,
-                            MATERIA_ID = 42,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 92,
+                            MateriaId = 42,
+                            NivelId = 9,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 93,
-                            MATERIA_ID = 43,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 93,
+                            MateriaId = 43,
+                            NivelId = 9,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 94,
-                            MATERIA_ID = 40,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 94,
+                            MateriaId = 40,
+                            NivelId = 9,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 95,
-                            MATERIA_ID = 100,
-                            NIVEL_ID = 10,
-                            PLAN_ESTUDIO_ID = 2
+                            Id = 95,
+                            MateriaId = 100,
+                            NivelId = 10,
+                            PlanEstudioId = 2
                         },
                         new
                         {
-                            ID = 96,
-                            MATERIA_ID = 1,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 96,
+                            MateriaId = 1,
+                            NivelId = 1,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 97,
-                            MATERIA_ID = 2,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 97,
+                            MateriaId = 2,
+                            NivelId = 1,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 98,
-                            MATERIA_ID = 3,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 98,
+                            MateriaId = 3,
+                            NivelId = 1,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 99,
-                            MATERIA_ID = 4,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 99,
+                            MateriaId = 4,
+                            NivelId = 1,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 100,
-                            MATERIA_ID = 5,
-                            NIVEL_ID = 1,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 100,
+                            MateriaId = 5,
+                            NivelId = 1,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 101,
-                            MATERIA_ID = 6,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 101,
+                            MateriaId = 6,
+                            NivelId = 2,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 102,
-                            MATERIA_ID = 7,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 102,
+                            MateriaId = 7,
+                            NivelId = 2,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 103,
-                            MATERIA_ID = 8,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 103,
+                            MateriaId = 8,
+                            NivelId = 2,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 104,
-                            MATERIA_ID = 9,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 104,
+                            MateriaId = 9,
+                            NivelId = 2,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 105,
-                            MATERIA_ID = 10,
-                            NIVEL_ID = 2,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 105,
+                            MateriaId = 10,
+                            NivelId = 2,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 106,
-                            MATERIA_ID = 11,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 106,
+                            MateriaId = 11,
+                            NivelId = 3,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 107,
-                            MATERIA_ID = 12,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 107,
+                            MateriaId = 12,
+                            NivelId = 3,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 108,
-                            MATERIA_ID = 13,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 108,
+                            MateriaId = 13,
+                            NivelId = 3,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 109,
-                            MATERIA_ID = 75,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 109,
+                            MateriaId = 75,
+                            NivelId = 3,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 110,
-                            MATERIA_ID = 76,
-                            NIVEL_ID = 3,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 110,
+                            MateriaId = 76,
+                            NivelId = 3,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 111,
-                            MATERIA_ID = 16,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 111,
+                            MateriaId = 16,
+                            NivelId = 4,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 112,
-                            MATERIA_ID = 17,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 112,
+                            MateriaId = 17,
+                            NivelId = 4,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 113,
-                            MATERIA_ID = 18,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 113,
+                            MateriaId = 18,
+                            NivelId = 4,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 114,
-                            MATERIA_ID = 19,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 114,
+                            MateriaId = 19,
+                            NivelId = 4,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 115,
-                            MATERIA_ID = 77,
-                            NIVEL_ID = 4,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 115,
+                            MateriaId = 77,
+                            NivelId = 4,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 116,
-                            MATERIA_ID = 21,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 116,
+                            MateriaId = 21,
+                            NivelId = 5,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 117,
-                            MATERIA_ID = 24,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 117,
+                            MateriaId = 24,
+                            NivelId = 5,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 118,
-                            MATERIA_ID = 78,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 118,
+                            MateriaId = 78,
+                            NivelId = 5,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 119,
-                            MATERIA_ID = 79,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 119,
+                            MateriaId = 79,
+                            NivelId = 5,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 120,
-                            MATERIA_ID = 80,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 120,
+                            MateriaId = 80,
+                            NivelId = 5,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 121,
-                            MATERIA_ID = 81,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 121,
+                            MateriaId = 81,
+                            NivelId = 5,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 122,
-                            MATERIA_ID = 82,
-                            NIVEL_ID = 5,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 122,
+                            MateriaId = 82,
+                            NivelId = 5,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 123,
-                            MATERIA_ID = 28,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 123,
+                            MateriaId = 28,
+                            NivelId = 6,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 124,
-                            MATERIA_ID = 29,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 124,
+                            MateriaId = 29,
+                            NivelId = 6,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 125,
-                            MATERIA_ID = 26,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 125,
+                            MateriaId = 26,
+                            NivelId = 6,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 126,
-                            MATERIA_ID = 83,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 126,
+                            MateriaId = 83,
+                            NivelId = 6,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 127,
-                            MATERIA_ID = 84,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 127,
+                            MateriaId = 84,
+                            NivelId = 6,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 128,
-                            MATERIA_ID = 85,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 128,
+                            MateriaId = 85,
+                            NivelId = 6,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 129,
-                            MATERIA_ID = 86,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 129,
+                            MateriaId = 86,
+                            NivelId = 6,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 130,
-                            MATERIA_ID = 99,
-                            NIVEL_ID = 6,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 130,
+                            MateriaId = 99,
+                            NivelId = 6,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 131,
-                            MATERIA_ID = 34,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 131,
+                            MateriaId = 34,
+                            NivelId = 7,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 132,
-                            MATERIA_ID = 33,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 132,
+                            MateriaId = 33,
+                            NivelId = 7,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 133,
-                            MATERIA_ID = 31,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 133,
+                            MateriaId = 31,
+                            NivelId = 7,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 134,
-                            MATERIA_ID = 87,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 134,
+                            MateriaId = 87,
+                            NivelId = 7,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 135,
-                            MATERIA_ID = 88,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 135,
+                            MateriaId = 88,
+                            NivelId = 7,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 136,
-                            MATERIA_ID = 89,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 136,
+                            MateriaId = 89,
+                            NivelId = 7,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 137,
-                            MATERIA_ID = 90,
-                            NIVEL_ID = 7,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 137,
+                            MateriaId = 90,
+                            NivelId = 7,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 138,
-                            MATERIA_ID = 39,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 138,
+                            MateriaId = 39,
+                            NivelId = 8,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 139,
-                            MATERIA_ID = 36,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 139,
+                            MateriaId = 36,
+                            NivelId = 8,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 140,
-                            MATERIA_ID = 91,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 140,
+                            MateriaId = 91,
+                            NivelId = 8,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 141,
-                            MATERIA_ID = 92,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 141,
+                            MateriaId = 92,
+                            NivelId = 8,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 142,
-                            MATERIA_ID = 93,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 142,
+                            MateriaId = 93,
+                            NivelId = 8,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 143,
-                            MATERIA_ID = 94,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 143,
+                            MateriaId = 94,
+                            NivelId = 8,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 144,
-                            MATERIA_ID = 95,
-                            NIVEL_ID = 8,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 144,
+                            MateriaId = 95,
+                            NivelId = 8,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 145,
-                            MATERIA_ID = 41,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 145,
+                            MateriaId = 41,
+                            NivelId = 9,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 146,
-                            MATERIA_ID = 42,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 146,
+                            MateriaId = 42,
+                            NivelId = 9,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 147,
-                            MATERIA_ID = 96,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 147,
+                            MateriaId = 96,
+                            NivelId = 9,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 148,
-                            MATERIA_ID = 97,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 148,
+                            MateriaId = 97,
+                            NivelId = 9,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 149,
-                            MATERIA_ID = 98,
-                            NIVEL_ID = 9,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 149,
+                            MateriaId = 98,
+                            NivelId = 9,
+                            PlanEstudioId = 3
                         },
                         new
                         {
-                            ID = 150,
-                            MATERIA_ID = 100,
-                            NIVEL_ID = 10,
-                            PLAN_ESTUDIO_ID = 3
+                            Id = 150,
+                            MateriaId = 100,
+                            NivelId = 10,
+                            PlanEstudioId = 3
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.Modulo", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<short>("NRO_MODULO")
-                        .HasColumnType("smallint");
+                    b.Property<short>("NroModulo")
+                        .HasColumnType("smallint")
+                        .HasColumnName("nro_modulo");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_modulo");
 
-                    b.ToTable("MODULO");
+                    b.ToTable("modulo", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            NRO_MODULO = (short)236
+                            Id = 1,
+                            NroModulo = (short)236
                         },
                         new
                         {
-                            ID = 2,
-                            NRO_MODULO = (short)225
+                            Id = 2,
+                            NroModulo = (short)225
                         },
                         new
                         {
-                            ID = 3,
-                            NRO_MODULO = (short)260
+                            Id = 3,
+                            NroModulo = (short)260
                         },
                         new
                         {
-                            ID = 4,
-                            NRO_MODULO = (short)224
+                            Id = 4,
+                            NroModulo = (short)224
                         },
                         new
                         {
-                            ID = 5,
-                            NRO_MODULO = (short)256
+                            Id = 5,
+                            NroModulo = (short)256
                         },
                         new
                         {
-                            ID = 6,
-                            NRO_MODULO = (short)222
+                            Id = 6,
+                            NroModulo = (short)222
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.Nivel", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("NOMBRE")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("nombre");
 
-                    b.HasKey("ID");
+                    b.Property<short>("Orden")
+                        .HasColumnType("smallint")
+                        .HasColumnName("orden");
 
-                    b.ToTable("NIVEL");
+                    b.HasKey("Id")
+                        .HasName("pk_nivel");
+
+                    b.ToTable("nivel", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            NOMBRE = "1 SEMESTRE"
+                            Id = 1,
+                            Nombre = "1 SEMESTRE",
+                            Orden = (short)1
                         },
                         new
                         {
-                            ID = 2,
-                            NOMBRE = "2 SEMESTRE"
+                            Id = 2,
+                            Nombre = "2 SEMESTRE",
+                            Orden = (short)2
                         },
                         new
                         {
-                            ID = 3,
-                            NOMBRE = "3 SEMESTRE"
+                            Id = 3,
+                            Nombre = "3 SEMESTRE",
+                            Orden = (short)3
                         },
                         new
                         {
-                            ID = 4,
-                            NOMBRE = "4 SEMESTRE"
+                            Id = 4,
+                            Nombre = "4 SEMESTRE",
+                            Orden = (short)4
                         },
                         new
                         {
-                            ID = 5,
-                            NOMBRE = "5 SEMESTRE"
+                            Id = 5,
+                            Nombre = "5 SEMESTRE",
+                            Orden = (short)5
                         },
                         new
                         {
-                            ID = 6,
-                            NOMBRE = "6 SEMESTRE"
+                            Id = 6,
+                            Nombre = "6 SEMESTRE",
+                            Orden = (short)6
                         },
                         new
                         {
-                            ID = 7,
-                            NOMBRE = "7 SEMESTRE"
+                            Id = 7,
+                            Nombre = "7 SEMESTRE",
+                            Orden = (short)7
                         },
                         new
                         {
-                            ID = 8,
-                            NOMBRE = "8 SEMESTRE"
+                            Id = 8,
+                            Nombre = "8 SEMESTRE",
+                            Orden = (short)8
                         },
                         new
                         {
-                            ID = 9,
-                            NOMBRE = "9 SEMESTRE"
+                            Id = 9,
+                            Nombre = "9 SEMESTRE",
+                            Orden = (short)9
                         },
                         new
                         {
-                            ID = 10,
-                            NOMBRE = "10 SEMESTRE"
+                            Id = 10,
+                            Nombre = "10 SEMESTRE",
+                            Orden = (short)10
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.Nota", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ALUMNO_ID")
-                        .HasColumnType("integer");
+                    b.Property<int?>("AlumnoId")
+                        .HasColumnType("integer")
+                        .HasColumnName("alumno_id");
 
-                    b.Property<decimal>("CALIFICACION")
-                        .HasColumnType("numeric");
+                    b.Property<decimal>("Calificacion")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)")
+                        .HasColumnName("calificacion");
 
-                    b.Property<int?>("HORARIO_MATERIA_INSCRIPCION_ID")
-                        .HasColumnType("integer");
+                    b.Property<int?>("HorarioMateriaInscripcionId")
+                        .HasColumnType("integer")
+                        .HasColumnName("horario_materia_inscripcion_id");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_nota");
 
-                    b.HasIndex("ALUMNO_ID");
+                    b.HasIndex("AlumnoId")
+                        .HasDatabaseName("ix_nota_alumno_id");
 
-                    b.HasIndex("HORARIO_MATERIA_INSCRIPCION_ID");
+                    b.HasIndex("HorarioMateriaInscripcionId")
+                        .HasDatabaseName("ix_nota_horario_materia_inscripcion_id");
 
-                    b.ToTable("NOTA");
+                    b.ToTable("nota", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.PlanEstudio", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CARRERA_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("CarreraId")
+                        .HasColumnType("integer")
+                        .HasColumnName("carrera_id");
 
-                    b.Property<string>("CODIGO")
+                    b.Property<string>("Codigo")
                         .IsRequired()
                         .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("codigo");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id")
+                        .HasName("pk_plan_estudio");
 
-                    b.HasIndex("CARRERA_ID");
+                    b.HasIndex("CarreraId")
+                        .HasDatabaseName("ix_plan_estudio_carrera_id");
 
-                    b.ToTable("PLAN_ESTUDIO");
+                    b.ToTable("plan_estudio", (string)null);
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            CARRERA_ID = 2,
-                            CODIGO = "ING-INF"
+                            Id = 1,
+                            CarreraId = 2,
+                            Codigo = "ING-INF"
                         },
                         new
                         {
-                            ID = 2,
-                            CARRERA_ID = 3,
-                            CODIGO = "ING-SIS"
+                            Id = 2,
+                            CarreraId = 3,
+                            Codigo = "ING-SIS"
                         },
                         new
                         {
-                            ID = 3,
-                            CARRERA_ID = 1,
-                            CODIGO = "ING-RED"
+                            Id = 3,
+                            CarreraId = 1,
+                            Codigo = "ING-RED"
                         },
                         new
                         {
-                            ID = 4,
-                            CARRERA_ID = 4,
-                            CODIGO = "ING-ROB"
+                            Id = 4,
+                            CarreraId = 4,
+                            Codigo = "ING-ROB"
                         });
                 });
 
             modelBuilder.Entity("Domain.Models.Prerequisito", b =>
                 {
-                    b.Property<int>("MATERIA_PLAN_ESTUDIO_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("MateriaPlanEstudioId")
+                        .HasColumnType("integer")
+                        .HasColumnName("materia_plan_estudio_id");
 
-                    b.Property<int>("REQUISITO_ID")
-                        .HasColumnType("integer");
+                    b.Property<int>("RequisitoId")
+                        .HasColumnType("integer")
+                        .HasColumnName("requisito_id");
 
-                    b.HasKey("MATERIA_PLAN_ESTUDIO_ID", "REQUISITO_ID");
+                    b.HasKey("MateriaPlanEstudioId", "RequisitoId")
+                        .HasName("pk_prerequisito");
 
-                    b.HasIndex("REQUISITO_ID");
+                    b.HasIndex("MateriaPlanEstudioId")
+                        .HasDatabaseName("ix_prerequisito_materia_plan_estudio_id");
 
-                    b.ToTable("PREREQUISITO");
+                    b.HasIndex("RequisitoId")
+                        .HasDatabaseName("ix_prerequisito_requisito_id");
+
+                    b.ToTable("prerequisito", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_prereq_no_self", "\"materia_plan_estudio_id\" <> \"requisito_id\"");
+                        });
 
                     b.HasData(
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 6,
-                            REQUISITO_ID = 1
+                            MateriaPlanEstudioId = 6,
+                            RequisitoId = 1
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 7,
-                            REQUISITO_ID = 2
+                            MateriaPlanEstudioId = 7,
+                            RequisitoId = 2
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 8,
-                            REQUISITO_ID = 3
+                            MateriaPlanEstudioId = 8,
+                            RequisitoId = 3
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 9,
-                            REQUISITO_ID = 4
+                            MateriaPlanEstudioId = 9,
+                            RequisitoId = 4
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 10,
-                            REQUISITO_ID = 5
+                            MateriaPlanEstudioId = 10,
+                            RequisitoId = 5
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 11,
-                            REQUISITO_ID = 6
+                            MateriaPlanEstudioId = 11,
+                            RequisitoId = 6
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 12,
-                            REQUISITO_ID = 7
+                            MateriaPlanEstudioId = 12,
+                            RequisitoId = 7
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 12,
-                            REQUISITO_ID = 8
+                            MateriaPlanEstudioId = 12,
+                            RequisitoId = 8
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 13,
-                            REQUISITO_ID = 8
+                            MateriaPlanEstudioId = 13,
+                            RequisitoId = 8
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 13,
-                            REQUISITO_ID = 9
+                            MateriaPlanEstudioId = 13,
+                            RequisitoId = 9
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 14,
-                            REQUISITO_ID = 9
+                            MateriaPlanEstudioId = 14,
+                            RequisitoId = 9
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 16,
-                            REQUISITO_ID = 6
+                            MateriaPlanEstudioId = 16,
+                            RequisitoId = 6
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 17,
-                            REQUISITO_ID = 11
+                            MateriaPlanEstudioId = 17,
+                            RequisitoId = 11
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 18,
-                            REQUISITO_ID = 12
+                            MateriaPlanEstudioId = 18,
+                            RequisitoId = 12
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 19,
-                            REQUISITO_ID = 13
+                            MateriaPlanEstudioId = 19,
+                            RequisitoId = 13
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 20,
-                            REQUISITO_ID = 15
+                            MateriaPlanEstudioId = 20,
+                            RequisitoId = 15
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 21,
-                            REQUISITO_ID = 16
+                            MateriaPlanEstudioId = 21,
+                            RequisitoId = 16
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 22,
-                            REQUISITO_ID = 18
+                            MateriaPlanEstudioId = 22,
+                            RequisitoId = 18
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 23,
-                            REQUISITO_ID = 18
+                            MateriaPlanEstudioId = 23,
+                            RequisitoId = 18
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 24,
-                            REQUISITO_ID = 18
+                            MateriaPlanEstudioId = 24,
+                            RequisitoId = 18
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 25,
-                            REQUISITO_ID = 18
+                            MateriaPlanEstudioId = 25,
+                            RequisitoId = 18
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 26,
-                            REQUISITO_ID = 21
+                            MateriaPlanEstudioId = 26,
+                            RequisitoId = 21
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 27,
-                            REQUISITO_ID = 24
+                            MateriaPlanEstudioId = 27,
+                            RequisitoId = 24
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 28,
-                            REQUISITO_ID = 23
+                            MateriaPlanEstudioId = 28,
+                            RequisitoId = 23
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 29,
-                            REQUISITO_ID = 24
+                            MateriaPlanEstudioId = 29,
+                            RequisitoId = 24
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 30,
-                            REQUISITO_ID = 25
+                            MateriaPlanEstudioId = 30,
+                            RequisitoId = 25
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 30,
-                            REQUISITO_ID = 23
+                            MateriaPlanEstudioId = 30,
+                            RequisitoId = 23
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 31,
-                            REQUISITO_ID = 26
+                            MateriaPlanEstudioId = 31,
+                            RequisitoId = 26
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 32,
-                            REQUISITO_ID = 30
+                            MateriaPlanEstudioId = 32,
+                            RequisitoId = 30
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 32,
-                            REQUISITO_ID = 23
+                            MateriaPlanEstudioId = 32,
+                            RequisitoId = 23
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 33,
-                            REQUISITO_ID = 28
+                            MateriaPlanEstudioId = 33,
+                            RequisitoId = 28
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 34,
-                            REQUISITO_ID = 28
+                            MateriaPlanEstudioId = 34,
+                            RequisitoId = 28
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 35,
-                            REQUISITO_ID = 27
+                            MateriaPlanEstudioId = 35,
+                            RequisitoId = 27
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 35,
-                            REQUISITO_ID = 29
+                            MateriaPlanEstudioId = 35,
+                            RequisitoId = 29
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 36,
-                            REQUISITO_ID = 31
+                            MateriaPlanEstudioId = 36,
+                            RequisitoId = 31
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 37,
-                            REQUISITO_ID = 32
+                            MateriaPlanEstudioId = 37,
+                            RequisitoId = 32
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 37,
-                            REQUISITO_ID = 35
+                            MateriaPlanEstudioId = 37,
+                            RequisitoId = 35
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 38,
-                            REQUISITO_ID = 35
+                            MateriaPlanEstudioId = 38,
+                            RequisitoId = 35
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 39,
-                            REQUISITO_ID = 34
+                            MateriaPlanEstudioId = 39,
+                            RequisitoId = 34
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 40,
-                            REQUISITO_ID = 35
+                            MateriaPlanEstudioId = 40,
+                            RequisitoId = 35
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 41,
-                            REQUISITO_ID = 36
+                            MateriaPlanEstudioId = 41,
+                            RequisitoId = 36
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 41,
-                            REQUISITO_ID = 37
+                            MateriaPlanEstudioId = 41,
+                            RequisitoId = 37
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 41,
-                            REQUISITO_ID = 38
+                            MateriaPlanEstudioId = 41,
+                            RequisitoId = 38
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 41,
-                            REQUISITO_ID = 39
+                            MateriaPlanEstudioId = 41,
+                            RequisitoId = 39
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 41,
-                            REQUISITO_ID = 40
+                            MateriaPlanEstudioId = 41,
+                            RequisitoId = 40
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 44,
-                            REQUISITO_ID = 36
+                            MateriaPlanEstudioId = 44,
+                            RequisitoId = 36
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 44,
-                            REQUISITO_ID = 37
+                            MateriaPlanEstudioId = 44,
+                            RequisitoId = 37
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 44,
-                            REQUISITO_ID = 38
+                            MateriaPlanEstudioId = 44,
+                            RequisitoId = 38
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 44,
-                            REQUISITO_ID = 39
+                            MateriaPlanEstudioId = 44,
+                            RequisitoId = 39
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 44,
-                            REQUISITO_ID = 40
+                            MateriaPlanEstudioId = 44,
+                            RequisitoId = 40
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 42,
-                            REQUISITO_ID = 36
+                            MateriaPlanEstudioId = 42,
+                            RequisitoId = 36
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 42,
-                            REQUISITO_ID = 37
+                            MateriaPlanEstudioId = 42,
+                            RequisitoId = 37
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 42,
-                            REQUISITO_ID = 38
+                            MateriaPlanEstudioId = 42,
+                            RequisitoId = 38
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 42,
-                            REQUISITO_ID = 39
+                            MateriaPlanEstudioId = 42,
+                            RequisitoId = 39
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 42,
-                            REQUISITO_ID = 40
+                            MateriaPlanEstudioId = 42,
+                            RequisitoId = 40
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 43,
-                            REQUISITO_ID = 36
+                            MateriaPlanEstudioId = 43,
+                            RequisitoId = 36
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 43,
-                            REQUISITO_ID = 37
+                            MateriaPlanEstudioId = 43,
+                            RequisitoId = 37
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 43,
-                            REQUISITO_ID = 38
+                            MateriaPlanEstudioId = 43,
+                            RequisitoId = 38
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 43,
-                            REQUISITO_ID = 39
+                            MateriaPlanEstudioId = 43,
+                            RequisitoId = 39
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 43,
-                            REQUISITO_ID = 40
+                            MateriaPlanEstudioId = 43,
+                            RequisitoId = 40
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 45,
-                            REQUISITO_ID = 41
+                            MateriaPlanEstudioId = 45,
+                            RequisitoId = 41
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 45,
-                            REQUISITO_ID = 44
+                            MateriaPlanEstudioId = 45,
+                            RequisitoId = 44
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 45,
-                            REQUISITO_ID = 42
+                            MateriaPlanEstudioId = 45,
+                            RequisitoId = 42
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 45,
-                            REQUISITO_ID = 43
+                            MateriaPlanEstudioId = 45,
+                            RequisitoId = 43
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 54,
-                            REQUISITO_ID = 49
+                            MateriaPlanEstudioId = 54,
+                            RequisitoId = 49
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 53,
-                            REQUISITO_ID = 48
+                            MateriaPlanEstudioId = 53,
+                            RequisitoId = 48
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 55,
-                            REQUISITO_ID = 50
+                            MateriaPlanEstudioId = 55,
+                            RequisitoId = 50
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 51,
-                            REQUISITO_ID = 46
+                            MateriaPlanEstudioId = 51,
+                            RequisitoId = 46
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 52,
-                            REQUISITO_ID = 47
+                            MateriaPlanEstudioId = 52,
+                            RequisitoId = 47
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 57,
-                            REQUISITO_ID = 53
+                            MateriaPlanEstudioId = 57,
+                            RequisitoId = 53
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 57,
-                            REQUISITO_ID = 52
+                            MateriaPlanEstudioId = 57,
+                            RequisitoId = 52
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 58,
-                            REQUISITO_ID = 53
+                            MateriaPlanEstudioId = 58,
+                            RequisitoId = 53
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 58,
-                            REQUISITO_ID = 54
+                            MateriaPlanEstudioId = 58,
+                            RequisitoId = 54
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 56,
-                            REQUISITO_ID = 51
+                            MateriaPlanEstudioId = 56,
+                            RequisitoId = 51
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 59,
-                            REQUISITO_ID = 54
+                            MateriaPlanEstudioId = 59,
+                            RequisitoId = 54
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 65,
-                            REQUISITO_ID = 60
+                            MateriaPlanEstudioId = 65,
+                            RequisitoId = 60
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 63,
-                            REQUISITO_ID = 57
+                            MateriaPlanEstudioId = 63,
+                            RequisitoId = 57
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 64,
-                            REQUISITO_ID = 58
+                            MateriaPlanEstudioId = 64,
+                            RequisitoId = 58
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 61,
-                            REQUISITO_ID = 51
+                            MateriaPlanEstudioId = 61,
+                            RequisitoId = 51
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 62,
-                            REQUISITO_ID = 56
+                            MateriaPlanEstudioId = 62,
+                            RequisitoId = 56
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 71,
-                            REQUISITO_ID = 65
+                            MateriaPlanEstudioId = 71,
+                            RequisitoId = 65
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 72,
-                            REQUISITO_ID = 65
+                            MateriaPlanEstudioId = 72,
+                            RequisitoId = 65
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 68,
-                            REQUISITO_ID = 63
+                            MateriaPlanEstudioId = 68,
+                            RequisitoId = 63
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 69,
-                            REQUISITO_ID = 63
+                            MateriaPlanEstudioId = 69,
+                            RequisitoId = 63
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 66,
-                            REQUISITO_ID = 61
+                            MateriaPlanEstudioId = 66,
+                            RequisitoId = 61
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 78,
-                            REQUISITO_ID = 71
+                            MateriaPlanEstudioId = 78,
+                            RequisitoId = 71
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 76,
-                            REQUISITO_ID = 69
+                            MateriaPlanEstudioId = 76,
+                            RequisitoId = 69
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 75,
-                            REQUISITO_ID = 68
+                            MateriaPlanEstudioId = 75,
+                            RequisitoId = 68
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 74,
-                            REQUISITO_ID = 69
+                            MateriaPlanEstudioId = 74,
+                            RequisitoId = 69
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 73,
-                            REQUISITO_ID = 66
+                            MateriaPlanEstudioId = 73,
+                            RequisitoId = 66
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 81,
-                            REQUISITO_ID = 75
+                            MateriaPlanEstudioId = 81,
+                            RequisitoId = 75
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 84,
-                            REQUISITO_ID = 74
+                            MateriaPlanEstudioId = 84,
+                            RequisitoId = 74
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 84,
-                            REQUISITO_ID = 76
+                            MateriaPlanEstudioId = 84,
+                            RequisitoId = 76
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 79,
-                            REQUISITO_ID = 73
+                            MateriaPlanEstudioId = 79,
+                            RequisitoId = 73
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 82,
-                            REQUISITO_ID = 75
+                            MateriaPlanEstudioId = 82,
+                            RequisitoId = 75
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 83,
-                            REQUISITO_ID = 74
+                            MateriaPlanEstudioId = 83,
+                            RequisitoId = 74
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 83,
-                            REQUISITO_ID = 76
+                            MateriaPlanEstudioId = 83,
+                            RequisitoId = 76
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 85,
-                            REQUISITO_ID = 79
+                            MateriaPlanEstudioId = 85,
+                            RequisitoId = 79
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 87,
-                            REQUISITO_ID = 83
+                            MateriaPlanEstudioId = 87,
+                            RequisitoId = 83
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 88,
-                            REQUISITO_ID = 82
+                            MateriaPlanEstudioId = 88,
+                            RequisitoId = 82
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 89,
-                            REQUISITO_ID = 83
+                            MateriaPlanEstudioId = 89,
+                            RequisitoId = 83
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 90,
-                            REQUISITO_ID = 78
+                            MateriaPlanEstudioId = 90,
+                            RequisitoId = 78
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 90,
-                            REQUISITO_ID = 83
+                            MateriaPlanEstudioId = 90,
+                            RequisitoId = 83
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 94,
-                            REQUISITO_ID = 89
+                            MateriaPlanEstudioId = 94,
+                            RequisitoId = 89
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 94,
-                            REQUISITO_ID = 88
+                            MateriaPlanEstudioId = 94,
+                            RequisitoId = 88
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 94,
-                            REQUISITO_ID = 87
+                            MateriaPlanEstudioId = 94,
+                            RequisitoId = 87
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 92,
-                            REQUISITO_ID = 90
+                            MateriaPlanEstudioId = 92,
+                            RequisitoId = 90
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 92,
-                            REQUISITO_ID = 85
+                            MateriaPlanEstudioId = 92,
+                            RequisitoId = 85
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 95,
-                            REQUISITO_ID = 91
+                            MateriaPlanEstudioId = 95,
+                            RequisitoId = 91
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 95,
-                            REQUISITO_ID = 94
+                            MateriaPlanEstudioId = 95,
+                            RequisitoId = 94
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 95,
-                            REQUISITO_ID = 92
+                            MateriaPlanEstudioId = 95,
+                            RequisitoId = 92
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 95,
-                            REQUISITO_ID = 93
+                            MateriaPlanEstudioId = 95,
+                            RequisitoId = 93
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 101,
-                            REQUISITO_ID = 96
+                            MateriaPlanEstudioId = 101,
+                            RequisitoId = 96
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 102,
-                            REQUISITO_ID = 97
+                            MateriaPlanEstudioId = 102,
+                            RequisitoId = 97
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 103,
-                            REQUISITO_ID = 98
+                            MateriaPlanEstudioId = 103,
+                            RequisitoId = 98
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 104,
-                            REQUISITO_ID = 99
+                            MateriaPlanEstudioId = 104,
+                            RequisitoId = 99
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 105,
-                            REQUISITO_ID = 100
+                            MateriaPlanEstudioId = 105,
+                            RequisitoId = 100
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 106,
-                            REQUISITO_ID = 101
+                            MateriaPlanEstudioId = 106,
+                            RequisitoId = 101
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 107,
-                            REQUISITO_ID = 102
+                            MateriaPlanEstudioId = 107,
+                            RequisitoId = 102
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 107,
-                            REQUISITO_ID = 103
+                            MateriaPlanEstudioId = 107,
+                            RequisitoId = 103
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 108,
-                            REQUISITO_ID = 103
+                            MateriaPlanEstudioId = 108,
+                            RequisitoId = 103
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 108,
-                            REQUISITO_ID = 104
+                            MateriaPlanEstudioId = 108,
+                            RequisitoId = 104
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 109,
-                            REQUISITO_ID = 104
+                            MateriaPlanEstudioId = 109,
+                            RequisitoId = 104
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 110,
-                            REQUISITO_ID = 104
+                            MateriaPlanEstudioId = 110,
+                            RequisitoId = 104
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 112,
-                            REQUISITO_ID = 106
+                            MateriaPlanEstudioId = 112,
+                            RequisitoId = 106
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 111,
-                            REQUISITO_ID = 101
+                            MateriaPlanEstudioId = 111,
+                            RequisitoId = 101
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 113,
-                            REQUISITO_ID = 107
+                            MateriaPlanEstudioId = 113,
+                            RequisitoId = 107
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 113,
-                            REQUISITO_ID = 96
+                            MateriaPlanEstudioId = 113,
+                            RequisitoId = 96
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 114,
-                            REQUISITO_ID = 108
+                            MateriaPlanEstudioId = 114,
+                            RequisitoId = 108
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 115,
-                            REQUISITO_ID = 109
+                            MateriaPlanEstudioId = 115,
+                            RequisitoId = 109
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 116,
-                            REQUISITO_ID = 111
+                            MateriaPlanEstudioId = 116,
+                            RequisitoId = 111
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 117,
-                            REQUISITO_ID = 113
+                            MateriaPlanEstudioId = 117,
+                            RequisitoId = 113
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 118,
-                            REQUISITO_ID = 115
+                            MateriaPlanEstudioId = 118,
+                            RequisitoId = 115
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 119,
-                            REQUISITO_ID = 115
+                            MateriaPlanEstudioId = 119,
+                            RequisitoId = 115
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 120,
-                            REQUISITO_ID = 110
+                            MateriaPlanEstudioId = 120,
+                            RequisitoId = 110
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 120,
-                            REQUISITO_ID = 106
+                            MateriaPlanEstudioId = 120,
+                            RequisitoId = 106
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 123,
-                            REQUISITO_ID = 116
+                            MateriaPlanEstudioId = 123,
+                            RequisitoId = 116
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 124,
-                            REQUISITO_ID = 117
+                            MateriaPlanEstudioId = 124,
+                            RequisitoId = 117
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 125,
-                            REQUISITO_ID = 121
+                            MateriaPlanEstudioId = 125,
+                            RequisitoId = 121
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 126,
-                            REQUISITO_ID = 119
+                            MateriaPlanEstudioId = 126,
+                            RequisitoId = 119
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 127,
-                            REQUISITO_ID = 120
+                            MateriaPlanEstudioId = 127,
+                            RequisitoId = 120
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 127,
-                            REQUISITO_ID = 112
+                            MateriaPlanEstudioId = 127,
+                            RequisitoId = 112
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 133,
-                            REQUISITO_ID = 125
+                            MateriaPlanEstudioId = 133,
+                            RequisitoId = 125
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 132,
-                            REQUISITO_ID = 123
+                            MateriaPlanEstudioId = 132,
+                            RequisitoId = 123
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 131,
-                            REQUISITO_ID = 123
+                            MateriaPlanEstudioId = 131,
+                            RequisitoId = 123
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 131,
-                            REQUISITO_ID = 120
+                            MateriaPlanEstudioId = 131,
+                            RequisitoId = 120
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 134,
-                            REQUISITO_ID = 126
+                            MateriaPlanEstudioId = 134,
+                            RequisitoId = 126
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 134,
-                            REQUISITO_ID = 114
+                            MateriaPlanEstudioId = 134,
+                            RequisitoId = 114
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 135,
-                            REQUISITO_ID = 127
+                            MateriaPlanEstudioId = 135,
+                            RequisitoId = 127
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 135,
-                            REQUISITO_ID = 120
+                            MateriaPlanEstudioId = 135,
+                            RequisitoId = 120
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 139,
-                            REQUISITO_ID = 133
+                            MateriaPlanEstudioId = 139,
+                            RequisitoId = 133
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 140,
-                            REQUISITO_ID = 131
+                            MateriaPlanEstudioId = 140,
+                            RequisitoId = 131
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 138,
-                            REQUISITO_ID = 131
+                            MateriaPlanEstudioId = 138,
+                            RequisitoId = 131
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 141,
-                            REQUISITO_ID = 131
+                            MateriaPlanEstudioId = 141,
+                            RequisitoId = 131
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 141,
-                            REQUISITO_ID = 135
+                            MateriaPlanEstudioId = 141,
+                            RequisitoId = 135
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 142,
-                            REQUISITO_ID = 135
+                            MateriaPlanEstudioId = 142,
+                            RequisitoId = 135
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 145,
-                            REQUISITO_ID = 139
+                            MateriaPlanEstudioId = 145,
+                            RequisitoId = 139
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 145,
-                            REQUISITO_ID = 140
+                            MateriaPlanEstudioId = 145,
+                            RequisitoId = 140
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 145,
-                            REQUISITO_ID = 138
+                            MateriaPlanEstudioId = 145,
+                            RequisitoId = 138
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 145,
-                            REQUISITO_ID = 141
+                            MateriaPlanEstudioId = 145,
+                            RequisitoId = 141
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 145,
-                            REQUISITO_ID = 142
+                            MateriaPlanEstudioId = 145,
+                            RequisitoId = 142
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 146,
-                            REQUISITO_ID = 139
+                            MateriaPlanEstudioId = 146,
+                            RequisitoId = 139
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 146,
-                            REQUISITO_ID = 140
+                            MateriaPlanEstudioId = 146,
+                            RequisitoId = 140
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 146,
-                            REQUISITO_ID = 138
+                            MateriaPlanEstudioId = 146,
+                            RequisitoId = 138
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 146,
-                            REQUISITO_ID = 141
+                            MateriaPlanEstudioId = 146,
+                            RequisitoId = 141
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 146,
-                            REQUISITO_ID = 142
+                            MateriaPlanEstudioId = 146,
+                            RequisitoId = 142
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 147,
-                            REQUISITO_ID = 139
+                            MateriaPlanEstudioId = 147,
+                            RequisitoId = 139
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 147,
-                            REQUISITO_ID = 140
+                            MateriaPlanEstudioId = 147,
+                            RequisitoId = 140
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 147,
-                            REQUISITO_ID = 138
+                            MateriaPlanEstudioId = 147,
+                            RequisitoId = 138
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 147,
-                            REQUISITO_ID = 141
+                            MateriaPlanEstudioId = 147,
+                            RequisitoId = 141
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 147,
-                            REQUISITO_ID = 142
+                            MateriaPlanEstudioId = 147,
+                            RequisitoId = 142
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 148,
-                            REQUISITO_ID = 139
+                            MateriaPlanEstudioId = 148,
+                            RequisitoId = 139
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 148,
-                            REQUISITO_ID = 140
+                            MateriaPlanEstudioId = 148,
+                            RequisitoId = 140
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 148,
-                            REQUISITO_ID = 138
+                            MateriaPlanEstudioId = 148,
+                            RequisitoId = 138
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 148,
-                            REQUISITO_ID = 141
+                            MateriaPlanEstudioId = 148,
+                            RequisitoId = 141
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 148,
-                            REQUISITO_ID = 142
+                            MateriaPlanEstudioId = 148,
+                            RequisitoId = 142
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 149,
-                            REQUISITO_ID = 139
+                            MateriaPlanEstudioId = 149,
+                            RequisitoId = 139
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 149,
-                            REQUISITO_ID = 140
+                            MateriaPlanEstudioId = 149,
+                            RequisitoId = 140
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 149,
-                            REQUISITO_ID = 138
+                            MateriaPlanEstudioId = 149,
+                            RequisitoId = 138
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 149,
-                            REQUISITO_ID = 141
+                            MateriaPlanEstudioId = 149,
+                            RequisitoId = 141
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 149,
-                            REQUISITO_ID = 142
+                            MateriaPlanEstudioId = 149,
+                            RequisitoId = 142
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 150,
-                            REQUISITO_ID = 145
+                            MateriaPlanEstudioId = 150,
+                            RequisitoId = 145
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 150,
-                            REQUISITO_ID = 147
+                            MateriaPlanEstudioId = 150,
+                            RequisitoId = 147
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 150,
-                            REQUISITO_ID = 146
+                            MateriaPlanEstudioId = 150,
+                            RequisitoId = 146
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 150,
-                            REQUISITO_ID = 148
+                            MateriaPlanEstudioId = 150,
+                            RequisitoId = 148
                         },
                         new
                         {
-                            MATERIA_PLAN_ESTUDIO_ID = 150,
-                            REQUISITO_ID = 149
+                            MateriaPlanEstudioId = 150,
+                            RequisitoId = 149
                         });
+                });
+
+            modelBuilder.Entity("Domain.Models.AlumnoPlanEstudio", b =>
+                {
+                    b.HasOne("Domain.Models.Alumno", "Alumno")
+                        .WithMany("AlumnoPlanEstudios")
+                        .HasForeignKey("AlumnoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_alumno_plan_estudio_alumno_alumno_id");
+
+                    b.HasOne("Domain.Models.PlanEstudio", "PlanEstudio")
+                        .WithMany("AlumnoPlanEstudios")
+                        .HasForeignKey("PlanEstudioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_alumno_plan_estudio_plan_estudio_plan_estudio_id");
+
+                    b.Navigation("Alumno");
+
+                    b.Navigation("PlanEstudio");
                 });
 
             modelBuilder.Entity("Domain.Models.GrupoMateria", b =>
                 {
                     b.HasOne("Domain.Models.Grupo", "Grupo")
                         .WithMany("GrupoMaterias")
-                        .HasForeignKey("GRUPO_ID")
+                        .HasForeignKey("GrupoId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_grupo_materia_grupo_grupo_id");
 
                     b.HasOne("Domain.Models.Materia", "Materia")
                         .WithMany("GrupoMaterias")
-                        .HasForeignKey("MATERIA_ID")
+                        .HasForeignKey("MateriaId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_grupo_materia_materia_materia_id");
 
                     b.Navigation("Grupo");
 
@@ -8653,15 +8840,17 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.Dia", "Dia")
                         .WithMany("HorasDia")
-                        .HasForeignKey("DIA_ID")
+                        .HasForeignKey("DiaId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_hora_dia_dia_dia_id");
 
                     b.HasOne("Domain.Models.Hora", "Hora")
                         .WithMany("HorasDia")
-                        .HasForeignKey("HORA_ID")
+                        .HasForeignKey("HoraId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_hora_dia_hora_hora_id");
 
                     b.Navigation("Dia");
 
@@ -8670,17 +8859,19 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Models.HoraDiaHorario", b =>
                 {
-                    b.HasOne("Domain.Models.Horario", "Horario")
-                        .WithMany("HorasDiaHorario")
-                        .HasForeignKey("HORARIO_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Domain.Models.HoraDia", "HoraDia")
                         .WithMany("HorasDiaHorario")
-                        .HasForeignKey("HORA_DIA_ID")
+                        .HasForeignKey("HoraDiaId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_hora_dia_horario_hora_dia_hora_dia_id");
+
+                    b.HasOne("Domain.Models.Horario", "Horario")
+                        .WithMany("HorasDiaHorario")
+                        .HasForeignKey("HorarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_hora_dia_horario_horario_horario_id");
 
                     b.Navigation("HoraDia");
 
@@ -8691,35 +8882,42 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.Docente", "Docente")
                         .WithMany("HorariosMateria")
-                        .HasForeignKey("DOCENTE_ID");
+                        .HasForeignKey("DocenteId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_horario_materia_docente_docente_id");
 
                     b.HasOne("Domain.Models.Gestion", "Gestion")
                         .WithMany("HorariosMateria")
-                        .HasForeignKey("GESTION_ID")
+                        .HasForeignKey("GestionId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_horario_materia_gestion_gestion_id");
 
                     b.HasOne("Domain.Models.GrupoMateria", "GrupoMateria")
                         .WithMany("HorariosMateria")
-                        .HasForeignKey("GRUPO_MATERIA_ID")
+                        .HasForeignKey("GrupoMateriaId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_horario_materia_grupo_materia_grupo_materia_id");
 
                     b.HasOne("Domain.Models.Horario", "Horario")
                         .WithMany("HorariosMateria")
-                        .HasForeignKey("HORARIO_ID")
+                        .HasForeignKey("HorarioId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Models.Modulo", "Modulo")
-                        .WithMany("HorariosMateria")
-                        .HasForeignKey("MODULO_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_horario_materia_horario_horario_id");
 
                     b.HasOne("Domain.Models.MateriaPlanEstudio", null)
                         .WithMany("HorariosMateria")
-                        .HasForeignKey("MateriaPlanEstudioID");
+                        .HasForeignKey("MateriaPlanEstudioId")
+                        .HasConstraintName("fk_horario_materia_materia_plan_estudio_materia_plan_estudio_id");
+
+                    b.HasOne("Domain.Models.Modulo", "Modulo")
+                        .WithMany("HorariosMateria")
+                        .HasForeignKey("ModuloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_horario_materia_modulo_modulo_id");
 
                     b.Navigation("Docente");
 
@@ -8736,15 +8934,17 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.HorarioMateria", "HorarioMateria")
                         .WithMany("HorarioMateriaInscripciones")
-                        .HasForeignKey("HORARIO_MATERIA_ID")
+                        .HasForeignKey("HorarioMateriaId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_horario_materia_inscripcion_horario_materia_horario_materia");
 
                     b.HasOne("Domain.Models.Inscripcion", "Inscripcion")
                         .WithMany("HorarioMateriaInscripciones")
-                        .HasForeignKey("INSCRIPCION_ID")
+                        .HasForeignKey("InscripcionId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_horario_materia_inscripcion_inscripcion_inscripcion_id");
 
                     b.Navigation("HorarioMateria");
 
@@ -8755,9 +8955,10 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.Alumno", "Alumno")
                         .WithMany("Inscripciones")
-                        .HasForeignKey("ALUMNO_ID")
+                        .HasForeignKey("AlumnoId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_inscripcion_alumno_alumno_id");
 
                     b.Navigation("Alumno");
                 });
@@ -8766,21 +8967,24 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.Materia", "Materia")
                         .WithMany("MateriaPlanEstudios")
-                        .HasForeignKey("MATERIA_ID")
+                        .HasForeignKey("MateriaId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_materia_plan_estudio_materia_materia_id");
 
                     b.HasOne("Domain.Models.Nivel", "Nivel")
                         .WithMany("MateriaPlanEstudios")
-                        .HasForeignKey("NIVEL_ID")
+                        .HasForeignKey("NivelId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_materia_plan_estudio_nivel_nivel_id");
 
                     b.HasOne("Domain.Models.PlanEstudio", "PlanEstudio")
                         .WithMany("MateriaPlanEstudios")
-                        .HasForeignKey("PLAN_ESTUDIO_ID")
+                        .HasForeignKey("PlanEstudioId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_materia_plan_estudio_plan_estudio_plan_estudio_id");
 
                     b.Navigation("Materia");
 
@@ -8793,11 +8997,15 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.Alumno", "Alumno")
                         .WithMany("Notas")
-                        .HasForeignKey("ALUMNO_ID");
+                        .HasForeignKey("AlumnoId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_nota_alumno_alumno_id");
 
                     b.HasOne("Domain.Models.HorarioMateriaInscripcion", "HorarioMateriaInscripcion")
                         .WithMany("Notas")
-                        .HasForeignKey("HORARIO_MATERIA_INSCRIPCION_ID");
+                        .HasForeignKey("HorarioMateriaInscripcionId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_nota_horario_materia_inscripcion_horario_materia_inscripcio");
 
                     b.Navigation("Alumno");
 
@@ -8808,9 +9016,10 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.Carrera", "Carrera")
                         .WithMany("PlanesEstudio")
-                        .HasForeignKey("CARRERA_ID")
+                        .HasForeignKey("CarreraId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_plan_estudio_carrera_carrera_id");
 
                     b.Navigation("Carrera");
                 });
@@ -8819,15 +9028,17 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.MateriaPlanEstudio", "MateriaPlanEstudio")
                         .WithMany("MateriasRequisito")
-                        .HasForeignKey("MATERIA_PLAN_ESTUDIO_ID")
+                        .HasForeignKey("MateriaPlanEstudioId")
                         .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_prerequisito_materia_plan_estudio_materia_plan_estudio_id");
 
                     b.HasOne("Domain.Models.MateriaPlanEstudio", "Requisito")
                         .WithMany("RequisitosPara")
-                        .HasForeignKey("REQUISITO_ID")
+                        .HasForeignKey("RequisitoId")
                         .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_prerequisito_materia_plan_estudio_requisito_id");
 
                     b.Navigation("MateriaPlanEstudio");
 
@@ -8836,6 +9047,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Models.Alumno", b =>
                 {
+                    b.Navigation("AlumnoPlanEstudios");
+
                     b.Navigation("Inscripciones");
 
                     b.Navigation("Notas");
@@ -8931,6 +9144,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Models.PlanEstudio", b =>
                 {
+                    b.Navigation("AlumnoPlanEstudios");
+
                     b.Navigation("MateriaPlanEstudios");
                 });
 #pragma warning restore 612, 618

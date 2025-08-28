@@ -39,17 +39,20 @@ namespace Application.Services
 
             await foreach (var requestMessage in _channelReader.ReadAllAsync(stoppingToken))
             {
+                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
                 // Paso 1: Actualiza el estado a 'Processing' cuando la petición se saca de la cola.
                 _tracker.UpdateStatus(requestMessage.Id, RequestState.Processing, "Petición en curso.");
-                _logger.LogInformation("Procesando petición con ID: {Id}", requestMessage.Id);
+                _logger.LogInformation("Procesando petición con Id: {Id}", requestMessage.Id);
+
+                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken); // <-- ¡Aquí está el delay!
 
                 using var scope = _serviceProvider.CreateScope();
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-                
+
                 try
                 {
                     var strategy = _strategies.FirstOrDefault(s => s.TableType == requestMessage.Table);
-                    
+
                     if (strategy != null)
                     {
                         await strategy.ProcessRequestAsync(requestMessage, unitOfWork);
