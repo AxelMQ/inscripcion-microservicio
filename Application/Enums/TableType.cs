@@ -5,6 +5,7 @@ namespace Application.Enums
     Students,
     Courses,
     Enrollments,
-    Alumnos
+    Alumnos,
+    Materias
   }
 }

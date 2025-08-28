@@ -1,15 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Core;
 
 namespace Domain.Models
 {
     [Table("MATERIA")]
-    public class Materia
+    public class Materia: BaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-
         public required short CREDITO { get; set; }
 
         public bool? ES_ELECTIVA { get; set; }

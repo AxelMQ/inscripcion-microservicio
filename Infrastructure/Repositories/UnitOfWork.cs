@@ -2,9 +2,6 @@ using Application.Interfaces;
 using Domain.Core;
 using Infrastructure.Data;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {

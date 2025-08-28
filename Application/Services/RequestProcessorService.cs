@@ -6,6 +6,8 @@ using Application.Messages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Application.Enums; // Asegúrate de tener este using
+using System;
 
 namespace Application.Services
 {
@@ -15,17 +17,20 @@ namespace Application.Services
         private readonly ILogger<RequestProcessorService> _logger;
         private readonly IServiceProvider _serviceProvider;
         private readonly IEnumerable<IRequestProcessingStrategy> _strategies;
+        private readonly RequestStatusTracker _tracker; // <-- Agrega la inyección del tracker
 
         public RequestProcessorService(
             Channel<RequestMessage> channel,
             ILogger<RequestProcessorService> logger,
             IServiceProvider serviceProvider,
-            IEnumerable<IRequestProcessingStrategy> strategies)
+            IEnumerable<IRequestProcessingStrategy> strategies,
+            RequestStatusTracker tracker) // <-- Agrega el tracker al constructor
         {
             _channelReader = channel.Reader;
             _logger = logger;
             _serviceProvider = serviceProvider;
             _strategies = strategies;
+            _tracker = tracker; // <-- Inicializa el campo del tracker
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -34,6 +39,8 @@ namespace Application.Services
 
             await foreach (var requestMessage in _channelReader.ReadAllAsync(stoppingToken))
             {
+                // Paso 1: Actualiza el estado a 'Processing' cuando la petición se saca de la cola.
+                _tracker.UpdateStatus(requestMessage.Id, RequestState.Processing, "Petición en curso.");
                 _logger.LogInformation("Procesando petición con ID: {Id}", requestMessage.Id);
 
                 using var scope = _serviceProvider.CreateScope();
@@ -41,32 +48,29 @@ namespace Application.Services
                 
                 try
                 {
-                    // No hay necesidad de actualizar el estado en la base de datos, ya que no se persiste.
-
-                    // 1. Deserializa el cuerpo y ejecuta la estrategia
                     var strategy = _strategies.FirstOrDefault(s => s.TableType == requestMessage.Table);
                     
                     if (strategy != null)
                     {
                         await strategy.ProcessRequestAsync(requestMessage, unitOfWork);
-
-                        // 2. Si la estrategia se ejecuta sin errores, confirma los cambios en la base de datos.
                         await unitOfWork.CompleteAsync();
                     }
                     else
                     {
                         _logger.LogWarning("No se encontró una estrategia para la tabla: {Table}", requestMessage.Table);
+                        // Paso 2: Actualiza el estado a 'Failed' si la estrategia no se encuentra.
+                        _tracker.UpdateStatus(requestMessage.Id, RequestState.Failed, "Estrategia de procesamiento no encontrada.");
                     }
 
-                    // No hay necesidad de actualizar el estado a 'Completed' en la base de datos.
+                    // Paso 3: Actualiza el estado a 'Completed' si todo el procesamiento fue exitoso.
+                    _tracker.UpdateStatus(requestMessage.Id, RequestState.Completed, "Petición completada exitosamente.");
                     _logger.LogInformation("Petición {Id} completada exitosamente.", requestMessage.Id);
                 }
                 catch (Exception ex)
                 {
-                    // No hay necesidad de actualizar el estado a 'Failed' en la base de datos.
+                    // Paso 4: Actualiza el estado a 'Failed' si ocurre una excepción durante el procesamiento.
+                    _tracker.UpdateStatus(requestMessage.Id, RequestState.Failed, $"Error al procesar la petición: {ex.Message}");
                     _logger.LogError(ex, "Error al procesar la petición {Id}", requestMessage.Id);
-
-                    // Si hubo un error, la transacción del Unit of Work se descartará al salir del bloque 'using'.
                 }
             }
         }
