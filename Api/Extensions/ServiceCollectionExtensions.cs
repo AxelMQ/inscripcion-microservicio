@@ -44,7 +44,7 @@ namespace Api.Extensions
             services.AddSingleton<RequestStatusTracker>();
 
             // ── ESTRATEGIAS PARA LOS REPOSITORIOS ───────────────────────────────────────
-            services.AddSingleton<IRequestProcessingStrategy, StudentProcessingStrategy>();
+            //services.AddSingleton<IRequestProcessingStrategy, StudentProcessingStrategy>();
             services.AddSingleton<IRequestProcessingStrategy, MateriaProcessingStrategy>();
 
             return services;

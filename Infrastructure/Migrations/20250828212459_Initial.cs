@@ -478,6 +478,17 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "alumno",
+                columns: new[] { "id", "nombre", "ppa", "registro", "telefono" },
+                values: new object[,]
+                {
+                    { 1, "Matias", 0m, 1000000, 7000000 },
+                    { 2, "Axel", 0m, 1000001, 7000001 },
+                    { 3, "Franco", 0m, 1000002, 7000002 },
+                    { 4, "Luis", 0m, 1000003, 7000003 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "carrera",
                 columns: new[] { "id", "codigo", "modalidad", "nombre" },
                 values: new object[,]

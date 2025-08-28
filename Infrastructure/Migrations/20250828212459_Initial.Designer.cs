@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250828163058_Initial")]
+    [Migration("20250828212459_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -57,6 +57,40 @@ namespace Infrastructure.Migrations
                         .HasName("pk_alumno");
 
                     b.ToTable("alumno", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nombre = "Matias",
+                            Ppa = 0m,
+                            Registro = 1000000,
+                            Telefono = 7000000
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nombre = "Axel",
+                            Ppa = 0m,
+                            Registro = 1000001,
+                            Telefono = 7000001
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nombre = "Franco",
+                            Ppa = 0m,
+                            Registro = 1000002,
+                            Telefono = 7000002
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Nombre = "Luis",
+                            Ppa = 0m,
+                            Registro = 1000003,
+                            Telefono = 7000003
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.AlumnoPlanEstudio", b =>

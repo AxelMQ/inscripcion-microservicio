@@ -1,108 +1,89 @@
-// Api/Controllers/MateriasController.cs
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Api.Dtos;
 using Application.Interfaces;
 using Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Contracts.Dtos.Materia; // 👈 plural
 
 namespace Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class MateriasController : ControllerBase
+    [Authorize]
+    public class MateriaController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
+        public MateriaController(IUnitOfWork uow) => _uow = uow;
 
-        public MateriasController(IUnitOfWork uow)
-        {
-            _uow = uow;
-        }
+        public sealed record class MateriaResponseDto(
+            int Id,
+            string Nombre,
+            string Sigla,
+            short Credito,
+            bool EsElectiva
+        );
 
-        // --- helpers de mapeo ---
-        private static MateriaDto ToDto(Materia m) => new()
-        {
-            Id = m.Id,
-            Nombre = m.Nombre,
-            Credito = m.Credito,
-            EsElectiva = m.EsElectiva,
-            Sigla = m.Sigla
-        };
+        private static MateriaResponseDto ToResponseDto(Materia m) =>
+            new(m.Id, m.Nombre, m.Sigla, m.Credito, m.EsElectiva);
 
-        private static void MapDtoToEntity(MateriaDto dto, Materia entity)
-        {
-            entity.Nombre = dto.Nombre;
-            entity.Credito = dto.Credito;
-            entity.EsElectiva = dto.EsElectiva ?? false;
-            entity.Sigla = dto.Sigla;
-        }
-
-        // GET /api/materias
         [HttpGet]
-        public async Task<IActionResult> GetAllMaterias(CancellationToken ct)
+        public async Task<IActionResult> GetAll(CancellationToken ct)
         {
             var repo = _uow.GetRepository<Materia>();
             var materias = await repo.GetAllAsync(ct);
-            var dtos = materias.Select(ToDto).ToList();
-            return Ok(dtos);
+            return Ok(materias.Select(ToResponseDto).ToList());
         }
 
-        // GET /api/materias/{id}
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetMateriaById(int id, CancellationToken ct)
+        public async Task<IActionResult> GetById(int id, CancellationToken ct)
         {
             var repo = _uow.GetRepository<Materia>();
             var materia = await repo.GetByIdAsync(id, ct);
-            if (materia is null) return NotFound();
-            return Ok(ToDto(materia));
+            return materia is null ? NotFound() : Ok(ToResponseDto(materia));
         }
 
-        // POST /api/materias
         [HttpPost]
-        public async Task<IActionResult> CreateMateria([FromBody] MateriaDto dto, CancellationToken ct)
+        public async Task<IActionResult> Create([FromBody] MateriaCreateDto dto, CancellationToken ct)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var repo = _uow.GetRepository<Materia>();
             var entity = new Materia
             {
-                Nombre = dto.Nombre,          // required
-                Credito = dto.Credito,   // required
-                Sigla = dto.Sigla,           // required
-                EsElectiva = dto.EsElectiva ?? false
+                Nombre = dto.Nombre!,
+                Sigla = dto.Sigla!,
+                Credito = dto.Credito,
+                EsElectiva = dto.EsElectiva
             };
-            MapDtoToEntity(dto, entity);
 
+            var repo = _uow.GetRepository<Materia>();
             await repo.AddAsync(entity, ct);
             await _uow.CompleteAsync(ct);
 
-            var createdDto = ToDto(entity);
-            return CreatedAtAction(nameof(GetMateriaById), new { id = createdDto.Id }, createdDto);
+            var response = ToResponseDto(entity);
+            return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
         }
 
-        // PUT /api/materias/{id}
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateMateria(int id, [FromBody] MateriaDto dto, CancellationToken ct)
+        public async Task<IActionResult> Update(int id, [FromBody] MateriaUpdateDto dto, CancellationToken ct)
         {
-            if (dto.Id != id) return BadRequest("El Id del DTO no coincide con el Id de la ruta.");
+            if (dto.Id != id) return BadRequest("El Id del body no coincide con el de la ruta.");
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var repo = _uow.GetRepository<Materia>();
             var existing = await repo.GetByIdAsync(id, ct);
             if (existing is null) return NotFound();
 
-            MapDtoToEntity(dto, existing);
+            existing.Nombre = dto.Nombre!;
+            existing.Sigla = dto.Sigla!;
+            existing.Credito = dto.Credito;
+            existing.EsElectiva = dto.EsElectiva;
+
             await repo.UpdateAsync(existing, ct);
             await _uow.CompleteAsync(ct);
-
             return NoContent();
         }
 
-        // DELETE /api/materias/{id}
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> DeleteMateria(int id, CancellationToken ct)
+        public async Task<IActionResult> Delete(int id, CancellationToken ct)
         {
             var repo = _uow.GetRepository<Materia>();
             var existing = await repo.GetByIdAsync(id, ct);
@@ -110,7 +91,6 @@ namespace Api.Controllers
 
             await repo.DeleteAsync(id, ct);
             await _uow.CompleteAsync(ct);
-
             return NoContent();
         }
     }

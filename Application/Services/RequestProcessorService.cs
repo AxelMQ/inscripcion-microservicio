@@ -6,8 +6,9 @@ using Application.Messages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Application.Enums; // Asegúrate de tener este using
+using Application.Enums;
 using System;
+using System.Linq; // 👈 necesario por FirstOrDefault
 
 namespace Application.Services
 {
@@ -17,20 +18,20 @@ namespace Application.Services
         private readonly ILogger<RequestProcessorService> _logger;
         private readonly IServiceProvider _serviceProvider;
         private readonly IEnumerable<IRequestProcessingStrategy> _strategies;
-        private readonly RequestStatusTracker _tracker; // <-- Agrega la inyección del tracker
+        private readonly RequestStatusTracker _tracker;
 
         public RequestProcessorService(
             Channel<RequestMessage> channel,
             ILogger<RequestProcessorService> logger,
             IServiceProvider serviceProvider,
             IEnumerable<IRequestProcessingStrategy> strategies,
-            RequestStatusTracker tracker) // <-- Agrega el tracker al constructor
+            RequestStatusTracker tracker)
         {
             _channelReader = channel.Reader;
             _logger = logger;
             _serviceProvider = serviceProvider;
             _strategies = strategies;
-            _tracker = tracker; // <-- Inicializa el campo del tracker
+            _tracker = tracker;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -39,12 +40,13 @@ namespace Application.Services
 
             await foreach (var requestMessage in _channelReader.ReadAllAsync(stoppingToken))
             {
-                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
-                // Paso 1: Actualiza el estado a 'Processing' cuando la petición se saca de la cola.
+                // (Opcional) quita estos delays en prod
+                 await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
+
                 _tracker.UpdateStatus(requestMessage.Id, RequestState.Processing, "Petición en curso.");
                 _logger.LogInformation("Procesando petición con Id: {Id}", requestMessage.Id);
 
-                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken); // <-- ¡Aquí está el delay!
+                 await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
 
                 using var scope = _serviceProvider.CreateScope();
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
@@ -53,25 +55,32 @@ namespace Application.Services
                 {
                     var strategy = _strategies.FirstOrDefault(s => s.TableType == requestMessage.Table);
 
-                    if (strategy != null)
+                    if (strategy is null)
                     {
-                        await strategy.ProcessRequestAsync(requestMessage, unitOfWork);
-                        await unitOfWork.CompleteAsync();
+                        _logger.LogWarning("No se encontró una estrategia para la tabla: {Table}", requestMessage.Table);
+                        _tracker.UpdateStatus(requestMessage.Id, RequestState.Failed, "Estrategia de procesamiento no encontrada.");
+                        continue; // 👈 evita marcar Completed más abajo
+                    }
+
+                    await strategy.ProcessRequestAsync(requestMessage, unitOfWork);
+
+                    // Si el UseCase ya hace CompleteAsync por operación, deja esto comentado:
+                    // await unitOfWork.CompleteAsync();
+
+                    // 👇 Publica el resultado si existe; si no, completa sin payload
+                    if (!string.IsNullOrWhiteSpace(requestMessage.ResultDataJson))
+                    {
+                        _tracker.SetResult(requestMessage.Id, requestMessage.ResultDataJson, "Petición completada exitosamente.");
                     }
                     else
                     {
-                        _logger.LogWarning("No se encontró una estrategia para la tabla: {Table}", requestMessage.Table);
-                        // Paso 2: Actualiza el estado a 'Failed' si la estrategia no se encuentra.
-                        _tracker.UpdateStatus(requestMessage.Id, RequestState.Failed, "Estrategia de procesamiento no encontrada.");
+                        _tracker.UpdateStatus(requestMessage.Id, RequestState.Completed, "Petición completada exitosamente.");
                     }
 
-                    // Paso 3: Actualiza el estado a 'Completed' si todo el procesamiento fue exitoso.
-                    _tracker.UpdateStatus(requestMessage.Id, RequestState.Completed, "Petición completada exitosamente.");
                     _logger.LogInformation("Petición {Id} completada exitosamente.", requestMessage.Id);
                 }
                 catch (Exception ex)
                 {
-                    // Paso 4: Actualiza el estado a 'Failed' si ocurre una excepción durante el procesamiento.
                     _tracker.UpdateStatus(requestMessage.Id, RequestState.Failed, $"Error al procesar la petición: {ex.Message}");
                     _logger.LogError(ex, "Error al procesar la petición {Id}", requestMessage.Id);
                 }

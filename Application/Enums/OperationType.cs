@@ -5,7 +5,8 @@ namespace Application.Enums
     Insert,
     Update,
     Delete,
-    Get
+    GetAll,
+    GetById
   }
 
 }

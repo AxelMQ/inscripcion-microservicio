@@ -14,6 +14,7 @@ namespace Application.Messages
     public RequestState State { get; set; } = RequestState.Pending;
 
     public required string CallbackUrl { get; set; }
+    public string? ResultDataJson { get; set; }
 
     public RequestMessage()
     {

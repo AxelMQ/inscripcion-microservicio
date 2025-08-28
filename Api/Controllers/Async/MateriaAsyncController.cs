@@ -1,58 +1,137 @@
-// Archivo: Api/Controllers/Async/MateriaAsyncController.cs
-
+// Api/Controllers/Async/MateriaAsyncController.cs
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Channels;
 using System.Text.Json;
-using Application.Messages;
+using System.Threading.Channels;
 using Application.Enums;
-using Api.Dtos;
-using Microsoft.AspNetCore.Authorization;
-using System;
+using Application.Messages;
+using Shared.Contracts.Dtos.Materia;
 
 namespace Api.Controllers.Async
 {
-    [Route("api/async/materias")]
     [ApiController]
-    //[Authorize]
+    [Route("api/[controller]")]
     public class MateriaAsyncController : ControllerBase
     {
-        private readonly ChannelWriter<RequestMessage> _channelWriter;
+        private readonly ChannelWriter<RequestMessage> _writer;
         private readonly RequestStatusTracker _tracker;
+
+        private static readonly JsonSerializerOptions JsonOpts = new(JsonSerializerDefaults.Web)
+        {
+            PropertyNameCaseInsensitive = true
+        };
 
         public MateriaAsyncController(Channel<RequestMessage> channel, RequestStatusTracker tracker)
         {
-            _channelWriter = channel.Writer;
+            _writer = channel.Writer;
             _tracker = tracker;
         }
 
+        // POST /api/async/materias
         [HttpPost]
-        public async Task<ActionResult> AddAsync([FromBody] MateriaDto materiaDto)
+        public async Task<ActionResult> EnqueueCreate([FromBody] MateriaCreateDto dto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var bodyJson = JsonSerializer.Serialize(materiaDto);
-
-            var requestMessage = new RequestMessage
+            var req = new RequestMessage
             {
-                // El Id se genera en el constructor, no lo asignamos aquí.
-                Operation = OperationType.Insert,
-                Table = TableType.Materias,
-                BodyJson = bodyJson,
-                CallbackUrl = "http://tu-api/callbacks/alumnos/status"
+                Operation   = OperationType.Insert,
+                Table       = TableType.Materias,
+                BodyJson    = JsonSerializer.Serialize(dto, JsonOpts),
+                CallbackUrl = "http://tu-api/callbacks/materias/status"
             };
 
-            // 1. Registra la petición con el Id que se generó automáticamente.
-            _tracker.AddRequest(requestMessage.Id, "Petición recibida y en cola.");
+            _tracker.AddRequest(req.Id, "En cola.");
+            req.GenerateToken();
+            await _writer.WriteAsync(req);
 
-            requestMessage.GenerateToken();
+            var statusUrl = Url.Content($"~/api/status/{req.Id}");
+            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
+        }
 
-            await _channelWriter.WriteAsync(requestMessage);
+        // PUT /api/async/materias/{id}
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> EnqueueUpdate(int id, [FromBody] MateriaUpdateDto dto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (dto.Id != id) return BadRequest("El Id del body no coincide con el de la ruta.");
 
-            // 2. Devuelve el Id generado para que el cliente pueda rastrear la petición.
-            return Accepted(new { RequestId = requestMessage.Id, Status = "Pending" });
+            var req = new RequestMessage
+            {
+                Operation   = OperationType.Update,
+                Table       = TableType.Materias,
+                BodyJson    = JsonSerializer.Serialize(dto, JsonOpts),
+                CallbackUrl = "http://tu-api/callbacks/materias/status"
+            };
+
+            _tracker.AddRequest(req.Id, "En cola.");
+            req.GenerateToken();
+            await _writer.WriteAsync(req);
+
+            var statusUrl = Url.Content($"~/api/status/{req.Id}");
+            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
+        }
+
+        // DELETE /api/async/materias/{id}
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> EnqueueDelete(int id)
+        {
+            var dto = new MateriaDeleteDto { Id = id };
+
+            var req = new RequestMessage
+            {
+                Operation   = OperationType.Delete,
+                Table       = TableType.Materias,
+                BodyJson    = JsonSerializer.Serialize(dto, JsonOpts),
+                CallbackUrl = "http://tu-api/callbacks/materias/status"
+            };
+
+            _tracker.AddRequest(req.Id, "En cola.");
+            req.GenerateToken();
+            await _writer.WriteAsync(req);
+
+            var statusUrl = Url.Content($"~/api/status/{req.Id}");
+            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
+        }
+
+        // GET /api/async/materias
+        [HttpGet]
+        public async Task<ActionResult> EnqueueGetAll()
+        {
+            var req = new RequestMessage
+            {
+                Operation   = OperationType.GetAll,
+                Table       = TableType.Materias,
+                BodyJson    = "{}",
+                CallbackUrl = "http://tu-api/callbacks/materias/status"
+            };
+
+            _tracker.AddRequest(req.Id, "En cola.");
+            req.GenerateToken();
+            await _writer.WriteAsync(req);
+
+            var statusUrl = Url.Content($"~/api/status/{req.Id}");
+            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
+        }
+
+        // GET /api/async/materias/enqueue/{id}
+        [HttpGet("enqueue/{id:int}")]
+        public async Task<ActionResult> EnqueueGetById(int id)
+        {
+            // Puedes definir un IdDto compartido si quieres evitar el tipo anónimo
+            var req = new RequestMessage
+            {
+                Operation   = OperationType.GetById,
+                Table       = TableType.Materias,
+                BodyJson    = JsonSerializer.Serialize(new { Id = id }, JsonOpts),
+                CallbackUrl = "http://tu-api/callbacks/materias/status"
+            };
+
+            _tracker.AddRequest(req.Id, "En cola.");
+            req.GenerateToken();
+            await _writer.WriteAsync(req);
+
+            var statusUrl = Url.Content($"~/api/status/{req.Id}");
+            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
         }
     }
 }

@@ -1,86 +1,71 @@
-// Api/Controllers/GestionController.cs
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain.Models;
-using Api.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Contracts.Dtos.Gestion;
 
 namespace Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class GestionController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
+        public GestionController(IUnitOfWork uow) => _uow = uow;
 
-        public GestionController(IUnitOfWork uow)
-        {
-            _uow = uow;
-        }
+        // DTO de respuesta del API (mover a Api/Dtos/Responses si quieres)
+        public sealed record class GestionResponseDto(int Id, string Nombre);
 
-        // --- mapping helpers ---
-        private static GestionDto MapToDto(Gestion g) => new()
-        {
-            Id     = g.Id,
-            Nombre = g.Nombre
-        };
-
-        private static Gestion MapToEntity(GestionDto dto) => new()
-        {
-            Id     = dto.Id,
-            Nombre = dto.Nombre
-        };
+        private static GestionResponseDto ToResponse(Gestion g) => new(g.Id, g.Nombre);
 
         // GET: api/gestion
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GestionDto>>> GetAll(CancellationToken ct)
+        public async Task<ActionResult<IEnumerable<GestionResponseDto>>> GetAll(CancellationToken ct)
         {
             var repo = _uow.GetRepository<Gestion>();
             var list = await repo.GetAllAsync(ct);
-            return Ok(list.Select(MapToDto).ToList());
+            return Ok(list.Select(ToResponse).ToList());
         }
 
         // GET: api/gestion/5
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<GestionDto>> GetById(int id, CancellationToken ct)
+        public async Task<ActionResult<GestionResponseDto>> GetById(int id, CancellationToken ct)
         {
             var repo = _uow.GetRepository<Gestion>();
             var g = await repo.GetByIdAsync(id, ct);
             if (g is null) return NotFound();
-            return Ok(MapToDto(g));
+            return Ok(ToResponse(g));
         }
 
         // POST: api/gestion
         [HttpPost]
-        public async Task<ActionResult<GestionDto>> Add([FromBody] GestionDto dto, CancellationToken ct)
+        public async Task<ActionResult<GestionResponseDto>> Create([FromBody] GestionCreateDto dto, CancellationToken ct)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var repo = _uow.GetRepository<Gestion>();
-            var entity = MapToEntity(dto);
+            var entity = new Gestion { Nombre = dto.Nombre! };
 
             await repo.AddAsync(entity, ct);
             await _uow.CompleteAsync(ct);
 
-            var created = MapToDto(entity);
-            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+            var response = ToResponse(entity);
+            return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
         }
 
         // PUT: api/gestion/5
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> Update(int id, [FromBody] GestionDto dto, CancellationToken ct)
+        public async Task<IActionResult> Update(int id, [FromBody] GestionUpdateDto dto, CancellationToken ct)
         {
-            if (id != dto.Id) return BadRequest();
             if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (dto.Id != id) return BadRequest("El Id de la ruta no coincide con el Id del body.");
 
             var repo = _uow.GetRepository<Gestion>();
             var existing = await repo.GetByIdAsync(id, ct);
             if (existing is null) return NotFound();
 
-            existing.Nombre = dto.Nombre;
+            existing.Nombre = dto.Nombre!;
 
             await repo.UpdateAsync(existing, ct);
             await _uow.CompleteAsync(ct);
@@ -92,7 +77,6 @@ namespace Api.Controllers
         public async Task<IActionResult> Delete(int id, CancellationToken ct)
         {
             var repo = _uow.GetRepository<Gestion>();
-
             var existing = await repo.GetByIdAsync(id, ct);
             if (existing is null) return NotFound();
 
