@@ -1,84 +1,97 @@
 using Application.Interfaces;
-using Domain.Models;
-using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Contracts.Dtos.Grupo;
+using Microsoft.EntityFrameworkCore;
 
-namespace Api.Controllers
+namespace Api.Controllers.Sync
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class GrupoController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
-        public GrupoController(IUnitOfWork uow) => _uow = uow;
+        private readonly IMapper _mapper;
 
-        // DTO de respuesta del API (mover a Api/Dtos/Responses si prefieres)
-        public sealed record class GrupoResponseDto(int Id, string Nombre);
+        public GrupoController(IUnitOfWork uow, IMapper mapper)
+        {
+            _uow = uow;
+            _mapper = mapper;
+        }
 
-        private static GrupoResponseDto ToResponse(Grupo g) => new(g.Id, g.Nombre);
-
-        // GET: api/grupo
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GrupoResponseDto>>> GetAll(CancellationToken ct)
+        public async Task<ActionResult<IEnumerable<GrupoDto>>> GetAll(CancellationToken ct)
         {
             var repo = _uow.GetRepository<Grupo>();
-            var grupos = await repo.GetAllAsync(ct);
-            return Ok(grupos.Select(ToResponse).ToList());
-        }
+            var grupos = await repo.Query()
+                .Include(g => g.GrupoMaterias)
+                .ThenInclude(gm => gm.Materia) // Carga la materia dentro de GrupoMateria
+                .AsNoTracking() // Recomendado para lecturas
+                .ToListAsync(ct);
 
-        // GET: api/grupo/5
+            // Ahora, la colección 'GrupoMaterias' está cargada y lista para el mapeo
+            var dtos = _mapper.Map<IEnumerable<GrupoDto>>(grupos);
+            return Ok(dtos);
+        }
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<GrupoResponseDto>> GetById(int id, CancellationToken ct)
+        public async Task<ActionResult<GrupoDto>> GetById(int id, CancellationToken ct)
         {
             var repo = _uow.GetRepository<Grupo>();
-            var grupo = await repo.GetByIdAsync(id, ct);
-            if (grupo is null) return NotFound();
-            return Ok(ToResponse(grupo));
-        }
+            var grupo = await repo.Query()
+                .Include(g => g.GrupoMaterias)
+                .ThenInclude(gm => gm.Materia) // Carga la materia dentro de GrupoMateria
+                .AsNoTracking()
+                .FirstOrDefaultAsync(g => g.Id == id, ct);
 
-        // POST: api/grupo
+            if (grupo is null) return NotFound();
+
+            // La entidad 'grupo' ahora tiene la colección 'GrupoMaterias' cargada
+            var dto = _mapper.Map<GrupoDto>(grupo);
+            return Ok(dto);
+        }
         [HttpPost]
-        public async Task<ActionResult<GrupoResponseDto>> Create([FromBody] GrupoCreateDto dto, CancellationToken ct)
+        public async Task<ActionResult<GrupoDto>> Create([FromBody] GrupoCreateDto dto, CancellationToken ct)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var repo = _uow.GetRepository<Grupo>();
-            var entity = new Grupo { Nombre = dto.Nombre! };
+            // Usa el mapper para convertir el DTO en la entidad
+            var entity = _mapper.Map<Grupo>(dto);
 
+            var repo = _uow.GetRepository<Grupo>();
             await repo.AddAsync(entity, ct);
             await _uow.CompleteAsync(ct);
 
-            var response = ToResponse(entity);
-            return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
+            // Usa el mapper para convertir la entidad de vuelta a un DTO de salida
+            var responseDto = _mapper.Map<GrupoDto>(entity);
+            return CreatedAtAction(nameof(GetById), new { id = responseDto.Id }, responseDto);
         }
 
-        // PUT: api/grupo/5
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] GrupoUpdateDto dto, CancellationToken ct)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
             if (dto.Id != id) return BadRequest("El Id de la ruta no coincide con el Id del body.");
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var repo = _uow.GetRepository<Grupo>();
-            var entity = await repo.GetByIdAsync(id, ct);
-            if (entity is null) return NotFound();
+            var existing = await repo.GetByIdAsync(id, ct);
+            if (existing is null) return NotFound();
 
-            entity.Nombre = dto.Nombre!;
+            // Usa el mapper para actualizar las propiedades de la entidad existente
+            _mapper.Map(dto, existing);
 
-            await repo.UpdateAsync(entity, ct);
+            await repo.UpdateAsync(existing, ct);
             await _uow.CompleteAsync(ct);
             return NoContent();
         }
 
-        // DELETE: api/grupo/5
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id, CancellationToken ct)
         {
             var repo = _uow.GetRepository<Grupo>();
-            var entity = await repo.GetByIdAsync(id, ct);
-            if (entity is null) return NotFound();
+            var existing = await repo.GetByIdAsync(id, ct);
+            if (existing is null) return NotFound();
 
             await repo.DeleteAsync(id, ct);
             await _uow.CompleteAsync(ct);

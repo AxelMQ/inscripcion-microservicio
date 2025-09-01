@@ -1,60 +1,68 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Application.Interfaces;
-using Domain.Models;
+using AutoMapper;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Shared.Contracts.Dtos.Gestion;
 
-namespace Api.Controllers
+namespace Api.Controllers.Sync
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class GestionController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
-        public GestionController(IUnitOfWork uow) => _uow = uow;
+        private readonly IMapper _mapper;
 
-        // DTO de respuesta del API (mover a Api/Dtos/Responses si quieres)
-        public sealed record class GestionResponseDto(int Id, string Nombre);
+        public GestionController(IUnitOfWork uow, IMapper mapper)
+        {
+            _uow = uow;
+            _mapper = mapper;
+        }
 
-        private static GestionResponseDto ToResponse(Gestion g) => new(g.Id, g.Nombre);
-
-        // GET: api/gestion
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GestionResponseDto>>> GetAll(CancellationToken ct)
+        public async Task<ActionResult<IEnumerable<GestionDto>>> GetAll(CancellationToken ct)
         {
             var repo = _uow.GetRepository<Gestion>();
-            var list = await repo.GetAllAsync(ct);
-            return Ok(list.Select(ToResponse).ToList());
+            var gestiones = await repo.GetAllAsync(ct);
+
+            var dtos = _mapper.Map<IEnumerable<GestionDto>>(gestiones);
+            return Ok(dtos);
         }
 
-        // GET: api/gestion/5
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<GestionResponseDto>> GetById(int id, CancellationToken ct)
+        public async Task<ActionResult<GestionDto>> GetById(int id, CancellationToken ct)
         {
             var repo = _uow.GetRepository<Gestion>();
-            var g = await repo.GetByIdAsync(id, ct);
-            if (g is null) return NotFound();
-            return Ok(ToResponse(g));
+            var gestion = await repo.GetByIdAsync(id, ct);
+
+            if (gestion is null) return NotFound();
+
+            var dto = _mapper.Map<GestionDto>(gestion);
+            return Ok(dto);
         }
 
-        // POST: api/gestion
         [HttpPost]
-        public async Task<ActionResult<GestionResponseDto>> Create([FromBody] GestionCreateDto dto, CancellationToken ct)
+        public async Task<ActionResult<GestionDto>> Create([FromBody] GestionCreateDto dto, CancellationToken ct)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var repo = _uow.GetRepository<Gestion>();
-            var entity = new Gestion { Nombre = dto.Nombre! };
+            var entity = _mapper.Map<Gestion>(dto);
 
             await repo.AddAsync(entity, ct);
             await _uow.CompleteAsync(ct);
 
-            var response = ToResponse(entity);
-            return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
+            var responseDto = _mapper.Map<GestionDto>(entity);
+            return CreatedAtAction(nameof(GetById), new { id = responseDto.Id }, responseDto);
         }
 
-        // PUT: api/gestion/5
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] GestionUpdateDto dto, CancellationToken ct)
         {
@@ -65,14 +73,13 @@ namespace Api.Controllers
             var existing = await repo.GetByIdAsync(id, ct);
             if (existing is null) return NotFound();
 
-            existing.Nombre = dto.Nombre!;
+            _mapper.Map(dto, existing);
 
             await repo.UpdateAsync(existing, ct);
             await _uow.CompleteAsync(ct);
             return NoContent();
         }
 
-        // DELETE: api/gestion/5
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id, CancellationToken ct)
         {

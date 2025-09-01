@@ -1,72 +1,58 @@
 using Application.Interfaces;
-using Domain.Models;
+using AutoMapper;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Contracts.Dtos.Carrera;
 
-namespace Api.Controllers
+namespace Api.Controllers.Sync
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class CarreraController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
-        public CarreraController(IUnitOfWork uow) => _uow = uow;
+        private readonly IMapper _mapper;
 
-        // DTO de respuesta del API (puedes moverlo a Api/Dtos/Responses)
-        public sealed record class CarreraResponseDto(
-            int Id,
-            string Codigo,
-            short Modalidad,
-            string Nombre
-        );
+        public CarreraController(IUnitOfWork uow, IMapper mapper)
+        {
+            _uow = uow;
+            _mapper = mapper;
+        }
 
-        // Helpers de mapeo
-        private static CarreraResponseDto ToResponse(Carrera c) =>
-            new(c.Id, c.Codigo, c.Modalidad, c.Nombre);
-
-        // GET: api/carrera
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CarreraResponseDto>>> GetAll(CancellationToken ct)
+        public async Task<ActionResult<IEnumerable<CarreraDto>>> GetAll(CancellationToken ct)
         {
             var repo = _uow.GetRepository<Carrera>();
             var carreras = await repo.GetAllAsync(ct);
-            return Ok(carreras.Select(ToResponse).ToList());
+            return Ok(_mapper.Map<IEnumerable<CarreraDto>>(carreras));
         }
 
-        // GET: api/carrera/5
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<CarreraResponseDto>> GetById(int id, CancellationToken ct)
+        public async Task<ActionResult<CarreraDto>> GetById(int id, CancellationToken ct)
         {
             var repo = _uow.GetRepository<Carrera>();
             var carrera = await repo.GetByIdAsync(id, ct);
             if (carrera is null) return NotFound();
-            return Ok(ToResponse(carrera));
+            return Ok(_mapper.Map<CarreraDto>(carrera));
         }
 
-        // POST: api/carrera
         [HttpPost]
-        public async Task<ActionResult<CarreraResponseDto>> Create([FromBody] CarreraCreateDto dto, CancellationToken ct)
+        public async Task<ActionResult<CarreraDto>> Create([FromBody] CarreraCreateDto dto, CancellationToken ct)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var repo = _uow.GetRepository<Carrera>();
-            var entity = new Carrera
-            {
-                Codigo = dto.Codigo!,
-                Modalidad = dto.MODALIDAD,  // ojo: en Domain es 'Modalidad'
-                Nombre = dto.Nombre!
-            };
+            var entity = _mapper.Map<Carrera>(dto);
 
             await repo.AddAsync(entity, ct);
             await _uow.CompleteAsync(ct);
 
-            var response = ToResponse(entity);
-            return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
+            var responseDto = _mapper.Map<CarreraDto>(entity);
+            return CreatedAtAction(nameof(GetById), new { id = responseDto.Id }, responseDto);
         }
 
-        // PUT: api/carrera/5
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] CarreraUpdateDto dto, CancellationToken ct)
         {
@@ -77,16 +63,13 @@ namespace Api.Controllers
             var existing = await repo.GetByIdAsync(id, ct);
             if (existing is null) return NotFound();
 
-            existing.Codigo = dto.Codigo!;
-            existing.Modalidad = dto.MODALIDAD;
-            existing.Nombre = dto.Nombre!;
+            _mapper.Map(dto, existing);
 
             await repo.UpdateAsync(existing, ct);
             await _uow.CompleteAsync(ct);
             return NoContent();
         }
 
-        // DELETE: api/carrera/5
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id, CancellationToken ct)
         {

@@ -1,36 +1,36 @@
+// Api/Controllers/MateriaController.cs
+
 using Application.Interfaces;
-using Domain.Models;
+using AutoMapper; // Necesitas agregar esta directiva using
+using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Contracts.Dtos.Materia; // 👈 plural
+using Shared.Contracts.Dtos.Materia;
 
-namespace Api.Controllers
+namespace Api.Controllers.Sync
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+   // [Authorize]
     public class MateriaController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
-        public MateriaController(IUnitOfWork uow) => _uow = uow;
+        private readonly IMapper _mapper; // Inyecta el mapper aquí
 
-        public sealed record class MateriaResponseDto(
-            int Id,
-            string Nombre,
-            string Sigla,
-            short Credito,
-            bool EsElectiva
-        );
-
-        private static MateriaResponseDto ToResponseDto(Materia m) =>
-            new(m.Id, m.Nombre, m.Sigla, m.Credito, m.EsElectiva);
+        public MateriaController(IUnitOfWork uow, IMapper mapper)
+        {
+            _uow = uow;
+            _mapper = mapper;
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAll(CancellationToken ct)
         {
             var repo = _uow.GetRepository<Materia>();
             var materias = await repo.GetAllAsync(ct);
-            return Ok(materias.Select(ToResponseDto).ToList());
+            // Usa el mapper para la colección de DTOs
+            var dtos = _mapper.Map<IEnumerable<MateriaDto>>(materias);
+            return Ok(dtos);
         }
 
         [HttpGet("{id:int}")]
@@ -38,7 +38,10 @@ namespace Api.Controllers
         {
             var repo = _uow.GetRepository<Materia>();
             var materia = await repo.GetByIdAsync(id, ct);
-            return materia is null ? NotFound() : Ok(ToResponseDto(materia));
+            if (materia is null) return NotFound();
+            // Usa el mapper para el DTO individual
+            var dto = _mapper.Map<MateriaDto>(materia);
+            return Ok(dto);
         }
 
         [HttpPost]
@@ -46,20 +49,16 @@ namespace Api.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var entity = new Materia
-            {
-                Nombre = dto.Nombre!,
-                Sigla = dto.Sigla!,
-                Credito = dto.Credito,
-                EsElectiva = dto.EsElectiva
-            };
+            // Usa el mapper para convertir el DTO en la entidad
+            var entity = _mapper.Map<Materia>(dto);
 
             var repo = _uow.GetRepository<Materia>();
             await repo.AddAsync(entity, ct);
             await _uow.CompleteAsync(ct);
 
-            var response = ToResponseDto(entity);
-            return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
+            // Usa el mapper para convertir la entidad de vuelta a un DTO de salida
+            var responseDto = _mapper.Map<MateriaDto>(entity);
+            return CreatedAtAction(nameof(GetById), new { id = responseDto.Id }, responseDto);
         }
 
         [HttpPut("{id:int}")]
@@ -72,10 +71,8 @@ namespace Api.Controllers
             var existing = await repo.GetByIdAsync(id, ct);
             if (existing is null) return NotFound();
 
-            existing.Nombre = dto.Nombre!;
-            existing.Sigla = dto.Sigla!;
-            existing.Credito = dto.Credito;
-            existing.EsElectiva = dto.EsElectiva;
+            // Usa el mapper para actualizar las propiedades de la entidad existente
+            _mapper.Map(dto, existing);
 
             await repo.UpdateAsync(existing, ct);
             await _uow.CompleteAsync(ct);

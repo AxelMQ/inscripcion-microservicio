@@ -1,74 +1,61 @@
+// Api/Controllers/AlumnoController.cs
 using Application.Interfaces;
-using Domain.Models;
+using AutoMapper;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Contracts.Dtos.Alumno;
 
-namespace Api.Controllers
+namespace Api.Controllers.Sync
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class AlumnoController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
-        public AlumnoController(IUnitOfWork uow) => _uow = uow;
+        private readonly IMapper _mapper;
 
-        // DTO de respuesta del API (puedes moverlo a Api/Dtos/Responses si prefieres)
-        public sealed record class AlumnoResponseDto(
-            int Id,
-            string Nombre,
-            decimal Ppa,
-            int? Telefono,   // si quieres permitir null en la respuesta
-            int Registro
-        );
+        public AlumnoController(IUnitOfWork uow, IMapper mapper)
+        {
+            _uow = uow;
+            _mapper = mapper;
+        }
 
-        // helpers de mapeo
-        private static AlumnoResponseDto ToResponse(Alumno a) =>
-            new(a.Id, a.Nombre, a.Ppa, a.Telefono, a.Registro);
-
-        // GET: api/alumno
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AlumnoResponseDto>>> GetAll(CancellationToken ct)
+        public async Task<ActionResult<IEnumerable<AlumnoDto>>> GetAll(CancellationToken ct)
         {
             var repo = _uow.GetRepository<Alumno>();
             var alumnos = await repo.GetAllAsync(ct);
-            return Ok(alumnos.Select(ToResponse).ToList());
+            var dtos = _mapper.Map<IEnumerable<AlumnoDto>>(alumnos); // Usa el mapeador
+            return Ok(dtos);
         }
 
-        // GET: api/alumno/5
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<AlumnoResponseDto>> GetById(int id, CancellationToken ct)
+        public async Task<ActionResult<AlumnoDto>> GetById(int id, CancellationToken ct)
         {
             var repo = _uow.GetRepository<Alumno>();
             var alumno = await repo.GetByIdAsync(id, ct);
             if (alumno is null) return NotFound();
-            return Ok(ToResponse(alumno));
+            var dto = _mapper.Map<AlumnoDto>(alumno); // Usa el mapeador
+            return Ok(dto);
         }
 
-        // POST: api/alumno
         [HttpPost]
-        public async Task<ActionResult<AlumnoResponseDto>> Create([FromBody] AlumnoCreateDto dto, CancellationToken ct)
+        public async Task<ActionResult<AlumnoDto>> Create([FromBody] AlumnoCreateDto dto, CancellationToken ct)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var repo = _uow.GetRepository<Alumno>();
-            var entity = new Alumno
-            {
-                Nombre = dto.Nombre!,
-                Ppa = dto.Ppa,
-                Telefono = dto.Telefono, // si dto lo define nullable, ajusta el tipo en Domain si aplica
-                Registro = dto.Registro
-            };
+            var entity = _mapper.Map<Alumno>(dto); // Usa el mapeador para crear la entidad
 
             await repo.AddAsync(entity, ct);
             await _uow.CompleteAsync(ct);
 
-            var response = ToResponse(entity);
-            return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
+            var responseDto = _mapper.Map<AlumnoDto>(entity); // Usa el mapeador para la respuesta
+            return CreatedAtAction(nameof(GetById), new { id = responseDto.Id }, responseDto);
         }
 
-        // PUT: api/alumno/5
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] AlumnoUpdateDto dto, CancellationToken ct)
         {
@@ -79,17 +66,13 @@ namespace Api.Controllers
             var existing = await repo.GetByIdAsync(id, ct);
             if (existing is null) return NotFound();
 
-            existing.Nombre = dto.Nombre!;
-            existing.Ppa = dto.Ppa;
-            existing.Telefono = dto.Telefono;
-            existing.Registro = dto.Registro;
+            _mapper.Map(dto, existing); // Mapea los datos del DTO a la entidad existente
 
             await repo.UpdateAsync(existing, ct);
             await _uow.CompleteAsync(ct);
             return NoContent();
         }
 
-        // DELETE: api/alumno/5
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id, CancellationToken ct)
         {

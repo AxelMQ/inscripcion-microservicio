@@ -1,4 +1,4 @@
-using Domain.Models;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,14 +19,13 @@ namespace Infrastructure.Data.Configurations
              .HasForeignKey(x => x.MateriaId);
 
             b.HasOne(x => x.Nivel)
-             .WithMany(n => n.MateriaPlanEstudios)
+             .WithMany(n => n.MateriaPlanEstudios) // <-- asegúrate que Nivel tiene esta colección
              .HasForeignKey(x => x.NivelId);
 
             b.HasOne(x => x.PlanEstudio)
-             .WithMany(pe => pe.MateriaPlanEstudios)
+             .WithMany(pe => pe.MateriaPlanEstudios) // <-- asegúrate que PlanEstudio tiene esta colección
              .HasForeignKey(x => x.PlanEstudioId);
 
-            // Relación con Prerequisito se completa en PrerequisitoConfiguration
         }
     }
 }

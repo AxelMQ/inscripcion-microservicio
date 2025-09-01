@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Domain.Models;
+using Domain.Entities;
 using System.Reflection;
 using Application.Messages; // Necesitas importar este namespace
 

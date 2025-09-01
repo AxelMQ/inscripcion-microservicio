@@ -2,8 +2,10 @@ using Domain.Core;
 using System.Linq.Expressions;
 
 namespace Application.Interfaces;
+
 public interface IRepository<TEntity> where TEntity : BaseEntity
 {
+    IQueryable<TEntity> Query(bool asNoTracking = true);
     Task<TEntity?> GetByIdAsync(int id, CancellationToken ct = default);
     Task<List<TEntity>> GetAllAsync(CancellationToken ct = default);
     Task<List<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken ct = default);

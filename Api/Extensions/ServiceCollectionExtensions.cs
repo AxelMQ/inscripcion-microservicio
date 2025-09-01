@@ -9,8 +9,8 @@ using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Threading.Channels;
-using Microsoft.OpenApi.Models; // <-- Added this using directive
-
+using Microsoft.OpenApi.Models;
+using Shared.Mapping; // <-- Added this using directive
 
 namespace Api.Extensions
 {
@@ -35,6 +35,23 @@ namespace Api.Extensions
             // ── Registrar Repositorios ──────────────────────────────────────────────────
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+
+            // ── Registrar AutoMapper ────────────────────────────
+            // using System.Reflection;
+            // using AutoMapper.Extensions.Microsoft.DependencyInjection;
+
+                services.AddAutoMapper(cfg =>
+    {
+        // Aquí puedes añadir configuraciones globales si las necesitas
+        // Ejemplo:
+        // cfg.AllowNullCollections = true;
+
+        // Registrar tu perfil de mapeo explícitamente
+        cfg.AddProfile<MappingProfiles>();
+
+    }, new[] { typeof(MappingProfiles).Assembly });
+
 
             // ── CONFIGURACION DEL SISTEMA ASINCRONO ───────────────────────────────────────
             services.AddSingleton(Channel.CreateUnbounded<RequestMessage>());

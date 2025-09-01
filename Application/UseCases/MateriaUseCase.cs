@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Enums;
 using Application.Interfaces;
-using Domain.Models;
+using Domain.Entities;
 
 namespace Application.UseCases
 {

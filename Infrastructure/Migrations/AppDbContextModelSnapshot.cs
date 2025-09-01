@@ -22,7 +22,7 @@ namespace Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Domain.Models.Alumno", b =>
+            modelBuilder.Entity("Domain.Entities.Alumno", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -90,7 +90,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.AlumnoPlanEstudio", b =>
+            modelBuilder.Entity("Domain.Entities.AlumnoPlanEstudio", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -119,7 +119,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("alumno_plan_estudio", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Models.Carrera", b =>
+            modelBuilder.Entity("Domain.Entities.Carrera", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -180,7 +180,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.Dia", b =>
+            modelBuilder.Entity("Domain.Entities.Dia", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -233,7 +233,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.Docente", b =>
+            modelBuilder.Entity("Domain.Entities.Docente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -614,7 +614,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.Gestion", b =>
+            modelBuilder.Entity("Domain.Entities.Gestion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -677,7 +677,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.Grupo", b =>
+            modelBuilder.Entity("Domain.Entities.Grupo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -890,7 +890,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.GrupoMateria", b =>
+            modelBuilder.Entity("Domain.Entities.GrupoMateria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1977,7 +1977,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.Hora", b =>
+            modelBuilder.Entity("Domain.Entities.Hora", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2230,7 +2230,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.HoraDia", b =>
+            modelBuilder.Entity("Domain.Entities.HoraDia", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2957,7 +2957,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.HoraDiaHorario", b =>
+            modelBuilder.Entity("Domain.Entities.HoraDiaHorario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -4188,7 +4188,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.Horario", b =>
+            modelBuilder.Entity("Domain.Entities.Horario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -4553,7 +4553,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.HorarioMateria", b =>
+            modelBuilder.Entity("Domain.Entities.HorarioMateria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -4586,10 +4586,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("horario_id");
 
-                    b.Property<int?>("MateriaPlanEstudioId")
-                        .HasColumnType("integer")
-                        .HasColumnName("materia_plan_estudio_id");
-
                     b.Property<int>("ModuloId")
                         .HasColumnType("integer")
                         .HasColumnName("modulo_id");
@@ -4612,9 +4608,6 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("HorarioId")
                         .HasDatabaseName("ix_horario_materia_horario_id");
-
-                    b.HasIndex("MateriaPlanEstudioId")
-                        .HasDatabaseName("ix_horario_materia_materia_plan_estudio_id");
 
                     b.HasIndex("ModuloId")
                         .HasDatabaseName("ix_horario_materia_modulo_id");
@@ -5764,7 +5757,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.HorarioMateriaInscripcion", b =>
+            modelBuilder.Entity("Domain.Entities.HorarioMateriaInscripcion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -5793,7 +5786,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("horario_materia_inscripcion", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Models.Inscripcion", b =>
+            modelBuilder.Entity("Domain.Entities.Inscripcion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -5819,7 +5812,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("inscripcion", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Models.Materia", b =>
+            modelBuilder.Entity("Domain.Entities.Materia", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -6592,7 +6585,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.MateriaPlanEstudio", b =>
+            modelBuilder.Entity("Domain.Entities.MateriaPlanEstudio", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -7645,7 +7638,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.Modulo", b =>
+            modelBuilder.Entity("Domain.Entities.Modulo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -7696,7 +7689,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.Nivel", b =>
+            modelBuilder.Entity("Domain.Entities.Nivel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -7783,7 +7776,7 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.Nota", b =>
+            modelBuilder.Entity("Domain.Entities.Nota", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -7792,7 +7785,7 @@ namespace Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AlumnoId")
+                    b.Property<int>("AlumnoId")
                         .HasColumnType("integer")
                         .HasColumnName("alumno_id");
 
@@ -7801,7 +7794,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("numeric(10,2)")
                         .HasColumnName("calificacion");
 
-                    b.Property<int?>("HorarioMateriaInscripcionId")
+                    b.Property<int>("HorarioMateriaInscripcionId")
                         .HasColumnType("integer")
                         .HasColumnName("horario_materia_inscripcion_id");
 
@@ -7817,7 +7810,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("nota", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Models.PlanEstudio", b =>
+            modelBuilder.Entity("Domain.Entities.PlanEstudio", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -7871,8 +7864,15 @@ namespace Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.Prerequisito", b =>
+            modelBuilder.Entity("Domain.Entities.Prerequisito", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
                     b.Property<int>("MateriaPlanEstudioId")
                         .HasColumnType("integer")
                         .HasColumnName("materia_plan_estudio_id");
@@ -7881,14 +7881,15 @@ namespace Infrastructure.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("requisito_id");
 
-                    b.HasKey("MateriaPlanEstudioId", "RequisitoId")
+                    b.HasKey("Id")
                         .HasName("pk_prerequisito");
-
-                    b.HasIndex("MateriaPlanEstudioId")
-                        .HasDatabaseName("ix_prerequisito_materia_plan_estudio_id");
 
                     b.HasIndex("RequisitoId")
                         .HasDatabaseName("ix_prerequisito_requisito_id");
+
+                    b.HasIndex("MateriaPlanEstudioId", "RequisitoId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_prerequisito_materia_plan_estudio_id_requisito_id");
 
                     b.ToTable("prerequisito", null, t =>
                         {
@@ -7898,946 +7899,1138 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
+                            Id = -1,
                             MateriaPlanEstudioId = 6,
                             RequisitoId = 1
                         },
                         new
                         {
+                            Id = -2,
                             MateriaPlanEstudioId = 7,
                             RequisitoId = 2
                         },
                         new
                         {
+                            Id = -3,
                             MateriaPlanEstudioId = 8,
                             RequisitoId = 3
                         },
                         new
                         {
+                            Id = -4,
                             MateriaPlanEstudioId = 9,
                             RequisitoId = 4
                         },
                         new
                         {
+                            Id = -5,
                             MateriaPlanEstudioId = 10,
                             RequisitoId = 5
                         },
                         new
                         {
+                            Id = -6,
                             MateriaPlanEstudioId = 11,
                             RequisitoId = 6
                         },
                         new
                         {
+                            Id = -7,
                             MateriaPlanEstudioId = 12,
                             RequisitoId = 7
                         },
                         new
                         {
+                            Id = -8,
                             MateriaPlanEstudioId = 12,
                             RequisitoId = 8
                         },
                         new
                         {
+                            Id = -9,
                             MateriaPlanEstudioId = 13,
                             RequisitoId = 8
                         },
                         new
                         {
+                            Id = -10,
                             MateriaPlanEstudioId = 13,
                             RequisitoId = 9
                         },
                         new
                         {
+                            Id = -11,
                             MateriaPlanEstudioId = 14,
                             RequisitoId = 9
                         },
                         new
                         {
+                            Id = -12,
                             MateriaPlanEstudioId = 16,
                             RequisitoId = 6
                         },
                         new
                         {
+                            Id = -13,
                             MateriaPlanEstudioId = 17,
                             RequisitoId = 11
                         },
                         new
                         {
+                            Id = -14,
                             MateriaPlanEstudioId = 18,
                             RequisitoId = 12
                         },
                         new
                         {
+                            Id = -15,
                             MateriaPlanEstudioId = 19,
                             RequisitoId = 13
                         },
                         new
                         {
+                            Id = -16,
                             MateriaPlanEstudioId = 20,
                             RequisitoId = 15
                         },
                         new
                         {
+                            Id = -17,
                             MateriaPlanEstudioId = 21,
                             RequisitoId = 16
                         },
                         new
                         {
+                            Id = -18,
                             MateriaPlanEstudioId = 22,
                             RequisitoId = 18
                         },
                         new
                         {
+                            Id = -19,
                             MateriaPlanEstudioId = 23,
                             RequisitoId = 18
                         },
                         new
                         {
+                            Id = -20,
                             MateriaPlanEstudioId = 24,
                             RequisitoId = 18
                         },
                         new
                         {
+                            Id = -21,
                             MateriaPlanEstudioId = 25,
                             RequisitoId = 18
                         },
                         new
                         {
+                            Id = -22,
                             MateriaPlanEstudioId = 26,
                             RequisitoId = 21
                         },
                         new
                         {
+                            Id = -23,
                             MateriaPlanEstudioId = 27,
                             RequisitoId = 24
                         },
                         new
                         {
+                            Id = -24,
                             MateriaPlanEstudioId = 28,
                             RequisitoId = 23
                         },
                         new
                         {
+                            Id = -25,
                             MateriaPlanEstudioId = 29,
                             RequisitoId = 24
                         },
                         new
                         {
+                            Id = -26,
                             MateriaPlanEstudioId = 30,
                             RequisitoId = 25
                         },
                         new
                         {
+                            Id = -27,
                             MateriaPlanEstudioId = 30,
                             RequisitoId = 23
                         },
                         new
                         {
+                            Id = -28,
                             MateriaPlanEstudioId = 31,
                             RequisitoId = 26
                         },
                         new
                         {
+                            Id = -29,
                             MateriaPlanEstudioId = 32,
                             RequisitoId = 30
                         },
                         new
                         {
+                            Id = -30,
                             MateriaPlanEstudioId = 32,
                             RequisitoId = 23
                         },
                         new
                         {
+                            Id = -31,
                             MateriaPlanEstudioId = 33,
                             RequisitoId = 28
                         },
                         new
                         {
+                            Id = -32,
                             MateriaPlanEstudioId = 34,
                             RequisitoId = 28
                         },
                         new
                         {
+                            Id = -33,
                             MateriaPlanEstudioId = 35,
                             RequisitoId = 27
                         },
                         new
                         {
+                            Id = -34,
                             MateriaPlanEstudioId = 35,
                             RequisitoId = 29
                         },
                         new
                         {
+                            Id = -35,
                             MateriaPlanEstudioId = 36,
                             RequisitoId = 31
                         },
                         new
                         {
+                            Id = -36,
                             MateriaPlanEstudioId = 37,
                             RequisitoId = 32
                         },
                         new
                         {
+                            Id = -37,
                             MateriaPlanEstudioId = 37,
                             RequisitoId = 35
                         },
                         new
                         {
+                            Id = -38,
                             MateriaPlanEstudioId = 38,
                             RequisitoId = 35
                         },
                         new
                         {
+                            Id = -39,
                             MateriaPlanEstudioId = 39,
                             RequisitoId = 34
                         },
                         new
                         {
+                            Id = -40,
                             MateriaPlanEstudioId = 40,
                             RequisitoId = 35
                         },
                         new
                         {
+                            Id = -41,
                             MateriaPlanEstudioId = 41,
                             RequisitoId = 36
                         },
                         new
                         {
+                            Id = -42,
                             MateriaPlanEstudioId = 41,
                             RequisitoId = 37
                         },
                         new
                         {
+                            Id = -43,
                             MateriaPlanEstudioId = 41,
                             RequisitoId = 38
                         },
                         new
                         {
+                            Id = -44,
                             MateriaPlanEstudioId = 41,
                             RequisitoId = 39
                         },
                         new
                         {
+                            Id = -45,
                             MateriaPlanEstudioId = 41,
                             RequisitoId = 40
                         },
                         new
                         {
+                            Id = -46,
                             MateriaPlanEstudioId = 44,
                             RequisitoId = 36
                         },
                         new
                         {
+                            Id = -47,
                             MateriaPlanEstudioId = 44,
                             RequisitoId = 37
                         },
                         new
                         {
+                            Id = -48,
                             MateriaPlanEstudioId = 44,
                             RequisitoId = 38
                         },
                         new
                         {
+                            Id = -49,
                             MateriaPlanEstudioId = 44,
                             RequisitoId = 39
                         },
                         new
                         {
+                            Id = -50,
                             MateriaPlanEstudioId = 44,
                             RequisitoId = 40
                         },
                         new
                         {
+                            Id = -51,
                             MateriaPlanEstudioId = 42,
                             RequisitoId = 36
                         },
                         new
                         {
+                            Id = -52,
                             MateriaPlanEstudioId = 42,
                             RequisitoId = 37
                         },
                         new
                         {
+                            Id = -53,
                             MateriaPlanEstudioId = 42,
                             RequisitoId = 38
                         },
                         new
                         {
+                            Id = -54,
                             MateriaPlanEstudioId = 42,
                             RequisitoId = 39
                         },
                         new
                         {
+                            Id = -55,
                             MateriaPlanEstudioId = 42,
                             RequisitoId = 40
                         },
                         new
                         {
+                            Id = -56,
                             MateriaPlanEstudioId = 43,
                             RequisitoId = 36
                         },
                         new
                         {
+                            Id = -57,
                             MateriaPlanEstudioId = 43,
                             RequisitoId = 37
                         },
                         new
                         {
+                            Id = -58,
                             MateriaPlanEstudioId = 43,
                             RequisitoId = 38
                         },
                         new
                         {
+                            Id = -59,
                             MateriaPlanEstudioId = 43,
                             RequisitoId = 39
                         },
                         new
                         {
+                            Id = -60,
                             MateriaPlanEstudioId = 43,
                             RequisitoId = 40
                         },
                         new
                         {
+                            Id = -61,
                             MateriaPlanEstudioId = 45,
                             RequisitoId = 41
                         },
                         new
                         {
+                            Id = -62,
                             MateriaPlanEstudioId = 45,
                             RequisitoId = 44
                         },
                         new
                         {
+                            Id = -63,
                             MateriaPlanEstudioId = 45,
                             RequisitoId = 42
                         },
                         new
                         {
+                            Id = -64,
                             MateriaPlanEstudioId = 45,
                             RequisitoId = 43
                         },
                         new
                         {
+                            Id = -65,
                             MateriaPlanEstudioId = 54,
                             RequisitoId = 49
                         },
                         new
                         {
+                            Id = -66,
                             MateriaPlanEstudioId = 53,
                             RequisitoId = 48
                         },
                         new
                         {
+                            Id = -67,
                             MateriaPlanEstudioId = 55,
                             RequisitoId = 50
                         },
                         new
                         {
+                            Id = -68,
                             MateriaPlanEstudioId = 51,
                             RequisitoId = 46
                         },
                         new
                         {
+                            Id = -69,
                             MateriaPlanEstudioId = 52,
                             RequisitoId = 47
                         },
                         new
                         {
+                            Id = -70,
                             MateriaPlanEstudioId = 57,
                             RequisitoId = 53
                         },
                         new
                         {
+                            Id = -71,
                             MateriaPlanEstudioId = 57,
                             RequisitoId = 52
                         },
                         new
                         {
+                            Id = -72,
                             MateriaPlanEstudioId = 58,
                             RequisitoId = 53
                         },
                         new
                         {
+                            Id = -73,
                             MateriaPlanEstudioId = 58,
                             RequisitoId = 54
                         },
                         new
                         {
+                            Id = -74,
                             MateriaPlanEstudioId = 56,
                             RequisitoId = 51
                         },
                         new
                         {
+                            Id = -75,
                             MateriaPlanEstudioId = 59,
                             RequisitoId = 54
                         },
                         new
                         {
+                            Id = -76,
                             MateriaPlanEstudioId = 65,
                             RequisitoId = 60
                         },
                         new
                         {
+                            Id = -77,
                             MateriaPlanEstudioId = 63,
                             RequisitoId = 57
                         },
                         new
                         {
+                            Id = -78,
                             MateriaPlanEstudioId = 64,
                             RequisitoId = 58
                         },
                         new
                         {
+                            Id = -79,
                             MateriaPlanEstudioId = 61,
                             RequisitoId = 51
                         },
                         new
                         {
+                            Id = -80,
                             MateriaPlanEstudioId = 62,
                             RequisitoId = 56
                         },
                         new
                         {
+                            Id = -81,
                             MateriaPlanEstudioId = 71,
                             RequisitoId = 65
                         },
                         new
                         {
+                            Id = -82,
                             MateriaPlanEstudioId = 72,
                             RequisitoId = 65
                         },
                         new
                         {
+                            Id = -83,
                             MateriaPlanEstudioId = 68,
                             RequisitoId = 63
                         },
                         new
                         {
+                            Id = -84,
                             MateriaPlanEstudioId = 69,
                             RequisitoId = 63
                         },
                         new
                         {
+                            Id = -85,
                             MateriaPlanEstudioId = 66,
                             RequisitoId = 61
                         },
                         new
                         {
+                            Id = -86,
                             MateriaPlanEstudioId = 78,
                             RequisitoId = 71
                         },
                         new
                         {
+                            Id = -87,
                             MateriaPlanEstudioId = 76,
                             RequisitoId = 69
                         },
                         new
                         {
+                            Id = -88,
                             MateriaPlanEstudioId = 75,
                             RequisitoId = 68
                         },
                         new
                         {
+                            Id = -89,
                             MateriaPlanEstudioId = 74,
                             RequisitoId = 69
                         },
                         new
                         {
+                            Id = -90,
                             MateriaPlanEstudioId = 73,
                             RequisitoId = 66
                         },
                         new
                         {
+                            Id = -91,
                             MateriaPlanEstudioId = 81,
                             RequisitoId = 75
                         },
                         new
                         {
+                            Id = -92,
                             MateriaPlanEstudioId = 84,
                             RequisitoId = 74
                         },
                         new
                         {
+                            Id = -93,
                             MateriaPlanEstudioId = 84,
                             RequisitoId = 76
                         },
                         new
                         {
+                            Id = -94,
                             MateriaPlanEstudioId = 79,
                             RequisitoId = 73
                         },
                         new
                         {
+                            Id = -95,
                             MateriaPlanEstudioId = 82,
                             RequisitoId = 75
                         },
                         new
                         {
+                            Id = -96,
+                            MateriaPlanEstudioId = 82,
+                            RequisitoId = 76
+                        },
+                        new
+                        {
+                            Id = -97,
                             MateriaPlanEstudioId = 83,
                             RequisitoId = 74
                         },
                         new
                         {
+                            Id = -98,
                             MateriaPlanEstudioId = 83,
                             RequisitoId = 76
                         },
                         new
                         {
+                            Id = -99,
                             MateriaPlanEstudioId = 85,
                             RequisitoId = 79
                         },
                         new
                         {
+                            Id = -100,
                             MateriaPlanEstudioId = 87,
                             RequisitoId = 83
                         },
                         new
                         {
+                            Id = -101,
                             MateriaPlanEstudioId = 88,
                             RequisitoId = 82
                         },
                         new
                         {
+                            Id = -102,
                             MateriaPlanEstudioId = 89,
                             RequisitoId = 83
                         },
                         new
                         {
+                            Id = -103,
                             MateriaPlanEstudioId = 90,
                             RequisitoId = 78
                         },
                         new
                         {
+                            Id = -104,
                             MateriaPlanEstudioId = 90,
                             RequisitoId = 83
                         },
                         new
                         {
+                            Id = -105,
                             MateriaPlanEstudioId = 94,
                             RequisitoId = 89
                         },
                         new
                         {
+                            Id = -106,
                             MateriaPlanEstudioId = 94,
                             RequisitoId = 88
                         },
                         new
                         {
+                            Id = -107,
                             MateriaPlanEstudioId = 94,
                             RequisitoId = 87
                         },
                         new
                         {
+                            Id = -108,
                             MateriaPlanEstudioId = 92,
                             RequisitoId = 90
                         },
                         new
                         {
+                            Id = -109,
                             MateriaPlanEstudioId = 92,
                             RequisitoId = 85
                         },
                         new
                         {
+                            Id = -110,
                             MateriaPlanEstudioId = 95,
                             RequisitoId = 91
                         },
                         new
                         {
+                            Id = -111,
                             MateriaPlanEstudioId = 95,
                             RequisitoId = 94
                         },
                         new
                         {
+                            Id = -112,
                             MateriaPlanEstudioId = 95,
                             RequisitoId = 92
                         },
                         new
                         {
+                            Id = -113,
                             MateriaPlanEstudioId = 95,
                             RequisitoId = 93
                         },
                         new
                         {
+                            Id = -114,
                             MateriaPlanEstudioId = 101,
                             RequisitoId = 96
                         },
                         new
                         {
+                            Id = -115,
                             MateriaPlanEstudioId = 102,
                             RequisitoId = 97
                         },
                         new
                         {
+                            Id = -116,
                             MateriaPlanEstudioId = 103,
                             RequisitoId = 98
                         },
                         new
                         {
+                            Id = -117,
                             MateriaPlanEstudioId = 104,
                             RequisitoId = 99
                         },
                         new
                         {
+                            Id = -118,
                             MateriaPlanEstudioId = 105,
                             RequisitoId = 100
                         },
                         new
                         {
+                            Id = -119,
                             MateriaPlanEstudioId = 106,
                             RequisitoId = 101
                         },
                         new
                         {
+                            Id = -120,
                             MateriaPlanEstudioId = 107,
                             RequisitoId = 102
                         },
                         new
                         {
+                            Id = -121,
                             MateriaPlanEstudioId = 107,
                             RequisitoId = 103
                         },
                         new
                         {
+                            Id = -122,
                             MateriaPlanEstudioId = 108,
                             RequisitoId = 103
                         },
                         new
                         {
+                            Id = -123,
                             MateriaPlanEstudioId = 108,
                             RequisitoId = 104
                         },
                         new
                         {
+                            Id = -124,
                             MateriaPlanEstudioId = 109,
                             RequisitoId = 104
                         },
                         new
                         {
+                            Id = -125,
                             MateriaPlanEstudioId = 110,
                             RequisitoId = 104
                         },
                         new
                         {
+                            Id = -126,
                             MateriaPlanEstudioId = 112,
                             RequisitoId = 106
                         },
                         new
                         {
+                            Id = -127,
                             MateriaPlanEstudioId = 111,
                             RequisitoId = 101
                         },
                         new
                         {
+                            Id = -128,
                             MateriaPlanEstudioId = 113,
                             RequisitoId = 107
                         },
                         new
                         {
+                            Id = -129,
                             MateriaPlanEstudioId = 113,
                             RequisitoId = 96
                         },
                         new
                         {
+                            Id = -130,
                             MateriaPlanEstudioId = 114,
                             RequisitoId = 108
                         },
                         new
                         {
+                            Id = -131,
                             MateriaPlanEstudioId = 115,
                             RequisitoId = 109
                         },
                         new
                         {
+                            Id = -132,
                             MateriaPlanEstudioId = 116,
                             RequisitoId = 111
                         },
                         new
                         {
+                            Id = -133,
                             MateriaPlanEstudioId = 117,
                             RequisitoId = 113
                         },
                         new
                         {
+                            Id = -134,
                             MateriaPlanEstudioId = 118,
                             RequisitoId = 115
                         },
                         new
                         {
+                            Id = -135,
                             MateriaPlanEstudioId = 119,
                             RequisitoId = 115
                         },
                         new
                         {
+                            Id = -136,
                             MateriaPlanEstudioId = 120,
                             RequisitoId = 110
                         },
                         new
                         {
+                            Id = -137,
                             MateriaPlanEstudioId = 120,
                             RequisitoId = 106
                         },
                         new
                         {
+                            Id = -138,
                             MateriaPlanEstudioId = 123,
                             RequisitoId = 116
                         },
                         new
                         {
+                            Id = -139,
                             MateriaPlanEstudioId = 124,
                             RequisitoId = 117
                         },
                         new
                         {
+                            Id = -140,
                             MateriaPlanEstudioId = 125,
                             RequisitoId = 121
                         },
                         new
                         {
+                            Id = -141,
                             MateriaPlanEstudioId = 126,
                             RequisitoId = 119
                         },
                         new
                         {
+                            Id = -142,
                             MateriaPlanEstudioId = 127,
                             RequisitoId = 120
                         },
                         new
                         {
+                            Id = -143,
                             MateriaPlanEstudioId = 127,
                             RequisitoId = 112
                         },
                         new
                         {
+                            Id = -144,
                             MateriaPlanEstudioId = 133,
                             RequisitoId = 125
                         },
                         new
                         {
+                            Id = -145,
                             MateriaPlanEstudioId = 132,
                             RequisitoId = 123
                         },
                         new
                         {
+                            Id = -146,
                             MateriaPlanEstudioId = 131,
                             RequisitoId = 123
                         },
                         new
                         {
+                            Id = -147,
                             MateriaPlanEstudioId = 131,
                             RequisitoId = 120
                         },
                         new
                         {
+                            Id = -148,
                             MateriaPlanEstudioId = 134,
                             RequisitoId = 126
                         },
                         new
                         {
+                            Id = -149,
                             MateriaPlanEstudioId = 134,
                             RequisitoId = 114
                         },
                         new
                         {
+                            Id = -150,
                             MateriaPlanEstudioId = 135,
                             RequisitoId = 127
                         },
                         new
                         {
+                            Id = -151,
                             MateriaPlanEstudioId = 135,
                             RequisitoId = 120
                         },
                         new
                         {
+                            Id = -152,
                             MateriaPlanEstudioId = 139,
                             RequisitoId = 133
                         },
                         new
                         {
+                            Id = -153,
                             MateriaPlanEstudioId = 140,
                             RequisitoId = 131
                         },
                         new
                         {
+                            Id = -154,
                             MateriaPlanEstudioId = 138,
                             RequisitoId = 131
                         },
                         new
                         {
+                            Id = -155,
                             MateriaPlanEstudioId = 141,
                             RequisitoId = 131
                         },
                         new
                         {
+                            Id = -156,
                             MateriaPlanEstudioId = 141,
                             RequisitoId = 135
                         },
                         new
                         {
+                            Id = -157,
                             MateriaPlanEstudioId = 142,
                             RequisitoId = 135
                         },
                         new
                         {
+                            Id = -158,
                             MateriaPlanEstudioId = 145,
                             RequisitoId = 139
                         },
                         new
                         {
+                            Id = -159,
                             MateriaPlanEstudioId = 145,
                             RequisitoId = 140
                         },
                         new
                         {
+                            Id = -160,
                             MateriaPlanEstudioId = 145,
                             RequisitoId = 138
                         },
                         new
                         {
+                            Id = -161,
                             MateriaPlanEstudioId = 145,
                             RequisitoId = 141
                         },
                         new
                         {
+                            Id = -162,
                             MateriaPlanEstudioId = 145,
                             RequisitoId = 142
                         },
                         new
                         {
+                            Id = -163,
                             MateriaPlanEstudioId = 146,
                             RequisitoId = 139
                         },
                         new
                         {
+                            Id = -164,
                             MateriaPlanEstudioId = 146,
                             RequisitoId = 140
                         },
                         new
                         {
+                            Id = -165,
                             MateriaPlanEstudioId = 146,
                             RequisitoId = 138
                         },
                         new
                         {
+                            Id = -166,
                             MateriaPlanEstudioId = 146,
                             RequisitoId = 141
                         },
                         new
                         {
+                            Id = -167,
                             MateriaPlanEstudioId = 146,
                             RequisitoId = 142
                         },
                         new
                         {
+                            Id = -168,
                             MateriaPlanEstudioId = 147,
                             RequisitoId = 139
                         },
                         new
                         {
+                            Id = -169,
                             MateriaPlanEstudioId = 147,
                             RequisitoId = 140
                         },
                         new
                         {
+                            Id = -170,
                             MateriaPlanEstudioId = 147,
                             RequisitoId = 138
                         },
                         new
                         {
+                            Id = -171,
                             MateriaPlanEstudioId = 147,
                             RequisitoId = 141
                         },
                         new
                         {
+                            Id = -172,
                             MateriaPlanEstudioId = 147,
                             RequisitoId = 142
                         },
                         new
                         {
+                            Id = -173,
                             MateriaPlanEstudioId = 148,
                             RequisitoId = 139
                         },
                         new
                         {
+                            Id = -174,
                             MateriaPlanEstudioId = 148,
                             RequisitoId = 140
                         },
                         new
                         {
+                            Id = -175,
                             MateriaPlanEstudioId = 148,
                             RequisitoId = 138
                         },
                         new
                         {
+                            Id = -176,
                             MateriaPlanEstudioId = 148,
                             RequisitoId = 141
                         },
                         new
                         {
+                            Id = -177,
                             MateriaPlanEstudioId = 148,
                             RequisitoId = 142
                         },
                         new
                         {
+                            Id = -178,
                             MateriaPlanEstudioId = 149,
                             RequisitoId = 139
                         },
                         new
                         {
+                            Id = -179,
                             MateriaPlanEstudioId = 149,
                             RequisitoId = 140
                         },
                         new
                         {
+                            Id = -180,
                             MateriaPlanEstudioId = 149,
                             RequisitoId = 138
                         },
                         new
                         {
+                            Id = -181,
                             MateriaPlanEstudioId = 149,
                             RequisitoId = 141
                         },
                         new
                         {
+                            Id = -182,
                             MateriaPlanEstudioId = 149,
                             RequisitoId = 142
                         },
                         new
                         {
+                            Id = -183,
                             MateriaPlanEstudioId = 150,
                             RequisitoId = 145
                         },
                         new
                         {
+                            Id = -184,
                             MateriaPlanEstudioId = 150,
                             RequisitoId = 147
                         },
                         new
                         {
+                            Id = -185,
                             MateriaPlanEstudioId = 150,
                             RequisitoId = 146
                         },
                         new
                         {
+                            Id = -186,
                             MateriaPlanEstudioId = 150,
                             RequisitoId = 148
                         },
                         new
                         {
+                            Id = -187,
                             MateriaPlanEstudioId = 150,
                             RequisitoId = 149
                         });
                 });
 
-            modelBuilder.Entity("Domain.Models.AlumnoPlanEstudio", b =>
+            modelBuilder.Entity("Domain.Entities.AlumnoPlanEstudio", b =>
                 {
-                    b.HasOne("Domain.Models.Alumno", "Alumno")
+                    b.HasOne("Domain.Entities.Alumno", "Alumno")
                         .WithMany("AlumnoPlanEstudios")
                         .HasForeignKey("AlumnoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_alumno_plan_estudio_alumno_alumno_id");
 
-                    b.HasOne("Domain.Models.PlanEstudio", "PlanEstudio")
+                    b.HasOne("Domain.Entities.PlanEstudio", "PlanEstudio")
                         .WithMany("AlumnoPlanEstudios")
                         .HasForeignKey("PlanEstudioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -8849,16 +9042,16 @@ namespace Infrastructure.Migrations
                     b.Navigation("PlanEstudio");
                 });
 
-            modelBuilder.Entity("Domain.Models.GrupoMateria", b =>
+            modelBuilder.Entity("Domain.Entities.GrupoMateria", b =>
                 {
-                    b.HasOne("Domain.Models.Grupo", "Grupo")
+                    b.HasOne("Domain.Entities.Grupo", "Grupo")
                         .WithMany("GrupoMaterias")
                         .HasForeignKey("GrupoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_grupo_materia_grupo_grupo_id");
 
-                    b.HasOne("Domain.Models.Materia", "Materia")
+                    b.HasOne("Domain.Entities.Materia", "Materia")
                         .WithMany("GrupoMaterias")
                         .HasForeignKey("MateriaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -8870,16 +9063,16 @@ namespace Infrastructure.Migrations
                     b.Navigation("Materia");
                 });
 
-            modelBuilder.Entity("Domain.Models.HoraDia", b =>
+            modelBuilder.Entity("Domain.Entities.HoraDia", b =>
                 {
-                    b.HasOne("Domain.Models.Dia", "Dia")
+                    b.HasOne("Domain.Entities.Dia", "Dia")
                         .WithMany("HorasDia")
                         .HasForeignKey("DiaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_hora_dia_dia_dia_id");
 
-                    b.HasOne("Domain.Models.Hora", "Hora")
+                    b.HasOne("Domain.Entities.Hora", "Hora")
                         .WithMany("HorasDia")
                         .HasForeignKey("HoraId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -8891,16 +9084,16 @@ namespace Infrastructure.Migrations
                     b.Navigation("Hora");
                 });
 
-            modelBuilder.Entity("Domain.Models.HoraDiaHorario", b =>
+            modelBuilder.Entity("Domain.Entities.HoraDiaHorario", b =>
                 {
-                    b.HasOne("Domain.Models.HoraDia", "HoraDia")
+                    b.HasOne("Domain.Entities.HoraDia", "HoraDia")
                         .WithMany("HorasDiaHorario")
                         .HasForeignKey("HoraDiaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_hora_dia_horario_hora_dia_hora_dia_id");
 
-                    b.HasOne("Domain.Models.Horario", "Horario")
+                    b.HasOne("Domain.Entities.Horario", "Horario")
                         .WithMany("HorasDiaHorario")
                         .HasForeignKey("HorarioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -8912,41 +9105,36 @@ namespace Infrastructure.Migrations
                     b.Navigation("Horario");
                 });
 
-            modelBuilder.Entity("Domain.Models.HorarioMateria", b =>
+            modelBuilder.Entity("Domain.Entities.HorarioMateria", b =>
                 {
-                    b.HasOne("Domain.Models.Docente", "Docente")
+                    b.HasOne("Domain.Entities.Docente", "Docente")
                         .WithMany("HorariosMateria")
                         .HasForeignKey("DocenteId")
                         .OnDelete(DeleteBehavior.SetNull)
                         .HasConstraintName("fk_horario_materia_docente_docente_id");
 
-                    b.HasOne("Domain.Models.Gestion", "Gestion")
+                    b.HasOne("Domain.Entities.Gestion", "Gestion")
                         .WithMany("HorariosMateria")
                         .HasForeignKey("GestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_horario_materia_gestion_gestion_id");
 
-                    b.HasOne("Domain.Models.GrupoMateria", "GrupoMateria")
+                    b.HasOne("Domain.Entities.GrupoMateria", "GrupoMateria")
                         .WithMany("HorariosMateria")
                         .HasForeignKey("GrupoMateriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_horario_materia_grupo_materia_grupo_materia_id");
 
-                    b.HasOne("Domain.Models.Horario", "Horario")
+                    b.HasOne("Domain.Entities.Horario", "Horario")
                         .WithMany("HorariosMateria")
                         .HasForeignKey("HorarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_horario_materia_horario_horario_id");
 
-                    b.HasOne("Domain.Models.MateriaPlanEstudio", null)
-                        .WithMany("HorariosMateria")
-                        .HasForeignKey("MateriaPlanEstudioId")
-                        .HasConstraintName("fk_horario_materia_materia_plan_estudio_materia_plan_estudio_id");
-
-                    b.HasOne("Domain.Models.Modulo", "Modulo")
+                    b.HasOne("Domain.Entities.Modulo", "Modulo")
                         .WithMany("HorariosMateria")
                         .HasForeignKey("ModuloId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -8964,16 +9152,16 @@ namespace Infrastructure.Migrations
                     b.Navigation("Modulo");
                 });
 
-            modelBuilder.Entity("Domain.Models.HorarioMateriaInscripcion", b =>
+            modelBuilder.Entity("Domain.Entities.HorarioMateriaInscripcion", b =>
                 {
-                    b.HasOne("Domain.Models.HorarioMateria", "HorarioMateria")
+                    b.HasOne("Domain.Entities.HorarioMateria", "HorarioMateria")
                         .WithMany("HorarioMateriaInscripciones")
                         .HasForeignKey("HorarioMateriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_horario_materia_inscripcion_horario_materia_horario_materia");
 
-                    b.HasOne("Domain.Models.Inscripcion", "Inscripcion")
+                    b.HasOne("Domain.Entities.Inscripcion", "Inscripcion")
                         .WithMany("HorarioMateriaInscripciones")
                         .HasForeignKey("InscripcionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -8985,9 +9173,9 @@ namespace Infrastructure.Migrations
                     b.Navigation("Inscripcion");
                 });
 
-            modelBuilder.Entity("Domain.Models.Inscripcion", b =>
+            modelBuilder.Entity("Domain.Entities.Inscripcion", b =>
                 {
-                    b.HasOne("Domain.Models.Alumno", "Alumno")
+                    b.HasOne("Domain.Entities.Alumno", "Alumno")
                         .WithMany("Inscripciones")
                         .HasForeignKey("AlumnoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -8997,23 +9185,23 @@ namespace Infrastructure.Migrations
                     b.Navigation("Alumno");
                 });
 
-            modelBuilder.Entity("Domain.Models.MateriaPlanEstudio", b =>
+            modelBuilder.Entity("Domain.Entities.MateriaPlanEstudio", b =>
                 {
-                    b.HasOne("Domain.Models.Materia", "Materia")
+                    b.HasOne("Domain.Entities.Materia", "Materia")
                         .WithMany("MateriaPlanEstudios")
                         .HasForeignKey("MateriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_materia_plan_estudio_materia_materia_id");
 
-                    b.HasOne("Domain.Models.Nivel", "Nivel")
+                    b.HasOne("Domain.Entities.Nivel", "Nivel")
                         .WithMany("MateriaPlanEstudios")
                         .HasForeignKey("NivelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_materia_plan_estudio_nivel_nivel_id");
 
-                    b.HasOne("Domain.Models.PlanEstudio", "PlanEstudio")
+                    b.HasOne("Domain.Entities.PlanEstudio", "PlanEstudio")
                         .WithMany("MateriaPlanEstudios")
                         .HasForeignKey("PlanEstudioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -9027,18 +9215,20 @@ namespace Infrastructure.Migrations
                     b.Navigation("PlanEstudio");
                 });
 
-            modelBuilder.Entity("Domain.Models.Nota", b =>
+            modelBuilder.Entity("Domain.Entities.Nota", b =>
                 {
-                    b.HasOne("Domain.Models.Alumno", "Alumno")
+                    b.HasOne("Domain.Entities.Alumno", "Alumno")
                         .WithMany("Notas")
                         .HasForeignKey("AlumnoId")
                         .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired()
                         .HasConstraintName("fk_nota_alumno_alumno_id");
 
-                    b.HasOne("Domain.Models.HorarioMateriaInscripcion", "HorarioMateriaInscripcion")
+                    b.HasOne("Domain.Entities.HorarioMateriaInscripcion", "HorarioMateriaInscripcion")
                         .WithMany("Notas")
                         .HasForeignKey("HorarioMateriaInscripcionId")
                         .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired()
                         .HasConstraintName("fk_nota_horario_materia_inscripcion_horario_materia_inscripcio");
 
                     b.Navigation("Alumno");
@@ -9046,9 +9236,9 @@ namespace Infrastructure.Migrations
                     b.Navigation("HorarioMateriaInscripcion");
                 });
 
-            modelBuilder.Entity("Domain.Models.PlanEstudio", b =>
+            modelBuilder.Entity("Domain.Entities.PlanEstudio", b =>
                 {
-                    b.HasOne("Domain.Models.Carrera", "Carrera")
+                    b.HasOne("Domain.Entities.Carrera", "Carrera")
                         .WithMany("PlanesEstudio")
                         .HasForeignKey("CarreraId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -9058,16 +9248,16 @@ namespace Infrastructure.Migrations
                     b.Navigation("Carrera");
                 });
 
-            modelBuilder.Entity("Domain.Models.Prerequisito", b =>
+            modelBuilder.Entity("Domain.Entities.Prerequisito", b =>
                 {
-                    b.HasOne("Domain.Models.MateriaPlanEstudio", "MateriaPlanEstudio")
+                    b.HasOne("Domain.Entities.MateriaPlanEstudio", "MateriaPlanEstudio")
                         .WithMany("MateriasRequisito")
                         .HasForeignKey("MateriaPlanEstudioId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired()
                         .HasConstraintName("fk_prerequisito_materia_plan_estudio_materia_plan_estudio_id");
 
-                    b.HasOne("Domain.Models.MateriaPlanEstudio", "Requisito")
+                    b.HasOne("Domain.Entities.MateriaPlanEstudio", "Requisito")
                         .WithMany("RequisitosPara")
                         .HasForeignKey("RequisitoId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -9079,7 +9269,7 @@ namespace Infrastructure.Migrations
                     b.Navigation("Requisito");
                 });
 
-            modelBuilder.Entity("Domain.Models.Alumno", b =>
+            modelBuilder.Entity("Domain.Entities.Alumno", b =>
                 {
                     b.Navigation("AlumnoPlanEstudios");
 
@@ -9088,95 +9278,93 @@ namespace Infrastructure.Migrations
                     b.Navigation("Notas");
                 });
 
-            modelBuilder.Entity("Domain.Models.Carrera", b =>
+            modelBuilder.Entity("Domain.Entities.Carrera", b =>
                 {
                     b.Navigation("PlanesEstudio");
                 });
 
-            modelBuilder.Entity("Domain.Models.Dia", b =>
+            modelBuilder.Entity("Domain.Entities.Dia", b =>
                 {
                     b.Navigation("HorasDia");
                 });
 
-            modelBuilder.Entity("Domain.Models.Docente", b =>
+            modelBuilder.Entity("Domain.Entities.Docente", b =>
                 {
                     b.Navigation("HorariosMateria");
                 });
 
-            modelBuilder.Entity("Domain.Models.Gestion", b =>
+            modelBuilder.Entity("Domain.Entities.Gestion", b =>
                 {
                     b.Navigation("HorariosMateria");
                 });
 
-            modelBuilder.Entity("Domain.Models.Grupo", b =>
+            modelBuilder.Entity("Domain.Entities.Grupo", b =>
                 {
                     b.Navigation("GrupoMaterias");
                 });
 
-            modelBuilder.Entity("Domain.Models.GrupoMateria", b =>
+            modelBuilder.Entity("Domain.Entities.GrupoMateria", b =>
                 {
                     b.Navigation("HorariosMateria");
                 });
 
-            modelBuilder.Entity("Domain.Models.Hora", b =>
+            modelBuilder.Entity("Domain.Entities.Hora", b =>
                 {
                     b.Navigation("HorasDia");
                 });
 
-            modelBuilder.Entity("Domain.Models.HoraDia", b =>
+            modelBuilder.Entity("Domain.Entities.HoraDia", b =>
                 {
                     b.Navigation("HorasDiaHorario");
                 });
 
-            modelBuilder.Entity("Domain.Models.Horario", b =>
+            modelBuilder.Entity("Domain.Entities.Horario", b =>
                 {
                     b.Navigation("HorariosMateria");
 
                     b.Navigation("HorasDiaHorario");
                 });
 
-            modelBuilder.Entity("Domain.Models.HorarioMateria", b =>
+            modelBuilder.Entity("Domain.Entities.HorarioMateria", b =>
                 {
                     b.Navigation("HorarioMateriaInscripciones");
                 });
 
-            modelBuilder.Entity("Domain.Models.HorarioMateriaInscripcion", b =>
+            modelBuilder.Entity("Domain.Entities.HorarioMateriaInscripcion", b =>
                 {
                     b.Navigation("Notas");
                 });
 
-            modelBuilder.Entity("Domain.Models.Inscripcion", b =>
+            modelBuilder.Entity("Domain.Entities.Inscripcion", b =>
                 {
                     b.Navigation("HorarioMateriaInscripciones");
                 });
 
-            modelBuilder.Entity("Domain.Models.Materia", b =>
+            modelBuilder.Entity("Domain.Entities.Materia", b =>
                 {
                     b.Navigation("GrupoMaterias");
 
                     b.Navigation("MateriaPlanEstudios");
                 });
 
-            modelBuilder.Entity("Domain.Models.MateriaPlanEstudio", b =>
+            modelBuilder.Entity("Domain.Entities.MateriaPlanEstudio", b =>
                 {
-                    b.Navigation("HorariosMateria");
-
                     b.Navigation("MateriasRequisito");
 
                     b.Navigation("RequisitosPara");
                 });
 
-            modelBuilder.Entity("Domain.Models.Modulo", b =>
+            modelBuilder.Entity("Domain.Entities.Modulo", b =>
                 {
                     b.Navigation("HorariosMateria");
                 });
 
-            modelBuilder.Entity("Domain.Models.Nivel", b =>
+            modelBuilder.Entity("Domain.Entities.Nivel", b =>
                 {
                     b.Navigation("MateriaPlanEstudios");
                 });
 
-            modelBuilder.Entity("Domain.Models.PlanEstudio", b =>
+            modelBuilder.Entity("Domain.Entities.PlanEstudio", b =>
                 {
                     b.Navigation("AlumnoPlanEstudios");
 

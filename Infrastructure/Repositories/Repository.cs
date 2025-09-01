@@ -13,6 +13,9 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
 
     public Repository(AppDbContext ctx) { _ctx = ctx; _db = ctx.Set<TEntity>(); }
 
+    public IQueryable<TEntity> Query(bool asNoTracking = true)
+       => asNoTracking ? _db.AsNoTracking() : _db;
+
     public Task<TEntity?> GetByIdAsync(int id, CancellationToken ct = default)
         => _db.FindAsync([id], ct).AsTask();
 
