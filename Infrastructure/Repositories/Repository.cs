@@ -1,3 +1,4 @@
+// Infrastructure/Repositories/Repository.cs
 using Application.Interfaces;
 using Domain.Core;
 using Infrastructure.Data;
@@ -14,13 +15,35 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
     public Repository(AppDbContext ctx) { _ctx = ctx; _db = ctx.Set<TEntity>(); }
 
     public IQueryable<TEntity> Query(bool asNoTracking = true)
-       => asNoTracking ? _db.AsNoTracking() : _db;
+        => asNoTracking ? _db.AsNoTracking() : _db;
 
     public Task<TEntity?> GetByIdAsync(int id, CancellationToken ct = default)
         => _db.FindAsync([id], ct).AsTask();
 
+    // NUEVO: Método para obtener por ID con carga de relaciones
+    public async Task<TEntity?> GetByIdAsync(int id, CancellationToken ct, params Expression<Func<TEntity, object>>[] includes)
+    {
+        IQueryable<TEntity> query = _db.AsNoTracking();
+        foreach (var include in includes)
+        {
+            query = query.Include(include);
+        }
+        return await query.FirstOrDefaultAsync(e => e.Id == id, ct);
+    }
+    
     public Task<List<TEntity>> GetAllAsync(CancellationToken ct = default)
         => _db.AsNoTracking().ToListAsync(ct);
+
+    // NUEVO: Método para obtener todos los registros con carga de relaciones
+    public async Task<List<TEntity>> GetAllAsync(CancellationToken ct, params Expression<Func<TEntity, object>>[] includes)
+    {
+        IQueryable<TEntity> query = _db.AsNoTracking();
+        foreach (var include in includes)
+        {
+            query = query.Include(include);
+        }
+        return await query.ToListAsync(ct);
+    }
 
     public Task<List<TEntity>> FindAsync(Expression<Func<TEntity, bool>> p, CancellationToken ct = default)
         => _db.AsNoTracking().Where(p).ToListAsync(ct);
@@ -35,7 +58,10 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
         => _db.AddRangeAsync(entities, ct);
 
     public Task UpdateAsync(TEntity entity, CancellationToken ct = default)
-    { _db.Update(entity); return Task.CompletedTask; }
+    { 
+        _db.Update(entity); 
+        return Task.CompletedTask; 
+    }
 
     public async Task DeleteAsync(int id, CancellationToken ct = default)
     {

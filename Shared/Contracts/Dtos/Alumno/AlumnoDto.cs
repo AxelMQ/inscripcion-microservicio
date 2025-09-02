@@ -8,5 +8,7 @@ namespace Shared.Contracts.Dtos.Alumno
         public decimal Ppa { get; init; }
         public int Telefono { get; init; }
         public int Registro { get; init; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

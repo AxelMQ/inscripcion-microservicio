@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
 using System.Reflection;
-using Application.Messages; // Necesitas importar este namespace
+using Application.Messages;
+using Domain.Core; // Necesitas importar este namespace
 
 namespace Infrastructure.Data
 {
@@ -40,6 +41,28 @@ namespace Infrastructure.Data
 
         // Este método se usa para configurar el modelo de datos,
         // especialmente para relaciones y claves compuestas.
+
+        // Sobrescribimos SaveChangesAsync para manejar automáticamente las fechas
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            // Busca todas las entidades que están siendo agregadas o modificadas
+            var entries = ChangeTracker.Entries()
+                .Where(e => e.Entity is BaseEntity && (e.State == EntityState.Added || e.State == EntityState.Modified));
+
+            foreach (var entityEntry in entries)
+            {
+                // Si la entidad se está agregando, establece la fecha de creación
+                if (entityEntry.State == EntityState.Added)
+                {
+                    ((BaseEntity)entityEntry.Entity).CreatedAt = DateTime.UtcNow;
+                }
+
+                // Actualiza la fecha de modificación para todas las entidades que cambian
+                ((BaseEntity)entityEntry.Entity).UpdatedAt = DateTime.UtcNow;
+            }
+
+            return base.SaveChangesAsync(cancellationToken);
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

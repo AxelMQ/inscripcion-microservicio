@@ -41,28 +41,30 @@ namespace Api.Extensions
             // using System.Reflection;
             // using AutoMapper.Extensions.Microsoft.DependencyInjection;
 
-                services.AddAutoMapper(cfg =>
-    {
-        // Aquí puedes añadir configuraciones globales si las necesitas
-        // Ejemplo:
-        // cfg.AllowNullCollections = true;
+            services.AddAutoMapper(cfg =>
+{
+    // Aquí puedes añadir configuraciones globales si las necesitas
+    // Ejemplo:
+    // cfg.AllowNullCollections = true;
 
-        // Registrar tu perfil de mapeo explícitamente
-        cfg.AddProfile<MappingProfiles>();
+    // Registrar tu perfil de mapeo explícitamente
+    cfg.AddProfile<MappingProfiles>();
 
-    }, new[] { typeof(MappingProfiles).Assembly });
+}, new[] { typeof(MappingProfiles).Assembly });
 
 
             // ── CONFIGURACION DEL SISTEMA ASINCRONO ───────────────────────────────────────
             services.AddSingleton(Channel.CreateUnbounded<RequestMessage>());
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IHorarioMateriaRepository, HorarioMateriaRepository>();
             services.AddHostedService<RequestProcessorService>();
             services.AddSingleton<RequestStatusTracker>();
 
             // ── ESTRATEGIAS PARA LOS REPOSITORIOS ───────────────────────────────────────
             //services.AddSingleton<IRequestProcessingStrategy, StudentProcessingStrategy>();
             services.AddSingleton<IRequestProcessingStrategy, MateriaProcessingStrategy>();
+            services.AddSingleton<IRequestProcessingStrategy, HorarioMateriaProcessingStrategy>();
 
             return services;
         }

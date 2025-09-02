@@ -9,8 +9,11 @@ namespace Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Prerequisito> b)
         {
-            // La clave primaria 'Id' se asume por convención. No es necesario configurarla.
-            // Si la clase hereda de BaseEntity, EF Core la mapeará automáticamente.
+            // PK natural: (materia, requisito)
+            b.HasKey(x => new { x.MateriaPlanEstudioId, x.RequisitoId });
+
+            // Ignora el Id heredado de BaseEntity (no lo mapees a la BD)
+            b.Ignore(x => x.Id);
 
             b.Property(x => x.MateriaPlanEstudioId).IsRequired();
             b.Property(x => x.RequisitoId).IsRequired();
@@ -26,12 +29,13 @@ namespace Infrastructure.Data.Configurations
              .HasForeignKey(x => x.RequisitoId)
              .OnDelete(DeleteBehavior.NoAction);
 
-            // Se mantiene una restricción de unicidad para la combinación de las claves foráneas
-            // Esto asegura que no se puedan crear prerequisitos duplicados
-            b.HasIndex(x => new { x.MateriaPlanEstudioId, x.RequisitoId }).IsUnique();
-
             // Evita prerequisito a sí mismo
             b.ToTable(tb => tb.HasCheckConstraint("CK_prereq_no_self", "\"materia_plan_estudio_id\" <> \"requisito_id\""));
+
+
+            // Índices útiles para consultas en ambos sentidos
+            b.HasIndex(x => x.MateriaPlanEstudioId);
+            b.HasIndex(x => x.RequisitoId);
         }
     }
 }

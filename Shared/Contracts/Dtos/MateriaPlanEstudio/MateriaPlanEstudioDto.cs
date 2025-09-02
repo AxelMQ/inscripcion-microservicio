@@ -14,7 +14,10 @@ namespace Shared.Contracts.Dtos.MateriaPlanEstudio
     //public int PlanEstudioId { get; init; }
     public PlanEstudioDto? PlanEstudio { get; init; }
 
-    public ICollection<PrerequisitoDto> MateriasRequisito { get; set; } = new List<PrerequisitoDto>();
-    public ICollection<PrerequisitoDto> RequisitosPara { get; set; } = new List<PrerequisitoDto>();
+    // DTO para los requisitos de la materia (hacia adelante)
+    public ICollection<PrerequisitoDto>? MateriasRequisito { get; set; }
+
+    // NUEVO: DTO para las materias que la requieren (la relación inversa)
+    public ICollection<RequisitoParaDto>? RequisitosPara { get; set; }
   }
 }

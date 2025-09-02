@@ -1,6 +1,3 @@
-// Domain/Entities/Horario.cs
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using Domain.Core;
 
 namespace Domain.Entities

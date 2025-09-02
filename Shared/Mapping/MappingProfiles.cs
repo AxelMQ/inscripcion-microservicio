@@ -8,6 +8,11 @@ using Shared.Contracts.Dtos.Docente;
 using Shared.Contracts.Dtos.Gestion;
 using Shared.Contracts.Dtos.Grupo;
 using Shared.Contracts.Dtos.GrupoMateria;
+using Shared.Contracts.Dtos.Hora;
+using Shared.Contracts.Dtos.HoraDia;
+using Shared.Contracts.Dtos.HoraDiaHorario;
+using Shared.Contracts.Dtos.Horario;
+using Shared.Contracts.Dtos.HorarioMateria;
 using Shared.Contracts.Dtos.Materia;
 using Shared.Contracts.Dtos.MateriaPlanEstudio;
 using Shared.Contracts.Dtos.Nivel;
@@ -89,19 +94,63 @@ namespace Shared.Mapping
       // Mapeo de la entidad de dominio a DTOs de salida
       CreateMap<MateriaPlanEstudio, MateriaPlanEstudioDto>();
 
+      // Mapeo de DTOs de entrada a la entidad de dominio
+      CreateMap<HoraCreateDto, Hora>();
+      CreateMap<HoraUpdateDto, Hora>();
+      // Mapeo de la entidad de dominio a DTOs de salida
+      CreateMap<Hora, HoraDto>();
+
+      // Mapeo de DTOs de entrada a la entidad de dominio
+      CreateMap<HoraDiaCreateDto, HoraDia>();
+      CreateMap<HoraDiaUpdateDto, HoraDia>();
+      // Mapeo de la entidad de dominio a DTOs de salida
+      CreateMap<HoraDia, HoraDiaDto>();
+
+      // Mapeo de DTOs de entrada a la entidad de dominio
+      CreateMap<HorarioMateriaCreateDto, HorarioMateria>();
+      CreateMap<HorarioMateriaUpdateDto, HorarioMateria>();
+      // Mapeo de la entidad de dominio a DTOs de salida
+      CreateMap<HorarioMateria, HorarioMateriaDto>()
+          .ForMember(dest => dest.Horarios, opt => opt.MapFrom(src => src.Horario.HorasDiaHorario));
+
+
+      // Mapeo de DTOs de entrada a la entidad de dominio
+      CreateMap<HorarioCreateDto, Horario>();
+      CreateMap<HorarioUpdateDto, Horario>();
+      // Mapeo de la entidad de dominio a DTOs de salida
+      CreateMap<Horario, HorarioDto>();
+
+
+      // Mapeo de DTOs de entrada a la entidad de dominio
+      CreateMap<HoraDiaHorarioCreateDto, HoraDiaHorario>();
+      CreateMap<HoraDiaHorarioUpdateDto, HoraDiaHorario>();
+      // Mapeo de la entidad de dominio a DTOs de salida
+      CreateMap<HoraDiaHorario, HorarioDetalleDto>()
+          .ForMember(dest => dest.Dia, opt => opt.MapFrom(src => src.HoraDia.Dia))
+          .ForMember(dest => dest.Hora, opt => opt.MapFrom(src => src.HoraDia.Hora));
+
+
+
+
 
 
       // Mapeo de DTOs de entrada a la entidad de dominio
       CreateMap<PrerequisitoCreateDto, Prerequisito>();
       CreateMap<PrerequisitoUpdateDto, Prerequisito>();
       // Mapeo de la entidad de dominio a DTOs de salida
+      // Mapeo para los requisitos de la materia (materiasRequisito)
       CreateMap<Prerequisito, PrerequisitoDto>()
-               .ForMember(dest => dest.RequisitoMateriaId,
-                          opt => opt.MapFrom(src => src.Requisito.Materia.Id))
-               .ForMember(dest => dest.RequisitoMateriaNombre,
-                          opt => opt.MapFrom(src => src.Requisito.Materia.Nombre))
-               .ForMember(dest => dest.RequisitoMateriaSigla,
-                          opt => opt.MapFrom(src => src.Requisito.Materia.Sigla));
+          .ForMember(dest => dest.RequisitoMateriaNombre,
+                     opt => opt.MapFrom(src => src.Requisito.Materia.Nombre))
+          .ForMember(dest => dest.RequisitoMateriaSigla,
+                     opt => opt.MapFrom(src => src.Requisito.Materia.Sigla));
+
+      // Mapeo para la relación inversa (requisitosPara)
+      CreateMap<Prerequisito, RequisitoParaDto>()
+          .ForMember(dest => dest.MateriaQueRequiereNombre,
+                     opt => opt.MapFrom(src => src.MateriaPlanEstudio.Materia.Nombre))
+          .ForMember(dest => dest.MateriaQueRequiereSigla,
+                     opt => opt.MapFrom(src => src.MateriaPlanEstudio.Materia.Sigla));
     }
   }
 }

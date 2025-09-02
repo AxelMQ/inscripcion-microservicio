@@ -33,6 +33,10 @@ namespace Api.Controllers.Sync
                 .Include(x => x.MateriasRequisito)
                     .ThenInclude(p => p.Requisito)
                         .ThenInclude(mpe => mpe.Materia)
+                // LÍNEA AÑADIDA: Incluir la relación inversa "requisitosPara"
+                .Include(x => x.RequisitosPara)
+                    .ThenInclude(p => p.MateriaPlanEstudio)
+                        .ThenInclude(mpe => mpe.Materia)
                 .AsSplitQuery()
                 .AsNoTracking()
                 .ToListAsync(ct);
@@ -52,6 +56,10 @@ namespace Api.Controllers.Sync
                 .Include(x => x.PlanEstudio)
                 .Include(x => x.MateriasRequisito)
                     .ThenInclude(p => p.Requisito)
+                        .ThenInclude(mpe => mpe.Materia)
+                // LÍNEA AÑADIDA: Incluir la relación inversa "requisitosPara"
+                .Include(x => x.RequisitosPara)
+                    .ThenInclude(p => p.MateriaPlanEstudio)
                         .ThenInclude(mpe => mpe.Materia)
                 .AsSplitQuery()
                 .AsNoTracking()
