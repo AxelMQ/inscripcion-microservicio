@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
-namespace Api.Controllers
+
+namespace Api.Controllers.Sync
 {
     [ApiController]
     [Route("api/status")]
@@ -39,11 +40,11 @@ namespace Api.Controllers
 
             return Ok(new
             {
-                jobId       = status.Id,
-                status      = status.Status,
-                error       = status.Error,
+                jobId = status.Id,
+                status = status.Status,
+                error = status.Error,
                 resultData,
-                createdUtc  = status.CreatedUtc,
+                createdUtc = status.CreatedUtc,
                 finishedUtc = status.FinishedUtc
             });
         }

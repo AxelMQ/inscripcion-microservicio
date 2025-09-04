@@ -1,4 +1,3 @@
-// Extensions/ServiceCollectionExtensions.cs
 using Application.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
@@ -19,32 +18,30 @@ namespace Api.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // ── EF Core + Npgsql ──────────────────────────────────────────────────────────
-            var connString = configuration.GetConnectionString("DefaultConnection")
-                           ?? Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
-
+            // DB
+            var connString = configuration.GetConnectionString("DefaultConnection");
             if (string.IsNullOrWhiteSpace(connString))
                 throw new InvalidOperationException("Missing ConnectionStrings:DefaultConnection.");
 
             services.AddDbContext<AppDbContext>(opt =>
                 opt.UseNpgsql(connString).UseSnakeCaseNamingConvention());
 
-            // ── UoW + Repos ───────────────────────────────────────────────────────────────
+            // Repos / UoW
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IHorarioMateriaRepository, HorarioMateriaRepository>();
 
-            // ── AutoMapper ────────────────────────────────────────────────────────────────
+            // AutoMapper
             services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfiles>(),
-                                   new[] { typeof(MappingProfiles).Assembly });
+                       new[] { typeof(MappingProfiles).Assembly });
 
-            // ── Hangfire (solo STORAGE) ───────────────────────────────────────────────────
+            // Hangfire (SOLO STORAGE; sin UseFilter aquí)
             services.AddHangfire(cfg =>
             {
                 cfg.UseSimpleAssemblyNameTypeSerializer()
                    .UseRecommendedSerializerSettings()
                    .UsePostgreSqlStorage(
-                       b => b.UseNpgsqlConnection(connString!),
+                       b => b.UseNpgsqlConnection(connString),
                        new PostgreSqlStorageOptions
                        {
                            PrepareSchemaIfNecessary = true,
@@ -52,14 +49,11 @@ namespace Api.Extensions
                        });
             });
 
-            // ⚠️ Importante: NO inicies el servidor aquí.
-            // ❌ services.AddHangfireServer();
-
-            // Manager para Start/Stop en caliente
+            // Manager Start/Stop & operativa
             services.AddSingleton<HangfireServerManager>();
 
-            // Runner y servicios de dominio usados por los jobs
-            services.AddScoped<GenericJobRunner>();
+            // Jobs/servicios
+            services.AddScoped<Worker>();
             services.AddScoped<AlumnoService>();
 
             return services;
@@ -67,15 +61,13 @@ namespace Api.Extensions
 
         public static IServiceCollection AddHealthChecks(this IServiceCollection services, IConfiguration configuration)
         {
-            var connString = configuration.GetConnectionString("DefaultConnection")
-                           ?? Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
-
+            var connString = configuration.GetConnectionString("DefaultConnection");
             if (string.IsNullOrWhiteSpace(connString))
                 throw new InvalidOperationException("Missing ConnectionStrings:DefaultConnection.");
 
             services.AddHealthChecks()
                 .AddCheck("self", () => HealthCheckResult.Healthy(), tags: new[] { "live" })
-                .AddNpgSql(connString!, name: "postgres", tags: new[] { "ready" });
+                .AddNpgSql(connString, name: "postgres", tags: new[] { "ready" });
 
             return services;
         }
@@ -86,7 +78,6 @@ namespace Api.Extensions
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Tu API", Version = "v1" });
-
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
@@ -95,20 +86,11 @@ namespace Api.Extensions
                     Type = SecuritySchemeType.Http,
                     Scheme = "bearer"
                 });
-
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        Array.Empty<string>()
-                    }
+                    { new OpenApiSecurityScheme
+                        { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" } },
+                      Array.Empty<string>() }
                 });
             });
 

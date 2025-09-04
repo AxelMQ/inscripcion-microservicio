@@ -7,17 +7,12 @@ using Hangfire.Server;
 
 namespace Infrastructure.Background
 {
-    public class GenericJobRunner
+    public class Worker(IServiceProvider sp, AppDbContext db)
     {
-        private readonly IServiceProvider _sp;
-        private readonly AppDbContext _db;
+        private readonly IServiceProvider _sp = sp;
+        private readonly AppDbContext _db = db;
         private static readonly JsonSerializerOptions _json = new(JsonSerializerDefaults.Web);
 
-        public GenericJobRunner(IServiceProvider sp, AppDbContext db)
-        {
-            _sp = sp;
-            _db = db;
-        }
 
         private async Task<JobResult> SetProcessingAsync(string jobId, CancellationToken ct)
         {
@@ -54,6 +49,8 @@ namespace Infrastructure.Background
         public async Task RunAsync(PerformContext? ctx, Job job, CancellationToken ct = default)
         {
             var jobId = ctx?.BackgroundJob?.Id ?? Guid.NewGuid().ToString("N");
+
+
             var jr = await SetProcessingAsync(jobId, ct);
 
             try
