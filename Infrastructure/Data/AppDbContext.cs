@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
 using System.Reflection;
-using Application.Messages;
-using Domain.Core; // Necesitas importar este namespace
+using Domain.Core;
+using Infrastructure.Data.Entities; // Necesitas importar este namespace
 
 namespace Infrastructure.Data
 {
@@ -16,6 +16,7 @@ namespace Infrastructure.Data
 
         // Aquí defines un DbSet para cada tabla de tu base de datos.
         // Esto le indica a Entity Framework qué clases de modelo debe mapear.
+        public DbSet<JobResult> JobResults => Set<JobResult>();
         public DbSet<Nivel> Nivel { get; set; }
         public DbSet<Carrera> Carrera { get; set; }
         public DbSet<Dia> Dia { get; set; }

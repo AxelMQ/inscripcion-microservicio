@@ -1,41 +1,51 @@
 // Api/Controllers/StatusController.cs
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
-[Route("api/status")]
-[ApiController]
-// [Authorize]
-public class StatusController : ControllerBase
+namespace Api.Controllers
 {
-    private readonly RequestStatusTracker _tracker;
-
-    public StatusController(RequestStatusTracker tracker) => _tracker = tracker;
-
-    [HttpGet("{id:guid}")]
-    public IActionResult GetStatus(Guid id)
+    [ApiController]
+    [Route("api/status")]
+    public class StatusController : ControllerBase
     {
-        var status = _tracker.GetStatus(id);
-        if (status is null)
-            return NotFound(new { message = "Id de petición no encontrado." });
+        private readonly AppDbContext _db;
 
-        object? resultData = null;
-        if (!string.IsNullOrWhiteSpace(status.ResultDataJson))
+        public StatusController(AppDbContext db)
         {
-            // 👇 convierte el string a JSON “desenrollado”
-            resultData = JsonSerializer.Deserialize<object>(status.ResultDataJson);
-            // alternativa más ligera:
-            // resultData = JsonDocument.Parse(status.ResultDataJson).RootElement;
+            _db = db;
         }
 
-        return Ok(new
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetStatus(string id, CancellationToken ct)
         {
-            requestId    = status.RequestId,
-            status       = status.Status.ToString(),
-            message      = status.Message,
-            errorMessage = status.ErrorMessage,
-            resultData, // 👈 ahora como JSON anidado
-            createdUtc   = status.CreatedUtc,
-            completedUtc = status.CompletedUtc
-        });
+            var status = await _db.JobResults.FirstOrDefaultAsync(x => x.Id == id, ct);
+            if (status is null)
+                return NotFound(new { message = "Id de petición no encontrado." });
+
+            object? resultData = null;
+            if (!string.IsNullOrWhiteSpace(status.DataJson))
+            {
+                try
+                {
+                    resultData = JsonSerializer.Deserialize<object>(status.DataJson);
+                }
+                catch
+                {
+                    resultData = status.DataJson; // fallback si no es JSON válido
+                }
+            }
+
+            return Ok(new
+            {
+                jobId       = status.Id,
+                status      = status.Status,
+                error       = status.Error,
+                resultData,
+                createdUtc  = status.CreatedUtc,
+                finishedUtc = status.FinishedUtc
+            });
+        }
     }
 }

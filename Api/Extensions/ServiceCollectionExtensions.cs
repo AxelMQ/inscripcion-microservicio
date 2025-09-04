@@ -1,16 +1,17 @@
 // Extensions/ServiceCollectionExtensions.cs
-
 using Application.Interfaces;
-using Application.Messages;
-using Application.Services;
-using Application.Strategies;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using System.Threading.Channels;
 using Microsoft.OpenApi.Models;
-using Shared.Mapping; // <-- Added this using directive
+using Shared.Mapping;
+
+using Hangfire;
+using Hangfire.PostgreSql;
+
+using Infrastructure.Background;
+using Infrastructure.Background.Services;
 
 namespace Api.Extensions
 {
@@ -23,48 +24,43 @@ namespace Api.Extensions
                            ?? Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
 
             if (string.IsNullOrWhiteSpace(connString))
-            {
-                throw new InvalidOperationException(
-                    "Missing ConnectionStrings:DefaultConnection. Please configure before starting the API.");
-            }
+                throw new InvalidOperationException("Missing ConnectionStrings:DefaultConnection.");
 
             services.AddDbContext<AppDbContext>(opt =>
-    opt.UseNpgsql(connString)
-       .UseSnakeCaseNamingConvention());
+                opt.UseNpgsql(connString).UseSnakeCaseNamingConvention());
 
-            // ── Registrar Repositorios ──────────────────────────────────────────────────
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-
-            // ── Registrar AutoMapper ────────────────────────────
-            // using System.Reflection;
-            // using AutoMapper.Extensions.Microsoft.DependencyInjection;
-
-            services.AddAutoMapper(cfg =>
-{
-    // Aquí puedes añadir configuraciones globales si las necesitas
-    // Ejemplo:
-    // cfg.AllowNullCollections = true;
-
-    // Registrar tu perfil de mapeo explícitamente
-    cfg.AddProfile<MappingProfiles>();
-
-}, new[] { typeof(MappingProfiles).Assembly });
-
-
-            // ── CONFIGURACION DEL SISTEMA ASINCRONO ───────────────────────────────────────
-            services.AddSingleton(Channel.CreateUnbounded<RequestMessage>());
+            // ── UoW + Repos ───────────────────────────────────────────────────────────────
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IHorarioMateriaRepository, HorarioMateriaRepository>();
-            services.AddHostedService<RequestProcessorService>();
-            services.AddSingleton<RequestStatusTracker>();
 
-            // ── ESTRATEGIAS PARA LOS REPOSITORIOS ───────────────────────────────────────
-            //services.AddSingleton<IRequestProcessingStrategy, StudentProcessingStrategy>();
-            services.AddSingleton<IRequestProcessingStrategy, MateriaProcessingStrategy>();
-            services.AddSingleton<IRequestProcessingStrategy, HorarioMateriaProcessingStrategy>();
+            // ── AutoMapper ────────────────────────────────────────────────────────────────
+            services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfiles>(),
+                                   new[] { typeof(MappingProfiles).Assembly });
+
+            // ── Hangfire (solo STORAGE) ───────────────────────────────────────────────────
+            services.AddHangfire(cfg =>
+            {
+                cfg.UseSimpleAssemblyNameTypeSerializer()
+                   .UseRecommendedSerializerSettings()
+                   .UsePostgreSqlStorage(
+                       b => b.UseNpgsqlConnection(connString!),
+                       new PostgreSqlStorageOptions
+                       {
+                           PrepareSchemaIfNecessary = true,
+                           QueuePollInterval = TimeSpan.FromSeconds(5)
+                       });
+            });
+
+            // ⚠️ Importante: NO inicies el servidor aquí.
+            // ❌ services.AddHangfireServer();
+
+            // Manager para Start/Stop en caliente
+            services.AddSingleton<HangfireServerManager>();
+
+            // Runner y servicios de dominio usados por los jobs
+            services.AddScoped<GenericJobRunner>();
+            services.AddScoped<AlumnoService>();
 
             return services;
         }
@@ -75,10 +71,7 @@ namespace Api.Extensions
                            ?? Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
 
             if (string.IsNullOrWhiteSpace(connString))
-            {
-                throw new InvalidOperationException(
-                    "Missing ConnectionStrings:DefaultConnection. Please configure before starting the API.");
-            }
+                throw new InvalidOperationException("Missing ConnectionStrings:DefaultConnection.");
 
             services.AddHealthChecks()
                 .AddCheck("self", () => HealthCheckResult.Healthy(), tags: new[] { "live" })
@@ -94,7 +87,6 @@ namespace Api.Extensions
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Tu API", Version = "v1" });
 
-                // Esto es lo que necesitas agregar para configurar JWT en Swagger
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
@@ -115,10 +107,11 @@ namespace Api.Extensions
                                 Id = "Bearer"
                             }
                         },
-                        new string[] {}
+                        Array.Empty<string>()
                     }
                 });
             });
+
             return services;
         }
     }

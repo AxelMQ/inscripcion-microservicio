@@ -4,7 +4,7 @@ namespace Shared.Contracts.Dtos.Alumno
 {
   public sealed record class AlumnoUpdateDto
   {
-
+    public int Id { get; set; }
     [Required(ErrorMessage = "El campo 'Nombre' es obligatorio.")]
     [StringLength(60, ErrorMessage = "El campo 'Nombre' no puede tener más de 60 caracteres.")]
     public string? Nombre { get; init; }

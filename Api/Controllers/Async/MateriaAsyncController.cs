@@ -1,4 +1,4 @@
-// Api/Controllers/Async/MateriaAsyncController.cs
+/* // Api/Controllers/Async/MateriaAsyncController.cs
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Threading.Channels;
@@ -135,3 +135,4 @@ namespace Api.Controllers.Async
         }
     }
 }
+ */

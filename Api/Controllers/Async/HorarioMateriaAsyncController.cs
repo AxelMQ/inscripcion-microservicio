@@ -1,4 +1,4 @@
-// Api/Controllers/Async/HorarioMateriaAsyncController.cs
+/* // Api/Controllers/Async/HorarioMateriaAsyncController.cs
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Threading.Channels;
@@ -136,3 +136,4 @@ namespace Api.Controllers.Async
         }
     }
 }
+ */
