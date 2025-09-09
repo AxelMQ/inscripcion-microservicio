@@ -1,17 +1,22 @@
-using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using Application.Enums;
-using Infrastructure.Background.Services;   // AlumnoService
-using Shared.Contracts.Dtos.Alumno;        // AlumnoCreateDto, AlumnoUpdateDto
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Background
 {
-    public record IdInput(int Id);
+    // Wrappers genéricos para operaciones con Id
+    public readonly record struct IdInput<T>(T Id);
+    public readonly record struct UpdateInput<TId, TUpdate>(TId Id, TUpdate Dto);
 
+
+    // Contrato de ruta
     public abstract record JobRoute(Type DtoType)
     {
         public abstract Task<object?> InvokeAsync(IServiceProvider sp, object? dto, CancellationToken ct);
 
-        public static JobRoute For<TDto, TService>(Func<TService, TDto?, CancellationToken, Task<object?>> invoker)
+        // Helper genérico (lo usamos cuando sí conocemos TService en compile-time)
+        public static JobRoute For<TDto, TService>(
+            Func<TService, TDto?, CancellationToken, Task<object?>> invoker)
             where TService : class
             => new RouteImpl<TDto, TService>(invoker);
 
@@ -27,38 +32,138 @@ namespace Infrastructure.Background
         }
     }
 
+    // Ruta dinámica basada en reflexión (para el escaneo automático)
+    // ANTES
+    // internal sealed class DynamicRoute : JobRoute
+
+    // DESPUÉS
+    internal sealed record DynamicRoute : JobRoute
+    {
+        private readonly Type _serviceType;
+        private readonly Func<object, object?[], Task<object?>> _invokeAsync;
+
+        public DynamicRoute(Type dtoType, Type serviceType, Func<object, object?[], Task<object?>> invokeAsync)
+            : base(dtoType)
+        {
+            _serviceType = serviceType;
+            _invokeAsync = invokeAsync;
+        }
+
+        public override Task<object?> InvokeAsync(IServiceProvider sp, object? dto, CancellationToken ct)
+        {
+            var svc = sp.GetRequiredService(_serviceType);
+            var args = dto is null ? new object?[] { null, ct } : new object?[] { dto, ct };
+            return _invokeAsync(svc, args);
+        }
+    }
+
+
     public static class JobRegistry
     {
+        private static IReadOnlyDictionary<string, JobRoute> _routes = new Dictionary<string, JobRoute>();
+
         private static string Key(string resource, OperationType op)
             => $"{resource.Trim().ToLowerInvariant()}.{op}";
 
-        private static readonly Dictionary<string, JobRoute> _routes = new()
+        // 👇 Se ejecuta automáticamente la primera vez que alguien use JobRegistry
+        static JobRegistry()
         {
-            // ===================== ALUMNO =====================
+            // Escanea el ensamblado donde viven tus *Service (ej.: AlumnoService)
+            InitializeFromAssembly(typeof(Infrastructure.Background.Services.AlumnoService).Assembly);
+        }
 
-            // Create: AlumnoService.CreateAsync devuelve Task<AlumnoDto> -> lo casteamos a object
-            [Key("alumno", OperationType.Create)] = JobRoute.For<AlumnoCreateDto, AlumnoService>(
-                async (svc, dto, ct) => (object?) await svc.CreateAsync(dto!, ct)),
+        public static void InitializeFromAssembly(Assembly asm)
+        {
+            var dict = new Dictionary<string, JobRoute>();
 
-            // GetAll: ya devuelve IEnumerable<AlumnoDto> -> también lo casteamos a object
-            [Key("alumno", OperationType.GetAll)] = JobRoute.For<object?, AlumnoService>(
-                async (svc, _, ct) => (object?) await svc.GetAllAsync(ct)),
+            foreach (var svcType in asm.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.Name.EndsWith("Service")))
+            {
+                var resource = svcType.Name.Replace("Service", "").ToLowerInvariant();
 
-            // GetById: tu servicio devuelve object? (found/item), ya es compatible
-            [Key("alumno", OperationType.GetById)] = JobRoute.For<IdInput, AlumnoService>(
-                (svc, dto, ct) => svc.GetByIdAsync(dto!.Id, ct)),
+                var mCreate = svcType.GetMethod("CreateAsync");
+                var mAll = svcType.GetMethod("GetAllAsync");
+                var mById = svcType.GetMethod("GetByIdAsync");
+                var mUpd = svcType.GetMethod("UpdateAsync");
+                var mDel = svcType.GetMethod("DeleteAsync");
 
-            // Update: si AlumnoUpdateDto incluye Id y tu servicio retorna object? (updated/item) o AlumnoDto
-            // si retorna AlumnoDto, usa el mismo patrón de cast a object
-            [Key("alumno", OperationType.Update)] = JobRoute.For<AlumnoUpdateDto, AlumnoService>(
-                async (svc, dto, ct) => (object?) await svc.UpdateAsync(dto!.Id,dto, ct)),
+                if (mCreate is null || mAll is null || mById is null || mUpd is null || mDel is null)
+                    continue;
 
-            // Delete: tu servicio devuelve object? (deleted/razón)
-            [Key("alumno", OperationType.Delete)] = JobRoute.For<IdInput, AlumnoService>(
-                (svc, dto, ct) => svc.DeleteAsync(dto!.Id, ct)),
-        };
+                // ===== Detectar tipos reales =====
+                var idType = mById.GetParameters()[0].ParameterType;          // ej: int o Guid
+                var createType = mCreate.GetParameters()[0].ParameterType;        // ej: AlumnoCreateDto
+                var updateType = mUpd.GetParameters()[1].ParameterType;           // ej: AlumnoUpdateDto
 
+                // Construir wrappers genéricos cerrados
+                var idInputType = typeof(IdInput<>).MakeGenericType(idType);
+                var updateInputType = typeof(UpdateInput<,>).MakeGenericType(idType, updateType);
+
+                // Helper para invocar Task / Task<T>
+                static async Task<object?> Call(MethodInfo mi, object svc, params object?[] args)
+                {
+                    var task = (Task)(mi.Invoke(svc, args) ?? throw new InvalidOperationException("Invoke devolvió null"));
+                    await task.ConfigureAwait(false);
+                    return task.GetType().GetProperty("Result")?.GetValue(task);
+                }
+
+                // ===== Create(dto, ct)
+                dict[Key(resource, OperationType.Create)] = new DynamicRoute(
+                    dtoType: createType,
+                    serviceType: svcType,
+                    invokeAsync: (svc, args) => Call(mCreate, svc, args[0]!, (CancellationToken)args[1]!)
+                );
+
+                // ===== GetAll(ct) — no requiere body
+                dict[Key(resource, OperationType.GetAll)] = new DynamicRoute(
+                    dtoType: typeof(object),
+                    serviceType: svcType,
+                    invokeAsync: (svc, args) => Call(mAll, svc, (CancellationToken)args[1]!)
+                );
+
+                // ===== GetById(IdInput<TId>, ct)
+                dict[Key(resource, OperationType.GetById)] = new DynamicRoute(
+                    dtoType: idInputType,
+                    serviceType: svcType,
+                    invokeAsync: (svc, args) =>
+                    {
+                        var dto = args[0]!;
+                        var id = idInputType.GetProperty("Id")!.GetValue(dto);
+                        return Call(mById, svc, id!, (CancellationToken)args[1]!);
+                    }
+                );
+
+                // ===== Update(UpdateInput<TId, TUpdate>, ct)
+                dict[Key(resource, OperationType.Update)] = new DynamicRoute(
+                    dtoType: updateInputType,
+                    serviceType: svcType,
+                    invokeAsync: (svc, args) =>
+                    {
+                        var dto = args[0]!;
+                        var id = updateInputType.GetProperty("Id")!.GetValue(dto);
+                        var body = updateInputType.GetProperty("Dto")!.GetValue(dto); // <- ahora es AlumnoUpdateDto real
+                        return Call(mUpd, svc, id!, body!, (CancellationToken)args[1]!);
+                    }
+                );
+
+                // ===== Delete(IdInput<TId>, ct)
+                dict[Key(resource, OperationType.Delete)] = new DynamicRoute(
+                    dtoType: idInputType,
+                    serviceType: svcType,
+                    invokeAsync: (svc, args) =>
+                    {
+                        var dto = args[0]!;
+                        var id = idInputType.GetProperty("Id")!.GetValue(dto);
+                        return Call(mDel, svc, id!, (CancellationToken)args[1]!);
+                    }
+                );
+            }
+
+            _routes = dict;
+        }
         public static bool TryResolve(string resource, OperationType op, out JobRoute route)
             => _routes.TryGetValue(Key(resource, op), out route!);
+
+        // (Opcional) para depurar
+        public static IEnumerable<string> DebugKeys() => _routes.Keys;
     }
 }

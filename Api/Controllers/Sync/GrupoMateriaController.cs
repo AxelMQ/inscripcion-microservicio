@@ -1,6 +1,7 @@
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,17 +27,12 @@ namespace Api.Controllers.Sync
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GrupoMateriaDto>>> GetAll(CancellationToken ct)
         {
-            var repo = _uow.GetRepository<GrupoMateria>();
-            var data = await repo.Query()
-                .Include(gm => gm.Grupo)
-                .Include(gm => gm.Materia)
-                .Include(gm => gm.HorariosMateria)
-                .AsSplitQuery()
+            var dtos = await _uow.GetRepository<GrupoMateria>()
+                .Query()
                 .AsNoTracking()
+                .ProjectTo<GrupoMateriaDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(ct);
 
-            // Usa el mapper para convertir la lista de entidades a una lista de DTOs
-            var dtos = _mapper.Map<IEnumerable<GrupoMateriaDto>>(data);
             return Ok(dtos);
         }
 
@@ -44,19 +40,14 @@ namespace Api.Controllers.Sync
         [HttpGet("{id:int}")]
         public async Task<ActionResult<GrupoMateriaDto>> GetById(int id, CancellationToken ct)
         {
-            var repo = _uow.GetRepository<GrupoMateria>();
-            var gm = await repo.Query()
-                .Include(g => g.Grupo)
-                .Include(g => g.Materia)
-                .Include(g => g.HorariosMateria)
-                .AsSplitQuery()
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Id == id, ct);
+            var dto = await _uow.GetRepository<GrupoMateria>()
+                   .Query()
+                   .AsNoTracking()
+                   .Where(hm => hm.Id == id)
+                   .ProjectTo<GrupoMateriaDto>(_mapper.ConfigurationProvider)
+                   .FirstOrDefaultAsync(ct);
 
-            if (gm is null) return NotFound();
-
-            // Usa el mapper para convertir la entidad a un DTO
-            var dto = _mapper.Map<GrupoMateriaDto>(gm);
+            if (dto is null) return NotFound();
             return Ok(dto);
         }
 
@@ -96,7 +87,7 @@ namespace Api.Controllers.Sync
             // Usa el mapper para convertir la entidad de vuelta a un DTO de salida
             var createdDto = _mapper.Map<GrupoMateriaDto>(created);
             return CreatedAtAction(nameof(GetById), new { id = createdDto.Id }, createdDto);
-        }
+        }  
 
         // PUT: api/grupomaterias/5
         [HttpPut("{id:int}")]

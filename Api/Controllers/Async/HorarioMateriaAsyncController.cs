@@ -1,139 +1,112 @@
-/* // Api/Controllers/Async/HorarioMateriaAsyncController.cs
-using Microsoft.AspNetCore.Mvc;
+// Api/Controllers/HorarioMateriaAsyncController.cs
 using System.Text.Json;
-using System.Threading.Channels;
+using Microsoft.AspNetCore.Mvc;
+using Hangfire;
 using Application.Enums;
 using Application.Messages;
-using Shared.Contracts.Dtos.Materia;
+using Infrastructure.Background;
 using Shared.Contracts.Dtos.HorarioMateria;
 
-namespace Api.Controllers.Async
+namespace Api.Controllers.Async;
+
+[ApiController]
+[Route("api/[controller]")]
+public class HorarioMateriaAsyncController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class HorarioMateriaAsyncController : ControllerBase
+    private readonly IBackgroundJobClient _worker;
+    private static readonly JsonSerializerOptions _json = new(JsonSerializerDefaults.Web);
+
+    public HorarioMateriaAsyncController(IBackgroundJobClient jobs)
     {
-        private readonly ChannelWriter<RequestMessage> _writer;
-        private readonly RequestStatusTracker _tracker;
-
-        private static readonly JsonSerializerOptions JsonOpts = new(JsonSerializerDefaults.Web)
+        _worker = jobs;
+    }
+    // GET api/horarioMateria
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        var job = new Job
         {
-            PropertyNameCaseInsensitive = true
+            Operation = OperationType.GetAll,
+            Resource = "horarioMateria",
+            BodyJson = null, // ahora sí puedes dejarlo nulo
+            CallbackUrl = "https://mi-callback/horarioMateria/getall"
         };
+        job.GenerateToken();
 
-        public HorarioMateriaAsyncController(Channel<RequestMessage> channel, RequestStatusTracker tracker)
+        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
+        return Accepted(new { jobId = jid, job.Token });
+    }
+    // POST api/horarioMateria
+    [HttpPost]
+    public IActionResult Create([FromBody] HorarioMateriaCreateDto dto)
+    {
+        var job = new Job
         {
-            _writer = channel.Writer;
-            _tracker = tracker;
-        }
+            Operation = OperationType.Create,
+            Resource = "horarioMateria",
+            BodyJson = JsonSerializer.Serialize(dto, _json),
+            CallbackUrl = "https://mi-callback/horarioMateria/create"
+        };
+        job.GenerateToken();
 
-        // POST /api/async/materias
-        [HttpPost]
-        public async Task<ActionResult> EnqueueCreate([FromBody] HorarioMateriaCreateDto dto)
+        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
+        return Accepted(new { jobId = jid, job.Token });
+    }
+
+
+
+    // GET api/horarioMateria/123
+    [HttpGet("{id:int}")]
+    public IActionResult GetById([FromRoute] int id)
+    {
+        var body = new { id };
+        var job = new Job
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            Operation = OperationType.GetById,
+            Resource = "horarioMateria",
+            BodyJson = JsonSerializer.Serialize(body, _json),
+            CallbackUrl = "https://mi-callback/horarioMateria/getbyid"
+        };
+        job.GenerateToken();
 
-            var req = new RequestMessage
-            {
-                Operation   = OperationType.Insert,
-                Table       = TableType.HorarioMaterias,
-                BodyJson    = JsonSerializer.Serialize(dto, JsonOpts),
-                CallbackUrl = "http://tu-api/callbacks/materias/status"
-            };
+        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
+        return Accepted(new { jobId = jid, job.Token });
+    }
 
-            _tracker.AddRequest(req.Id, "En cola.");
-            req.GenerateToken();
-            await _writer.WriteAsync(req);
-
-            var statusUrl = Url.Content($"~/api/status/{req.Id}");
-            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
-        }
-
-        // PUT /api/async/materias/{id}
-        [HttpPut("{id:int}")]
-        public async Task<ActionResult> EnqueueUpdate(int id, [FromBody] HorarioMateriaUpdateDto dto)
+    // PUT api/horarioMateria/123
+    [HttpPut("{id:int}")]
+    public IActionResult Update([FromRoute] int id, [FromBody] HorarioMateriaUpdateDto dto)
+    {
+        // BodyJson se arma como { id, dto }
+        var body = new { id, dto };
+        var job = new Job
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-            if (dto.Id != id) return BadRequest("El Id del body no coincide con el de la ruta.");
+            Operation = OperationType.Update,
+            Resource = "horarioMateria",
+            BodyJson = JsonSerializer.Serialize(body, _json),
+            CallbackUrl = "https://mi-callback/horarioMateria/update"
+        };
+        job.GenerateToken();
 
-            var req = new RequestMessage
-            {
-                Operation   = OperationType.Update,
-                Table       = TableType.HorarioMaterias,
-                BodyJson    = JsonSerializer.Serialize(dto, JsonOpts),
-                CallbackUrl = "http://tu-api/callbacks/materias/status"
-            };
+        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
+        return Accepted(new { jobId = jid, job.Token });
+    }
 
-            _tracker.AddRequest(req.Id, "En cola.");
-            req.GenerateToken();
-            await _writer.WriteAsync(req);
-
-            var statusUrl = Url.Content($"~/api/status/{req.Id}");
-            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
-        }
-
-        // DELETE /api/async/materias/{id}
-        [HttpDelete("{id:int}")]
-        public async Task<ActionResult> EnqueueDelete(int id)
+    // DELETE api/horarioMateria/123
+    [HttpDelete("{id:int}")]
+    public IActionResult Delete([FromRoute] int id)
+    {
+        var body = new { id };
+        var job = new Job
         {
-            var dto = new MateriaDeleteDto { Id = id };
+            Operation = OperationType.Delete,
+            Resource = "horarioMateria",
+            BodyJson = JsonSerializer.Serialize(body, _json),
+            CallbackUrl = "https://mi-callback/horarioMateria/delete"
+        };
+        job.GenerateToken();
 
-            var req = new RequestMessage
-            {
-                Operation   = OperationType.Delete,
-                Table       = TableType.HorarioMaterias,
-                BodyJson    = JsonSerializer.Serialize(dto, JsonOpts),
-                CallbackUrl = "http://tu-api/callbacks/materias/status"
-            };
-
-            _tracker.AddRequest(req.Id, "En cola.");
-            req.GenerateToken();
-            await _writer.WriteAsync(req);
-
-            var statusUrl = Url.Content($"~/api/status/{req.Id}");
-            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
-        }
-
-        // GET /api/async/materias
-        [HttpGet]
-        public async Task<ActionResult> EnqueueGetAll()
-        {
-            var req = new RequestMessage
-            {
-                Operation   = OperationType.GetAll,
-                Table       = TableType.HorarioMaterias,
-                BodyJson    = "{}",
-                CallbackUrl = "http://tu-api/callbacks/materias/status"
-            };
-
-            _tracker.AddRequest(req.Id, "En cola.");
-            req.GenerateToken();
-            await _writer.WriteAsync(req);
-
-            var statusUrl = Url.Content($"~/api/status/{req.Id}");
-            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
-        }
-
-        // GET /api/async/materias/enqueue/{id}
-        [HttpGet("enqueue/{id:int}")]
-        public async Task<ActionResult> EnqueueGetById(int id)
-        {
-            // Puedes definir un IdDto compartido si quieres evitar el tipo anónimo
-            var req = new RequestMessage
-            {
-                Operation   = OperationType.GetById,
-                Table       = TableType.HorarioMaterias,
-                BodyJson    = JsonSerializer.Serialize(new { Id = id }, JsonOpts),
-                CallbackUrl = "http://tu-api/callbacks/materias/status"
-            };
-
-            _tracker.AddRequest(req.Id, "En cola.");
-            req.GenerateToken();
-            await _writer.WriteAsync(req);
-
-            var statusUrl = Url.Content($"~/api/status/{req.Id}");
-            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
-        }
+        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
+        return Accepted(new { jobId = jid, job.Token });
     }
 }
- */

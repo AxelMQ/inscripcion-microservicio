@@ -1,115 +1,112 @@
-// Ejemplo: Api/Controllers/Async/AlumnoAsyncController.cs
+// Api/Controllers/AlumnoAsyncController.cs
 using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
+using Hangfire;
 using Application.Enums;
 using Application.Messages;
-using Hangfire;
-using Hangfire.States;
 using Infrastructure.Background;
-using Microsoft.AspNetCore.Mvc;
 using Shared.Contracts.Dtos.Alumno;
 
 namespace Api.Controllers.Async;
 
 [ApiController]
-[Route("api/async/alumnos")]
+[Route("api/[controller]")]
 public class AlumnoAsyncController : ControllerBase
 {
-    private readonly IBackgroundJobClient worker;
+    private readonly IBackgroundJobClient _worker;
+    private static readonly JsonSerializerOptions _json = new(JsonSerializerDefaults.Web);
 
-    public AlumnoAsyncController(IBackgroundJobClient worker)
+    public AlumnoAsyncController(IBackgroundJobClient jobs)
     {
-        this.worker = worker;
+        _worker = jobs;
     }
-
-    [HttpPost] // Create → cola default
-    public IActionResult Create([FromBody] AlumnoCreateDto dto)
-    {
-        var job = new Job
-        {
-            Operation = OperationType.Create,
-            Resource = "alumno",
-            BodyJson = JsonSerializer.Serialize(dto),
-            CallbackUrl = "https://miapp/callbacks/job"
-        };
-        job.GenerateToken();
-
-        var jobId = worker.Enqueue<Worker>(
-            r => r.RunAsync(null, job, default));
-
-        return Accepted($"/api/jobs/{jobId}", new { jobId, token = job.Token });
-    }
-
-    [HttpGet] // GetAll → cola critical
+    // GET api/alumno
+    [HttpGet]
     public IActionResult GetAll()
     {
         var job = new Job
         {
             Operation = OperationType.GetAll,
             Resource = "alumno",
-            BodyJson = "{}",
-            CallbackUrl = "https://miapp/callbacks/job"
+            BodyJson = null, // ahora sí puedes dejarlo nulo
+            CallbackUrl = "https://mi-callback/alumno/getall"
         };
         job.GenerateToken();
 
-        var jobId = worker.Create<Worker>(
-            r => r.RunAsync(null, job, default),
-            new EnqueuedState("critical")
-        );
+        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
+        return Accepted(new { jobId = jid, job.Token });
+    }
+    // POST api/alumno
+    [HttpPost]
+    public IActionResult Create([FromBody] AlumnoCreateDto dto)
+    {
+        var job = new Job
+        {
+            Operation = OperationType.Create,
+            Resource = "alumno",
+            BodyJson = JsonSerializer.Serialize(dto, _json),
+            CallbackUrl = "https://mi-callback/alumno/create"
+        };
+        job.GenerateToken();
 
-        return Accepted($"/api/jobs/{jobId}", new { jobId, token = job.Token });
+        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
+        return Accepted(new { jobId = jid, job.Token });
     }
 
-    [HttpGet("{id:int}")] // GetById → cola default
-    public IActionResult GetById(int id)
+
+
+    // GET api/alumno/123
+    [HttpGet("{id:int}")]
+    public IActionResult GetById([FromRoute] int id)
     {
+        var body = new { id };
         var job = new Job
         {
             Operation = OperationType.GetById,
             Resource = "alumno",
-            BodyJson = JsonSerializer.Serialize(new { id }),
-            CallbackUrl = "https://miapp/callbacks/job"
+            BodyJson = JsonSerializer.Serialize(body, _json),
+            CallbackUrl = "https://mi-callback/alumno/getbyid"
         };
         job.GenerateToken();
 
-        var jobId = worker.Enqueue<Worker>(
-            r => r.RunAsync(null, job, default));
-
-        return Accepted($"/api/jobs/{jobId}", new { jobId, token = job.Token });
+        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
+        return Accepted(new { jobId = jid, job.Token });
     }
 
-    [HttpPut("{id:int}")] // Update → cola default
-    public IActionResult Update(int id, [FromBody] AlumnoUpdateDto dto)
+    // PUT api/alumno/123
+    [HttpPut("{id:int}")]
+    public IActionResult Update([FromRoute] int id, [FromBody] AlumnoUpdateDto dto)
     {
+        // BodyJson se arma como { id, dto }
+        var body = new { id, dto };
         var job = new Job
         {
             Operation = OperationType.Update,
             Resource = "alumno",
-            BodyJson = JsonSerializer.Serialize(new { id, payload = dto }),
-            CallbackUrl = "https://miapp/callbacks/job"
+            BodyJson = JsonSerializer.Serialize(body, _json),
+            CallbackUrl = "https://mi-callback/alumno/update"
         };
         job.GenerateToken();
 
-        var jobId = worker.Enqueue<Worker>(
-            r => r.RunAsync(null, job, default));
-
-        return Accepted($"/api/jobs/{jobId}", new { jobId, token = job.Token });
+        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
+        return Accepted(new { jobId = jid, job.Token });
     }
 
-    [HttpDelete("{id:int}")] // Delete → cola default
-    public IActionResult Delete(int id)
+    // DELETE api/alumno/123
+    [HttpDelete("{id:int}")]
+    public IActionResult Delete([FromRoute] int id)
     {
+        var body = new { id };
         var job = new Job
         {
             Operation = OperationType.Delete,
             Resource = "alumno",
-            BodyJson = JsonSerializer.Serialize(new { id }),
-            CallbackUrl = "https://miapp/callbacks/job"
+            BodyJson = JsonSerializer.Serialize(body, _json),
+            CallbackUrl = "https://mi-callback/alumno/delete"
         };
         job.GenerateToken();
 
-        var jobId = worker.Enqueue<Worker>(
-            r => r.RunAsync(null, job, default));
-
-        return Accepted($"/api/jobs/{jobId}", new { jobId, token = job.Token });
+        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
+        return Accepted(new { jobId = jid, job.Token });
     }
 }

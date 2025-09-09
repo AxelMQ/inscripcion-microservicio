@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
 using Application.Interfaces;
+using AutoMapper.QueryableExtensions;
 using Shared.Contracts.Dtos.HorarioMateria;
 namespace Api.Controllers.Sync
 {
@@ -23,56 +24,29 @@ namespace Api.Controllers.Sync
     [HttpGet]
     public async Task<ActionResult<IEnumerable<HorarioMateriaDto>>> Get(CancellationToken ct)
     {
-      var repo = _uow.GetRepository<HorarioMateria>();
-      var items = await repo.Query()
-          .Include(hm => hm.Gestion)
-          .Include(hm => hm.Docente)
-          .Include(hm => hm.GrupoMateria)
-              .ThenInclude(gm => gm.Materia)
-          .Include(hm => hm.GrupoMateria)
-              .ThenInclude(gm => gm.Grupo)
-          .Include(hm => hm.Horario)
-              .ThenInclude(h => h.HorasDiaHorario)
-                  .ThenInclude(hdh => hdh.HoraDia)
-                      .ThenInclude(hd => hd.Dia)
-          .Include(hm => hm.Horario)
-              .ThenInclude(h => h.HorasDiaHorario)
-                  .ThenInclude(hdh => hdh.HoraDia)
-                      .ThenInclude(hd => hd.Hora)
+      var dtos = await _uow.GetRepository<HorarioMateria>()
+          .Query()                // debe ser IQueryable<HorarioMateria>
           .AsNoTracking()
+          .ProjectTo<HorarioMateriaDto>(_mapper.ConfigurationProvider)
           .ToListAsync(ct);
 
-      var dtos = _mapper.Map<List<HorarioMateriaDto>>(items);
       return Ok(dtos);
     }
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<HorarioMateriaDto>> GetById(int id, CancellationToken ct)
     {
-      var repo = _uow.GetRepository<HorarioMateria>();
-      var item = await repo.Query()
-          .Include(hm => hm.Gestion)
-          .Include(hm => hm.Docente)
-          .Include(hm => hm.GrupoMateria)
-              .ThenInclude(gm => gm.Materia)
-          .Include(hm => hm.GrupoMateria)
-              .ThenInclude(gm => gm.Grupo)
-          .Include(hm => hm.Horario)
-              .ThenInclude(h => h.HorasDiaHorario)
-                  .ThenInclude(hdh => hdh.HoraDia)
-                      .ThenInclude(hd => hd.Dia)
-          .Include(hm => hm.Horario)
-              .ThenInclude(h => h.HorasDiaHorario)
-                  .ThenInclude(hdh => hdh.HoraDia)
-                      .ThenInclude(hd => hd.Hora)
+      var dto = await _uow.GetRepository<HorarioMateria>()
+          .Query() // debe ser IQueryable<HorarioMateria>
           .AsNoTracking()
-          .FirstOrDefaultAsync(hm => hm.Id == id, ct);
+          .Where(hm => hm.Id == id)
+          .ProjectTo<HorarioMateriaDto>(_mapper.ConfigurationProvider)
+          .FirstOrDefaultAsync(ct);
 
-      if (item == null) return NotFound();
-
-      var dto = _mapper.Map<HorarioMateriaDto>(item);
+      if (dto is null) return NotFound();
       return Ok(dto);
     }
+
 
     [HttpPost]
     public async Task<ActionResult<HorarioMateriaDto>> Create([FromBody] HorarioMateriaCreateDto dto, CancellationToken ct)
@@ -90,7 +64,6 @@ namespace Api.Controllers.Sync
     [HttpPut("{id:int}")]
     public async Task<ActionResult> Update(int id, [FromBody] HorarioMateriaUpdateDto dto, CancellationToken ct)
     {
-      if (id != dto.Id) return BadRequest();
 
       var repo = _uow.GetRepository<HorarioMateria>();
       var existingItem = await repo.GetByIdAsync(id, ct);

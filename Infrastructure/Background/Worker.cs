@@ -11,8 +11,9 @@ namespace Infrastructure.Background
     {
         private readonly IServiceProvider _sp = sp;
         private readonly AppDbContext _db = db;
-        private static readonly JsonSerializerOptions _json = new(JsonSerializerDefaults.Web);
 
+        // camelCase + defaults de ASP.NET Core
+        private static readonly JsonSerializerOptions _json = new(JsonSerializerDefaults.Web);
 
         private async Task<JobResult> SetProcessingAsync(string jobId, CancellationToken ct)
         {
@@ -49,8 +50,6 @@ namespace Infrastructure.Background
         public async Task RunAsync(PerformContext? ctx, Job job, CancellationToken ct = default)
         {
             var jobId = ctx?.BackgroundJob?.Id ?? Guid.NewGuid().ToString("N");
-
-
             var jr = await SetProcessingAsync(jobId, ct);
 
             try
@@ -60,13 +59,16 @@ namespace Infrastructure.Background
 
                 object? dto = null;
 
+                // Si la ruta espera DTO, necesitamos body
                 if (route.DtoType != typeof(object))
                 {
                     if (string.IsNullOrWhiteSpace(job.BodyJson))
-                        throw new InvalidOperationException($"El body es vacío pero se esperaba {route.DtoType.Name} para {job.Resource}.{job.Operation}.");
+                        throw new InvalidOperationException(
+                            $"El body es vacío pero se esperaba {route.DtoType.Name} para {job.Resource}.{job.Operation}.");
 
                     dto = JsonSerializer.Deserialize(job.BodyJson, route.DtoType, _json)
-                          ?? throw new InvalidOperationException($"No se pudo deserializar a {route.DtoType.FullName}. Body: {job.BodyJson}");
+                          ?? throw new InvalidOperationException(
+                              $"No se pudo deserializar a {route.DtoType.FullName}. Body: {job.BodyJson}");
                 }
 
                 var result = await route.InvokeAsync(_sp, dto, ct);
@@ -75,7 +77,7 @@ namespace Infrastructure.Background
             catch (Exception ex)
             {
                 await SetFailedAsync(jr, ex, ct);
-                throw;
+                throw; // para que Hangfire maneje los retries
             }
         }
     }

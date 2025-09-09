@@ -55,6 +55,7 @@ namespace Api.Extensions
             // Jobs/servicios
             services.AddScoped<Worker>();
             services.AddScoped<AlumnoService>();
+            services.AddScoped<HorarioMateriaService>();
 
             return services;
         }
