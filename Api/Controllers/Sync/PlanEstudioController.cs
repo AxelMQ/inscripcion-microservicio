@@ -85,7 +85,6 @@ namespace Api.Controllers.Sync
         public async Task<IActionResult> Update(int id, [FromBody] PlanEstudioUpdateDto dto, CancellationToken ct)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            if (dto.Id != id) return BadRequest("El Id del body no coincide con el de la ruta.");
 
             var repo = _uow.GetRepository<PlanEstudio>();
             var existing = await repo.GetByIdAsync(id, ct);

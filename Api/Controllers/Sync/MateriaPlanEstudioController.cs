@@ -116,7 +116,6 @@ namespace Api.Controllers.Sync
         public async Task<IActionResult> Update(int id, [FromBody] MateriaPlanEstudioUpdateDto dto, CancellationToken ct)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            if (dto.Id != id) return BadRequest("El Id del body no coincide con el de la ruta.");
 
             var repoMpe = _uow.GetRepository<MateriaPlanEstudio>();
             var existing = await repoMpe.GetByIdAsync(id, ct);

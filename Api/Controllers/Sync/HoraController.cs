@@ -63,8 +63,6 @@ namespace Api.Controllers.Sync
     [HttpPut("{id:int}")]
     public async Task<ActionResult> Update(int id, [FromBody] HoraUpdateDto dto, CancellationToken ct)
     {
-      if (id != dto.Id) return BadRequest();
-
       var repo = _uow.GetRepository<Hora>();
       var existingHora = await repo.Query()
           .FirstOrDefaultAsync(h => h.Id == id, ct);

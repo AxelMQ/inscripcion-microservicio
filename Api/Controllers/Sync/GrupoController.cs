@@ -72,7 +72,6 @@ namespace Api.Controllers.Sync
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] GrupoUpdateDto dto, CancellationToken ct)
         {
-            if (dto.Id != id) return BadRequest("El Id de la ruta no coincide con el Id del body.");
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var repo = _uow.GetRepository<Grupo>();

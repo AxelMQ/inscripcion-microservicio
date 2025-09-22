@@ -67,8 +67,6 @@ namespace Api.Controllers.Sync
     [HttpPut("{id:int}")]
     public async Task<ActionResult> Update(int id, [FromBody] HoraDiaUpdateDto dto, CancellationToken ct)
     {
-      if (id != dto.Id) return BadRequest();
-
       var repo = _uow.GetRepository<HoraDia>();
       var existingHoraDia = await repo.GetByIdAsync(id, ct);
       if (existingHoraDia == null) return NotFound();

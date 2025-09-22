@@ -98,7 +98,7 @@ public class JobsController : ControllerBase
 
     private async Task<object?> QueryHangfireAsync(string jobId)
     {
-        var monitor = _storage.GetMonitoringApi();
+        var monitor =  _storage.GetMonitoringApi();
         var details = monitor.JobDetails(jobId);
         if (details is null) return null;
 
