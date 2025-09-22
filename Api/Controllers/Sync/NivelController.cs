@@ -10,6 +10,7 @@ namespace Api.Controllers.Sync
 {
     [ApiController]
     [Route("api/[controller]")]
+    [ApiExplorerSettings(GroupName = "sync")] 
     //[Authorize]
     public class NivelController : ControllerBase
     {

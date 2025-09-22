@@ -11,6 +11,7 @@ namespace Api.Controllers.Sync
 {
     [ApiController]
     [Route("api/[controller]")]
+    [ApiExplorerSettings(GroupName = "sync")] 
     //[Authorize] // Nota: Se añade esta directiva
     public class GrupoMateriaController : ControllerBase
     {
@@ -87,7 +88,7 @@ namespace Api.Controllers.Sync
             // Usa el mapper para convertir la entidad de vuelta a un DTO de salida
             var createdDto = _mapper.Map<GrupoMateriaDto>(created);
             return CreatedAtAction(nameof(GetById), new { id = createdDto.Id }, createdDto);
-        }  
+        }
 
         // PUT: api/grupomaterias/5
         [HttpPut("{id:int}")]

@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
 using System.Reflection;
 using Domain.Core;
-using Infrastructure.Data.Entities; // Necesitas importar este namespace
 
 namespace Infrastructure.Data
 {

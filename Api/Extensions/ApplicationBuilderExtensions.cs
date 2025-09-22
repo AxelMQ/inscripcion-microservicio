@@ -6,15 +6,24 @@ namespace Api.Extensions
     {
         public static IApplicationBuilder UseSwaggerAndSwaggerUI(this IApplicationBuilder app, IHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+                // Mueve la UI a /docs (evita un index.html cacheado en /swagger)
+                c.RoutePrefix = "docs";
+
+                // SOLO los docs que registraste
+                c.SwaggerEndpoint("/swagger/sync/swagger.json", "API Síncronos v1");
+                c.SwaggerEndpoint("/swagger/async/swagger.json", "API Asíncronos v1");
+
+                c.DocumentTitle = "Docs – Sync/Async"; // para confirmar visualmente
+                c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+                c.DefaultModelsExpandDepth(-1);
+            });
+
             return app;
         }
-
-        // Ahora es una extensión de IEndpointRouteBuilder y mapea endpoints.
         public static IEndpointRouteBuilder MapCustomHealthChecks(this IEndpointRouteBuilder endpoints)
         {
             endpoints.MapHealthChecks("/health/live",

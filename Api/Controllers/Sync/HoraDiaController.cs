@@ -9,6 +9,7 @@ namespace Api.Controllers.Sync
 {
   [ApiController]
   [Route("api/[controller]")]
+  [ApiExplorerSettings(GroupName = "sync")] 
   public class HoraDiaController : ControllerBase
   {
     private readonly IUnitOfWork _uow;

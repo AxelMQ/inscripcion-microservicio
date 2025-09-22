@@ -2,68 +2,106 @@ using Hangfire;
 using Hangfire.Server;
 using Hangfire.States;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Concurrent;
+using System.Linq.Expressions;
 
 namespace Infrastructure.Background
 {
-    /// Controla en caliente el servidor de Hangfire y centraliza configuración operativa:
-    /// - WorkerCount, Queues, RetryAttempts, RetryDelays (backoff)
-    public class HangfireServerManager
+    /// Manager para operar Hangfire "en caliente":
+    /// - StartQueue(queue, workers): arranca un servidor dedicado a esa cola
+    /// - StopQueue(queue): detiene el servidor de esa cola
+    /// - ScaleQueue(queue, workers): re-inicia el servidor con nuevo WorkerCount
+    /// - Enqueue(queue, expr): encola un job en una cola específica
+    public class HotHangfireServerManager : IDisposable
     {
         private readonly JobStorage _storage;
-        private readonly BackgroundJobServerOptions _options;
-        private BackgroundJobServer? _server;
-        private readonly object _gate = new();
+        private readonly int _defaultRetryAttempts;
+        private readonly int[] _defaultRetryDelays;
+        private readonly ConcurrentDictionary<string, BackgroundJobServer> _servers = new();
 
-        public HangfireServerManager(JobStorage storage, IConfiguration config)
+        public HotHangfireServerManager(JobStorage storage, IConfiguration config)
         {
             _storage = storage;
 
-            // Lee config (con defaults razonables)
-            var workerCount = config.GetValue<int?>("Hangfire:WorkerCount")
-                              ?? Environment.ProcessorCount;
-
-            var queues = config.GetSection("Hangfire:Queues").Get<string[]>()
-                        ?? new[] { EnqueuedState.DefaultQueue };
-
+            // reintentos/backoff globales (se ejecuta una sola vez por proceso)
             var retryAttempts = config.GetValue<int?>("Hangfire:RetryAttempts") ?? 5;
-            var retryDelays   = config.GetSection("Hangfire:RetryDelays").Get<int[]>()
+            var retryDelays = config.GetSection("Hangfire:RetryDelays").Get<int[]>()
                                 ?? new[] { 15, 60, 300, 600, 900 };
 
-            // Filtro global de reintentos + backoff (centralizado aquí)
+            _defaultRetryAttempts = retryAttempts;
+            _defaultRetryDelays = retryDelays;
+
             GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute
             {
-                Attempts = retryAttempts,
+                Attempts = _defaultRetryAttempts,
                 OnAttemptsExceeded = AttemptsExceededAction.Fail,
-                DelaysInSeconds = retryDelays
+                DelaysInSeconds = _defaultRetryDelays
             });
+        }
 
-            _options = new BackgroundJobServerOptions
+        public bool IsQueueRunning(string queue) => _servers.ContainsKey(Normalize(queue));
+
+        public void StartQueue(string queue, int workers)
+        {
+            queue = Normalize(queue);
+            if (_servers.ContainsKey(queue)) return;
+
+            var opts = new BackgroundJobServerOptions
             {
-                WorkerCount = workerCount,
-                Queues = queues
+                Queues = new[] { queue },         // servidor dedicado a esa cola
+                WorkerCount = Math.Max(1, workers),
+                ServerName = $"srv-{queue}-{Guid.NewGuid():N}"
             };
-        }
 
-        public bool IsRunning { get { lock (_gate) return _server is not null; } }
-
-        public void Start()
-        {
-            lock (_gate)
+            var server = new BackgroundJobServer(opts, _storage);
+            if (!_servers.TryAdd(queue, server))
             {
-                if (_server is not null) return;
-                _server = new BackgroundJobServer(_options, _storage);
+                // si falló el add, cerramos el server recién creado
+                server.Dispose();
             }
         }
 
-        public void Stop()
+        public void StopQueue(string queue)
         {
-            lock (_gate)
+            queue = Normalize(queue);
+            if (_servers.TryRemove(queue, out var server))
             {
-                if (_server is null) return;
-                _server.SendStop();
-                _server.Dispose();
-                _server = null;
+                server.SendStop();
+                server.Dispose();
             }
+        }
+
+        public void ScaleQueue(string queue, int workers)
+        {
+            // re-inicia el server de la cola con otro WorkerCount
+            StopQueue(queue);
+            StartQueue(queue, workers);
+        }
+
+        // Encola en una cola específica
+        public string Enqueue(string queue, Expression<Action> job)
+        {
+            var client = new BackgroundJobClient(_storage);
+            return client.Create(job, new EnqueuedState(Normalize(queue)));
+        }
+
+        // Overload genérico por si usas DI con interfaces/clases
+        public string Enqueue<T>(string queue, Expression<Action<T>> job)
+        {
+            var client = new BackgroundJobClient(_storage);
+            return client.Create(job, new EnqueuedState(Normalize(queue)));
+        }
+
+        private static string Normalize(string q) =>
+            string.IsNullOrWhiteSpace(q) ? EnqueuedState.DefaultQueue : q.Trim().ToLowerInvariant();
+
+        public void Dispose()
+        {
+            foreach (var s in _servers.Values)
+            {
+                try { s.SendStop(); s.Dispose(); } catch { /* swallow */ }
+            }
+            _servers.Clear();
         }
     }
 }

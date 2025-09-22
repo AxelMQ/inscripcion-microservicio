@@ -1,112 +1,124 @@
 // Api/Controllers/HorarioMateriaAsyncController.cs
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
-using Hangfire;
+using Hangfire.States;
+using Infrastructure.Background;
+using Domain.Entities;                // JobResult, JobStatus
 using Application.Enums;
 using Application.Messages;
-using Infrastructure.Background;
+using Application.Data.Entities;
 using Shared.Contracts.Dtos.HorarioMateria;
 
 namespace Api.Controllers.Async;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/{queue}/[controller]")]
+[ApiExplorerSettings(GroupName = "async")] 
 public class HorarioMateriaAsyncController : ControllerBase
 {
-    private readonly IBackgroundJobClient _worker;
     private static readonly JsonSerializerOptions _json = new(JsonSerializerDefaults.Web);
 
-    public HorarioMateriaAsyncController(IBackgroundJobClient jobs)
+    private readonly HotHangfireServerManager _queues;
+    private readonly IJobResultRepository _results;
+
+    public HorarioMateriaAsyncController(HotHangfireServerManager queues, IJobResultRepository results)
     {
-        _worker = jobs;
+        _queues  = queues;
+        _results = results;
     }
-    // GET api/horarioMateria
+
+    // GET /api/queues/{queue}/alumno
     [HttpGet]
-    public IActionResult GetAll()
-    {
-        var job = new Job
-        {
-            Operation = OperationType.GetAll,
-            Resource = "horarioMateria",
-            BodyJson = null, // ahora sí puedes dejarlo nulo
-            CallbackUrl = "https://mi-callback/horarioMateria/getall"
-        };
-        job.GenerateToken();
+    public Task<IActionResult> GetAll([FromRoute] string queue)
+        => EnqueueNoBody(queue, OperationType.GetAll, "https://mi-callback/alumno/getall");
 
-        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
-        return Accepted(new { jobId = jid, job.Token });
-    }
-    // POST api/horarioMateria
+    // POST /api/queues/{queue}/alumno
     [HttpPost]
-    public IActionResult Create([FromBody] HorarioMateriaCreateDto dto)
-    {
-        var job = new Job
-        {
-            Operation = OperationType.Create,
-            Resource = "horarioMateria",
-            BodyJson = JsonSerializer.Serialize(dto, _json),
-            CallbackUrl = "https://mi-callback/horarioMateria/create"
-        };
-        job.GenerateToken();
+    public Task<IActionResult> Create([FromRoute] string queue, [FromBody] HorarioMateriaCreateDto dto)
+        => EnqueueWithBody(queue, OperationType.Create, "https://mi-callback/alumno/create", dto);
 
-        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
-        return Accepted(new { jobId = jid, job.Token });
-    }
-
-
-
-    // GET api/horarioMateria/123
+    // GET /api/queues/{queue}/alumno/{id}
     [HttpGet("{id:int}")]
-    public IActionResult GetById([FromRoute] int id)
-    {
-        var body = new { id };
-        var job = new Job
-        {
-            Operation = OperationType.GetById,
-            Resource = "horarioMateria",
-            BodyJson = JsonSerializer.Serialize(body, _json),
-            CallbackUrl = "https://mi-callback/horarioMateria/getbyid"
-        };
-        job.GenerateToken();
+    public Task<IActionResult> GetById([FromRoute] string queue, [FromRoute] int id)
+        => EnqueueWithBody(queue, OperationType.GetById, "https://mi-callback/alumno/getbyid", new { id });
 
-        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
-        return Accepted(new { jobId = jid, job.Token });
-    }
-
-    // PUT api/horarioMateria/123
+    // PUT /api/queues/{queue}/alumno/{id}
     [HttpPut("{id:int}")]
-    public IActionResult Update([FromRoute] int id, [FromBody] HorarioMateriaUpdateDto dto)
-    {
-        // BodyJson se arma como { id, dto }
-        var body = new { id, dto };
-        var job = new Job
-        {
-            Operation = OperationType.Update,
-            Resource = "horarioMateria",
-            BodyJson = JsonSerializer.Serialize(body, _json),
-            CallbackUrl = "https://mi-callback/horarioMateria/update"
-        };
-        job.GenerateToken();
+    public Task<IActionResult> Update([FromRoute] string queue, [FromRoute] int id, [FromBody] HorarioMateriaUpdateDto dto)
+        => EnqueueWithBody(queue, OperationType.Update, "https://mi-callback/alumno/update", new { id, dto });
 
-        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
-        return Accepted(new { jobId = jid, job.Token });
-    }
-
-    // DELETE api/horarioMateria/123
+    // DELETE /api/queues/{queue}/alumno/{id}
     [HttpDelete("{id:int}")]
-    public IActionResult Delete([FromRoute] int id)
+    public Task<IActionResult> Delete([FromRoute] string queue, [FromRoute] int id)
+        => EnqueueWithBody(queue, OperationType.Delete, "https://mi-callback/alumno/delete", new { id });
+
+    // ---------- Helpers ----------
+
+    private Task<IActionResult> EnqueueNoBody(string queue, OperationType op, string cb)
     {
-        var body = new { id };
+        var job = NewJob(queue, op, cb, bodyJson: null);
+        return EnqueueCore(job);
+    }
+
+    private Task<IActionResult> EnqueueWithBody(string queue, OperationType op, string cb, object body)
+    {
+        var bodyJson = JsonSerializer.Serialize(body, _json); // serialización estable
+        var job = NewJob(queue, op, cb, bodyJson);
+        return EnqueueCore(job);
+    }
+
+    private Job NewJob(string queue, OperationType op, string callback, string? bodyJson)
+    {
         var job = new Job
         {
-            Operation = OperationType.Delete,
-            Resource = "horarioMateria",
-            BodyJson = JsonSerializer.Serialize(body, _json),
-            CallbackUrl = "https://mi-callback/horarioMateria/delete"
+            Operation   = op,
+            Resource    = "horarioMateria",
+            BodyJson    = bodyJson,
+            Queue       = NormalizeQueue(queue),
+            CallbackUrl = callback
         };
-        job.GenerateToken();
-
-        var jid = _worker.Enqueue<Worker>(w => w.RunAsync(null, job, default));
-        return Accepted(new { jobId = jid, job.Token });
+        job.GenerateIdempotencyKey(); // IdempotencyKey = hash(op|resource|body)
+        return job;
     }
+
+    private async Task<IActionResult> EnqueueCore(Job job)
+    {
+        var key = job.IdempotencyKey!;
+
+        // 1) ¿Existe un job ACTIVO (Pending/Processing) con esta key?
+        var latest = await _results.FindLatestByIdempotencyAsync(key);
+        if (latest is not null &&
+            (latest.Status == JobStatus.Pending || latest.Status == JobStatus.Processing))
+        {
+            return Accepted(new
+            {
+                jobId = latest.Id,
+                status = latest.Status.ToString(),
+                queue = latest.Queue,
+                idempotencyKey = key,
+                reused = true
+            });
+        }
+
+        // 2) No hay activo: encolamos uno NUEVO (misma key, sin sufijos)
+        var jobId = _queues.Enqueue<Worker>(job.Queue, w => w.RunAsync(null, job, CancellationToken.None));
+
+        await _results.AddAsync(new JobResult
+        {
+            Id             = jobId,
+            IdempotencyKey = key,
+            Queue          = job.Queue,
+            Resource       = job.Resource,
+            Operation      = job.Operation.ToString(),
+            Status         = JobStatus.Pending,
+            DataJson       = job.BodyJson,
+            CreatedUtc     = DateTime.UtcNow
+        });
+        await _results.SaveChangesAsync();
+
+        return Accepted(new { jobId, queue = job.Queue, idempotencyKey = key, reused = false });
+    }
+
+    private static string NormalizeQueue(string q)
+        => string.IsNullOrWhiteSpace(q) ? EnqueuedState.DefaultQueue : q.Trim().ToLowerInvariant();
 }

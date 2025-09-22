@@ -11,6 +11,7 @@ namespace Api.Controllers.Sync
     [ApiController]
     [Route("api/[controller]")]
     //[Authorize]
+    [ApiExplorerSettings(GroupName = "sync")] 
     public class AlumnoController : ControllerBase
     {
         private readonly IUnitOfWork _uow;

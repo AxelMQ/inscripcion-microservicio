@@ -1,138 +1,124 @@
-/* // Api/Controllers/Async/MateriaAsyncController.cs
-using Microsoft.AspNetCore.Mvc;
+// Api/Controllers/MateriaAsyncController.cs
 using System.Text.Json;
-using System.Threading.Channels;
+using Microsoft.AspNetCore.Mvc;
+using Hangfire.States;
+using Infrastructure.Background;
+using Domain.Entities;                // JobResult, JobStatus
 using Application.Enums;
 using Application.Messages;
+using Application.Data.Entities;
 using Shared.Contracts.Dtos.Materia;
 
-namespace Api.Controllers.Async
+namespace Api.Controllers.Async;
+
+[ApiController]
+[Route("api/{queue}/[controller]")]
+[ApiExplorerSettings(GroupName = "async")] 
+public class MateriaAsyncController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class MateriaAsyncController : ControllerBase
+    private static readonly JsonSerializerOptions _json = new(JsonSerializerDefaults.Web);
+
+    private readonly HotHangfireServerManager _queues;
+    private readonly IJobResultRepository _results;
+
+    public MateriaAsyncController(HotHangfireServerManager queues, IJobResultRepository results)
     {
-        private readonly ChannelWriter<RequestMessage> _writer;
-        private readonly RequestStatusTracker _tracker;
-
-        private static readonly JsonSerializerOptions JsonOpts = new(JsonSerializerDefaults.Web)
-        {
-            PropertyNameCaseInsensitive = true
-        };
-
-        public MateriaAsyncController(Channel<RequestMessage> channel, RequestStatusTracker tracker)
-        {
-            _writer = channel.Writer;
-            _tracker = tracker;
-        }
-
-        // POST /api/async/materias
-        [HttpPost]
-        public async Task<ActionResult> EnqueueCreate([FromBody] MateriaCreateDto dto)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
-            var req = new RequestMessage
-            {
-                Operation   = OperationType.Insert,
-                Table       = TableType.Materias,
-                BodyJson    = JsonSerializer.Serialize(dto, JsonOpts),
-                CallbackUrl = "http://tu-api/callbacks/materias/status"
-            };
-
-            _tracker.AddRequest(req.Id, "En cola.");
-            req.GenerateToken();
-            await _writer.WriteAsync(req);
-
-            var statusUrl = Url.Content($"~/api/status/{req.Id}");
-            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
-        }
-
-        // PUT /api/async/materias/{id}
-        [HttpPut("{id:int}")]
-        public async Task<ActionResult> EnqueueUpdate(int id, [FromBody] MateriaUpdateDto dto)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-            if (dto.Id != id) return BadRequest("El Id del body no coincide con el de la ruta.");
-
-            var req = new RequestMessage
-            {
-                Operation   = OperationType.Update,
-                Table       = TableType.Materias,
-                BodyJson    = JsonSerializer.Serialize(dto, JsonOpts),
-                CallbackUrl = "http://tu-api/callbacks/materias/status"
-            };
-
-            _tracker.AddRequest(req.Id, "En cola.");
-            req.GenerateToken();
-            await _writer.WriteAsync(req);
-
-            var statusUrl = Url.Content($"~/api/status/{req.Id}");
-            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
-        }
-
-        // DELETE /api/async/materias/{id}
-        [HttpDelete("{id:int}")]
-        public async Task<ActionResult> EnqueueDelete(int id)
-        {
-            var dto = new MateriaDeleteDto { Id = id };
-
-            var req = new RequestMessage
-            {
-                Operation   = OperationType.Delete,
-                Table       = TableType.Materias,
-                BodyJson    = JsonSerializer.Serialize(dto, JsonOpts),
-                CallbackUrl = "http://tu-api/callbacks/materias/status"
-            };
-
-            _tracker.AddRequest(req.Id, "En cola.");
-            req.GenerateToken();
-            await _writer.WriteAsync(req);
-
-            var statusUrl = Url.Content($"~/api/status/{req.Id}");
-            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
-        }
-
-        // GET /api/async/materias
-        [HttpGet]
-        public async Task<ActionResult> EnqueueGetAll()
-        {
-            var req = new RequestMessage
-            {
-                Operation   = OperationType.GetAll,
-                Table       = TableType.Materias,
-                BodyJson    = "{}",
-                CallbackUrl = "http://tu-api/callbacks/materias/status"
-            };
-
-            _tracker.AddRequest(req.Id, "En cola.");
-            req.GenerateToken();
-            await _writer.WriteAsync(req);
-
-            var statusUrl = Url.Content($"~/api/status/{req.Id}");
-            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
-        }
-
-        // GET /api/async/materias/enqueue/{id}
-        [HttpGet("enqueue/{id:int}")]
-        public async Task<ActionResult> EnqueueGetById(int id)
-        {
-            // Puedes definir un IdDto compartido si quieres evitar el tipo anónimo
-            var req = new RequestMessage
-            {
-                Operation   = OperationType.GetById,
-                Table       = TableType.Materias,
-                BodyJson    = JsonSerializer.Serialize(new { Id = id }, JsonOpts),
-                CallbackUrl = "http://tu-api/callbacks/materias/status"
-            };
-
-            _tracker.AddRequest(req.Id, "En cola.");
-            req.GenerateToken();
-            await _writer.WriteAsync(req);
-
-            var statusUrl = Url.Content($"~/api/status/{req.Id}");
-            return Accepted(new { RequestId = req.Id, Status = "Pending", StatusUrl = statusUrl });
-        }
+        _queues = queues;
+        _results = results;
     }
+
+    // GET /api/queues/{queue}/alumno
+    [HttpGet]
+    public Task<IActionResult> GetAll([FromRoute] string queue)
+        => EnqueueNoBody(queue, OperationType.GetAll, "https://mi-callback/alumno/getall");
+
+    // POST /api/queues/{queue}/alumno
+    [HttpPost]
+    public Task<IActionResult> Create([FromRoute] string queue, [FromBody] MateriaCreateDto dto)
+        => EnqueueWithBody(queue, OperationType.Create, "https://mi-callback/alumno/create", dto);
+
+    // GET /api/queues/{queue}/alumno/{id}
+    [HttpGet("{id:int}")]
+    public Task<IActionResult> GetById([FromRoute] string queue, [FromRoute] int id)
+        => EnqueueWithBody(queue, OperationType.GetById, "https://mi-callback/alumno/getbyid", new { id });
+
+    // PUT /api/queues/{queue}/alumno/{id}
+    [HttpPut("{id:int}")]
+    public Task<IActionResult> Update([FromRoute] string queue, [FromRoute] int id, [FromBody] MateriaUpdateDto dto)
+        => EnqueueWithBody(queue, OperationType.Update, "https://mi-callback/alumno/update", new { id, dto });
+
+    // DELETE /api/queues/{queue}/alumno/{id}
+    [HttpDelete("{id:int}")]
+    public Task<IActionResult> Delete([FromRoute] string queue, [FromRoute] int id)
+        => EnqueueWithBody(queue, OperationType.Delete, "https://mi-callback/alumno/delete", new { id });
+
+    // ---------- Helpers ----------
+
+    private Task<IActionResult> EnqueueNoBody(string queue, OperationType op, string cb)
+    {
+        var job = NewJob(queue, op, cb, bodyJson: null);
+        return EnqueueCore(job);
+    }
+
+    private Task<IActionResult> EnqueueWithBody(string queue, OperationType op, string cb, object body)
+    {
+        var bodyJson = JsonSerializer.Serialize(body, _json); // serialización estable
+        var job = NewJob(queue, op, cb, bodyJson);
+        return EnqueueCore(job);
+    }
+
+    private Job NewJob(string queue, OperationType op, string callback, string? bodyJson)
+    {
+        var job = new Job
+        {
+            Operation = op,
+            Resource = "materia",
+            BodyJson = bodyJson,
+            Queue = NormalizeQueue(queue),
+            CallbackUrl = callback
+        };
+        job.GenerateIdempotencyKey(); // IdempotencyKey = hash(op|resource|body)
+        return job;
+    }
+
+    private async Task<IActionResult> EnqueueCore(Job job)
+    {
+        var key = job.IdempotencyKey!;
+
+        // 1) ¿Existe un job ACTIVO (Pending/Processing) con esta key?
+        var latest = await _results.FindLatestByIdempotencyAsync(key);
+        if (latest is not null &&
+            (latest.Status == JobStatus.Pending || latest.Status == JobStatus.Processing))
+        {
+            return Accepted(new
+            {
+                jobId = latest.Id,
+                status = latest.Status.ToString(),
+                queue = latest.Queue,
+                idempotencyKey = key,
+                reused = true
+            });
+        }
+
+        // 2) No hay activo: encolamos uno NUEVO (misma key, sin sufijos)
+        var jobId = _queues.Enqueue<Worker>(job.Queue, w => w.RunAsync(null, job, CancellationToken.None));
+
+        await _results.AddAsync(new JobResult
+        {
+            Id = jobId,
+            IdempotencyKey = key,
+            Queue = job.Queue,
+            Resource = job.Resource,
+            Operation = job.Operation.ToString(),
+            Status = JobStatus.Pending,
+            DataJson = job.BodyJson,
+            CreatedUtc = DateTime.UtcNow
+        });
+        await _results.SaveChangesAsync();
+
+        return Accepted(new { jobId, queue = job.Queue, idempotencyKey = key, reused = false });
+    }
+
+    private static string NormalizeQueue(string q)
+        => string.IsNullOrWhiteSpace(q) ? EnqueuedState.DefaultQueue : q.Trim().ToLowerInvariant();
 }
- */

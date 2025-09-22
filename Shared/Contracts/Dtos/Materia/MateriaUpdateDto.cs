@@ -6,8 +6,6 @@ namespace Shared.Contracts.Dtos.Materia
 
   public sealed record class MateriaUpdateDto
   {
-    [Required]
-    public int Id { get; init; }
 
     [Required]
     public short Credito { get; init; }

@@ -69,7 +69,7 @@ namespace Infrastructure.Background
         static JobRegistry()
         {
             // Escanea el ensamblado donde viven tus *Service (ej.: AlumnoService)
-            InitializeFromAssembly(typeof(Infrastructure.Background.Services.AlumnoService).Assembly);
+            InitializeFromAssembly(typeof(Services.AlumnoService).Assembly);
         }
 
         public static void InitializeFromAssembly(Assembly asm)

@@ -10,6 +10,7 @@ namespace Api.Controllers.Sync
 
   [ApiController]
   [Route("api/[controller]")]
+  [ApiExplorerSettings(GroupName = "sync")] 
   public class HorarioMateriaController : ControllerBase
   {
     private readonly IUnitOfWork _uow;

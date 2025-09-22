@@ -11,6 +11,7 @@ namespace Api.Controllers.Sync
 {
     [ApiController]
     [Route("api/[controller]")]
+    [ApiExplorerSettings(GroupName = "sync")] 
    // [Authorize]
     public class MateriaController : ControllerBase
     {
@@ -64,7 +65,7 @@ namespace Api.Controllers.Sync
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] MateriaUpdateDto dto, CancellationToken ct)
         {
-            if (dto.Id != id) return BadRequest("El Id del body no coincide con el de la ruta.");
+
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var repo = _uow.GetRepository<Materia>();

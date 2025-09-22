@@ -11,6 +11,7 @@ using Hangfire.PostgreSql;
 
 using Infrastructure.Background;
 using Infrastructure.Background.Services;
+using Application.Data.Entities;
 
 namespace Api.Extensions
 {
@@ -29,6 +30,7 @@ namespace Api.Extensions
             // Repos / UoW
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IJobResultRepository, JobResultRepository>();
             services.AddScoped<IHorarioMateriaRepository, HorarioMateriaRepository>();
 
             // AutoMapper
@@ -50,8 +52,7 @@ namespace Api.Extensions
             });
 
             // Manager Start/Stop & operativa
-            services.AddSingleton<HangfireServerManager>();
-
+            services.AddSingleton<HotHangfireServerManager>();
             // Jobs/servicios
             services.AddScoped<Worker>();
             services.AddScoped<AlumnoService>();
@@ -76,22 +77,37 @@ namespace Api.Extensions
         public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
         {
             services.AddEndpointsApiExplorer();
+
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Tu API", Version = "v1" });
+                // === dos definiciones ===
+                options.SwaggerDoc("sync", new OpenApiInfo { Title = "API Síncronos", Version = "v1" });
+                options.SwaggerDoc("async", new OpenApiInfo { Title = "API Asíncronos", Version = "v1" });
+
+                // Incluir acciones solo en el doc que coincida con su GroupName
+                options.DocInclusionPredicate((docName, apiDesc) =>
+                    string.Equals(apiDesc.GroupName, docName, StringComparison.OrdinalIgnoreCase));
+
+                // === seguridad JWT (igual que ya tenías) ===
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Description = "JWT: Authorization: Bearer {token}",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.Http,
-                    Scheme = "bearer"
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
                 });
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
-                    { new OpenApiSecurityScheme
-                        { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" } },
-                      Array.Empty<string>() }
+                {
+                    new OpenApiSecurityScheme {
+                        Reference = new OpenApiReference {
+                            Type = ReferenceType.SecurityScheme, Id = "Bearer"
+                        }
+                    },
+                    Array.Empty<string>()
+                }
                 });
             });
 

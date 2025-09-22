@@ -9,6 +9,7 @@ namespace Api.Controllers.Sync
 {
   [Route("api/[controller]")]
   [ApiController]
+  [ApiExplorerSettings(GroupName = "sync")] 
   public class AuthController : ControllerBase
   {
     private readonly IConfiguration _configuration;

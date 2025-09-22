@@ -12,9 +12,12 @@ builder.Services
     .AddSwaggerDocumentation()
     .AddJwtAuthentication(builder.Configuration);
 
+/* builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5239); // usa el mismo puerto que ya usas en local
+}); */
+
 var app = builder.Build();
-app.Services.GetRequiredService<HangfireServerManager>()
-            .Start();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -35,6 +38,7 @@ app.UseHangfireDashboard("/hangfire");
 // });
 
 app.UseSwaggerAndSwaggerUI(app.Environment);
+
 
 // Endpoints
 app.MapControllers();
