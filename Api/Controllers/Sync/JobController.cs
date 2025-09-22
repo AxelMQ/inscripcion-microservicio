@@ -9,7 +9,7 @@ namespace Api.Controllers;
 
 [ApiController]
 [Route("api/jobs")]
-[ApiExplorerSettings(GroupName = "async")] 
+[ApiExplorerSettings(GroupName = "async")]
 public class JobsController : ControllerBase
 {
     private readonly IJobResultRepository _results;
@@ -96,31 +96,29 @@ public class JobsController : ControllerBase
         };
     }
 
-    private async Task<object?> QueryHangfireAsync(string jobId)
+    private Task<object?> QueryHangfireAsync(string jobId)
     {
-        var monitor =  _storage.GetMonitoringApi();
+        var monitor = _storage.GetMonitoringApi();
         var details = monitor.JobDetails(jobId);
-        if (details is null) return null;
+        if (details is null)
+            return Task.FromResult<object?>(null);
 
-        // último estado conocido por Hangfire
         var state = details.History?.FirstOrDefault()?.StateName ?? "Unknown";
-        // intenta leer la cola desde las propiedades
+
         string? queue = null;
         if (details.Properties != null && details.Properties.TryGetValue("Queue", out var q))
             queue = q;
 
-        // Mapea al enum de tu dominio si quieres unificar nombres
         var mapped = state switch
         {
             "Processing" => JobStatus.Processing.ToString(),
-            "Succeeded"  => JobStatus.Completed.ToString(),
-            "Failed"     => JobStatus.Failed.ToString(),
-            "Enqueued"   => JobStatus.Pending.ToString(),
-            _            => state
+            "Succeeded" => JobStatus.Completed.ToString(),
+            "Failed" => JobStatus.Failed.ToString(),
+            "Enqueued" => JobStatus.Pending.ToString(),
+            _ => state
         };
 
-        // Hangfire no tiene tus DataJson/Error, devolvemos estructura mínima
-        return new
+        var result = new
         {
             jobId,
             status = mapped,
@@ -133,5 +131,8 @@ public class JobsController : ControllerBase
             data = (object?)null,
             error = (string?)null
         };
+
+        return Task.FromResult<object?>(result);
     }
+
 }
