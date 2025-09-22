@@ -5,9 +5,6 @@ namespace Shared.Contracts.Dtos.Nivel
     public sealed record class NivelUpdateDto
     {
         [Required]
-        public int Id { get; init; }
-
-        [Required]
         [StringLength(50)]
         public string? Nombre { get; init; }
 

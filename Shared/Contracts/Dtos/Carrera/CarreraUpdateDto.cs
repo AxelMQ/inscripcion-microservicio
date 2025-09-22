@@ -6,9 +6,6 @@ namespace Shared.Contracts.Dtos.Carrera
     public sealed record class CarreraUpdateDto
     {
         [Required]
-        public int Id { get; init; }
-
-        [Required]
         [StringLength(10)]
         public string? Codigo { get; init; }
 

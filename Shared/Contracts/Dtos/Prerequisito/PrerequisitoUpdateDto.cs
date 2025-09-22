@@ -5,9 +5,6 @@ namespace Shared.Contracts.Dtos.Prerequisito
     public sealed record class PrerequisitoUpdateDto
     {
         [Required]
-        public int Id { get; init; }
-
-        [Required]
         public int MateriaPlanEstudioId { get; init; }
 
         [Required]

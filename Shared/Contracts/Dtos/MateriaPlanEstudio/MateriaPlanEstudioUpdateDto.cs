@@ -6,9 +6,6 @@ namespace Shared.Contracts.Dtos.MateriaPlanEstudio
   public sealed record class MateriaPlanEstudioUpdateDto
   {
     [Required]
-    public int Id { get; init; }
-
-    [Required]
     public int MateriaId { get; init; }
 
     [Required]
