@@ -42,6 +42,9 @@ public class UnitOfWork : IUnitOfWork, IAsyncDisposable, IDisposable
     public Task<int> CompleteAsync(CancellationToken ct = default)
         => _ctx.SaveChangesAsync(ct);
 
+    public object GetDbContext()
+        => _ctx;
+
     public async ValueTask DisposeAsync() { if (_disposed) return; await _ctx.DisposeAsync(); _disposed = true; }
     public void Dispose() { if (_disposed) return; _ctx.Dispose(); _disposed = true; }
 }

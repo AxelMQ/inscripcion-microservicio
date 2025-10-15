@@ -49,6 +49,14 @@ public class JobsController : ControllerBase
         return Ok(ToDto(jr));
     }
 
+    // GET /api/jobs/debug/routes
+    [HttpGet("debug/routes")]
+    public IActionResult GetDebugRoutes()
+    {
+        var routes = Infrastructure.Background.JobRegistry.DebugKeys();
+        return Ok(new { routes = routes.ToList() });
+    }
+
     // ---------- Helpers ----------
 
     private static object ToDto(JobResult jr)
@@ -98,41 +106,55 @@ public class JobsController : ControllerBase
 
     private Task<object?> QueryHangfireAsync(string jobId)
     {
-        var monitor = _storage.GetMonitoringApi();
-        var details = monitor.JobDetails(jobId);
-        if (details is null)
-            return Task.FromResult<object?>(null);
-
-        var state = details.History?.FirstOrDefault()?.StateName ?? "Unknown";
-
-        string? queue = null;
-        if (details.Properties != null && details.Properties.TryGetValue("Queue", out var q))
-            queue = q;
-
-        var mapped = state switch
+        try
         {
-            "Processing" => JobStatus.Processing.ToString(),
-            "Succeeded" => JobStatus.Completed.ToString(),
-            "Failed" => JobStatus.Failed.ToString(),
-            "Enqueued" => JobStatus.Pending.ToString(),
-            _ => state
-        };
+            var monitor = _storage.GetMonitoringApi();
+            
+            // Intentar parsear como long (ID numérico de Hangfire)
+            if (long.TryParse(jobId, out var numericJobId))
+            {
+                var details = monitor.JobDetails(numericJobId.ToString());
+                if (details is null)
+                    return Task.FromResult<object?>(null);
 
-        var result = new
+                var state = details.History?.FirstOrDefault()?.StateName ?? "Unknown";
+
+                string? queue = null;
+                if (details.Properties != null && details.Properties.TryGetValue("Queue", out var q))
+                    queue = q;
+
+                var mapped = state switch
+                {
+                    "Processing" => JobStatus.Processing.ToString(),
+                    "Succeeded" => JobStatus.Completed.ToString(),
+                    "Failed" => JobStatus.Failed.ToString(),
+                    "Enqueued" => JobStatus.Pending.ToString(),
+                    _ => state
+                };
+
+                var result = new
+                {
+                    jobId,
+                    status = mapped,
+                    queue,
+                    resource = (string?)null,
+                    operation = (string?)null,
+                    createdUtc = (DateTime?)null,
+                    startedUtc = (DateTime?)null,
+                    finishedUtc = (DateTime?)null,
+                    data = (object?)null,
+                    error = (string?)null
+                };
+
+                return Task.FromResult<object?>(result);
+            }
+        }
+        catch (Exception)
         {
-            jobId,
-            status = mapped,
-            queue,
-            resource = (string?)null,
-            operation = (string?)null,
-            createdUtc = (DateTime?)null,
-            startedUtc = (DateTime?)null,
-            finishedUtc = (DateTime?)null,
-            data = (object?)null,
-            error = (string?)null
-        };
+            // Si falla la consulta a Hangfire, devolver null para que use la tabla JobResult
+        }
 
-        return Task.FromResult<object?>(result);
+        return Task.FromResult<object?>(null);
     }
 
 }

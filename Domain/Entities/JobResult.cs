@@ -1,11 +1,13 @@
+using Domain.Core;
+
 namespace Domain.Entities
 {
-    public class JobResult
+    public class JobResult : BaseEntity
     {
         /// <summary>
         /// Hangfire JobId (clave natural).
         /// </summary>
-        public string Id { get; set; } = default!;
+        public new string Id { get; set; } = default!;
 
         /// <summary>
         /// Clave de idempotencia (para detectar reintentos con mismo payload).

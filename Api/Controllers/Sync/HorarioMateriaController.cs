@@ -5,6 +5,7 @@ using Domain.Entities;
 using Application.Interfaces;
 using AutoMapper.QueryableExtensions;
 using Shared.Contracts.Dtos.HorarioMateria;
+using Domain.Exceptions;
 namespace Api.Controllers.Sync
 {
 
@@ -44,7 +45,9 @@ namespace Api.Controllers.Sync
           .ProjectTo<HorarioMateriaDto>(_mapper.ConfigurationProvider)
           .FirstOrDefaultAsync(ct);
 
-      if (dto is null) return NotFound();
+      if (dto is null) 
+        throw new HorarioMateriaNotFoundException(id);
+      
       return Ok(dto);
     }
 
@@ -65,10 +68,10 @@ namespace Api.Controllers.Sync
     [HttpPut("{id:int}")]
     public async Task<ActionResult> Update(int id, [FromBody] HorarioMateriaUpdateDto dto, CancellationToken ct)
     {
-
       var repo = _uow.GetRepository<HorarioMateria>();
       var existingItem = await repo.GetByIdAsync(id, ct);
-      if (existingItem == null) return NotFound();
+      if (existingItem == null) 
+        throw new HorarioMateriaNotFoundException(id);
 
       _mapper.Map(dto, existingItem);
 
@@ -82,7 +85,8 @@ namespace Api.Controllers.Sync
     {
       var repo = _uow.GetRepository<HorarioMateria>();
       var item = await repo.GetByIdAsync(id, ct);
-      if (item == null) return NotFound();
+      if (item == null) 
+        throw new HorarioMateriaNotFoundException(id);
 
       await repo.DeleteAsync(id, ct);
       await _uow.CompleteAsync(ct);

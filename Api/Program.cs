@@ -17,16 +17,33 @@ builder.Services
     options.ListenAnyIP(5239); // usa el mismo puerto que ya usas en local
 }); */
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
+
 var app = builder.Build();
+
+// Configurar manejo de excepciones
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseGlobalExceptionMiddleware();
 }
 
 app.UseHttpsRedirection();
 
 // ORDEN CLAVE
 app.UseRouting();
+app.UseCors("AllowAll"); 
 app.UseAuthentication();
 app.UseAuthorization();
 

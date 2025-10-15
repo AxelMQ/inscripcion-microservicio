@@ -18,6 +18,8 @@ using Shared.Contracts.Dtos.MateriaPlanEstudio;
 using Shared.Contracts.Dtos.Nivel;
 using Shared.Contracts.Dtos.PlanEstudio;
 using Shared.Contracts.Dtos.Prerequisito;
+using Shared.Contracts.Dtos.Inscripcion;
+using Shared.Contracts.Dtos.Jobs;
 
 namespace Shared.Mapping
 {
@@ -151,6 +153,14 @@ namespace Shared.Mapping
                      opt => opt.MapFrom(src => src.MateriaPlanEstudio.Materia.Nombre))
           .ForMember(dest => dest.MateriaQueRequiereSigla,
                      opt => opt.MapFrom(src => src.MateriaPlanEstudio.Materia.Sigla));
+
+      // Mapeo de DTOs de entrada a la entidad de dominio
+      CreateMap<InscripcionCreateDto, Inscripcion>();
+      // Mapeo de la entidad de dominio a DTOs de salida
+      CreateMap<Inscripcion, InscripcionDto>();
+
+      // Mapeo de JobResult
+      CreateMap<JobResult, JobResultDto>();
     }
   }
 }

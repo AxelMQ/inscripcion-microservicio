@@ -70,11 +70,42 @@ namespace Infrastructure.Background
         {
             // Escanea el ensamblado donde viven tus *Service (ej.: AlumnoService)
             InitializeFromAssembly(typeof(Services.AlumnoService).Assembly);
+            // También escanea el ensamblado de Infrastructure para InscripcionService
+            InitializeFromAssembly(typeof(Infrastructure.Background.Services.InscripcionService).Assembly);
+            
+            // Registro manual de InscripcionService para asegurar que esté disponible
+            RegisterInscripcionService();
+        }
+
+        private static void RegisterInscripcionService()
+        {
+            var dict = new Dictionary<string, JobRoute>(_routes);
+            
+            // Registro manual de InscripcionService
+            var inscripcionServiceType = typeof(Infrastructure.Background.Services.InscripcionService);
+            var createMethod = inscripcionServiceType.GetMethod("CreateAsync");
+            
+            if (createMethod != null)
+            {
+                var dtoType = createMethod.GetParameters()[0].ParameterType;
+                
+                dict["inscripcion.create"] = new DynamicRoute(
+                    dtoType: dtoType,
+                    serviceType: inscripcionServiceType,
+                    invokeAsync: (svc, args) => 
+                    {
+                        var task = (Task)(createMethod.Invoke(svc, args) ?? throw new InvalidOperationException("Invoke devolvió null"));
+                        return task.ContinueWith(t => t.GetType().GetProperty("Result")?.GetValue(t));
+                    }
+                );
+            }
+            
+            _routes = dict;
         }
 
         public static void InitializeFromAssembly(Assembly asm)
         {
-            var dict = new Dictionary<string, JobRoute>();
+            var dict = new Dictionary<string, JobRoute>(_routes);
 
             foreach (var svcType in asm.GetTypes().Where(t => t.IsClass && !t.IsAbstract && t.Name.EndsWith("Service")))
             {

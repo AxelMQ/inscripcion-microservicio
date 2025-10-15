@@ -12,6 +12,7 @@ using Hangfire.PostgreSql;
 using Infrastructure.Background;
 using Infrastructure.Background.Services;
 using Application.Data.Entities;
+using Api.Services;
 
 namespace Api.Extensions
 {
@@ -60,6 +61,10 @@ namespace Api.Extensions
             services.AddScoped<MateriaService>();
             services.AddScoped<DocenteService>();
             services.AddScoped<CarreraService>();
+            services.AddScoped<InscripcionService>();
+
+            // Servicios de logging de excepciones
+            services.AddScoped<IExceptionLoggingService, ExceptionLoggingService>();
 
             return services;
         }
