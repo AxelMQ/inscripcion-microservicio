@@ -10,8 +10,8 @@ namespace Api.Extensions
 
             app.UseSwaggerUI(c =>
             {
-                // Mueve la UI a /docs (evita un index.html cacheado en /swagger)
-                c.RoutePrefix = "docs";
+                // Swagger UI en la ruta estándar /swagger
+                c.RoutePrefix = "swagger";
 
                 // SOLO los docs que registraste
                 c.SwaggerEndpoint("/swagger/sync/swagger.json", "API Síncronos v1");
