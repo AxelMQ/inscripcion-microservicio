@@ -8,13 +8,39 @@ namespace Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Materia> b)
         {
+            // Especificar el nombre de la tabla en PostgreSQL
+            b.ToTable("materia");
+            
             b.HasKey(x => x.Id);
+            
+            // Configurar la columna Id
+            b.Property(x => x.Id)
+             .HasColumnName("id");
 
-            b.Property(x => x.Credito).IsRequired();
-            b.Property(x => x.EsElectiva).IsRequired();
+            // Configurar columnas de BaseEntity
+            b.Property(x => x.CreatedAt)
+             .HasColumnName("created_at");
+             
+            b.Property(x => x.UpdatedAt)
+             .HasColumnName("updated_at");
 
-            b.Property(x => x.Nombre).IsRequired().HasMaxLength(50);
-            b.Property(x => x.Sigla).IsRequired().HasMaxLength(15);
+            b.Property(x => x.Credito)
+             .IsRequired()
+             .HasColumnName("credito");
+             
+            b.Property(x => x.EsElectiva)
+             .IsRequired()
+             .HasColumnName("es_electiva");
+
+            b.Property(x => x.Nombre)
+             .IsRequired()
+             .HasMaxLength(50)
+             .HasColumnName("nombre");
+             
+            b.Property(x => x.Sigla)
+             .IsRequired()
+             .HasMaxLength(15)
+             .HasColumnName("sigla");
 
             b.HasMany(x => x.MateriaPlanEstudios)
              .WithOne(mpe => mpe.Materia)

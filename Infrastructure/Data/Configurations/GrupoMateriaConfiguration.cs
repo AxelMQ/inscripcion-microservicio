@@ -8,9 +8,29 @@ namespace Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<GrupoMateria> b)
         {
+            // Especificar el nombre de la tabla en PostgreSQL
+            b.ToTable("grupo_materia");
+            
             b.HasKey(x => x.Id);
-            b.Property(x => x.GrupoId).IsRequired();
-            b.Property(x => x.MateriaId).IsRequired();
+            
+            // Configurar la columna Id
+            b.Property(x => x.Id)
+             .HasColumnName("id");
+
+            // Configurar columnas de BaseEntity
+            b.Property(x => x.CreatedAt)
+             .HasColumnName("created_at");
+             
+            b.Property(x => x.UpdatedAt)
+             .HasColumnName("updated_at");
+
+            b.Property(x => x.GrupoId)
+             .IsRequired()
+             .HasColumnName("grupo_id");
+             
+            b.Property(x => x.MateriaId)
+             .IsRequired()
+             .HasColumnName("materia_id");
 
             b.HasOne(x => x.Grupo)
              .WithMany(g => g.GrupoMaterias)

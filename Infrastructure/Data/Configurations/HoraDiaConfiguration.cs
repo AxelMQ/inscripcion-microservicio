@@ -8,10 +8,29 @@ namespace Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<HoraDia> b)
         {
+            // Especificar el nombre de la tabla en PostgreSQL
+            b.ToTable("hora_dia");
+            
             b.HasKey(x => x.Id);
+            
+            // Configurar la columna Id
+            b.Property(x => x.Id)
+             .HasColumnName("id");
 
-            b.Property(x => x.DiaId).IsRequired();
-            b.Property(x => x.HoraId).IsRequired();
+            // Configurar columnas de BaseEntity
+            b.Property(x => x.CreatedAt)
+             .HasColumnName("created_at");
+             
+            b.Property(x => x.UpdatedAt)
+             .HasColumnName("updated_at");
+
+            b.Property(x => x.DiaId)
+             .IsRequired()
+             .HasColumnName("dia_id");
+             
+            b.Property(x => x.HoraId)
+             .IsRequired()
+             .HasColumnName("hora_id");
 
             b.HasOne(x => x.Dia)
              .WithMany(d => d.HorasDia)

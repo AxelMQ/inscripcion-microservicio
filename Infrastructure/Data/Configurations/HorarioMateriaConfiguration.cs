@@ -8,16 +8,51 @@ namespace Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<HorarioMateria> b)
         {
+            // Especificar el nombre de la tabla en PostgreSQL
+            b.ToTable("horario_materia");
+            
             b.HasKey(x => x.Id);
+            
+            // Configurar la columna Id
+            b.Property(x => x.Id)
+             .HasColumnName("id");
 
-            b.Property(x => x.CuposDisponibles).IsRequired();
-            b.Property(x => x.CuposTotal).IsRequired();
-            b.Property(x => x.NroAula);
+            // Configurar columnas de BaseEntity
+            b.Property(x => x.CreatedAt)
+             .HasColumnName("created_at");
+             
+            b.Property(x => x.UpdatedAt)
+             .HasColumnName("updated_at");
 
-            b.Property(x => x.GestionId).IsRequired();
-            b.Property(x => x.GrupoMateriaId).IsRequired();
-            b.Property(x => x.ModuloId).IsRequired();
-            b.Property(x => x.HorarioId).IsRequired();
+            b.Property(x => x.CuposDisponibles)
+             .IsRequired()
+             .HasColumnName("cupos_disponibles");
+             
+            b.Property(x => x.CuposTotal)
+             .IsRequired()
+             .HasColumnName("cupos_total");
+             
+            b.Property(x => x.NroAula)
+             .HasColumnName("nro_aula");
+
+            b.Property(x => x.GestionId)
+             .IsRequired()
+             .HasColumnName("gestion_id");
+             
+            b.Property(x => x.GrupoMateriaId)
+             .IsRequired()
+             .HasColumnName("grupo_materia_id");
+             
+            b.Property(x => x.ModuloId)
+             .IsRequired()
+             .HasColumnName("modulo_id");
+             
+            b.Property(x => x.DocenteId)
+             .HasColumnName("docente_id");
+             
+            b.Property(x => x.HorarioId)
+             .IsRequired()
+             .HasColumnName("horario_id");
 
             b.HasOne(x => x.Gestion)
              .WithMany(g => g.HorariosMateria)
