@@ -3,8 +3,19 @@ using Hangfire;
 using Infrastructure.Background; // 👈 necesario para UseHangfireDashboard
 using Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configurar Serilog
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
+
+// Logs de inicio para debugging en desarrollo
+// TODO: Agregar más info del sistema (RAM, CPU) en producción
+Log.Information("🚀 Iniciando Microservicio de Gestión Académica");
+Log.Information("📅 Fecha de inicio: {StartupTime}", DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss UTC"));
+Log.Information("🌍 Entorno: {Environment}", builder.Environment.EnvironmentName);
 
 builder.Services.AddControllers();
 
@@ -104,7 +115,7 @@ app.UseHttpsRedirection();
 // ORDEN CLAVE
 app.UseRouting();
 
-// Configurar CORS de forma inteligente
+// Configurar CORS
 var corsPolicy = Environment.GetEnvironmentVariable("CORS_POLICY") ?? 
                  builder.Configuration["CORS_POLICY"] ?? 
                  (app.Environment.IsDevelopment() ? "Development" : "DynamicCors");
@@ -139,6 +150,27 @@ app.MapGet("/api/health", () =>
         message = "Microservicio funcionando correctamente",
         timestamp = DateTime.UtcNow,
         version = "1.0.0"
+    });
+});
+
+// Endpoint para información de red (útil para mobile/web)
+app.MapGet("/api/network-info", () =>
+{
+    var networkIP = GetLocalIPAddress();
+    return Results.Ok(new { 
+        message = "Información de red para desarrollo mobile/web",
+        server = new {
+            localhost = "http://localhost:5239",
+            network = $"http://{networkIP}:5239",
+            ip = networkIP
+        },
+        endpoints = new {
+            health = "http://localhost:5239/api/health",
+            swagger = "http://localhost:5239/swagger",
+            hangfire = "http://localhost:5239/hangfire",
+            network_health = $"http://{networkIP}:5239/api/health"
+        },
+        timestamp = DateTime.UtcNow
     });
 });
 
@@ -204,4 +236,39 @@ app.MapGet("/test-job", () =>
     return Results.Ok("Job encolado");
 });
 
+// Obtener IP de la red local
+var networkIP = GetLocalIPAddress();
+
+// Logging de configuración completada
+Log.Information("✅ Configuración de la aplicación completada");
+Log.Information("🌐 Servidor iniciando en: http://localhost:5239");
+Log.Information("📱 Para Mobile/Web usar: http://{NetworkIP}:5239", networkIP);
+Log.Information("📊 Dashboard Hangfire: http://localhost:5239/hangfire");
+Log.Information("📚 Documentación Swagger: http://localhost:5239/swagger");
+Log.Information("❤️ Health Check: http://localhost:5239/api/health");
+
 app.Run();
+
+// Función para obtener la IP de la red local
+// NOTA: Esto es útil para desarrollo mobile/web en la misma red
+// FIXME: Verificar si funciona en redes corporativas con VPN
+static string GetLocalIPAddress()
+{
+    try
+    {
+        var host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
+        foreach (var ip in host.AddressList)
+        {
+            if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            {
+                return ip.ToString();
+            }
+        }
+        return "localhost";
+    }
+    catch
+    {
+        // Si falla, usar localhost como fallback
+        return "localhost";
+    }
+}
