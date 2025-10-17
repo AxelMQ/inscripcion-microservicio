@@ -4,6 +4,7 @@ using Application.Interfaces;
 using Domain.Entities;
 using Domain.Enums;
 using Shared.Contracts.Dtos.Inscripcion;
+using Serilog;
 
 namespace Infrastructure.Background.Services
 {
@@ -24,6 +25,9 @@ namespace Infrastructure.Background.Services
             var dto = jobDto.Dto;
             var idempotencyKey = jobDto.IdempotencyKey;
             
+            Log.Information("🚀 Iniciando proceso de inscripción para AlumnoId: {AlumnoId}, HorarioMateriaId: {HorarioMateriaId}, IdempotencyKey: {IdempotencyKey}", 
+                dto.AlumnoId, dto.HorarioMateriaId, idempotencyKey);
+            
             try
             {
                 // Traer HorarioMateria con tracking para actualizar cupos
@@ -31,14 +35,20 @@ namespace Infrastructure.Background.Services
                 var hm = await hmRepo.GetByIdAsync(dto.HorarioMateriaId, ct);
                 if (hm is null)
                 {
+                    Log.Warning("❌ HorarioMateria no encontrado para ID: {HorarioMateriaId}", dto.HorarioMateriaId);
                     await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, "Horario de materia no encontrado", null);
                     return new { confirmed = false, reason = "HorarioMateriaNotFound" };
                 }
+
+                Log.Information("📚 HorarioMateria encontrado - Cupos totales: {CuposTotal}, Disponibles: {CuposDisponibles}", 
+                    hm.CuposTotal, hm.CuposDisponibles);
 
                 // Validar cupos disponibles
                 if (hm.CuposDisponibles <= 0)
                 {
                     var errorMessage = $"No hay cupos disponibles. Cupos totales: {hm.CuposTotal}, Disponibles: {hm.CuposDisponibles}";
+                    Log.Warning("🚫 No hay cupos disponibles - Cupos totales: {CuposTotal}, Disponibles: {CuposDisponibles}", 
+                        hm.CuposTotal, hm.CuposDisponibles);
                     await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, errorMessage, null);
                     return new { confirmed = false, reason = "NoSeatsAvailable", message = errorMessage };
                 }
@@ -85,6 +95,8 @@ namespace Infrastructure.Background.Services
                 }
 
                 // Crear la inscripción exitosa
+                Log.Information("✅ Creando inscripción exitosa para AlumnoId: {AlumnoId}", dto.AlumnoId);
+                
                 var insRepo = _uow.GetRepository<Inscripcion>();
                 var hmiRepo = _uow.GetRepository<HorarioMateriaInscripcion>();
 
@@ -115,11 +127,15 @@ namespace Infrastructure.Background.Services
                 };
 
                 // Actualizar el estado del job a Completed
+                Log.Information("🎉 Inscripción completada exitosamente - InscripcionId: {InscripcionId}, AlumnoId: {AlumnoId}", 
+                    ins.Id, dto.AlumnoId);
                 await UpdateJobStatusAsync(idempotencyKey, JobStatus.Completed, null, result);
                 return new { confirmed = true, item = result };
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "💥 Error inesperado durante la inscripción para AlumnoId: {AlumnoId}, HorarioMateriaId: {HorarioMateriaId}", 
+                    dto.AlumnoId, dto.HorarioMateriaId);
                 var errorMessage = $"Error inesperado durante la inscripción: {ex.Message}";
                 await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, errorMessage, null);
                 throw;
