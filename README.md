@@ -128,6 +128,11 @@ dotnet run --project Api
 - **Hangfire Dashboard**: `http://localhost:5239/hangfire`
 - **Health Check**: `http://localhost:5239/api/health`
 
+### 📊 Endpoints de Logging
+- **Últimos Logs**: `GET /api/Logs/latest?lines=50`
+- **Archivos de Log**: `GET /api/Logs/files`
+- **Búsqueda en Logs**: `GET /api/Logs/search?searchTerm=error&lines=20`
+
 ---
 
 ## 🔒 Configuración de CORS
@@ -290,6 +295,12 @@ Este proyecto forma parte del curso **Tópicos 2025 - Semestre 2** y está dise�
 - **Variables de Entorno**: Configuración flexible
 - **Soporte Mobile**: Políticas específicas para apps móviles
 - **Seguridad**: Configuración restrictiva en producción
+
+### 📊 **Sistema de Logging**
+- **Logs Estructurados**: Con Serilog y rotación diaria
+- **Monitoreo Remoto**: Acceso a logs desde frontend/mobile
+- **Búsqueda Avanzada**: Filtrado por errores y términos específicos
+- **Configuración Flexible**: Límites de tamaño y retención personalizables
 
 ---
 
