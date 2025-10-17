@@ -1,4 +1,5 @@
 using Api.Extensions;
+using Api.Middleware;
 using Hangfire;
 using Infrastructure.Background; // 👈 necesario para UseHangfireDashboard
 using Application.Interfaces;
@@ -109,6 +110,9 @@ else
 {
     app.UseGlobalExceptionMiddleware();
 }
+
+// Middleware personalizado para errores de base de datos
+app.UseMiddleware<DatabaseErrorMiddleware>();
 
 app.UseHttpsRedirection();
 
