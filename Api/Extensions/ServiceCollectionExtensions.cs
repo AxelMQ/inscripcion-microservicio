@@ -26,7 +26,7 @@ namespace Api.Extensions
                 throw new InvalidOperationException("Missing ConnectionStrings:DefaultConnection.");
 
             services.AddDbContext<AppDbContext>(opt =>
-                opt.UseNpgsql(connString).UseSnakeCaseNamingConvention());
+                opt.UseNpgsql(connString));
 
             // Repos / UoW
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
