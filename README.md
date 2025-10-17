@@ -12,6 +12,9 @@ Sistema de gestión académica que implementa un **microservicio de inscripcione
 - ✅ **Estados en Tiempo Real**: Tracking de Pending → Processing → Completed/Failed
 - ✅ **Retry Logic**: Reintentos automáticos en conflictos de concurrencia
 - ✅ **APIs Duales**: Endpoints síncronos y asíncronos
+- ✅ **Logging Estructurado**: Sistema de logs profesional con Serilog
+- ✅ **CORS Dinámico**: Configuración flexible para desarrollo mobile/web
+- ✅ **Detección de Red**: IP automática para desarrollo local
 
 ---
 
@@ -60,7 +63,7 @@ Sistema de gestión académica que implementa un **microservicio de inscripcione
 | **.NET** | 8.0 | Framework principal |
 | **Entity Framework Core** | 8.0 | ORM y migraciones |
 | **Hangfire** | 1.8+ | Procesamiento asíncrono |
-| **SQL Server** | - | Base de datos |
+| **SQL Postgress** | - | Base de datos |
 | **AutoMapper** | 12.0+ | Mapeo de objetos |
 | **Swagger/OpenAPI** | - | Documentación de API |
 
@@ -207,6 +210,19 @@ dotnet run --project Api
 - Excepciones específicas de negocio
 - Logging detallado de errores
 - Rollback automático en fallos
+
+### ✅ **Sistema de Logging**
+- Logging estructurado con Serilog
+- Logs automáticos en consola y archivos
+- Rotación diaria de logs (7 días de retención)
+- Logging de operaciones críticas con emojis
+- Códigos HTTP integrados en logs
+
+### ✅ **Configuración de Red**
+- Detección automática de IP de red
+- CORS configurado para desarrollo mobile/web
+- Endpoints de información de red
+- Logs con IPs para desarrollo local
 
 ---
 
