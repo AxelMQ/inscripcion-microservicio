@@ -99,7 +99,7 @@ Pending → Processing → Completed/Failed
 
 ### 📋 Prerrequisitos
 - .NET 8.0 SDK
-- SQL Server (LocalDB o Express)
+- PostgreSQL (Local o Docker)
 - Visual Studio 2022 o VS Code
 
 ### 🚀 Ejecutar el Proyecto
@@ -120,9 +120,56 @@ dotnet run --project Api
 ```
 
 ### 🌐 URLs Importantes
-- **API**: `https://localhost:7000`
-- **Swagger**: `https://localhost:7000/swagger`
-- **Hangfire Dashboard**: `https://localhost:7000/hangfire`
+- **API**: `http://localhost:5239`
+- **Swagger**: `http://localhost:5239/swagger`
+- **Hangfire Dashboard**: `http://localhost:5239/hangfire`
+- **Health Check**: `http://localhost:5239/api/health`
+
+---
+
+## 🔒 Configuración de CORS
+
+### 📱 **Para Desarrollo Mobile**
+
+El sistema incluye configuración avanzada de CORS para soporte completo de aplicaciones móviles:
+
+#### **Configuración Automática por Ambiente**
+- **Development**: Política permisiva para desarrollo local
+- **Staging**: Configuración intermedia para testing
+- **Production**: Configuración restrictiva y segura
+
+#### **Variables de Entorno Disponibles**
+```bash
+# Política CORS a usar
+CORS_POLICY=Development|DynamicCors|MobileApp
+
+# Orígenes permitidos (separados por coma)
+CORS_ALLOWED_ORIGINS=http://localhost:3000,http://192.168.0.15:3000,https://tuapp.com
+
+# IPs permitidas para mobile apps
+MOBILE_ALLOWED_IPS=192.168.,10.,localhost
+```
+
+#### **Perfiles de Configuración**
+- **Development**: Permite localhost e IPs locales
+- **MobileApp**: Validación dinámica para apps móviles
+- **DynamicCors**: Configuración desde variables de entorno
+
+### 🚀 **Ejecutar con Configuración Mobile**
+
+```powershell
+# Para desarrollo mobile
+$env:CORS_POLICY="MobileApp"
+$env:MOBILE_ALLOWED_IPS="192.168.,10.,localhost"
+dotnet run --project Api
+```
+
+### 📱 **Soporte para Flutter/React Native**
+- ✅ **IPs de red local** (192.168.x.x, 10.x.x.x)
+- ✅ **Localhost** para desarrollo
+- ✅ **Cualquier método HTTP** (GET, POST, PUT, DELETE)
+- ✅ **Headers personalizados** (Content-Type, Authorization)
+- ✅ **Credentials** para autenticación
 
 ---
 
@@ -221,6 +268,12 @@ Este proyecto forma parte del curso **Tópicos 2025 - Semestre 2** y está dise�
 - APIs para Web y Mobile
 - Procesamiento distribuido
 - Monitoreo en tiempo real
+
+### 🌐 **Configuración Avanzada**
+- **CORS Dinámico**: Configuración por ambiente
+- **Variables de Entorno**: Configuración flexible
+- **Soporte Mobile**: Políticas específicas para apps móviles
+- **Seguridad**: Configuración restrictiva en producción
 
 ---
 

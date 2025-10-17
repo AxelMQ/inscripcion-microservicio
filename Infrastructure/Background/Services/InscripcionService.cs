@@ -38,8 +38,9 @@ namespace Infrastructure.Background.Services
                 // Validar cupos disponibles
                 if (hm.CuposDisponibles <= 0)
                 {
-                    await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, "No hay cupos disponibles", null);
-                    return new { confirmed = false, reason = "NoSeatsAvailable" };
+                    var errorMessage = $"No hay cupos disponibles. Cupos totales: {hm.CuposTotal}, Disponibles: {hm.CuposDisponibles}";
+                    await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, errorMessage, null);
+                    return new { confirmed = false, reason = "NoSeatsAvailable", message = errorMessage };
                 }
 
                 // Decrementar cupos con control de concurrencia
@@ -56,17 +57,28 @@ namespace Infrastructure.Background.Services
                     {
                         if (attempt == 2)
                         {
-                            await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, "Conflicto de concurrencia - reintento agotado", null);
-                            return new { confirmed = false, reason = "ConcurrencyConflict" };
+                            var errorMessage = $"Conflicto de concurrencia - reintento agotado. Otro usuario se inscribió simultáneamente y agotó los cupos disponibles.";
+                            await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, errorMessage, null);
+                            return new { confirmed = false, reason = "ConcurrencyConflict", message = errorMessage };
                         }
                         
                         // Recargar la entidad fresca para el siguiente intento
                         var fresh = await hmRepo.GetByIdAsync(dto.HorarioMateriaId, ct);
                         if (fresh is null)
                         {
-                            await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, "Horario de materia no encontrado durante reintento", null);
-                            return new { confirmed = false, reason = "HorarioMateriaNotFound" };
+                            var errorMessage = "Horario de materia no encontrado durante reintento de concurrencia";
+                            await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, errorMessage, null);
+                            return new { confirmed = false, reason = "HorarioMateriaNotFound", message = errorMessage };
                         }
+                        
+                        // Verificar si aún hay cupos después del conflicto
+                        if (fresh.CuposDisponibles <= 0)
+                        {
+                            var errorMessage = $"Después del conflicto de concurrencia, no quedan cupos disponibles. Cupos totales: {fresh.CuposTotal}, Disponibles: {fresh.CuposDisponibles}";
+                            await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, errorMessage, null);
+                            return new { confirmed = false, reason = "NoSeatsAvailable", message = errorMessage };
+                        }
+                        
                         hm = fresh;
                         continue;
                     }
@@ -108,7 +120,8 @@ namespace Infrastructure.Background.Services
             }
             catch (Exception ex)
             {
-                await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, ex.Message, null);
+                var errorMessage = $"Error inesperado durante la inscripción: {ex.Message}";
+                await UpdateJobStatusAsync(idempotencyKey, JobStatus.Failed, errorMessage, null);
                 throw;
             }
         }
